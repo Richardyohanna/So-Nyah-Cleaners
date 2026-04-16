@@ -13,6 +13,10 @@ import whatsApp from "../assets/whatsApp.png";
 import botanicalLeaf from "../assets/botanical-leaf.png"
 import pet from "../assets/pet.png"
 import water from "../assets/water.png"
+import sanctuary1 from "../assets/sanctuary1.png"
+import sanctuary2 from "../assets/sanctuary2.png"
+import sanctuary3 from "../assets/sanctuary 3.png"
+import sanctuary4 from "../assets/sanctuary 4.png"
 
 type HeroSlide = {
   id: number;
@@ -188,7 +192,7 @@ const Home = () => {
                     alt="Cannot load before image"
                     className="w-full h-full object-cover rounded-2xl"
                   />
-                  <p className="absolute top-1 p-1 px-4 rounded-2xl left-1 text-white text-2xl">
+                  <p className="absolute top-1 p-1 px-4 rounded-2xl left-1 !text-white text-2xl">
                     BEFORE
                   </p>
                 </div>
@@ -200,7 +204,7 @@ const Home = () => {
                     alt="Cannot load after image"
                     className="w-full h-full object-cover rounded-2xl"
                   />
-                  <p className="absolute top-1 p-1 px-4 rounded-2xl left-1 text-white text-2xl">
+                  <p className="absolute top-1 p-1 px-4 rounded-2xl left-1 !text-white text-2xl">
                     AFTER
                   </p>
                 </div>
@@ -234,7 +238,7 @@ const Home = () => {
       <section id="friendly-difference"
           className="mt-10"
       >
-          <h2 className="text-[var(--primary)] text-[58px] leading-[1] text-bold tracking-[4px]">The Eco-Friendly <br/> <span className="text-[var(--text-sub-h)]">Difference</span></h2>
+          <h2 className="text-[var(--primary)] text-[48px] leading-[1] text-bold ">The Eco-Friendly <br/> <span className="text-[var(--text-sub-h)]">Difference</span></h2>
           
           <div className="flex flex-row mt-10 justify-between">
             <p className="max-w-[600px] text-[var(--accent-text)]">
@@ -278,7 +282,7 @@ const Home = () => {
                 <div>
                   <img src={water} alt="Cannot load Botanical icon" />
                 </div>
-                <h4 className="font-bold -mt-2">Botanical Agents</h4>
+                <h4 className="font-bold -mt-2">Water Wisdom</h4>
                 <p>
                   In line with Abuja's environmental goals, we utilize
                   low-moisture technology that saves up to 40%
@@ -293,6 +297,37 @@ const Home = () => {
 
             </div>
           </div>
+      </section>
+
+      <section id="sanctuary" className= "mt-20" >
+        <h3 className="text-[var(--primary)] head text-[var(--primary)] text-[48px] leading-[1] text-bold tracking-[4px] ">The Abuja Sanctuary</h3>
+        <div className="flex justify-between mt-5 ">
+          <p className="max-w-[600px]">
+            Experience a new standard of residential hygiene tailored for Nigeria's capital. Our
+            process transforms urban dust into pristine serenity.
+          </p>
+          <p>
+            <span className="text-[var(--primary)] text-bold text-xl">700+</span>
+            <br/>
+            SPACES POLISHED
+          </p>
+        </div>
+        
+        <div className="mt-7 gap-5 flex flex-col">
+          <div className="flex flex-row justify-center gap-5">
+                <img src={sanctuary1} alt="cannot load sanctuary1 refresh please" className="rounded-2xl max-w-[600px] max-h-[230px] shadow"/>
+                <img src={sanctuary2} alt="cannot load sanctuary2 refresh please" className="rounded-2xl max-w-[500px] max-h-[230px] shadow mt-7"/>
+          </div>
+          <div className="flex flex-row justify-center gap-5">
+                <img src={sanctuary3} alt="cannot load sanctuary3 refresh please" className="rounded-2xl max-w-[500px] max-h-[230px] shadow -mt-7"/>
+                <img src={sanctuary4} alt="cannot load sanctuary4 refresh please" className="rounded-2xl max-w-[600px] max-h-[230px] shadow"/>
+          </div>
+        </div>
+      </section>
+
+      <section id="service" className="mt-15">
+        <h3 className="text-[var(--primary)] head text-[var(--primary)] text-[48px] leading-[1] text-bold items-center text-center ">Our Specialized Services</h3>
+        <h4 className="text-center text-[var(--accent-text)] ">A THREE-FOLD APPROACH TO PURITY</h4>
       </section>
 
        <button className="fixed z-1000 rounded-3xl flex px-6 bottom-10 right-10 shadow-xl text-white bg-[var(--text-sub-h)] p-3 items-center gap-3">
