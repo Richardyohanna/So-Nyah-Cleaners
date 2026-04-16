@@ -1,8 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
-import heroImage from "../assets/hero-background.png";
-import leaf from "../assets/leaf.png";
+
 import CustomButton from "../component/ui/custom-button";
 import before1 from "../assets/before 1.jpeg";
 import after1 from "../assets/after 1.jpeg";
@@ -65,6 +64,7 @@ const Home = () => {
   useEffect(() => {
     const runAnimation = () => {
       setTextCoverActive(true);
+      console.log(textCoverActive);
 
       const t1 = window.setTimeout(() => {
         setImageCoverActive(true);
