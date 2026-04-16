@@ -97,7 +97,7 @@ const Home = () => {
       
       <section
         id="hero"
-        className="relative bg-white flex items-center justify-between overflow-hidden "
+        className="relative bg-white flex items-center justify-between overflow-hidden mt-5 "
         style={{ minHeight: `calc(100vh - ${HEADER_HEIGHT}px)` }}
       >
        {/*} <div
