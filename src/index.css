@@ -12,6 +12,7 @@
 
   --accent-text-sub-h: #016e1c90;
   --accent-text: #52424F;
+  --accent-bg: #96f5915f;
 
 
   --sans: "Epilogue Variable", "Epilogue", system-ui, sans-serif;
@@ -65,7 +66,9 @@ section {
   width: 100%;
 }
 
-
+p{
+  color: #52424F;
+}
 
 @media (max-width: 1024px) {
   h1 {

@@ -27,7 +27,7 @@ const Header = () => {
   ];
 
   return (
-    <header className="absolute z-99 w-full flex items-center justify-between bg-white h-[66px] px-9 border-b border-[var(--border)]">
+    <header className="fixed z-99 w-full flex items-center justify-between bg-white h-[66px] px-9 border-b border-[var(--border)]">
       <div>
         <img
           src={logo}
