@@ -10,6 +10,10 @@ import before2 from "../assets/before 2.jpeg";
 import after2 from "../assets/after 2.jpeg";
 import guarantee from "../assets/gurrantee.png";
 import logoTransition from "../assets/logo_without_text.png";
+import whatsApp from "../assets/whatsApp.png";
+import botanicalLeaf from "../assets/botanical-leaf.png"
+import pet from "../assets/pet.png"
+import water from "../assets/water.png"
 
 type HeroSlide = {
   id: number;
@@ -86,19 +90,22 @@ const Home = () => {
     };
   }, []);
 
+  
+
   return (
-    <div className="overflow-hidden">
+    <div className="overflow-hidden bg-white px-20 flex flex-col gap-10 pb-20">
+      
       <section
         id="hero"
-        className="relative flex items-center justify-between px-20 "
+        className="relative bg-white flex items-center justify-between overflow-hidden "
         style={{ minHeight: `calc(100vh - ${HEADER_HEIGHT}px)` }}
       >
-        <div
+       {/*} <div
           className="absolute inset-0 bg-cover bg-center opacity-30"
           style={{
             backgroundImage: `url(${heroImage})`,
           }}
-        />
+        /> */}
 
         <div className="relative z-10 flex flex-row justify-between w-full gap-12 items-center  min-h-screen">
           {/* LEFT / TEXT SECTION */}
@@ -146,7 +153,7 @@ const Home = () => {
           </div>
 
           {/* RIGHT / IMAGE SECTION */}
-          <div className="relative flex flex-row max-w-[644px] max-h-[698px] w-full h-full gap-4 overflow-hidden rotate-[3deg] items-center justify-center mt-10 rounded-[32px]">
+          <div className="relative flex flex-row max-w-[644px] max-h-[698px] w-full h-full gap-4   items-center justify-center mt-10 rounded-[32px]">
             {/* logo image cover */}
             <motion.div
                 initial={{ y: "120%" }}
@@ -199,7 +206,7 @@ const Home = () => {
                 </div>
 
                 {/* Guarantee */}
-                <div className="absolute bottom-4 left-4 bg-white px-3 rounded-2xl p-4 flex gap-x-4 shadow-xl">
+                <div className="absolute -bottom-4  -left-20 bg-white px-3 rounded-2xl p-4 flex gap-x-4 shadow-xl ">
                   <div className="bg-[var(--text-sub-h)] rounded-full w-[48px] h-[48px] flex items-center justify-center">
                     <img
                       src={guarantee}
@@ -220,7 +227,77 @@ const Home = () => {
             </AnimatePresence>
           </div>
         </div>
+
+
       </section>
+      
+      <section id="friendly-difference"
+          className="mt-10"
+      >
+          <h2 className="text-[var(--primary)] text-[58px] leading-[1] text-bold tracking-[4px]">The Eco-Friendly <br/> <span className="text-[var(--text-sub-h)]">Difference</span></h2>
+          
+          <div className="flex flex-row mt-10 justify-between">
+            <p className="max-w-[600px] text-[var(--accent-text)]">
+              We believe that a clean home shouldn't come at the cost of your health or the
+              environment. Our signature Abuja Green Protocol ensures safety for the whole
+              family.
+            </p>
+            <p className="text-[var(--text-sub-h)] p-4 rounded-xl h-fit items-center bg-[var(--accent-bg)]">Safe for Pets & Newborns</p>
+          </div>
+
+          <div className="mt-10 flex flex-row gap-5">
+
+              <div className="flex flex-col gap-3">
+                <div>
+                  <img src={botanicalLeaf} alt="Cannot load Botanical icon" />
+                </div>
+                <h4 className="font-bold -mt-2">Botanical Agents</h4>
+                <p>
+                  We exclusively use plant-based surfactants and
+                  essential oil extracts that eliminate bacteria
+                  without leaving volatile organic compounds
+                  (VOCs) in your air.
+                </p>
+            </div>
+            
+
+            <div className="flex flex-col gap-3">
+                <div>
+                  <img src={pet} alt="Cannot load Botanical icon" />
+                </div>
+                <h4 className="font-bold -mt-2">Pet-First Policy</h4>
+                <p>
+                  Our cleaning solutions are strictly pH-balanced
+                  and fragrance-free to protect the sensitive paws
+                  and respiratory systems of your beloved pets.
+                </p>
+            </div>
+
+
+            <div className="flex flex-col gap-3">
+                <div>
+                  <img src={water} alt="Cannot load Botanical icon" />
+                </div>
+                <h4 className="font-bold -mt-2">Botanical Agents</h4>
+                <p>
+                  In line with Abuja's environmental goals, we utilize
+                  low-moisture technology that saves up to 40%
+                  more water than traditional deep-cleaning
+                  methods.
+                </p>
+            </div>
+            <div>
+
+            </div>
+            <div>
+
+            </div>
+          </div>
+      </section>
+
+       <button className="fixed z-1000 rounded-3xl flex px-6 bottom-10 right-10 shadow-xl text-white bg-[var(--text-sub-h)] p-3 items-center gap-3">
+          Chat with Us <img src={whatsApp} alt="" />
+        </button>
     </div>
   );
 };
