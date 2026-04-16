@@ -124,7 +124,7 @@ const Home = () => {
               >
 
                 <div>
-                  <h1 className="text-[96px] leading-[0.95] mt-5 tracking-[-4px] font-medium text-[var(--primary)]">
+                  <h1 className="text-[86px] leading-[0.95] mt-5 tracking-[-4px] font-medium text-[var(--primary)]">
                     {currentSlide.titleTop}
                     <br />
                     <span className="text-[var(--text-sub-h)]">
