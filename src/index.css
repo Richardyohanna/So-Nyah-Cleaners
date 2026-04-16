@@ -1,0 +1,104 @@
+@import "tailwindcss";
+
+:root {
+  --text: #000000;
+  --text-h: #700072;
+  --text-sub-h: #016e1c;
+  --bg: #fcf9f8;
+  --bg-section: #f6f3f2;
+  --border: #e5e4e7;
+  --button-section: #e5e2e1;
+  --primary: #700072;
+
+  --accent-text-sub-h: #016e1c90;
+  --accent-text: #52424F;
+
+
+  --sans: "Epilogue Variable", "Epilogue", system-ui, sans-serif;
+  --heading: "Epilogue Variable", "Epilogue", system-ui, sans-serif;
+  --mono: ui-monospace, Consolas, monospace;
+
+  font-family: var(--sans);
+  color: var(--text);
+  background-color: var(--bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+
+  font-family: var(--sans);
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+#root {
+  
+}
+
+
+
+button {
+  font: inherit;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+section {
+  width: 100%;
+}
+
+
+
+@media (max-width: 1024px) {
+  h1 {
+    font-size: 44px;
+  }
+
+  h2 {
+    font-size: 34px;
+  }
+
+  h3 {
+    font-size: 28px;
+  }
+
+  .container {
+    padding-inline: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 36px;
+  }
+
+  h2 {
+    font-size: 28px;
+  }
+
+  h3 {
+    font-size: 24px;
+  }
+
+  .container {
+    padding-inline: 1rem;
+  }
+}
