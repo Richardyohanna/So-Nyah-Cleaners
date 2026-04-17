@@ -218,17 +218,14 @@ const blogs: Blog[] =[
 const HEADER_HEIGHT = 66;
 
 const Home = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [textCoverActive, setTextCoverActive] = useState(false);
-  const [imageCoverActive, setImageCoverActive] = useState(false);
+  
+ 
   const [isBlogGallery, setBlogGallery] = useState("Blog");
   const [reviewStartIndex, setReviewStartIndex] = useState(0);
   const [currentHeroImageIndex, setCurrentHeroImageIndex] = useState(0);
 
 
-  const timersRef = useRef<number[]>([]);
 
-  const currentSlide = heroSlides[currentIndex];
 
   useEffect(() => {
     if (heroImages.length <= 1) return;
