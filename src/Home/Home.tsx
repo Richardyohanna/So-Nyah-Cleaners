@@ -14,8 +14,16 @@ import { useEffect, useState } from "react";
 
 
 import CustomButton from "../component/ui/custom-button";
-import before1 from "../assets/before 1.jpeg";
-import after1 from "../assets/after 1.jpeg";
+import before1 from "../assets/enhanced-bg2.png";
+import after1 from "../assets/enhanced-bg1.png";
+import bgCover from "../assets/enhanced-bg3.png";
+import facebook from "../assets/facebook.png";
+import instagram from "../assets/instagram.png";
+import twiter from "../assets/twiter.png";
+import mail from "../assets/mailto.png";
+import mtn from "../assets/mtn.png";
+import firs from "../assets/FIRS.jpg";
+import dangote from "../assets/dangote.png";
 
 
 import whatsApp from "../assets/whatsApp.png";
@@ -30,7 +38,29 @@ import nine9 from "../assets/99.png";
 import star from "../assets/star.png";
 
 
+type Clients = {
+  id: number;
+  image: string;
+  companyName: string;
+}
 
+const clients: Clients[] =[
+  {
+    id: 1,
+    image: dangote,
+    companyName: "Dangote"
+  },
+    {
+    id: 2,
+    image: mtn,
+    companyName: "MTN"
+  },
+  {
+    id: 3,
+    image: firs,
+    companyName: "FIRS"
+  },
+]
 
 type HeroImage = {
   id: number;
@@ -45,6 +75,10 @@ const heroImages: HeroImage[] = [
   {
     id: 2,
     image: after1,
+  },
+   {
+    id: 3,
+    image: bgCover,
   },
   // add more images here
   // { id: 3, image: before2 },
@@ -250,18 +284,18 @@ const Home = () => {
   
 
   return (
-    <div className="overflow-hidden bg-white px-20 flex flex-col gap-10 pb-20">
+    <div className="overflow-hidden bg-white flex flex-col gap-10 pb-20">
 
-    {/** Hero Section */} 
-    <section
+    {/**Another Hero Section */} 
+   {/*} <section
       id="hero"
-      className="relative bg-white flex items-center justify-between overflow-hidden mt-5"
-      style={{ minHeight: `calc(100vh - ${HEADER_HEIGHT}px)` }}
+      className="relative bg-white flex items-center justify-between  mt-5"
+      style={{ minHeight: `calc(100vh - ${HEADER_HEIGHT}px)` , backgroundImage: after1 }}
     >
       <div className="relative z-10 flex flex-row justify-between w-full gap-12 items-center min-h-screen">
         
         {/* LEFT / TEXT SECTION */}
-        <div className="relative mt-2 w-full max-w-[620px] rounded-[32px]">
+      {/*}  <div className="relative mt-2 w-full max-w-[620px] rounded-[32px]">
           <div className="relative z-10">
             <div>
               <h1 className="text-[76px] leading-[0.95] mt-5 tracking-[-4px] font-medium text-[var(--primary)]">
@@ -291,7 +325,7 @@ const Home = () => {
         </div>
 
         {/* RIGHT / IMAGE SECTION */}
-        <div className="relative flex flex-row max-w-[644px] max-h-[698px] w-full h-full gap-4 items-center justify-center mt-10 rounded-[32px]">
+      {/*}  <div className="relative flex flex-row max-w-[644px] max-h-[698px] w-full h-full gap-4 items-center justify-center mt-10 rounded-[32px]">
           <div className="relative rounded-2xl w-[700px] h-[600px] overflow-hidden">
             {heroImages.map((item, index) => (
               <img
@@ -306,100 +340,119 @@ const Home = () => {
           </div>
         </div>
       </div>
+    </section> */}
+
+    {/** HERO SECTION */}
+    <section
+      id="hero"
+      className="relative mt-5 overflow-hidden"
+      style={{ minHeight: `calc(100vh - ${HEADER_HEIGHT}px)` }}
+    >
+      {/* Background image slider */}
+      <div className="absolute inset-0">
+        {heroImages.map((item, index) => (
+          <img
+            key={item.id}
+            src={item.image}
+            alt={`Hero background ${index + 1}`}
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out ${
+              index === currentHeroImageIndex ? "opacity-100" : "opacity-0"
+            }`}
+          />
+        ))}
+
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-black/40" />
+
+          {/* Dark overlay */}
+        {/*<div className="absolute inset-0 bg-black/45 z-0"></div> */}
+
+
+        {/* Gradient overlay behind text */}
+        <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/45 to-transparent"></div>
+        </div>
+
+      </div>
+
+      {/* Foreground content */}
+      <div className="relative z-10 flex flex-row justify-between w-full gap-12 items-center min-h-screen px-20">
+        
+        {/* LEFT / TEXT SECTION */}
+       <div className="relative mt-2 w-full max-w-[820px] rounded-[32px]">
+          <div className="relative z-10">
+            <div>
+              <h1 
+              className="text-[86px] leading-[0.95] mt-5 tracking-[4px] font-bold text-[var(--primary)]"
+              style={{
+               
+                WebkitTextStroke: "0.5px rgba(255,255,255,0.2)",
+              }}
+              >
+                Cleaning Spaces,
+                <br />
+                <span className="text-white">
+                  Creating <br />
+                  Happy <br />
+                  Faces
+                </span>
+              </h1>
+
+              <p className="max-w-[520px] text-white! mt-5">
+                Experience the tranquility of a truly pure home. Our botanical-based
+                cleaning solutions and meticulous attention to detail create
+                sanctuaries that breathe.
+              </p>
+
+              <div className="flex flex-row gap-5 mt-5">
+                <CustomButton text="Schedule a visit" />
+                <button className="bg-[var(--bg-section)] text-[var(--primary)] px-5 py-2 rounded-3xl shadow-xl font-semibold transition-all duration-300 hover:scale-105 hover:bg-white">
+                  View Our Services
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/**Quick Links */}
+        <div>
+          <button className="w-[60px] h-[60px] rounded-full border-[3px] border-white flex items-center justify-center transition-all duration-300 ease-in-out hover:border-[var(--primary)] hover:bg-[var(--primary)] hover:scale-110">
+            <img
+              src={facebook}
+              alt="Facebook"
+              className="w-[38px] h-[38px] object-contain transition-all duration-300"
+            />
+          </button>
+
+          <button className="w-[60px] h-[60px] rounded-full border-[3px] border-white flex items-center justify-center transition-all duration-300 ease-in-out hover:border-[var(--primary)] hover:bg-[var(--primary)] hover:scale-110">
+            <img
+              src={instagram}
+              alt="Instagram"
+              className="w-[38px] h-[38px] object-contain transition-all duration-300"
+            />
+          </button>
+
+          <button className="w-[60px] h-[60px] rounded-full border-[3px] border-white flex items-center justify-center transition-all duration-300 ease-in-out hover:border-[var(--primary)] hover:bg-[var(--primary)] hover:scale-110">
+            <img
+              src={twiter}
+              alt="Twitter"
+              className="w-[38px] h-[38px] object-contain transition-all duration-300"
+            />
+          </button>
+
+          <button className="w-[60px] h-[60px] rounded-full border-[3px] border-white flex items-center justify-center transition-all duration-300 ease-in-out hover:border-[var(--primary)] hover:bg-[var(--primary)] hover:scale-110">
+            <img
+              src={mail}
+              alt="Mail"
+              className="w-[36px] h-[38px] object-contain transition-all duration-300"
+            />
+          </button>
+        </div>
+      </div>
     </section>
       
-     {/*} <section id="friendly-difference"
-          className="mt-10"
-      >
-          <h2 className="text-[var(--primary)] text-[48px] leading-[1] text-bold ">The Eco-Friendly <br/> <span className="text-[var(--text-sub-h)]">Difference</span></h2>
-          
-          <div className="flex flex-row mt-10 justify-between">
-            <p className="max-w-[600px] text-[var(--accent-text)]">
-              We believe that a clean home shouldn't come at the cost of your health or the
-              environment. Our signature Abuja Green Protocol ensures safety for the whole
-              family.
-            </p>
-            <p className="text-[var(--text-sub-h)] p-4 rounded-xl h-fit items-center bg-[var(--accent-bg)]">Safe for Pets & Newborns</p>
-          </div>
-
-          <div className="mt-10 flex flex-row gap-5">
-
-              <div className="flex flex-col gap-3">
-                <div>
-                  <img src={botanicalLeaf} alt="Cannot load Botanical icon" />
-                </div>
-                <h4 className="font-bold -mt-2">Botanical Agents</h4>
-                <p>
-                  We exclusively use plant-based surfactants and
-                  essential oil extracts that eliminate bacteria
-                  without leaving volatile organic compounds
-                  (VOCs) in your air.
-                </p>
-            </div>
-            
-
-            <div className="flex flex-col gap-3">
-                <div>
-                  <img src={pet} alt="Cannot load Botanical icon" />
-                </div>
-                <h4 className="font-bold -mt-2">Pet-First Policy</h4>
-                <p>
-                  Our cleaning solutions are strictly pH-balanced
-                  and fragrance-free to protect the sensitive paws
-                  and respiratory systems of your beloved pets.
-                </p>
-            </div>
-
-
-            <div className="flex flex-col gap-3">
-                <div>
-                  <img src={water} alt="Cannot load Botanical icon" />
-                </div>
-                <h4 className="font-bold -mt-2">Water Wisdom</h4>
-                <p>
-                  In line with Abuja's environmental goals, we utilize
-                  low-moisture technology that saves up to 40%
-                  more water than traditional deep-cleaning
-                  methods.
-                </p>
-            </div>
-            <div>
-
-            </div>
-            <div>
-
-            </div>
-          </div>
-      </section>
-
-      <section id="sanctuary" className= "mt-20" >
-        <h3 className="text-[var(--primary)] head text-[var(--primary)] text-[48px] leading-[1] text-bold  ">Custodians of the Environment</h3>
-        <div className="flex justify-between mt-5 ">
-          <p className="max-w-[600px]">
-            Experience a new standard of residential hygiene tailored for Nigeria's capital. Our
-            process transforms urban dust into pristine serenity.
-          </p>
-          <p>
-            <span className="text-[var(--primary)] text-bold text-xl">700+</span>
-            <br/>
-            SPACES POLISHED
-          </p>
-        </div>
-        
-        <div className="mt-7 gap-5 flex flex-col">
-          <div className="flex flex-row justify-center gap-5">
-                <img src={sanctuary1} alt="cannot load sanctuary1 refresh please" className="rounded-2xl max-w-[600px] max-h-[230px] shadow"/>
-                <img src={sanctuary2} alt="cannot load sanctuary2 refresh please" className="rounded-2xl max-w-[500px] max-h-[230px] shadow mt-7"/>
-          </div>
-          <div className="flex flex-row justify-center gap-5">
-                <img src={sanctuary3} alt="cannot load sanctuary3 refresh please" className="rounded-2xl max-w-[500px] max-h-[230px] shadow -mt-7"/>
-                <img src={sanctuary4} alt="cannot load sanctuary4 refresh please" className="rounded-2xl max-w-[600px] max-h-[230px] shadow"/>
-          </div>
-        </div>
-      </section> */}
-
       {/** Service Section */}
-      <section id="service" className="mt-15 ">
+      <section id="service" className="mt-15 px-20 ">
         <h3 className="text-[var(--primary)] head text-[var(--primary)] text-[48px] leading-[1] font-bold items-center text-center ">Our Specialized Services</h3>
         <h4 className="text-center text-[var(--accent-text)] ">A THREE-FOLD APPROACH TO PURITY</h4>
 
@@ -442,18 +495,18 @@ const Home = () => {
       </section>
 
       {/** Blog Section */}
-      <section id="blog" className="mt-15 min-h-[600px]">
+      <section id="blog" className="mt-15 min-h-[600px] px-20">
 
         <div className="w-full flex justify-between">
           <div className="flex gap-3">
             <button 
               onClick={()=> {setBlogGallery("Blog")}}
-              className={`text-[var(--primary)]! head! text-[var(--primary)]! text-[30px]! leading-[1]! ${isBlogGallery == "Blog" ? "font-black! border-r-1! border-b-1!" : ""}  p-3!  border-[var(--primary)]!`}>
+              className={`text-[var(--primary)]! head! text-[var(--primary)]! text-[30px]! leading-[1]! ${isBlogGallery == "Blog" ? " border-r-1! border-b-1!" : ""}  p-3!  border-[var(--primary)]!`}>
                 Blog
             </button>
             <button 
               onClick={()=> {setBlogGallery("Gallery")}}
-              className={`text-[var(--primary)]! head! text-[var(--primary)]! text-[30px]! leading-[1]! ${isBlogGallery == "Gallery" ? "font-black! border-l-1! border-b-1!" : ""} p-3!  border-[var(--primary)]!`}>
+              className={`text-[var(--primary)]! head! text-[var(--primary)]! text-[30px]! leading-[1]! ${isBlogGallery == "Gallery" ? " border-l-1! border-b-1!" : ""} p-3!  border-[var(--primary)]!`}>
                 Gallery
             </button>
           </div>
@@ -505,8 +558,33 @@ const Home = () => {
         
       </section>
 
+      {/**Our Clients */}
+      <section id="clients" className="w-full p-10 bg-[var(--primary)] ">
+        
+        <h3 className="text-white head text-[48px] leading-[1] font-bold items-center text-center">
+          Our Clients
+        </h3>
+        <h4 className="text-center text-white">
+          Trust by most recognized names
+        </h4>
+
+        <div className="flex justify-center gap-10 mt-10">
+          
+          {clients.map((client, index)=> (
+            <div key={index} className={`${client.id == 2 ? "" : "" }`}>
+              <img src={client.image} alt="FIRS" className="w-[200px] h-[100px]"/>
+              {/*<h4 className="">{client.companyName}</h4> */}
+            </div>
+
+          ))}
+
+        </div>
+
+
+      </section>
+
       {/** Reviews */}
-      <section id="reviews" className="mt-15">
+      <section id="reviews" className="mt-15 px-20">
         <h3 className="text-[var(--primary)] head text-[48px] leading-[1] font-bold items-center text-center">
           Voices Of Contentment
         </h3>
