@@ -9,7 +9,7 @@ import sanctuary2 from "../assets/sanctuary2.png"
 import sanctuary3 from "../assets/sanctuary 3.png"
 import sanctuary4 from "../assets/sanctuary 4.png" */
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 
 
@@ -30,16 +30,7 @@ import nine9 from "../assets/99.png";
 import star from "../assets/star.png";
 
 
-type HeroSlide = {
-  id: number;
-  titleTop: string;
-  titleBottom: string;
-  description: string;
-  beforeImage: string;
-  afterImage: string;
-  guaranteeValue: string;
-  guaranteeText: string;
-};
+
 
 type HeroImage = {
   id: number;
@@ -157,19 +148,7 @@ const services: Service[] = [
   },
 ]
 
-const heroSlides: HeroSlide[] = [
-  {
-    id: 1,
-    titleTop: "Cleaning Spaces,",
-    titleBottom: "Creating Happy Faces",
-    description:
-      "Experience the tranquility of a truly pure home. Our botanical-based cleaning solutions and meticulous attention to detail create sanctuaries that breathe.",
-    beforeImage: before1,
-    afterImage: after1,
-    guaranteeValue: "100%",
-    guaranteeText: "NON-TOXIC GUARANTEE",
-  }, 
-];
+
 
 const blogs: Blog[] =[
   {

@@ -4,7 +4,7 @@ import "./Footer.css";
 const Footer = ()=> {
 
     return(
-          <section id="footer" className=" pt-10 bg-[var(--primary)] pb-30 pt-30 flex px-10 justify-between" > 
+          <section id="footer" className=" bottom-0 pt-10 bg-[var(--primary)] pb-30 pt-30 flex px-10 justify-between" > 
             
             <div className="flex flex-col gap-10">
 
