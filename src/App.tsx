@@ -6,6 +6,7 @@ import Service from './Service/Service';
 import Journal from './Journal/Journal';
 import About from './About/About';
 import Contact from './Contact/Contact';
+import Footer from './Footer/Footer';
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
           <Route path="/contact" element={<Contact />} />
         </Routes>
       </main>
+      <Footer />
     </>
   )
 }
