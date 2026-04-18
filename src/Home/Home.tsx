@@ -418,20 +418,17 @@ const Home = () => {
       {/* Foreground content */}
       <div className="relative z-10 flex flex-row justify-between w-full gap-12 items-center min-h-screen px-20">
         
-        {/* LEFT / TEXT SECTION */}
-       <div className="relative mt-2 w-full max-w-[820px] rounded-[32px]">
+        {/* LEFT / TEXT SECTION  bg-[#ffffff56] p-5  */}
+       <div className="relative mt-2 w-full max-w-[880px] rounded-[32px]">
           <div className="relative z-10">
             <div>
               <h1 
-              className="text-[86px] leading-[0.95] mt-5 tracking-[4px] font-bold text-[var(--primary)]"
-              style={{
-               
-                WebkitTextStroke: "0.5px rgba(255,255,255,0.2)",
-              }}
+              className="text-[86px] leading-[0.95] mt-5 tracking-[4px] font-bold text-white"
+
               >
                 Cleaning Spaces,
                 <br />
-                <span className="text-white">
+                <span className="text-[var(--primary)]">
                   Creating <br />
                   Happy <br />
                   Faces
