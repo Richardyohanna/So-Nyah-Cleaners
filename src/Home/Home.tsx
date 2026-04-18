@@ -17,14 +17,21 @@ import CustomButton from "../component/ui/custom-button";
 import before1 from "../assets/enhanced-bg2.png";
 import after1 from "../assets/enhanced-bg1.png";
 import bgCover from "../assets/enhanced-bg3.png";
+import bgCover2 from "../assets/enhanced-bg4.png";
+
 import facebook from "../assets/facebook.png";
 import instagram from "../assets/instagram.png";
 import twiter from "../assets/twiter.png";
 import mail from "../assets/mailto.png";
-import mtn from "../assets/mtn.png";
-import firs from "../assets/FIRS.jpg";
-import dangote from "../assets/dangote.png";
 
+import client1 from "../assets/client1.png";
+import client2 from "../assets/client2.png";
+import client3 from "../assets/client3.png";
+import client4 from "../assets/client4.png";
+import client5 from "../assets/client5.png";
+import client6 from "../assets/client6.png";
+import client7 from "../assets/client7.png";
+import client8 from "../assets/client8.png";
 
 import whatsApp from "../assets/whatsApp.png";
 import service1 from "../assets/service1.png";
@@ -45,20 +52,46 @@ type Clients = {
 }
 
 const clients: Clients[] =[
+
   {
     id: 1,
-    image: dangote,
-    companyName: "Dangote"
+    image: client1,
+    companyName: "FIRS"
   },
     {
     id: 2,
-    image: mtn,
-    companyName: "MTN"
+    image: client2,
+    companyName: "EFCC"
   },
   {
     id: 3,
-    image: firs,
-    companyName: "FIRS"
+    image: client3,
+    companyName: "NTA"
+  },
+    {
+    id: 4,
+    image: client4,
+    companyName: ""
+  },
+      {
+    id: 5,
+    image: client5,
+    companyName: ""
+  },
+      {
+    id: 6,
+    image: client6,
+    companyName: ""
+  },
+        {
+    id: 7,
+    image: client7,
+    companyName: ""
+  },
+        {
+    id: 8,
+    image: client8,
+    companyName: ""
   },
 ]
 
@@ -73,13 +106,17 @@ const heroImages: HeroImage[] = [
     image: before1,
   },
   {
-    id: 2,
+    id: 4,
     image: after1,
   },
    {
     id: 3,
     image: bgCover,
   },
+   {
+    id: 2,
+    image: bgCover2,
+  }
   // add more images here
   // { id: 3, image: before2 },
   // { id: 4, image: after2 },
@@ -160,26 +197,29 @@ const services: Service[] = [
   {
     id: 1,
     image: service1,
-    title: "Post-Construction Purity",
-    description: `Transitioning from a building site to a breathable home.
-                We remove architectural dust and debris with surgical precision.`
+    title: "SPACE CLEANING ( Pest Control, Deep Cleaning, Office and homes Cleaning)",
+    description: `Your space says a lot about you  before you say a single word. 
+                  Whether it's your home, your office, or your business premises, 
+                  a clean environment isn't a luxury. It's the standard you deserve.`
   },  
   {
     id: 2,
-    image: service2,
-    title: "The Deep Sanitize",
-    description: `A quarterly reset for your sanctuary.
-                  Going beyond the surface to eliminate
-                  allergens and restore texture brilliance.`
+    image: service3,
+    title: "UPHOLSRERY CLEANING ",
+    description: `Your furniture deserves better than a vacuum. That sofa you love?
+                  It's holding more than memories. Over time, sofas, chairs, and mattresses 
+                  absorb dust mites, food particles, and bacteria that regular vacuuming 
+                  simply cannot reach. The result isn't just visible dirt  it's allergens
+                  that affect your family's health every single day.`
   },
   {
     id: 3,
-    image: service3,
-    title: "Bespoke Commercial",
-    description: `Professional spaces that reflect your
-                brand's excellence. Tailored schedules
-                for high-traffic Abuja headquarters.`
-  },
+    image: service2,
+    title: "CARPET REVAMP",
+    description: `The carpet you gave up on we bring it back. What looks like a worn-out, 
+                  stained, dull carpet is often just a carpet that has never had a proper
+                  professional clean. We see this transformation every week.`
+  }
 ]
 
 
@@ -478,7 +518,9 @@ const Home = () => {
                     {service.title}
                   </h4>
 
-                  <p className="break-words transition-colors duration-300 group-hover:text-[#555]">
+                  <p className="break-words transition-colors duration-300 group-hover:text-[#555] line-clamp-3"
+                   
+                  >
                     {service.description}
                   </p>
 
@@ -568,11 +610,11 @@ const Home = () => {
           Trust by most recognized names
         </h4>
 
-        <div className="flex justify-center gap-10 mt-10">
+        <div className="flex justify-center bg-white mt-10">
           
           {clients.map((client, index)=> (
             <div key={index} className={`${client.id == 2 ? "" : "" }`}>
-              <img src={client.image} alt="FIRS" className="w-[200px] h-[100px]"/>
+              <img src={client.image} alt={client.companyName} className="w-full h-[130px] "/>
               {/*<h4 className="">{client.companyName}</h4> */}
             </div>
 
