@@ -60,7 +60,7 @@ const ServiceDetail = () => {
           <div className="relative mt-2 w-full max-w-[820px] rounded-[32px]">
             <div className="relative z-10">
               <div>
-                <h1 className="text-[86px] leading-[0.95] mt-5 tracking-[4px] font-bold text-white">
+                <h1 className="text-[86px] leading-[1.2] mt-5 tracking-[4px] font-bold text-white">
                   {service.title}
                 </h1>
 
@@ -80,7 +80,7 @@ const ServiceDetail = () => {
           <h2 className="font-bold text-3xl">Our Meticulous Process</h2>
           <p className="mt-4">{service.processIntro}</p>
 
-          <div className="mt-5 flex flex-col gap-5">
+         {/*} <div className="mt-5 flex flex-col gap-5">
             {service.processSteps.map((step, index) => (
               <div className="flex gap-5" key={index}>
                 <p className="p-4 bg-[var(--index-section)] max-w-[30px] text-center rounded-full items-center justify-center max-h-[30px] flex">
@@ -92,22 +92,53 @@ const ServiceDetail = () => {
                 </div>
               </div>
             ))}
+          </div> */}
+
+          {/**WHy CHoose US section */}
+       <section id="why-choose-us" className="flex bg-black justify-between text-white mt-10 p-10 px-10">
+        <div className="flex flex-col justify-center">
+          <h2 className="text-[48px] leading-[1]">
+            WHY CHOOSE
+            <br />
+            <span className="text-[48px] text-[var(--text-sub-h)]">
+              SO-NYAH CLEANERS
+            </span>
+          </h2>
+
+          <div className="flex flex-col justify-center  items-center">
+            {service.whyChooseUs.map((item, index) => (
+              <div
+                key={index}
+                className="flex gap-4 mt-10 ml-5 items-center justify-center"
+              >
+                <div className="w-[40px] h-[40px] rounded-full items-center bg-[var(--accent-bg)] flex justify-center">
+                  <img src={item.icon} alt="" className="object-contain " />
+                </div>
+
+                <div>
+                  <h4>{item.title}</h4>
+                  <p>{item.description}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
 
+        {/*<div className="rounded-2xl overflow-hidden">
+          <img src={service.whyChooseImage} alt={service.title} />
+        </div> */}
+      </section>
+
+        </div>
+
         <div className="flex flex-col ">
-          <div className="max-w-[363px] max-h-[372px] rounded-2xl bg-[#E5E2E1] p-10">
+          <div className="max-w-[363px] ounded-2xl bg-[#E5E2E1] p-10">
             <h3 className="font-bold text-2xl ">Book This Service</h3>
             <p className="mt-2">
               Experience the transformation. Estimates Provided within 2 hours
             </p>
 
-            <div className="mt-10 flex justify-between ">
-              <p className="font-bold">Starting from </p>
-              <p className="font-black text-[var(--primary)]!">
-                {service.startingFrom}
-              </p>
-            </div>
+
 
             <div className="mt-3 flex justify-between ">
               <p className="font-bold">Duration</p>
@@ -143,44 +174,11 @@ const ServiceDetail = () => {
         </div>
       </section>
 
-      <section id="why-choose-us" className="flex bg-black justify-between text-white mt-10 p-10 px-10">
-        <div className="flex flex-col justify-center">
-          <h2 className="text-[48px] leading-[1]">
-            WHY CHOOSE
-            <br />
-            <span className="text-[48px] text-[var(--text-sub-h)]">
-              SO-NYAH CLEANERS
-            </span>
-          </h2>
-
-          <div className="flex flex-col justify-center  items-center">
-            {service.whyChooseUs.map((item, index) => (
-              <div
-                key={index}
-                className="flex gap-4 mt-10 ml-5 items-center justify-center"
-              >
-                <div className="w-[40px] h-[40px] rounded-full items-center bg-[var(--accent-bg)] flex justify-center">
-                  <img src={item.icon} alt="" className="object-contain " />
-                </div>
-
-                <div>
-                  <h4>{item.title}</h4>
-                  <p>{item.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="rounded-2xl overflow-hidden">
-          <img src={service.whyChooseImage} alt={service.title} />
-        </div>
-      </section>
 
       <section id="ready-for-transformation" className="flex justify-center">
-        <div className="max-w-[828px] max-h-[380px] mt-20 gap-5 flex flex-col justify-center items-center p-10 rounded-2xl bg-gradient-to-br from-[var(--primary)] via-white to-[var(--primary)]">
-          <h2 className="text-[48px] font-bold">Ready for a transformation?</h2>
-          <p className="text-center th">
+        <div className="max-w-[828px] max-h-[380px] mt-20 gap-5 flex flex-col justify-center items-center p-10 rounded-2xl ">
+          <h2 className="text-[48px] font-bold text-[var(--primary)]">Ready for a transformation?</h2>
+          <p className="text-center th ">
             Send us a photo on WhatsApp and we'll tell you exactly what we can
             do. No guesswork, just expert results.
           </p>
