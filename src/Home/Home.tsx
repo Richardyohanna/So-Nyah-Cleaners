@@ -266,7 +266,7 @@ const Home = () => {
       {/* HERO SECTION */}
       <section
         id="hero"
-        className="relative mt-5 overflow-hidden "
+        className="relative  overflow-hidden "
         style={{ minHeight: `calc(100vh - ${HEADER_HEIGHT}px)` }}
       >
         {/* Background image slider */}
@@ -306,9 +306,7 @@ const Home = () => {
                 </h1>
 
                 <p className="max-w-[520px] !text-white mt-5 text-sm sm:text-base leading-7">
-                  Experience the tranquility of a truly pure home. Our botanical-based
-                  cleaning solutions and meticulous attention to detail create
-                  sanctuaries that breathe.
+                  Complete Space Care from deep cleaning to total facility solutions (delivered with eco-friendly, safe, and responsible cleaning practices)
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4 sm:gap-5 mt-6 w-full sm:w-auto">
