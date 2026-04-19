@@ -9,10 +9,15 @@ const Service = () => {
   return (
     <div className="bg-white pd-20 sm:pb-20 md:pb-20 lg:pd-20">
       <section id="general-service" className="px-4 sm:px-6 md:px-10 lg:px-20 flex flex-col gap-10">
-        <div className="mt-30">
+        <div className="mt-30 flex flex-col items-center">
           <h3 className="text-[var(--primary)] head text-[32px] sm:text-[38px] lg:text-[48px] leading-[1.1] font-bold items-center text-center">
             Our  Services
           </h3>
+
+          {/**Underline */}
+            <div className="border-b sm:border-b-2 md:border-b-4 lg:border-b-5 w-[200px]  border-[var(--primary)] items-center text-center flex">
+
+             </div>
         </div>
 
         <div className="mt-3 sm:mt-4 md:mt-6 lg:mt-10 flex gap-8 md:gap-10 justify-center flex-wrap w-full">
