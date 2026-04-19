@@ -266,7 +266,7 @@ const Home = () => {
       {/* HERO SECTION */}
       <section
         id="hero"
-        className="relative  overflow-hidden "
+        className="relative  overflow-hidden pd-10"
         style={{ minHeight: `calc(100vh - ${HEADER_HEIGHT}px)` }}
       >
         {/* Background image slider */}
@@ -499,7 +499,7 @@ const Home = () => {
           {clients.map((client, index) => (
             <div
               key={index}
-              className="w-1/2 sm:w-1/3 md:w-1/4 lg:w-auto flex items-center justify-center"
+              className={`w-1/2 sm:w-1/3 md:w-1/4 lg:w-auto flex items-center justify-center`}
             >
               <img
                 src={client.image}
@@ -536,7 +536,7 @@ const Home = () => {
               return (
                 <div
                   key={`${review.id}-${index}`}
-                  className={`w-full sm:max-w-[384px] min-h-[300px] sm:min-h-[320px] p-5 sm:p-6 flex flex-col justify-between gap-4 rounded-3xl transition-all duration-500 transform ${
+                  className={`w-full sm:max-w-[324px] min-h-[300px] sm:min-h-[320px] p-5 sm:p-6 flex flex-col justify-between gap-4 rounded-3xl transition-all duration-500 transform ${
                     isMiddle
                       ? "bg-[var(--primary)] text-white shadow-2xl lg:scale-105"
                       : "bg-white border border-[#00000014] text-black hover:-translate-y-2 hover:shadow-xl"
