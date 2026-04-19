@@ -487,78 +487,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* BLOG SECTION */}
-      <section id="blog" className="mt-15 min-h-[600px] px-4 sm:px-6 md:px-10 lg:px-20">
-        <div className="w-full flex flex-col sm:flex-row justify-between sm:items-center gap-5">
-          <div className="flex gap-2 sm:gap-3 flex-wrap">
-            <button
-              onClick={() => {
-                setBlogGallery("Blog");
-              }}
-              className={`text-[var(--primary)] text-[22px]! sm:text-[26px]! lg:text-[30px]! leading-[1]  ${
-                isBlogGallery === "Blog" ? "border-r! border-b! font-bold!" : ""
-              } p-3 border-[var(--primary)]`}
-            >
-              Blog
-            </button>
-
-            <button
-              onClick={() => {
-                setBlogGallery("Gallery");
-              }}
-              className={`text-[var(--primary)] text-[22px]! sm:text-[26px]! lg:text-[30px]! leading-[1]  ${
-                isBlogGallery === "Gallery" ? "border-l! border-b! font-bold!" : ""
-              } p-3 border-[var(--primary)]`}
-            >
-              Gallery
-            </button>
-          </div>
-
-          <button className="flex flex-row items-center justify-between gap-3 self-start sm:self-auto">
-            <span className="text-[var(--primary)] font-bold">View all</span>
-            <img src={expand} alt="expand" className="shrink-0" />
-          </button>
-        </div>
-
-        <div className="justify-center lg:justify-start flex flex-wrap gap-6 lg:gap-10 mt-4">
-          {isBlogGallery === "Blog" &&
-            blogs.map((article, index) => (
-              <div
-                key={index}
-                className="w-full sm:max-w-[300px] cursor-pointer mt-5 border border-[#0000001a] rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-[var(--primary)] group"
-              >
-                <img
-                  src={article.image}
-                  alt="Blog1"
-                  className="w-full h-[220px] object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-
-                <div className="p-6 sm:p-8 lg:p-10 flex flex-col gap-3">
-                  <h5 className="text-[var(--text-sub-h)] transition-colors duration-300 group-hover:text-[var(--primary)] text-sm">
-                    {article.category}
-                  </h5>
-
-                  <h4 className="text-[18px] sm:text-[20px] font-bold transition-colors duration-300 group-hover:text-[var(--primary)]">
-                    {article.title}
-                  </h4>
-
-                  <p className="transition-colors duration-300 group-hover:text-[#555] text-sm sm:text-base">
-                    {article.article}
-                  </p>
-
-                  <div className="flex gap-3 items-center">
-                    <img src={article.aurthor_image} alt="" />
-                    <p className="transition-colors duration-300 group-hover:text-[var(--primary)] text-sm sm:text-base">
-                      By {article.aurthor}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            ))}
-        </div>
-      </section>
-
-      {/* OUR CLIENTS */}
+            {/* OUR CLIENTS */}
       <section id="clients" className="w-full px-4 sm:px-6 md:px-10 py-10 bg-[var(--primary)]">
         <h3 className="text-white! head text-[32px] sm:text-[38px] lg:text-[48px] leading-[1] font-bold items-center text-center">
           Our Clients
@@ -694,6 +623,79 @@ const Home = () => {
           </button>
         </div>
       </section>
+
+
+      {/* BLOG SECTION */}
+      <section id="blog" className="mt-15 min-h-[600px] px-4 sm:px-6 md:px-10 lg:px-20">
+        <div className="w-full flex flex-col sm:flex-row justify-between sm:items-center gap-5">
+          <div className="flex gap-2 sm:gap-3 flex-wrap">
+            <button
+              onClick={() => {
+                setBlogGallery("Blog");
+              }}
+              className={`text-[var(--primary)] text-[22px]! sm:text-[26px]! lg:text-[30px]! leading-[1]  ${
+                isBlogGallery === "Blog" ? "border-r! border-b! font-bold!" : ""
+              } p-3 border-[var(--primary)]`}
+            >
+              Blog
+            </button>
+
+            <button
+              onClick={() => {
+                setBlogGallery("Gallery");
+              }}
+              className={`text-[var(--primary)] text-[22px]! sm:text-[26px]! lg:text-[30px]! leading-[1]  ${
+                isBlogGallery === "Gallery" ? "border-l! border-b! font-bold!" : ""
+              } p-3 border-[var(--primary)]`}
+            >
+              Gallery
+            </button>
+          </div>
+
+          <button className="flex flex-row items-center justify-between gap-3 self-start sm:self-auto">
+            <span className="text-[var(--primary)] font-bold">View all</span>
+            <img src={expand} alt="expand" className="shrink-0" />
+          </button>
+        </div>
+
+        <div className="justify-center lg:justify-start flex flex-wrap gap-6 lg:gap-10 mt-4">
+          {isBlogGallery === "Blog" &&
+            blogs.map((article, index) => (
+              <div
+                key={index}
+                className="w-full sm:max-w-[300px] cursor-pointer mt-5 border border-[#0000001a] rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-[var(--primary)] group"
+              >
+                <img
+                  src={article.image}
+                  alt="Blog1"
+                  className="w-full h-[220px] object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+
+                <div className="p-6 sm:p-8 lg:p-10 flex flex-col gap-3">
+                  <h5 className="text-[var(--text-sub-h)] transition-colors duration-300 group-hover:text-[var(--primary)] text-sm">
+                    {article.category}
+                  </h5>
+
+                  <h4 className="text-[18px] sm:text-[20px] font-bold transition-colors duration-300 group-hover:text-[var(--primary)]">
+                    {article.title}
+                  </h4>
+
+                  <p className="transition-colors duration-300 group-hover:text-[#555] text-sm sm:text-base">
+                    {article.article}
+                  </p>
+
+                  <div className="flex gap-3 items-center">
+                    <img src={article.aurthor_image} alt="" />
+                    <p className="transition-colors duration-300 group-hover:text-[var(--primary)] text-sm sm:text-base">
+                      By {article.aurthor}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+        </div>
+      </section>
+
 
       {/* FLOATING WHATSAPP */}
       <button className="fixed z-[1000] rounded-3xl flex px-4 sm:px-5 lg:px-6 bottom-4 sm:bottom-6 lg:bottom-10 right-4 sm:right-6 lg:right-10 shadow-xl text-white bg-[var(--text-sub-h)] py-3 items-center gap-2 sm:gap-3 text-sm sm:text-base">
