@@ -150,156 +150,156 @@ export const servicesData: ServiceItem[] = [
 
   {
     id: 2,
-    slug: "upholstery-cleaning",
-    title: "Upholstery Cleaning",
+    slug: "facade-cleaning",
+    title: "Facade Cleaning",
     shortDescription:
-      "Preserving the integrity of fine fabrics and leather with specialized organic treatments.",
+      "Restoring the brilliance of glass and stone exteriors at any height.",
     intro:
-      "Your furniture deserves better than a vacuum. That sofa you love is holding more than memories. Over time, sofas, chairs, and mattresses absorb dust mites, food particles, and bacteria that regular vacuuming simply cannot reach.",
-    heroImage: hero1,
-    cardIcon: upholstery,
-    whyChooseImage: survey2,
-    startingFrom: "N180,000",
-    duration: "3-5 Hours",
-    crewSize: "2 Specialists",
-    ctaText: "Book Upholstery Clean",
+      "Your building's first impression is its exterior. A clean building exterior communicates professionalism, pride, and attention to detail to every person who passes by.",
+    heroImage: facade_hero,
+    cardIcon: facade,
+    whyChooseImage: survey8,
+    startingFrom: "N350,000",
+    duration: "5-8 Hours",
+    crewSize: "3-5 Specialists",
+    ctaText: "Schedule Facade Cleaning",
     processIntro:
-      "So-Nyah Cleaners' Upholstery Cleaning service uses professional steam extraction and fabric-safe techniques to reach deep into your furniture fibres, lifting out what has built up over months or years.",
+      "We use professional pressure washing, specialised cleaning agents, and proven techniques to restore the exterior of your building.",
     faqs: [
       {
-        question: "Can you clean delicate fabrics?",
+        question: "Can you clean high surfaces safely?",
         answer:
-          "Yes. We assess the fabric type first and select the right method for velvet, linen, microfibre, and more.",
+          "Yes. We use safe working practices and the right equipment for elevated areas.",
       },
       {
-        question: "How long before I can use it again?",
+        question: "Will it damage the building finish?",
         answer:
-          "Most furniture is ready to use within hours depending on ventilation and fabric type.",
+          "No. We choose methods based on the surface type and exterior material.",
       },
     ],
     whyChooseUs: [
       {
         icon: assess,
-        title: "Fabric-type assessment",
+        title: "Surface-specific cleaning",
         description:
-          "Each fabric is tested first so the cleaning method matches the material safely.",
+          "We match the right method to the surface type for safer results.",
       },
       {
         icon: steam,
-        title: "Steam extraction",
+        title: "Exterior restoration",
         description:
-          "We remove trapped dirt, allergens, and bacteria from deep inside the fibres.",
+          "We remove grime, algae, and watermarks to improve presentation.",
       },
       {
         icon: fast,
-        title: "Fast drying",
+        title: "Minimal disruption",
         description:
-          "Most furniture is ready for use within hours, not days.",
+          "We work efficiently around occupants and daily business operations.",
       },
     ],
     processSteps: [
       {
-        title: "Fabric Inspection",
+        title: "Exterior Inspection",
         description:
-          "We inspect the furniture material and determine the correct cleaning method.",
+          "We inspect access points, finish type, and the level of buildup.",
       },
       {
-        title: "Dry Soil Removal",
+        title: "Method Selection",
         description:
-          "Loose dirt and particles are vacuumed out before treatment begins.",
+          "The right washing or treatment method is chosen for the surface.",
       },
       {
-        title: "Spot Treatment",
+        title: "Surface Preparation",
         description:
-          "Stained and heavily used areas are pre-treated carefully.",
+          "Sensitive areas are protected before the cleaning begins.",
       },
       {
-        title: "Deep Extraction Cleaning",
+        title: "Facade Cleaning",
         description:
-          "We perform fabric-safe extraction to clean deeply without damage.",
+          "The building exterior is restored using professional techniques.",
       },
       {
-        title: "Drying & Finishing",
+        title: "Final Check",
         description:
-          "The furniture is groomed and left clean, fresh, and healthier to use.",
+          "We inspect the finish and ensure the presentation is consistent.",
       },
     ],
   },
 
-  {
+ {
     id: 3,
-    slug: "carpet-revamp",
-    title: "Carpet Revamp",
+    slug: "fumigation",
+    title: "Fumigation",
     shortDescription:
-      "Deep-fiber restoration techniques that breathe life back into premium flooring textiles.",
+      "Invisibly securing your environment with eco-friendly barrier technologies.",
     intro:
-      "The carpet you gave up on we bring it back. What looks like a worn-out, stained, dull carpet is often just a carpet that has never had a proper professional clean.",
-    heroImage: hero2,
-    cardIcon: carpet,
-    whyChooseImage: survey3,
-    startingFrom: "N220,000",
-    duration: "4-6 Hours",
-    crewSize: "2-3 Specialists",
-    ctaText: "Book Carpet Revamp",
+      "Pests don't announce themselves. They settle in quietly, breed fast, and by the time you notice the signs, the problem is already significant.",
+    heroImage: fumigation_hero,
+    cardIcon: pest,
+    whyChooseImage: survey5,
+    startingFrom: "N150,000",
+    duration: "2-4 Hours",
+    crewSize: "2 Technicians",
+    ctaText: "Book Pest Control",
     processIntro:
-      "Our Carpet Revamp service uses hot water extraction to reach deep into carpet fibres, dissolve embedded dirt, lift stains, eliminate odours, and restore original colour and texture.",
+      "We inspect, identify the source of infestation, apply the right treatment, and advise you on how to prevent recurrence.",
     faqs: [
       {
-        question: "Can old stains be removed?",
+        question: "Are your chemicals safe?",
         answer:
-          "Many stains can be significantly improved, especially with early treatment and the right extraction process.",
+          "Yes. We use eco-conscious treatments that are effective when properly applied.",
       },
       {
-        question: "How long will drying take?",
+        question: "Will I need a follow-up treatment?",
         answer:
-          "Most carpets are ready within 4-6 hours depending on thickness and airflow.",
+          "Some infestations may require follow-up depending on severity and pest type.",
       },
     ],
     whyChooseUs: [
       {
         icon: assess,
-        title: "Professional stain treatment",
+        title: "Thorough inspection",
         description:
-          "We assess stains and fibre type before applying the right treatment.",
+          "We find the source of the infestation, not just the visible signs.",
       },
       {
         icon: steam,
-        title: "Hot water extraction",
+        title: "Targeted treatment",
         description:
-          "A deep-cleaning method that lifts dirt and odours from carpet fibres.",
+          "The treatment is matched to the pest type and environment.",
       },
       {
         icon: fast,
-        title: "Extends carpet lifespan",
+        title: "Prevention guidance",
         description:
-          "A proper revamp can restore presentation and delay replacement costs.",
+          "We advise you on steps to reduce the chance of re-infestation.",
       },
     ],
     processSteps: [
       {
-        title: "Carpet Inspection",
+        title: "Inspection",
         description:
-          "We inspect fibre condition, stains, and traffic patterns.",
+          "We assess the property and identify the pest type and risk zones.",
       },
       {
-        title: "Pre-vacuuming",
+        title: "Treatment Planning",
         description:
-          "Loose dirt and debris are removed before wet treatment begins.",
+          "We choose the right approach for the level and kind of infestation.",
       },
       {
-        title: "Stain Pre-treatment",
+        title: "Application",
         description:
-          "Heavy marks and problem areas are treated with suitable solutions.",
+          "Treatments are applied safely and strategically to problem areas.",
       },
       {
-        title: "Hot Water Extraction",
+        title: "Safety Guidance",
         description:
-          "We deep-clean the carpet fibres to remove embedded grime and odours.",
+          "We explain re-entry timing and post-treatment care where necessary.",
       },
       {
-        title: "Drying & Grooming",
+        title: "Prevention Advice",
         description:
-          "The carpet is groomed for even drying and a better final finish.",
+          "You receive guidance to help prevent future infestation.",
       },
     ],
   },
@@ -381,84 +381,84 @@ export const servicesData: ServiceItem[] = [
       },
     ],
   },
-
   {
     id: 5,
-    slug: "fumigation",
-    title: "Fumigation",
+    slug: "carpet-revamp",
+    title: "Carpet Revamp",
     shortDescription:
-      "Invisibly securing your environment with eco-friendly barrier technologies.",
+      "Deep-fiber restoration techniques that breathe life back into premium flooring textiles.",
     intro:
-      "Pests don't announce themselves. They settle in quietly, breed fast, and by the time you notice the signs, the problem is already significant.",
-    heroImage: fumigation_hero,
-    cardIcon: pest,
-    whyChooseImage: survey5,
-    startingFrom: "N150,000",
-    duration: "2-4 Hours",
-    crewSize: "2 Technicians",
-    ctaText: "Book Pest Control",
+      "The carpet you gave up on we bring it back. What looks like a worn-out, stained, dull carpet is often just a carpet that has never had a proper professional clean.",
+    heroImage: hero2,
+    cardIcon: carpet,
+    whyChooseImage: survey3,
+    startingFrom: "N220,000",
+    duration: "4-6 Hours",
+    crewSize: "2-3 Specialists",
+    ctaText: "Book Carpet Revamp",
     processIntro:
-      "We inspect, identify the source of infestation, apply the right treatment, and advise you on how to prevent recurrence.",
+      "Our Carpet Revamp service uses hot water extraction to reach deep into carpet fibres, dissolve embedded dirt, lift stains, eliminate odours, and restore original colour and texture.",
     faqs: [
       {
-        question: "Are your chemicals safe?",
+        question: "Can old stains be removed?",
         answer:
-          "Yes. We use eco-conscious treatments that are effective when properly applied.",
+          "Many stains can be significantly improved, especially with early treatment and the right extraction process.",
       },
       {
-        question: "Will I need a follow-up treatment?",
+        question: "How long will drying take?",
         answer:
-          "Some infestations may require follow-up depending on severity and pest type.",
+          "Most carpets are ready within 4-6 hours depending on thickness and airflow.",
       },
     ],
     whyChooseUs: [
       {
         icon: assess,
-        title: "Thorough inspection",
+        title: "Professional stain treatment",
         description:
-          "We find the source of the infestation, not just the visible signs.",
+          "We assess stains and fibre type before applying the right treatment.",
       },
       {
         icon: steam,
-        title: "Targeted treatment",
+        title: "Hot water extraction",
         description:
-          "The treatment is matched to the pest type and environment.",
+          "A deep-cleaning method that lifts dirt and odours from carpet fibres.",
       },
       {
         icon: fast,
-        title: "Prevention guidance",
+        title: "Extends carpet lifespan",
         description:
-          "We advise you on steps to reduce the chance of re-infestation.",
+          "A proper revamp can restore presentation and delay replacement costs.",
       },
     ],
     processSteps: [
       {
-        title: "Inspection",
+        title: "Carpet Inspection",
         description:
-          "We assess the property and identify the pest type and risk zones.",
+          "We inspect fibre condition, stains, and traffic patterns.",
       },
       {
-        title: "Treatment Planning",
+        title: "Pre-vacuuming",
         description:
-          "We choose the right approach for the level and kind of infestation.",
+          "Loose dirt and debris are removed before wet treatment begins.",
       },
       {
-        title: "Application",
+        title: "Stain Pre-treatment",
         description:
-          "Treatments are applied safely and strategically to problem areas.",
+          "Heavy marks and problem areas are treated with suitable solutions.",
       },
       {
-        title: "Safety Guidance",
+        title: "Hot Water Extraction",
         description:
-          "We explain re-entry timing and post-treatment care where necessary.",
+          "We deep-clean the carpet fibres to remove embedded grime and odours.",
       },
       {
-        title: "Prevention Advice",
+        title: "Drying & Grooming",
         description:
-          "You receive guidance to help prevent future infestation.",
+          "The carpet is groomed for even drying and a better final finish.",
       },
     ],
   },
+ 
 
   {
     id: 6,
@@ -615,84 +615,85 @@ export const servicesData: ServiceItem[] = [
       },
     ],
   },
-
-  {
+    {
     id: 8,
-    slug: "facade-cleaning",
-    title: "Facade Cleaning",
+    slug: "upholstery-cleaning",
+    title: "Upholstery Cleaning",
     shortDescription:
-      "Restoring the brilliance of glass and stone exteriors at any height.",
+      "Preserving the integrity of fine fabrics and leather with specialized organic treatments.",
     intro:
-      "Your building's first impression is its exterior. A clean building exterior communicates professionalism, pride, and attention to detail to every person who passes by.",
-    heroImage: facade_hero,
-    cardIcon: facade,
-    whyChooseImage: survey8,
-    startingFrom: "N350,000",
-    duration: "5-8 Hours",
-    crewSize: "3-5 Specialists",
-    ctaText: "Schedule Facade Cleaning",
+      "Your furniture deserves better than a vacuum. That sofa you love is holding more than memories. Over time, sofas, chairs, and mattresses absorb dust mites, food particles, and bacteria that regular vacuuming simply cannot reach.",
+    heroImage: hero1,
+    cardIcon: upholstery,
+    whyChooseImage: survey2,
+    startingFrom: "N180,000",
+    duration: "3-5 Hours",
+    crewSize: "2 Specialists",
+    ctaText: "Book Upholstery Clean",
     processIntro:
-      "We use professional pressure washing, specialised cleaning agents, and proven techniques to restore the exterior of your building.",
+      "So-Nyah Cleaners' Upholstery Cleaning service uses professional steam extraction and fabric-safe techniques to reach deep into your furniture fibres, lifting out what has built up over months or years.",
     faqs: [
       {
-        question: "Can you clean high surfaces safely?",
+        question: "Can you clean delicate fabrics?",
         answer:
-          "Yes. We use safe working practices and the right equipment for elevated areas.",
+          "Yes. We assess the fabric type first and select the right method for velvet, linen, microfibre, and more.",
       },
       {
-        question: "Will it damage the building finish?",
+        question: "How long before I can use it again?",
         answer:
-          "No. We choose methods based on the surface type and exterior material.",
+          "Most furniture is ready to use within hours depending on ventilation and fabric type.",
       },
     ],
     whyChooseUs: [
       {
         icon: assess,
-        title: "Surface-specific cleaning",
+        title: "Fabric-type assessment",
         description:
-          "We match the right method to the surface type for safer results.",
+          "Each fabric is tested first so the cleaning method matches the material safely.",
       },
       {
         icon: steam,
-        title: "Exterior restoration",
+        title: "Steam extraction",
         description:
-          "We remove grime, algae, and watermarks to improve presentation.",
+          "We remove trapped dirt, allergens, and bacteria from deep inside the fibres.",
       },
       {
         icon: fast,
-        title: "Minimal disruption",
+        title: "Fast drying",
         description:
-          "We work efficiently around occupants and daily business operations.",
+          "Most furniture is ready for use within hours, not days.",
       },
     ],
     processSteps: [
       {
-        title: "Exterior Inspection",
+        title: "Fabric Inspection",
         description:
-          "We inspect access points, finish type, and the level of buildup.",
+          "We inspect the furniture material and determine the correct cleaning method.",
       },
       {
-        title: "Method Selection",
+        title: "Dry Soil Removal",
         description:
-          "The right washing or treatment method is chosen for the surface.",
+          "Loose dirt and particles are vacuumed out before treatment begins.",
       },
       {
-        title: "Surface Preparation",
+        title: "Spot Treatment",
         description:
-          "Sensitive areas are protected before the cleaning begins.",
+          "Stained and heavily used areas are pre-treated carefully.",
       },
       {
-        title: "Facade Cleaning",
+        title: "Deep Extraction Cleaning",
         description:
-          "The building exterior is restored using professional techniques.",
+          "We perform fabric-safe extraction to clean deeply without damage.",
       },
       {
-        title: "Final Check",
+        title: "Drying & Finishing",
         description:
-          "We inspect the finish and ensure the presentation is consistent.",
+          "The furniture is groomed and left clean, fresh, and healthier to use.",
       },
     ],
   },
+
+
 
   {
     id: 9,
