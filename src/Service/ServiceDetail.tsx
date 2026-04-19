@@ -60,7 +60,7 @@ const ServiceDetail = () => {
         </div>
       </div>
 
-      <div className="relative z-10 flex items-center  w-full h-full px-4 sm:px-6 md:px-10 lg:px-20 py-20 sm:py-24">
+      <div className="relative z-10 flex items-center mt-20 w-full h-full px-4 sm:px-6 md:px-10 lg:px-20 py-20 sm:py-24">
         <div className="relative w-full max-w-[820px]">
           <div className="relative z-10">
             <h1 className="text-[28px] sm:text-[40px] md:text-[54px] lg:text-[68px] leading-[1.05] sm:leading-[1.1] tracking-[1px] sm:tracking-[2px] md:tracking-[3px] font-bold text-white">
