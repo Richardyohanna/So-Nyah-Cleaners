@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { getServiceBySlug } from "../data/servicesData";
 
 import CustomButton from "../component/ui/custom-button";
 import before1 from "../assets/enhanced-bg2.png";
@@ -21,9 +23,6 @@ import client7 from "../assets/client7.png";
 import client8 from "../assets/client8.png";
 
 import whatsApp from "../assets/whatsApp.png";
-import service1 from "../assets/service1.png";
-import service2 from "../assets/service2.png";
-import service3 from "../assets/service3.png";
 import expand from "../assets/expand.png";
 import blog1 from "../assets/blog1.png";
 import blog2 from "../assets/blog2.png";
@@ -114,12 +113,7 @@ type Blog = {
   aurthor_image: string;
 };
 
-type Service = {
-  id: number;
-  image: string;
-  title: string;
-  description: string;
-};
+
 
 type Review = {
   id: number;
@@ -172,34 +166,6 @@ const reviews: Review[] = [
   },
 ];
 
-const services: Service[] = [
-  {
-    id: 1,
-    image: service1,
-    title: "SPACE CLEANING ( Pest Control, Deep Cleaning, Office and homes Cleaning)",
-    description: `Your space says a lot about you before you say a single word. 
-                  Whether it's your home, your office, or your business premises, 
-                  a clean environment isn't a luxury. It's the standard you deserve.`,
-  },
-  {
-    id: 2,
-    image: service3,
-    title: "UPHOLSRERY CLEANING ",
-    description: `Your furniture deserves better than a vacuum. That sofa you love?
-                  It's holding more than memories. Over time, sofas, chairs, and mattresses 
-                  absorb dust mites, food particles, and bacteria that regular vacuuming 
-                  simply cannot reach. The result isn't just visible dirt it's allergens
-                  that affect your family's health every single day.`,
-  },
-  {
-    id: 3,
-    image: service2,
-    title: "CARPET REVAMP",
-    description: `The carpet you gave up on we bring it back. What looks like a worn-out, 
-                  stained, dull carpet is often just a carpet that has never had a proper
-                  professional clean. We see this transformation every week.`,
-  },
-];
 
 const blogs: Blog[] = [
   {
@@ -247,9 +213,15 @@ const blogs: Blog[] = [
 const HEADER_HEIGHT = 66;
 
 const Home = () => {
+  const navivgate = useNavigate();
+
   const [isBlogGallery, setBlogGallery] = useState("Blog");
   const [reviewStartIndex, setReviewStartIndex] = useState(0);
   const [currentHeroImageIndex, setCurrentHeroImageIndex] = useState(0);
+
+  const spaceCleaning = getServiceBySlug("space-cleaning");
+  const facadeCleaning = getServiceBySlug("facade-cleaning");
+  const fumigationCleaning = getServiceBySlug("fumigation");
 
   useEffect(() => {
     if (heroImages.length <= 1) return;
@@ -397,15 +369,16 @@ const Home = () => {
 
 
 
-        <div className="mt-7 flex gap-8 md:gap-10 justify-center flex-wrap w-full">
-          {services.map((service, index) => (
-            <div
-              key={index}
+        <div className="mt-10 flex gap-8 md:gap-10 justify-center flex-wrap w-full">
+ 
+            {/*Sapce CLeaning */}
+          <div   
+              onClick={()=> navivgate(`/service/${spaceCleaning?.slug}`)}           
               className="w-full sm:max-w-[323px] flex flex-col cursor-pointer group transition-all duration-300 hover:-translate-y-2"
             >
               <div className="overflow-hidden rounded-2xl">
                 <img
-                  src={service.image}
+                  src={spaceCleaning?.heroImage}
                   alt="service"
                   className="rounded-2xl h-[260px] sm:h-[320px] lg:max-h-[360px] w-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
@@ -413,16 +386,16 @@ const Home = () => {
 
               <div className="flex flex-row mt-3 gap-4 sm:gap-5">
                 <h3 className="text-3xl sm:text-4xl text-[var(--service-number)] shrink-0 transition-colors duration-300 group-hover:text-[var(--primary)]">
-                  0{service.id}
+                  0{spaceCleaning?.id}
                 </h3>
 
                 <div className="w-full min-w-0 gap-3 flex flex-col items-start">
                   <h4 className="text-base sm:text-lg font-bold transition-colors duration-300 group-hover:text-[var(--primary)]">
-                    {service.title}
+                    {spaceCleaning?.title}
                   </h4>
 
                   <p className="break-words transition-colors duration-300 group-hover:text-[#555] line-clamp-3 text-sm sm:text-base">
-                    {service.description}
+                    {spaceCleaning?.shortDescription}
                   </p>
 
                   <button className="text-[var(--primary)] transition-all duration-300 hover:underline group-hover:translate-x-1">
@@ -431,7 +404,86 @@ const Home = () => {
                 </div>
               </div>
             </div>
-          ))}
+
+             {/*Facade CLeaning */}
+          <div    
+              onClick={()=> navivgate(`/service/${facadeCleaning?.slug}`)}            
+              className="w-full sm:max-w-[323px] flex flex-col cursor-pointer group transition-all duration-300 hover:-translate-y-2"
+            >
+              <div className="overflow-hidden rounded-2xl">
+                <img
+                  src={facadeCleaning?.heroImage}
+                  alt="service"
+                  className="rounded-2xl h-[260px] sm:h-[320px] lg:max-h-[360px] w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+              </div>
+
+              <div className="flex flex-row mt-3 gap-4 sm:gap-5">
+                <h3 className="text-3xl sm:text-4xl text-[var(--service-number)] shrink-0 transition-colors duration-300 group-hover:text-[var(--primary)]">
+                  0{facadeCleaning?.id}
+                </h3>
+
+                <div className="w-full min-w-0 gap-3 flex flex-col items-start">
+                  <h4 className="text-base sm:text-lg font-bold transition-colors duration-300 group-hover:text-[var(--primary)]">
+                    {facadeCleaning?.title}
+                  </h4>
+
+                  <p className="break-words transition-colors duration-300 group-hover:text-[#555] line-clamp-3 text-sm sm:text-base">
+                    {facadeCleaning?.shortDescription}
+                  </p>
+
+                  <button className="text-[var(--primary)] transition-all duration-300 hover:underline group-hover:translate-x-1">
+                    Read More...
+                  </button>
+                </div>
+              </div>
+            </div>
+
+             {/*fumigation CLeaning */}
+          <div  
+              onClick={()=> navivgate(`/service/${fumigationCleaning?.slug}`)}              
+              className="w-full sm:max-w-[323px] flex flex-col cursor-pointer group transition-all duration-300 hover:-translate-y-2"
+            >
+              <div className="overflow-hidden rounded-2xl">
+                <img
+                  src={fumigationCleaning?.heroImage}
+                  alt="service"
+                  className="rounded-2xl h-[260px] sm:h-[320px] lg:max-h-[360px] w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+              </div>
+
+              <div className="flex flex-row mt-3 gap-4 sm:gap-5">
+                <h3 className="text-3xl sm:text-4xl text-[var(--service-number)] shrink-0 transition-colors duration-300 group-hover:text-[var(--primary)]">
+                  0{fumigationCleaning?.id}
+                </h3>
+
+                <div className="w-full min-w-0 gap-3 flex flex-col items-start">
+                  <h4 className="text-base sm:text-lg font-bold transition-colors duration-300 group-hover:text-[var(--primary)]">
+                    {fumigationCleaning?.title}
+                  </h4>
+
+                  <p className="break-words transition-colors duration-300 group-hover:text-[#555] line-clamp-3 text-sm sm:text-base">
+                    {fumigationCleaning?.shortDescription}
+                  </p>
+
+                  <button className="text-[var(--primary)] transition-all duration-300 hover:underline group-hover:translate-x-1">
+                    Read More...
+                  </button>
+                </div>
+              </div>
+            </div>
+
+       <button
+          onClick={() => navivgate("/services")}
+          className="flex flex-row items-center justify-between gap-3 h-fit self-start sm:self-auto transition-all duration-300 hover:translate-x-[3px] group"
+        >
+          <span className="text-[var(--primary)] font-bold">View all</span>
+          <img
+            src={expand}
+            alt="expand"
+            className="shrink-0 transition-all duration-300 group-hover:scale-110"
+          />
+        </button>
         </div>
       </section>
 
@@ -443,8 +495,8 @@ const Home = () => {
               onClick={() => {
                 setBlogGallery("Blog");
               }}
-              className={`text-[var(--primary)] text-[22px] sm:text-[26px] lg:text-[30px] leading-[1] font-bold ${
-                isBlogGallery === "Blog" ? "border-r border-b" : ""
+              className={`text-[var(--primary)] text-[22px]! sm:text-[26px]! lg:text-[30px]! leading-[1]  ${
+                isBlogGallery === "Blog" ? "border-r! border-b! font-bold!" : ""
               } p-3 border-[var(--primary)]`}
             >
               Blog
@@ -454,8 +506,8 @@ const Home = () => {
               onClick={() => {
                 setBlogGallery("Gallery");
               }}
-              className={`text-[var(--primary)] text-[22px] sm:text-[26px] lg:text-[30px] leading-[1] font-bold ${
-                isBlogGallery === "Gallery" ? "border-l border-b" : ""
+              className={`text-[var(--primary)] text-[22px]! sm:text-[26px]! lg:text-[30px]! leading-[1]  ${
+                isBlogGallery === "Gallery" ? "border-l! border-b! font-bold!" : ""
               } p-3 border-[var(--primary)]`}
             >
               Gallery
