@@ -25,23 +25,23 @@ const ServiceDetail = () => {
   return (
     <div className="bg-white pb-20">
    
-    <section
+      <section
       id="service-hero"
-      className="relative overflow-hidden flex justify-center items-center" 
+      className="relative overflow-hidden flex justify-center items-center"
       style={{
         minHeight: `calc(60vh - ${HEADER_HEIGHT}px)`,
         maxHeight: `calc(60vh - ${HEADER_HEIGHT}px)`,
       }}
-    >
-      <div className="absolute z-[100] sm:z-[100] md:z-[100] lg:z-[100] top-20 sm:top-24 lg:top-25 left-0 sm:left-0 lg:left-0">
+      >
+      <div className="absolute z-[100] top-4 sm:top-6 lg:top-8 left-4 sm:left-6 lg:left-8">
         <button
           onClick={() => navigate(-1)}
-          className="border-[3px] border-white! text-[var(--primary)] px-3 sm:px-4 lg:px-5 py-2 font-semibold transition-all duration-300 hover:scale-105 hover:bg-[var(--primary)]"
+          className="border-[3px] border-white text-[var(--primary)] px-2 sm:px-3 lg:px-4 py-2 font-semibold transition-all duration-300 hover:scale-105 hover:bg-[var(--primary)]"
         >
           <img
             src={back}
             alt=""
-            className="w-[28px] h-[28px] sm:w-[34px] sm:h-[34px] lg:w-[40px] lg:h-[40px] invert brightness-0"
+            className="w-[24px] h-[24px] sm:w-[30px] sm:h-[30px] lg:w-[40px] lg:h-[40px] invert brightness-0"
           />
         </button>
       </div>
@@ -60,20 +60,20 @@ const ServiceDetail = () => {
         </div>
       </div>
 
-      <div className="relative z-10 flex items-center mt-20 w-full h-full px-4 sm:px-6 md:px-10 lg:px-20 py-20 sm:py-24">
+      <div className="relative z-10 flex items-center w-full h-full px-4 sm:px-6 md:px-10 lg:px-20 pt-20 sm:pt-24 lg:pt-16 pb-8 sm:pb-10">
         <div className="relative w-full max-w-[820px]">
           <div className="relative z-10">
-            <h1 className="text-[28px] sm:text-[40px] md:text-[54px] lg:text-[68px] leading-[1.05] sm:leading-[1.1] tracking-[1px] sm:tracking-[2px] md:tracking-[3px] font-bold text-white">
+            <h1 className="text-[24px] sm:text-[40px] md:text-[54px] lg:text-[68px] leading-[1.05] sm:leading-[1.1] tracking-[1px] sm:tracking-[2px] md:tracking-[3px] font-bold text-white">
               {service.title}
             </h1>
 
-            <p className="max-w-[520px] !text-[#fffff0] mt-4 sm:mt-5 text-sm sm:text-base leading-6 sm:leading-7">
+            <p className="max-w-[520px] !text-[#fffff0] mt-3 sm:mt-5 text-xs sm:text-base leading-5 sm:leading-7">
               {service.intro}
             </p>
           </div>
         </div>
       </div>
-    </section>
+      </section>
 
       <section
         id="details"

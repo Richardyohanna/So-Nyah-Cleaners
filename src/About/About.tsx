@@ -16,7 +16,7 @@ import { useEffect} from "react";
 //import CustomButton from "../component/ui/custom-button";
 //import before1 from "../assets/before 1.jpeg";
 //import after1 from "../assets/after 1.jpeg";
-import team from "../assets/team.png";
+import team from "../assets/team.jpeg";
 
 
 
@@ -64,7 +64,7 @@ const About = () => {
     return (
         <div className="bg-white pb-15">
             <section id="about-us" className="px-20">
-                <div className="pt-25">
+                <div className="">
                     <h3 className="text-[var(--primary)]  head text-[32px] sm:text-[38px] lg:text-[48px] leading-[1.1] font-bold ">
                         About Us
                     </h3>
