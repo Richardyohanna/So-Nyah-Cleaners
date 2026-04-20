@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import team from "../assets/team.jpeg";
 import facade from "../assets/facade hero.png";
+import StatsSection from "../component/ui/stat-section";
 
 type HeroImage = {
   id: number;
@@ -72,19 +73,18 @@ const About = () => {
   }, []);
 
   return (
-    <div className="bg-white pt-10 pb-16">
-      <section id="about-us" className="px-4 sm:px-6 md:px-10 lg:px-16 xl:px-20">
+    <div className="bg-white  pb-16">
+      <section id="about-us" className="pt-20 px-4 sm:px-6 md:px-10 lg:px-16 xl:px-20">
         <div>
           <h3 className="text-[var(--primary)] head text-[28px] sm:text-[34px] lg:text-[42px] xl:text-[48px] leading-[1.1] font-bold">
             About Us
           </h3>
           <div className="border-b-[5px] w-[80px] sm:w-[100px] border-[var(--primary)]"></div>
         </div>
-      </section>
 
       <section
         id="hero"
-        className="relative px-4 sm:px-6 md:px-10 lg:px-16 xl:px-20 mt-10 bg-transparent"
+        className="relative bg-transparent"
       >
         <div className="relative z-10 flex flex-col lg:flex-row justify-between w-full gap-10 lg:gap-12 items-center lg:items-start">
           {/* LEFT / TEXT SECTION */}
@@ -147,49 +147,29 @@ const About = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mt-16 lg:mt-20 text-center">
-          <div className="flex flex-col items-center justify-center">
-            <h2 className="text-[42px] sm:text-[54px] lg:text-[68px] font-bold text-[#7a0b8d] leading-none">
-              500+
-            </h2>
-            <p className="mt-4 text-[16px] sm:text-[18px] lg:text-[22px] tracking-[1px] sm:tracking-[2px] text-[#6b6470] uppercase font-bold">
-              Happy Clients
-            </p>
-          </div>
-
-          <div className="flex flex-col items-center justify-center">
-            <h2 className="text-[42px] sm:text-[54px] lg:text-[68px] font-bold text-[#7a0b8d] leading-none">
-              700+
-            </h2>
-            <p className="mt-4 text-[16px] sm:text-[18px] lg:text-[22px] tracking-[1px] sm:tracking-[2px] text-[#6b6470] uppercase font-bold">
-              Cleaned Spaces
-            </p>
-          </div>
-
-          <div className="flex flex-col items-center justify-center sm:col-span-2 lg:col-span-1">
-            <h2 className="text-[42px] sm:text-[54px] lg:text-[68px] font-bold text-[#7a0b8d] leading-none">
-              7
-            </h2>
-            <p className="mt-4 text-[16px] sm:text-[18px] lg:text-[22px] tracking-[1px] sm:tracking-[2px] text-[#6b6470] uppercase font-bold">
-              Years of Experience
-            </p>
-          </div>
-        </div>
+        <StatsSection />
       </section>
+
+      </section>
+
+
 
       <section
         id="our-vision"
         className="px-4 sm:px-6 md:px-10 lg:px-16 xl:px-20 mt-20"
       >
+
+
+        <div className="mt-10">
+
         <div>
           <h3 className="text-[var(--primary)] head text-[28px] sm:text-[34px] lg:text-[42px] xl:text-[48px] leading-[1.1] font-bold">
             Our Vision
           </h3>
-          <div className="border-b-[5px] w-[80px] sm:w-[100px] border-[var(--primary)]"></div>
+          <div className="border-b-[5px]  w-[80px] sm:w-[100px] border-[var(--primary)]"></div>
         </div>
 
-        <div className="mt-10">
-          <p className="text-[15px] sm:text-[16px] leading-7 text-[var(--accent-text)]">
+          <p className="text-[15px] mt-5 sm:text-[16px] leading-7 text-[var(--accent-text)]">
             Our vision is to become the most trusted name in eco-conscious cleaning,
             transforming homes, offices, and commercial spaces into healthier,
             brighter, and happier environments. We strive to redefine the standards
@@ -216,7 +196,7 @@ const About = () => {
               <h2 className="text-xl sm:text-2xl md:text-3xl font-bold tracking-wide">
                 The Elite Fleet
               </h2>
-              <p className="max-w-full sm:max-w-[600px] text-sm sm:text-base mt-2 leading-6">
+              <p className="max-w-full sm:max-w-[600px] text-white! text-sm sm:text-base mt-2 leading-6">
                 Every team member undergoes 120 hours of specialized training in
                 "The So-Nyah Method".
               </p>
