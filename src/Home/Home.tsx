@@ -279,7 +279,7 @@ const Home = () => {
 
     const interval = window.setInterval(() => {
       setReviewStartIndex((prev) => (prev + 1) % reviews.length);
-    }, 3500);
+    }, 5000);
 
     return () => window.clearInterval(interval);
   }, []);
@@ -385,7 +385,7 @@ const Home = () => {
       </section>
 
       {/* SERVICE SECTION */}
-      <section id="service" className="mt-15 px-4 sm:px-6 md:px-10 lg:px-20">
+      <section id="service" className="mt-20 px-4 sm:px-6 md:px-10 lg:px-20">
         <h3 className="text-[var(--primary)] head text-[32px] sm:text-[38px] lg:text-[48px] leading-[1.1] font-bold items-center text-center">
           Our Specialized Services
         </h3>
@@ -511,7 +511,7 @@ const Home = () => {
       </section>
 
         {/* OUR CLIENTS */}
-      <section id="clients" className="w-full px-4 sm:px-6 md:px-10 py-10 bg-[var(--primary)]">
+      <section id="clients" className="w-full mt-25 px-4 sm:px-6 md:px-10 py-10 bg-[var(--primary)]">
         <h3 className="text-white! head text-[32px] sm:text-[38px] lg:text-[48px] leading-[1] font-bold items-center text-center">
           Our Clients
         </h3>
@@ -543,7 +543,7 @@ const Home = () => {
       </section>
 
       {/* REVIEWS */}
-      <section id="reviews" className="mt-15 px-4 sm:px-6 md:px-10 lg:px-20">
+      <section id="reviews" className="mt-20 px-4 sm:px-6 md:px-10 lg:px-20">
         <h3 className="text-[var(--primary)] head text-[32px] sm:text-[38px] lg:text-[48px] leading-[1] font-bold items-center text-center">
           Voices Of Contentment
         </h3>
@@ -656,7 +656,7 @@ const Home = () => {
 
 
       {/* BLOG SECTION */}
-      <section id="blog" className="mt-15 min-h-[600px] overflow-hidden px-4 sm:px-6 md:px-10 lg:px-20">
+      <section id="blog" className="mt-20 min-h-[600px] overflow-hidden px-4 sm:px-6 md:px-10 lg:px-20">
         <div className="flex items-center justify-between gap-4 flex-nowrap overflow-x-auto scrollbar-hide">
           <div className="flex gap-2 sm:gap-3 flex-nowrap shrink-0">
             <button
