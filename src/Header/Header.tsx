@@ -203,7 +203,7 @@ const Header = () => {
                           className="text-[var(--primary)] text-sm px-2 py-1"
                         >
                           <span
-                            className={`inline-block transition-transform duration-300 ${
+                            className={`inline-block  transition-transform duration-300 ${
                               isOpen ? "rotate-180" : ""
                             }`}
                           >

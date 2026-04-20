@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getServiceBySlug } from "../data/servicesData";
 
-import CustomButton from "../component/ui/custom-button";
+
 import before1 from "../assets/enhanced-bg2.png";
 import after1 from "../assets/enhanced-bg1.png";
 import bgCover from "../assets/enhanced-bg3.png";
@@ -308,7 +308,7 @@ const Home = () => {
           <div className="absolute inset-0 bg-black/40" />
 
           <div className="absolute inset-0 z-0">
-            <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/5 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/30 to-transparent" />
           </div>
         </div>
 
@@ -318,12 +318,13 @@ const Home = () => {
           <div className="relative mt-2 w-full max-w-[880px] rounded-[32px]">
             <div className="relative z-10">
               <div>
-                <h1 className="text-[42px] sm:text-[54px] md:text-[66px] lg:text-[86px] leading-[1] lg:leading-[0.95] mt-5 tracking-[1px] sm:tracking-[2px] md:tracking-[3px] lg:tracking-[4px] font-bold text-white">
+                <h1 className="text-[42px] sm:text-[54px] md:text-[66px] lg:text-[86px] leading-[1] lg:leading-[1] mt-5 tracking-[1px] sm:tracking-[2px] md:tracking-[3px] lg:tracking-[4px] font-bold text-white">
                   Cleaning Spaces,
                   <br />
-                  <span className="text-[var(--primary)]">
+                  
                     Creating <br />
-                    Happy <br />
+                    <span className="text-[var(--primary)] ">
+                    Happy 
                     Faces
                   </span>
                 </h1>
@@ -333,13 +334,16 @@ const Home = () => {
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4 sm:gap-5 mt-6 w-full sm:w-auto">
-                  <div className="w-full sm:w-auto">
-                    <CustomButton text="Schedule a visit" />
-                  </div>
+                  <button 
+                    onClick={()=> navivgate(`/services`)} 
+                    className="bg-white text-[var(--primary)] px-5 py-3 shadow-xl font-semibold transition-all duration-300 hover:scale-105 hover:bg-[var(--primary)] hover:text-white w-full sm:w-auto  "> 
+                   
+                    Schedule a Visit
+                  </button>
 
                   <button 
                     onClick={()=> navivgate(`/services`)}  
-                    className="bg-[var(--bg-section)] text-[var(--primary)] px-5 py-3 rounded-3xl shadow-xl font-semibold transition-all duration-300 hover:scale-105 hover:bg-white w-full sm:w-auto">
+                     className="bg-transparent   text-white! px-5 py-3  shadow-xl font-semibold transition-all duration-300 hover:scale-105 hover:bg-[var(--primary)] hover:text-white w-full sm:w-auto  border-2!  border-white! hover:border-transparent!">
                     View Our Services
                   </button>
                 </div>
@@ -347,40 +351,40 @@ const Home = () => {
             </div>
           </div>
 
-          {/* QUICK LINKS */}
-          <div className="flex lg:flex-col flex-row gap-3 sm:gap-4 items-center lg:self-center">
-            <button className="w-[48px] h-[48px] sm:w-[54px] sm:h-[54px] lg:w-[60px] lg:h-[60px] rounded-full border-[2px] lg:border-[3px] border-white flex items-center justify-center transition-all duration-300 ease-in-out hover:border-[var(--primary)] hover:bg-[var(--primary)] hover:scale-110">
-              <img
-                src={facebook}
-                alt="Facebook"
-                className="w-[28px] h-[28px] sm:w-[32px] sm:h-[32px] lg:w-[38px] lg:h-[38px] object-contain transition-all duration-300"
-              />
-            </button>
+      {/* QUICK LINKS */}
+      <div className="flex lg:flex-col flex-row gap-2 sm:gap-3 items-center lg:self-center">
+        <button className="w-[43px] h-[43px] sm:w-[49px] sm:h-[49px] lg:w-[54px] lg:h-[54px] rounded-full border-[2px] lg:border-[3px] border-white flex items-center justify-center transition-all duration-300 ease-in-out hover:border-[var(--primary)] hover:bg-[var(--primary)] hover:scale-110">
+          <img
+            src={facebook}
+            alt="Facebook"
+            className="w-[25px] h-[25px] sm:w-[29px] sm:h-[29px] lg:w-[34px] lg:h-[34px] object-contain transition-all duration-300"
+          />
+        </button>
 
-            <button className="w-[48px] h-[48px] sm:w-[54px] sm:h-[54px] lg:w-[60px] lg:h-[60px] rounded-full border-[2px] lg:border-[3px] border-white flex items-center justify-center transition-all duration-300 ease-in-out hover:border-[var(--primary)] hover:bg-[var(--primary)] hover:scale-110">
-              <img
-                src={instagram}
-                alt="Instagram"
-                className="w-[28px] h-[28px] sm:w-[32px] sm:h-[32px] lg:w-[38px] lg:h-[38px] object-contain transition-all duration-300"
-              />
-            </button>
+        <button className="w-[43px] h-[43px] sm:w-[49px] sm:h-[49px] lg:w-[54px] lg:h-[54px] rounded-full border-[2px] lg:border-[3px] border-white flex items-center justify-center transition-all duration-300 ease-in-out hover:border-[var(--primary)] hover:bg-[var(--primary)] hover:scale-110">
+          <img
+            src={instagram}
+            alt="Instagram"
+            className="w-[25px] h-[25px] sm:w-[29px] sm:h-[29px] lg:w-[34px] lg:h-[34px] object-contain transition-all duration-300"
+          />
+        </button>
 
-            <button className="w-[48px] h-[48px] sm:w-[54px] sm:h-[54px] lg:w-[60px] lg:h-[60px] rounded-full border-[2px] lg:border-[3px] border-white flex items-center justify-center transition-all duration-300 ease-in-out hover:border-[var(--primary)] hover:bg-[var(--primary)] hover:scale-110">
-              <img
-                src={twiter}
-                alt="Twitter"
-                className="w-[28px] h-[28px] sm:w-[32px] sm:h-[32px] lg:w-[38px] lg:h-[38px] object-contain transition-all duration-300"
-              />
-            </button>
+        <button className="w-[43px] h-[43px] sm:w-[49px] sm:h-[49px] lg:w-[54px] lg:h-[54px] rounded-full border-[2px] lg:border-[3px] border-white flex items-center justify-center transition-all duration-300 ease-in-out hover:border-[var(--primary)] hover:bg-[var(--primary)] hover:scale-110">
+          <img
+            src={twiter}
+            alt="Twitter"
+            className="w-[25px] h-[25px] sm:w-[29px] sm:h-[29px] lg:w-[34px] lg:h-[34px] object-contain transition-all duration-300"
+          />
+        </button>
 
-            <button className="w-[48px] h-[48px] sm:w-[54px] sm:h-[54px] lg:w-[60px] lg:h-[60px] rounded-full border-[2px] lg:border-[3px] border-white flex items-center justify-center transition-all duration-300 ease-in-out hover:border-[var(--primary)] hover:bg-[var(--primary)] hover:scale-110">
-              <img
-                src={mail}
-                alt="Mail"
-                className="w-[28px] h-[28px] sm:w-[32px] sm:h-[32px] lg:w-[36px] lg:h-[38px] object-contain transition-all duration-300"
-              />
-            </button>
-          </div>
+        <button className="w-[43px] h-[43px] sm:w-[49px] sm:h-[49px] lg:w-[54px] lg:h-[54px] rounded-full border-[2px] lg:border-[3px] border-white flex items-center justify-center transition-all duration-300 ease-in-out hover:border-[var(--primary)] hover:bg-[var(--primary)] hover:scale-110">
+          <img
+            src={mail}
+            alt="Mail"
+            className="w-[25px] h-[25px] sm:w-[29px] sm:h-[29px] lg:w-[32px] lg:h-[34px] object-contain transition-all duration-300"
+          />
+        </button>
+      </div>
         </div>
       </section>
 
@@ -656,8 +660,8 @@ const Home = () => {
 
 
       {/* BLOG SECTION */}
-      <section id="blog" className="mt-20 min-h-[600px] overflow-hidden px-4 sm:px-6 md:px-10 lg:px-20">
-        <div className="flex items-center justify-between gap-4 flex-nowrap overflow-x-auto scrollbar-hide">
+      <section id="blog" className="mt-20 min-h-[700px] overflow-hidden px-4 sm:px-6 md:px-10 lg:px-20">
+        <div className="flex items-center justify-between gap-4 flex-nowrap ">
           <div className="flex gap-2 sm:gap-3 flex-nowrap shrink-0">
             <button
               onClick={() => {
@@ -695,113 +699,112 @@ const Home = () => {
           </button>
         </div>
 
-        <div className="overflow-hidden mt-10">
-          <div className="grid grid-flow-col auto-cols-[280px] lg:auto-cols-[320px] gap-6 lg:gap-10 overflow-x-auto scrollbar-hide">
-            {isBlogGallery === "Blog" &&
-              blogs.map((article, index) => (
+        <div className=" pt-3">
+          {isBlogGallery === "Blog" && (
+            <div className="overflow-x-auto pt-10 overflow-y-visible scrollbar-hide">
+              <div className="grid grid-flow-col auto-cols-[280px] lg:auto-cols-[320px] gap-6 lg:gap-10 bg-transparent">
+                {blogs.map((article, index) => (
+                  <div
+                    key={index}
+                    className="w-full cursor-pointer border border-[#0000001a] rounded-2xl overflow-hidden bg-white transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-[var(--primary)] group"
+                  >
+                    <img
+                      src={article.image}
+                      alt="Blog1"
+                      className="w-full h-[180px] object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+
+                    <div className="p-6 sm:p-8 lg:p-10 flex flex-col gap-3">
+                      <h5 className="text-[var(--text-sub-h)] transition-colors duration-300 group-hover:text-[var(--primary)] text-sm">
+                        {article.category}
+                      </h5>
+
+                      <h4 className="text-[18px] sm:text-[20px] font-bold transition-colors duration-300 group-hover:text-[var(--primary)]">
+                        {article.title}
+                      </h4>
+
+                      <p className="transition-colors duration-300 group-hover:text-[#555] text-sm sm:text-base line-clamp-3">
+                        {article.article}
+                      </p>
+
+                      <div className="flex gap-3 items-center mt-auto">
+                        <img
+                          src={article.aurthor_image}
+                          alt=""
+                          className="w-10 h-10 rounded-full object-cover"
+                        />
+
+                        <p className="transition-colors duration-300 group-hover:text-[var(--primary)] text-sm sm:text-base">
+                          By {article.aurthor}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {isBlogGallery === "Gallery" && (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mt-6">
+              {[
+                {
+                  before: before,
+                  after: after,
+                  title: "Office Cleaning",
+                },
+                {
+                  before: before1,
+                  after: after1,
+                  title: "Compound Maintenance",
+                },
+                {
+                  before: before2,
+                  after: after2,
+                  title: "Residential Cleaning",
+                },
+              ].map((item, index) => (
                 <div
                   key={index}
-                  className="w-full cursor-pointer border border-[#0000001a] rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-[var(--primary)] group"
+                  className="group bg-white rounded-3xl overflow-hidden border border-[#00000014] shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
                 >
-                  <img
-                    src={article.image}
-                    alt="Blog1"
-                    className="w-full h-[220px] object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-
-                  <div className="p-6 sm:p-8 lg:p-10 flex flex-col gap-3">
-                    <h5 className="text-[var(--text-sub-h)] transition-colors duration-300 group-hover:text-[var(--primary)] text-sm">
-                      {article.category}
-                    </h5>
-
-                    <h4 className="text-[18px] sm:text-[20px] font-bold transition-colors duration-300 group-hover:text-[var(--primary)]">
-                      {article.title}
-                    </h4>
-
-                    <p className="transition-colors duration-300 group-hover:text-[#555] text-sm sm:text-base line-clamp-3">
-                      {article.article}
-                    </p>
-
-                    <div className="flex gap-3 items-center mt-auto">
+                  <div className="flex flex-row h-[220px] overflow-hidden relative">
+                    <div className="relative w-1/2 h-full overflow-hidden">
                       <img
-                        src={article.aurthor_image}
-                        alt=""
-                        className="w-10 h-10 rounded-full object-cover"
+                        src={item.before}
+                        alt="Before"
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                       />
 
-                      <p className="transition-colors duration-300 group-hover:text-[var(--primary)] text-sm sm:text-base">
-                        By {article.aurthor}
-                      </p>
+                      <div className="absolute top-3 left-3 bg-black/70 text-white text-xs sm:text-sm px-3 py-1 rounded-full">
+                        Before
+                      </div>
                     </div>
+
+                    <div className="relative w-1/2 h-full overflow-hidden">
+                      <img
+                        src={item.after}
+                        alt="After"
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      />
+
+                      <div className="absolute top-3 right-3 bg-[var(--primary)] text-white text-xs sm:text-sm px-3 py-1 rounded-full">
+                        After
+                      </div>
+                    </div>
+
+                    <div className="absolute left-1/2 top-0 bottom-0 w-[2px] bg-white/70 -translate-x-1/2" />
                   </div>
                 </div>
               ))}
-          </div>
-
-          <div>
-               {isBlogGallery === "Gallery" && (
-                <div className="grid  grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mt-6">
-                  {[
-                    {
-                      before: before,
-                      after: after,
-                      title: "Office Cleaning",
-                    },
-                    {
-                      before: before1,
-                      after: after1,
-                      title: "Compound Maintenance",
-                    },
-                    {
-                      before: before2,
-                      after: after2,
-                      title: "Residential Cleaning",
-                    },
-                  ].map((item, index) => (
-                    <div
-                      key={index}
-                      className="group bg-white rounded-3xl overflow-hidden border border-[#00000014] shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
-                    >
-                      <div className="flex flex-row h-[220px] overflow-hidden relative">
-                        <div className="relative w-1/2 h-full overflow-hidden">
-                          <img
-                            src={item.before}
-                            alt="Before"
-                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                          />
-
-                          <div className="absolute top-3 left-3 bg-black/70 text-white text-xs sm:text-sm px-3 py-1 rounded-full">
-                            Before
-                          </div>
-                        </div>
-
-                        <div className="relative w-1/2 h-full overflow-hidden">
-                          <img
-                            src={item.after}
-                            alt="After"
-                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                          />
-
-                          <div className="absolute top-3 right-3 bg-[var(--primary)] text-white text-xs sm:text-sm px-3 py-1 rounded-full">
-                            After
-                          </div>
-                        </div>
-
-                        <div className="absolute left-1/2 top-0 bottom-0 w-[2px] bg-white/70 -translate-x-1/2" />
-                      </div>
-
-
-                    </div>
-                  ))}
-                </div>
-              )}
-          </div>
+            </div>
+          )}
         </div>
       </section>
 
 
       {/* FLOATING WHATSAPP */}
-      <button className="fixed z-[1000] rounded-3xl flex px-4 sm:px-5 lg:px-6 bottom-4 sm:bottom-6 lg:bottom-10 right-4 sm:right-6 lg:right-10 shadow-xl text-white bg-[var(--text-sub-h)] py-3 items-center gap-2 sm:gap-3 text-sm sm:text-base">
+      <button className="fixed z-[1000] rounded-3xl flex px-4 sm:px-5 lg:px-6 bottom-4 sm:bottom-6 lg:bottom-10 right-4 sm:right-6 lg:right-17 shadow-xl text-white bg-[var(--text-sub-h)] py-3 items-center gap-2 sm:gap-3 text-sm sm:text-base">
         <span className="hidden xs:inline">Chat with Us</span>
         <span className="sm:hidden">Chat</span>
         <img src={whatsApp} alt="" className="w-5 h-5 sm:w-auto sm:h-auto" />
