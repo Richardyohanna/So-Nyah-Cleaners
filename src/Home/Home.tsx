@@ -8,6 +8,11 @@ import after1 from "../assets/enhanced-bg1.png";
 import bgCover from "../assets/enhanced-bg3.png";
 import bgCover2 from "../assets/enhanced-bg4.png";
 
+import after from "../assets/after 1.jpeg";
+import before from "../assets/before 1.jpeg";
+import after2 from "../assets/after 2.jpeg";
+import before2 from "../assets/before 2.jpeg";
+
 import facebook from "../assets/facebook.png";
 import instagram from "../assets/instagram.png";
 import twiter from "../assets/twiter.png";
@@ -34,6 +39,8 @@ type Clients = {
   id: number;
   image: string;
   companyName: string;
+  logoWidth?: string;
+  logoHeight?: string;
 };
 
 const clients: Clients[] = [
@@ -41,41 +48,57 @@ const clients: Clients[] = [
     id: 1,
     image: client1,
     companyName: "FIRS",
+    logoWidth: "w-full",
+    logoHeight: "h-[90px]",
   },
   {
     id: 2,
     image: client2,
     companyName: "EFCC",
+    logoWidth: "w-full",
+    logoHeight: "h-[80px]",
   },
   {
     id: 3,
     image: client3,
     companyName: "NTA",
+    logoWidth: "w-full",
+    logoHeight: "h-[80px]",
   },
   {
     id: 4,
     image: client4,
     companyName: "",
+    logoWidth: "w-full",
+    logoHeight: "h-[150px]",
   },
   {
     id: 5,
     image: client5,
     companyName: "",
+    logoWidth: "w-full",
+    logoHeight: "h-[1000px]",
   },
   {
     id: 6,
     image: client6,
     companyName: "",
+    logoWidth: "w-full",
+    logoHeight: "h-[150px]",
   },
   {
     id: 7,
     image: client7,
     companyName: "",
+    logoWidth: "w-full",
+    logoHeight: "h-[100px]",
   },
   {
     id: 8,
     image: client8,
     companyName: "",
+    logoWidth: "w-full",
+    logoHeight: "h-[120px]",
   },
 ];
 
@@ -285,7 +308,7 @@ const Home = () => {
           <div className="absolute inset-0 bg-black/40" />
 
           <div className="absolute inset-0 z-0">
-            <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/45 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/5 to-transparent" />
           </div>
         </div>
 
@@ -314,7 +337,9 @@ const Home = () => {
                     <CustomButton text="Schedule a visit" />
                   </div>
 
-                  <button className="bg-[var(--bg-section)] text-[var(--primary)] px-5 py-3 rounded-3xl shadow-xl font-semibold transition-all duration-300 hover:scale-105 hover:bg-white w-full sm:w-auto">
+                  <button 
+                    onClick={()=> navivgate(`/services`)}  
+                    className="bg-[var(--bg-section)] text-[var(--primary)] px-5 py-3 rounded-3xl shadow-xl font-semibold transition-all duration-300 hover:scale-105 hover:bg-white w-full sm:w-auto">
                     View Our Services
                   </button>
                 </div>
@@ -485,7 +510,7 @@ const Home = () => {
         </div>
       </section>
 
-            {/* OUR CLIENTS */}
+        {/* OUR CLIENTS */}
       <section id="clients" className="w-full px-4 sm:px-6 md:px-10 py-10 bg-[var(--primary)]">
         <h3 className="text-white! head text-[32px] sm:text-[38px] lg:text-[48px] leading-[1] font-bold items-center text-center">
           Our Clients
@@ -495,17 +520,23 @@ const Home = () => {
           Trust by most recognized names
         </h4>
 
-        <div className="flex justify-center bg-white mt-10 flex-wrap">
-          {clients.map((client, index) => (
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-8 gap-y-8 gap-x-6 bg-white mt-10 place-items-center">
+          {clients.map((client) => (
             <div
-              key={index}
-              className={`w-1/2 sm:w-1/3 md:w-1/4 lg:w-auto flex items-center justify-center`}
+              key={client.id}
+              className="w-full flex items-center justify-center"
             >
-              <img
-                src={client.image}
-                alt={client.companyName}
-                className="w-full h-[90px] sm:h-[110px] lg:h-[130px] object-contain"
-              />
+              <div className="w-[140px] h-[100px] flex items-center justify-center">
+                <img
+                  src={client.image}
+                  alt={client.companyName}
+                  className={`
+                    object-contain transition-all duration-300 hover:scale-105
+                    ${client.logoWidth || "w-[100px]"}
+                    ${client.logoHeight || "h-[70px]"}
+                  `}
+                />
+              </div>
             </div>
           ))}
         </div>
@@ -529,16 +560,16 @@ const Home = () => {
             ←
           </button>
 
-          <div className="flex flex-wrap justify-center w-full gap-4 sm:gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 justify-items-center w-full gap-4 sm:gap-6">
             {getVisibleReviews().map((review, index) => {
-              const isMiddle = index === 1 || reviews.length === 1;
+              const isMiddle = index === 1 && getVisibleReviews().length === 3;
 
               return (
                 <div
                   key={`${review.id}-${index}`}
-                  className={`w-full sm:max-w-[324px] min-h-[300px] sm:min-h-[320px] p-5 sm:p-6 flex flex-col justify-between gap-4 rounded-3xl transition-all duration-500 transform ${
+                  className={`w-full max-w-[380px] h-[350px] sm:h-[380px] overflow-hidden p-5 sm:p-6 flex flex-col justify-between gap-4 rounded-3xl transition-all duration-500 transform ${
                     isMiddle
-                      ? "bg-[var(--primary)] text-white shadow-2xl lg:scale-105"
+                      ? "bg-[var(--primary)] text-white shadow-2xl xl:scale-105"
                       : "bg-white border border-[#00000014] text-black hover:-translate-y-2 hover:shadow-xl"
                   }`}
                 >
@@ -558,13 +589,15 @@ const Home = () => {
                         key={starIndex}
                         src={star}
                         alt="star"
-                        className={`w-4 h-4 sm:w-auto sm:h-auto ${isMiddle ? "brightness-0 invert" : ""}`}
+                        className={`w-4 h-4 sm:w-5 sm:h-5 ${
+                          isMiddle ? "brightness-0 invert" : ""
+                        }`}
                       />
                     ))}
                   </div>
 
                   <p
-                    className={`leading-relaxed transition-colors duration-300 text-sm sm:text-base ${
+                    className={`leading-relaxed transition-colors duration-300 text-sm sm:text-base overflow-hidden line-clamp-6 ${
                       isMiddle ? "!text-white" : "text-[var(--accent-text)]"
                     }`}
                   >
@@ -612,7 +645,6 @@ const Home = () => {
               );
             })}
           </div>
-
           <button
             onClick={nextReviews}
             className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-[#00000018] flex items-center justify-center text-[var(--primary)] transition-all duration-300 hover:bg-[var(--primary)] hover:text-white shrink-0"
@@ -624,15 +656,17 @@ const Home = () => {
 
 
       {/* BLOG SECTION */}
-      <section id="blog" className="mt-15 min-h-[600px] px-4 sm:px-6 md:px-10 lg:px-20">
-        <div className="w-full flex flex-col sm:flex-row justify-between sm:items-center gap-5">
-          <div className="flex gap-2 sm:gap-3 flex-wrap">
+      <section id="blog" className="mt-15 min-h-[600px] overflow-hidden px-4 sm:px-6 md:px-10 lg:px-20">
+        <div className="flex items-center justify-between gap-4 flex-nowrap overflow-x-auto scrollbar-hide">
+          <div className="flex gap-2 sm:gap-3 flex-nowrap shrink-0">
             <button
               onClick={() => {
                 setBlogGallery("Blog");
               }}
-              className={`text-[var(--primary)] text-[22px]! sm:text-[26px]! lg:text-[30px]! leading-[1]  ${
-                isBlogGallery === "Blog" ? "border-r! border-b! font-bold!" : ""
+              className={`text-[var(--primary)] whitespace-nowrap text-[22px]! sm:text-[26px]! lg:text-[30px]! leading-[1] ${
+                isBlogGallery === "Blog"
+                  ? "border-r! border-b! font-bold!"
+                  : ""
               } p-3 border-[var(--primary)]`}
             >
               Blog
@@ -642,55 +676,126 @@ const Home = () => {
               onClick={() => {
                 setBlogGallery("Gallery");
               }}
-              className={`text-[var(--primary)] text-[22px]! sm:text-[26px]! lg:text-[30px]! leading-[1]  ${
-                isBlogGallery === "Gallery" ? "border-l! border-b! font-bold!" : ""
+              className={`text-[var(--primary)] whitespace-nowrap text-[22px]! sm:text-[26px]! lg:text-[30px]! leading-[1] ${
+                isBlogGallery === "Gallery"
+                  ? "border-l! border-b! font-bold!"
+                  : ""
               } p-3 border-[var(--primary)]`}
             >
               Gallery
             </button>
           </div>
 
-          <button className="flex flex-row items-center justify-between gap-3 self-start sm:self-auto">
-            <span className="text-[var(--primary)] font-bold">View all</span>
+          <button className="flex flex-row items-center justify-between gap-3 shrink-0 whitespace-nowrap">
+            <span className="text-[var(--primary)] font-bold whitespace-nowrap">
+              View all
+            </span>
+
             <img src={expand} alt="expand" className="shrink-0" />
           </button>
         </div>
 
-        <div className="justify-center lg:justify-start flex flex-wrap gap-6 lg:gap-10 mt-4">
-          {isBlogGallery === "Blog" &&
-            blogs.map((article, index) => (
-              <div
-                key={index}
-                className="w-full sm:max-w-[300px] cursor-pointer mt-5 border border-[#0000001a] rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-[var(--primary)] group"
-              >
-                <img
-                  src={article.image}
-                  alt="Blog1"
-                  className="w-full h-[220px] object-cover transition-transform duration-500 group-hover:scale-105"
-                />
+        <div className="overflow-hidden mt-10">
+          <div className="grid grid-flow-col auto-cols-[280px] lg:auto-cols-[320px] gap-6 lg:gap-10 overflow-x-auto scrollbar-hide">
+            {isBlogGallery === "Blog" &&
+              blogs.map((article, index) => (
+                <div
+                  key={index}
+                  className="w-full cursor-pointer border border-[#0000001a] rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-[var(--primary)] group"
+                >
+                  <img
+                    src={article.image}
+                    alt="Blog1"
+                    className="w-full h-[220px] object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
 
-                <div className="p-6 sm:p-8 lg:p-10 flex flex-col gap-3">
-                  <h5 className="text-[var(--text-sub-h)] transition-colors duration-300 group-hover:text-[var(--primary)] text-sm">
-                    {article.category}
-                  </h5>
+                  <div className="p-6 sm:p-8 lg:p-10 flex flex-col gap-3">
+                    <h5 className="text-[var(--text-sub-h)] transition-colors duration-300 group-hover:text-[var(--primary)] text-sm">
+                      {article.category}
+                    </h5>
 
-                  <h4 className="text-[18px] sm:text-[20px] font-bold transition-colors duration-300 group-hover:text-[var(--primary)]">
-                    {article.title}
-                  </h4>
+                    <h4 className="text-[18px] sm:text-[20px] font-bold transition-colors duration-300 group-hover:text-[var(--primary)]">
+                      {article.title}
+                    </h4>
 
-                  <p className="transition-colors duration-300 group-hover:text-[#555] text-sm sm:text-base">
-                    {article.article}
-                  </p>
-
-                  <div className="flex gap-3 items-center">
-                    <img src={article.aurthor_image} alt="" />
-                    <p className="transition-colors duration-300 group-hover:text-[var(--primary)] text-sm sm:text-base">
-                      By {article.aurthor}
+                    <p className="transition-colors duration-300 group-hover:text-[#555] text-sm sm:text-base line-clamp-3">
+                      {article.article}
                     </p>
+
+                    <div className="flex gap-3 items-center mt-auto">
+                      <img
+                        src={article.aurthor_image}
+                        alt=""
+                        className="w-10 h-10 rounded-full object-cover"
+                      />
+
+                      <p className="transition-colors duration-300 group-hover:text-[var(--primary)] text-sm sm:text-base">
+                        By {article.aurthor}
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+          </div>
+
+          <div>
+               {isBlogGallery === "Gallery" && (
+                <div className="grid  grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mt-6">
+                  {[
+                    {
+                      before: before,
+                      after: after,
+                      title: "Office Cleaning",
+                    },
+                    {
+                      before: before1,
+                      after: after1,
+                      title: "Compound Maintenance",
+                    },
+                    {
+                      before: before2,
+                      after: after2,
+                      title: "Residential Cleaning",
+                    },
+                  ].map((item, index) => (
+                    <div
+                      key={index}
+                      className="group bg-white rounded-3xl overflow-hidden border border-[#00000014] shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
+                    >
+                      <div className="flex flex-row h-[220px] overflow-hidden relative">
+                        <div className="relative w-1/2 h-full overflow-hidden">
+                          <img
+                            src={item.before}
+                            alt="Before"
+                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                          />
+
+                          <div className="absolute top-3 left-3 bg-black/70 text-white text-xs sm:text-sm px-3 py-1 rounded-full">
+                            Before
+                          </div>
+                        </div>
+
+                        <div className="relative w-1/2 h-full overflow-hidden">
+                          <img
+                            src={item.after}
+                            alt="After"
+                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                          />
+
+                          <div className="absolute top-3 right-3 bg-[var(--primary)] text-white text-xs sm:text-sm px-3 py-1 rounded-full">
+                            After
+                          </div>
+                        </div>
+
+                        <div className="absolute left-1/2 top-0 bottom-0 w-[2px] bg-white/70 -translate-x-1/2" />
+                      </div>
+
+
+                    </div>
+                  ))}
+                </div>
+              )}
+          </div>
         </div>
       </section>
 
