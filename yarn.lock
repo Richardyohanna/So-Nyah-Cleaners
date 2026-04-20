@@ -241,6 +241,11 @@
   resolved "https://registry.yarnpkg.com/@fontsource/epilogue/-/epilogue-5.2.8.tgz#5b12d29bd5b21056b6e03833da05e8df74fcee83"
   integrity sha512-+V1T+G9RXtLiImA1khsXG6jd5Io/UMJ6LJgYyAYShU9nzZJtI3G/4Hof9Zi6KUMmmH+oTxVN0rXdZc6AOK8Sqg==
 
+"@fontsource/jost@^5.2.8":
+  version "5.2.8"
+  resolved "https://registry.yarnpkg.com/@fontsource/jost/-/jost-5.2.8.tgz#4011b40d8656af3e0d0706d92618e80f96f3922d"
+  integrity sha512-PEK7oGJL8r+YZm6BriWhmCql9DhVYTMt0iEQbZHo8mqfIPIZo67Tm68xEIaRA0yB3wsHA7Tm66yMQDIxq3Bjqw==
+
 "@humanfs/core@^0.19.1":
   version "0.19.1"
   resolved "https://registry.yarnpkg.com/@humanfs/core/-/core-0.19.1.tgz#17c55ca7d426733fe3c561906b8173c336b40a77"

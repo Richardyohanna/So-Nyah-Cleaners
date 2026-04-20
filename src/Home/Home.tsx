@@ -322,8 +322,9 @@ const Home = () => {
                   Cleaning Spaces,
                   <br />
                   
-                    Creating <br />
+                    
                     <span className="text-[var(--primary)] ">
+                    Creating <br />
                     Happy 
                     Faces
                   </span>

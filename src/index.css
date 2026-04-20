@@ -23,13 +23,13 @@ body {
 
 :root {
   --text: #000000;
-  --text-h: #700072;
+  --text-h: #791E7E;
   --text-sub-h: #016e1c;
   --bg: #fcf9f8;
   --bg-section: #f6f3f2;
   --border: #e5e4e7;
   --button-section: #e5e2e1;
-  --primary: #700072;
+  --primary: #791E7E;
   --index-section: #FFD7F6;
 
   --accent-text-sub-h: #016e1c90;

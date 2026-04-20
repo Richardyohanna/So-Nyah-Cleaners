@@ -153,6 +153,20 @@ const About = () => {
       </section>
 
 
+    {/** Our Mission */}
+    <section id="our-mission " className="px-20" >
+
+       <div className="mt-10">
+
+        <div>
+          <h3 className="text-[var(--primary)] head text-[28px] sm:text-[34px] lg:text-[42px] xl:text-[48px] leading-[1.1] font-bold">
+            Our Mission
+          </h3>
+          <div className="border-b-[5px]  w-[80px] sm:w-[100px] border-[var(--primary)]"></div>
+        </div>
+      </ div>
+
+    </section>
 
       <section
         id="our-vision"
