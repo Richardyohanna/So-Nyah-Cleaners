@@ -1011,7 +1011,7 @@ useEffect(() => {
         >
           <div className="bg-white rounded-2xl shadow-xl border border-[#00000010] px-4 py-3">
             <p className="text-sm sm:text-base text-[var(--text)] leading-5">
-              Hello 👋 Do you need us to create you a Happy Face 😊
+              Hello 👋 Tell So-nyah Team what you want 😊
             </p>
           </div>
 
