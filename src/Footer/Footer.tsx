@@ -1,7 +1,22 @@
 import logo from "../assets/logo.jpeg";
 import "./Footer.css";
+import { useNavigate } from "react-router-dom";
+import { getServiceBySlug } from "../data/servicesData";
 
 const Footer = () => {
+
+  
+    const spaceCleaning = getServiceBySlug("space-cleaning");
+    const facadeCleaning = getServiceBySlug("facade-cleaning");
+    const fumigationCleaning = getServiceBySlug("fumigation");
+    const gardening = getServiceBySlug("gardening");
+    const carpetRevamp = getServiceBySlug("carpet-revamp");
+    const facilityManagement = getServiceBySlug("facility-management");
+    const eventCleaning = getServiceBySlug("event-cleaning");
+    const upholsteryCleaning = getServiceBySlug("upholstery-cleaning");
+    const training = getServiceBySlug("training-consulting");
+
+  const navigate = useNavigate();
   return (
     <section
       id="footer"
@@ -9,10 +24,10 @@ const Footer = () => {
     >
       <div className="bg-[var(--primary)] flex flex-col md:flex-row md:flex-wrap lg:flex-nowrap justify-between gap-10 lg:gap-6">
         <div className="flex flex-col gap-6 sm:gap-8 lg:gap-10 max-w-[320px]">
-          <img src={logo} alt="" className="w-[130px] sm:w-[150px] h-auto" />
+          <img src={logo} alt="" className="w-[130px] sm:w-[150px] h-auto cursor-pointer" onClick={() => navigate("/")} />
           <p className="!text-[#fffff2] max-w-[300px] text-sm sm:text-base leading-7">
-            Redefining the standards of hygiene in the nation through
-            eco-conscious innovation and editorial-grade precision.
+            Complete Space Care from deep cleaning to total facility solutions
+            (delivered with eco-friendly, safe, and responsible cleaning practices)
           </p>
         </div>
 
@@ -20,17 +35,32 @@ const Footer = () => {
           <h6 className="font-bold mb-4 sm:mb-6 lg:mb-8 text-[18px] sm:text-[20px] !text-[#fffff2] max-w-[300px]">
             Services
           </h6>
-          <p className="!text-[#fffff2] max-w-[300px] text-sm sm:text-base">
-            Residential Deep Clean
+          <p onClick={() => navigate(`/service/${spaceCleaning?.slug}`)}  className="!text-[#fffff2] cursor-pointer max-w-[300px] text-sm sm:text-base">
+            Space Cleaning
           </p>
-          <p className="!text-[#fffff2] max-w-[300px] text-sm sm:text-base">
-            Post-Construction
+          <p onClick={() => navigate(`/service/${facadeCleaning?.slug}`)} className="!text-[#fffff2] cursor-pointer max-w-[300px] text-sm sm:text-base">
+            Facade Cleaning
           </p>
-          <p className="!text-[#fffff2] max-w-[300px] text-sm sm:text-base">
-            Corporate Sanctuary
+          <p onClick={() => navigate(`/service/${fumigationCleaning?.slug}`)} className="!text-[#fffff2] cursor-pointer max-w-[300px] text-sm sm:text-base">
+            Fumigation
           </p>
-          <p className="!text-[#fffff2] max-w-[300px] text-sm sm:text-base">
-            Eco-Commitment
+          <p onClick={() => navigate(`/service/${gardening?.slug}`)} className="!text-[#fffff2] cursor-pointer max-w-[300px] text-sm sm:text-base">
+            Gardening
+          </p>
+          <p onClick={() => navigate(`/service/${carpetRevamp?.slug}`)} className="!text-[#fffff2]  cursor-pointer max-w-[300px] text-sm sm:text-base">
+            Carpet Revamp
+          </p>
+          <p onClick={() => navigate(`/service/${facilityManagement?.slug}`)} className="!text-[#fffff2] cursor-pointer max-w-[300px] text-sm sm:text-base">
+            Facility Management
+          </p>
+          <p onClick={() => navigate(`/service/${eventCleaning?.slug}`)} className="!text-[#fffff2] cursor-pointer max-w-[300px] text-sm sm:text-base">
+            Event Cleaning
+          </p>
+          <p onClick={() => navigate(`/service/${upholsteryCleaning?.slug}`)} className="!text-[#fffff2] cursor-pointer max-w-[300px] text-sm sm:text-base">
+            Upholstery Cleaning
+          </p>
+          <p onClick={() => navigate(`/service/${training?.slug}`)} className="!text-[#fffff2] cursor-pointer max-w-[300px] text-sm sm:text-base">
+            Training & Consulting
           </p>
         </div>
 
@@ -38,16 +68,19 @@ const Footer = () => {
           <h6 className="font-bold mb-4 sm:mb-6 lg:mb-8 text-[18px] sm:text-[20px] !text-[#fffff2] max-w-[300px]">
             Company
           </h6>
-          <p className="!text-[#fffff2] max-w-[300px] text-sm sm:text-base">
+          <p onClick={() => navigate("/about")} className="!text-[#fffff2] max-w-[300px] cursor-pointer text-sm sm:text-base">
             About Us
           </p>
-          <p className="!text-[#fffff2] max-w-[300px] text-sm sm:text-base">
+          <p onClick={() => navigate("/blog")} className="!text-[#fffff2] max-w-[300px] cursor-pointer text-sm sm:text-base">
             Blog
           </p>
-          <p className="!text-[#fffff2] max-w-[300px] text-sm sm:text-base">
+          <p onClick={() => navigate("/about#team")} className="!text-[#fffff2] max-w-[300px] cursor-pointer text-sm sm:text-base">
             Team
           </p>
-          <p className="!text-[#fffff2] max-w-[300px] text-sm sm:text-base">
+          <p onClick={() => navigate("/services")} className="!text-[#fffff2] max-w-[300px] cursor-pointer text-sm sm:text-base">
+            Service
+          </p>
+          <p onClick={() => navigate("/contact")} className="!text-[#fffff2] max-w-[300px] cursor-pointer text-sm sm:text-base">
             Contact
           </p>
         </div>
@@ -57,20 +90,20 @@ const Footer = () => {
             Contact
           </h6>
           <p className="!text-[#fffff2] max-w-[300px] text-sm sm:text-base">
-            Maitama, Abuja, Nigeria
+            Ahmadu Bello Way, NTA Headquaters Axis, Area 11 Garki Abuja
           </p>
           <p className="!text-[#fffff2] max-w-[300px] text-sm sm:text-base">
-            +234 (0) *** ***
+            +234 909 478 2495
           </p>
           <p className="!text-[#fffff2] max-w-[300px] text-sm sm:text-base">
-            info@sonyah.com
+            sonyahintegratedventures@gmail.com
           </p>
         </div>
       </div>
 
       <div className="flex flex-col md:flex-row w-full justify-between items-start md:items-center border-t-2 border-white pt-4 gap-4 md:gap-5 mt-12 sm:mt-16 lg:mt-20">
         <p className="flex-1 !text-white text-sm sm:text-base">
-          © 2024 So-Nyah Cleaners
+          © 2024 So-nyah Cleaners
         </p>
 
         <div className="flex flex-col sm:flex-row gap-3 sm:gap-5">

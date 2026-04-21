@@ -150,41 +150,25 @@ const reviews: Review[] = [
   {
     id: 1,
     review:
-      "I never knew our office could look this luminous. The botanical scents they use are incredible—no chemical smell at all.",
-    name: "Dr. Adebayo O.",
-    role: "Clinical Director Abuja North",
+      "Excellent work! My husband was genuinely surprised when he entered the house even the kids noticed the difference. Truly impressive results.",
+    name: "Asma’u Buba",
+    role: "",
     image: "",
   },
   {
     id: 2,
     review:
-      "Their team completely transformed our apartment after renovation. Every surface looked polished and fresh, and the whole place felt brand new.",
-    name: "Mrs. Sarah Ibrahim",
-    role: "Homeowner, Wuse II",
+      "My husband specifically mentioned the depth and thoroughness of the cleaning your team carried out. Thank you for such a detailed job",
+    name: "Pee Dinnah2",
+    role: "",
     image: "",
   },
   {
     id: 3,
     review:
-      "The professionalism was outstanding from start to finish. Our workspace felt healthier, brighter, and far more welcoming for staff and clients.",
-    name: "Mr. Daniel Okeke",
-    role: "Operations Manager, Maitama",
-    image: "",
-  },
-  {
-    id: 4,
-    review:
-      "From the first visit, their attention to detail stood out. They brought calm, freshness, and a truly premium finish to our space.",
-    name: "Amina Yusuf",
-    role: "Property Manager, Jabi",
-    image: "",
-  },
-  {
-    id: 5,
-    review:
-      "The service felt thoughtful and refined. Even our guests commented on how clean, light, and pleasant the environment felt afterward.",
-    name: "Tunde Bello",
-    role: "Hospitality Consultant",
+      "I would give the service an 8.5 out of 10. This is not due to any dissatisfaction, but rather room for improvement. Overall, I am very satisfied with the service, and my husband shares the same opinion.",
+    name: "Ms. Summi",
+    role: "",
     image: "",
   },
 ];
@@ -336,7 +320,7 @@ const Home = () => {
 
                 <div className="flex flex-col sm:flex-row gap-4 sm:gap-5 mt-6 w-full sm:w-auto">
                   <button 
-                    onClick={()=> navivgate(`/services`)} 
+                    onClick={()=> navivgate(`/contact`)} 
                     className="bg-white text-[var(--primary)] px-5 py-3 shadow-xl font-semibold transition-all duration-300 hover:scale-105 hover:bg-[var(--primary)] hover:text-white w-full sm:w-auto  "> 
                    
                     Schedule a Visit
