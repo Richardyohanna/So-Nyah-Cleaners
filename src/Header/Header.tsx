@@ -141,7 +141,7 @@ const Header = () => {
 
           {/* Desktop Button */}
           <div className="hidden lg:block">
-            <CustomButton text="Book Now" />
+            <CustomButton text="Contact Us" />
           </div>
 
           {/* Mobile Menu Button */}
@@ -248,7 +248,7 @@ const Header = () => {
             </ul>
 
             <div className="mt-5 w-full sm:w-auto">
-              <CustomButton text="Book Now" />
+              <CustomButton text="Contact Us" />
             </div>
           </nav>
         </div>
