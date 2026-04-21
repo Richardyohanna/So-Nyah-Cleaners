@@ -235,9 +235,11 @@ const Home = () => {
   const [reviewStartIndex, setReviewStartIndex] = useState(0);
   const [currentHeroImageIndex, setCurrentHeroImageIndex] = useState(0);
 
+
   const spaceCleaning = getServiceBySlug("space-cleaning");
   const facadeCleaning = getServiceBySlug("facade-cleaning");
   const fumigationCleaning = getServiceBySlug("fumigation");
+  const gardening = getServiceBySlug("gardening");
 
   const [expandedGalleryItem, setExpandedGalleryItem] = useState<null | {
   type: string;
@@ -245,7 +247,21 @@ const Home = () => {
   after?: string;
   image?: string;
   title: string;
-}>(null);
+  }>(null);
+
+const [showChatBubble, setShowChatBubble] = useState(false);
+
+useEffect(() => {
+  const interval = setInterval(() => {
+    setShowChatBubble(true);
+
+    setTimeout(() => {
+      setShowChatBubble(false);
+    }, 3000);
+  }, 5000);
+
+  return () => clearInterval(interval);
+}, []);
 
   useEffect(() => {
     if (heroImages.length <= 1) return;
@@ -391,7 +407,7 @@ const Home = () => {
       </section>
 
       {/* SERVICE SECTION */}
-      <section id="service" className="mt-20 px-4 sm:px-6 md:px-10 lg:px-20">
+      <section id="service" className="mt-20 px-4 sm:px-6 md:px-10 lg:px-10">
         <h3 className="text-[var(--primary)] head text-[32px] sm:text-[38px] lg:text-[48px] leading-[1.1] font-bold items-center text-center">
           Our Specialized Services
         </h3>
@@ -502,17 +518,52 @@ const Home = () => {
               </div>
             </div>
 
-       <button
-          onClick={() => navivgate("/services")}
-          className="flex flex-row items-center justify-between gap-3 h-fit self-start sm:self-auto transition-all duration-300 hover:translate-x-[3px] group"
-        >
-          <span className="text-[var(--primary)] font-bold">View all</span>
-          <img
-            src={expand}
-            alt="expand"
-            className="shrink-0 transition-all duration-300 group-hover:scale-110"
-          />
-        </button>
+        
+         {/*Gardening */}
+          <div   
+              onClick={()=> navivgate(`/service/${gardening?.slug}`)}           
+              className="w-full sm:max-w-[323px] flex flex-col cursor-pointer group transition-all duration-300 hover:-translate-y-2"
+            >
+              <div className="overflow-hidden rounded-2xl">
+                <img
+                  src={gardening?.heroImage}
+                  alt="service"
+                  className="rounded-2xl h-[260px] sm:h-[320px] lg:max-h-[360px] w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+              </div>
+
+              <div className="flex flex-row mt-3 gap-4 sm:gap-5">
+                <h3 className="text-3xl sm:text-4xl text-[var(--service-number)] shrink-0 transition-colors duration-300 group-hover:text-[var(--primary)]">
+                  0{gardening?.id}
+                </h3>
+
+                <div className="w-full min-w-0 gap-3 flex flex-col items-start">
+                  <h4 className="text-base sm:text-lg font-bold transition-colors duration-300 group-hover:text-[var(--primary)]">
+                    {gardening?.title}
+                  </h4>
+
+                  <p className="break-words transition-colors duration-300 group-hover:text-[#555] line-clamp-3 text-sm sm:text-base">
+                    {gardening?.shortDescription}
+                  </p>
+
+                  <button className="text-[var(--primary)] transition-all duration-300 hover:underline group-hover:translate-x-1">
+                    Read More...
+                  </button>
+                </div>
+              </div>
+            </div>
+
+        <button
+            onClick={() => navivgate("/services")}
+            className="flex flex-row items-center justify-between gap-3 h-fit self-start sm:self-auto transition-all duration-300 hover:translate-x-[3px] group"
+          >
+            <span className="text-[var(--primary)] font-bold">View all Services</span>
+            <img
+              src={expand}
+              alt="expand"
+              className="shrink-0 transition-all duration-300 group-hover:scale-110"
+            />
+          </button>
         </div>
       </section>
 
@@ -662,7 +713,7 @@ const Home = () => {
 
 
       {/* BLOG SECTION */}
-      <section id="blog" className="mt-20 min-h-[700px] overflow-hidden px-4 sm:px-6 md:px-10 lg:px-20">
+      <section id="blog" className="mt-20 min-h-[700px] overflow-hidden px-4 sm:px-6 md:px-10 lg:px10">
        
           <div className="flex flex-nowrap items-center justify-between gap-3 whitespace-nowrap w-full">
             <div className="flex flex-nowrap gap-2 sm:gap-3 whitespace-nowrap">
@@ -949,13 +1000,35 @@ const Home = () => {
         
       </section>
 
+      {/** Floating WhatsApp */}
+      <div className="fixed z-[1000] bottom-4 sm:bottom-6 lg:bottom-10 right-4 sm:right-6 lg:right-17 flex flex-col items-end gap-3">
+        <div
+          className={`relative max-w-[250px] transition-all duration-500 ease-in-out ${
+            showChatBubble
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 translate-y-2 pointer-events-none"
+          }`}
+        >
+          <div className="bg-white rounded-2xl shadow-xl border border-[#00000010] px-4 py-3">
+            <p className="text-sm sm:text-base text-[var(--text)] leading-5">
+              Hello 👋 Do you need us to create you a Happy Face 😊
+            </p>
+          </div>
 
-      {/* FLOATING WHATSAPP */}
-      <button className="fixed z-[1000] rounded-3xl flex px-4 sm:px-5 lg:px-6 bottom-4 sm:bottom-6 lg:bottom-10 right-4 sm:right-6 lg:right-17 shadow-xl text-white bg-[var(--text-sub-h)] py-3 items-center gap-2 sm:gap-3 text-sm sm:text-base">
-        <span className="hidden xs:inline">Chat with Us</span>
-        <span className="sm:hidden">Chat</span>
-        <img src={whatsApp} alt="" className="w-5 h-5 sm:w-auto sm:h-auto" />
-      </button>
+          <div className="absolute -bottom-2 right-6 w-4 h-4 bg-white border-r border-b border-[#00000010] rotate-45" />
+        </div>
+
+        <button className="rounded-3xl flex px-4 sm:px-5 lg:px-6 shadow-xl text-white bg-[var(--text-sub-h)] py-3 items-center gap-2 sm:gap-3 text-sm sm:text-base transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+          <span className="hidden xs:inline">Chat with Us</span>
+          <span className="sm:hidden">Chat</span>
+
+          <img
+            src={whatsApp}
+            alt=""
+            className="w-5 h-5 sm:w-auto sm:h-auto"
+          />
+        </button>
+      </div>
     </div>
   );
 };
