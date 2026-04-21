@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import team from "../assets/team.jpeg";
 import facade from "../assets/facade hero.png";
 import StatsSection from "../component/ui/stat-section";
+import { useNavigate } from "react-router-dom";
 
 type HeroImage = {
   id: number;
@@ -62,6 +63,9 @@ const teams: TeamData[] = [
 ];
 
 const About = () => {
+
+  const navigate = useNavigate();
+
   useEffect(() => {
     if (heroImages.length <= 1) return;
 
@@ -92,7 +96,7 @@ const About = () => {
             <div className="relative z-10">
               <div>
                 <p className="w-full max-w-full lg:max-w-[520px] text-[15px] sm:text-[16px] leading-7 text-[var(--accent-text)] mt-5">
-                  At So-Nyah Cleaners, we believe a clean environment is more than
+                  At So-nyah Cleaners, we believe a clean environment is more than
                   appearance — it is comfort, confidence, health, and peace of mind.
                   Founded with a commitment to excellence, we provide premium cleaning
                   solutions for homes, offices, commercial spaces, furniture, carpets,
@@ -113,21 +117,21 @@ const About = () => {
                   are visible, lasting, and refreshing.
                   <br />
                   <br />
-                  What makes So-Nyah different is our dedication to quality,
+                  What makes So-nyah different is our dedication to quality,
                   reliability, and customer satisfaction. We understand that every
                   client and every space is unique, which is why we tailor our
                   services to meet specific needs and expectations.
                   <br />
                   <br />
-                  At So-Nyah Cleaners, our goal is simple: to create cleaner spaces,
+                  At So-nyah Cleaners, our goal is simple: to create cleaner spaces,
                   healthier environments, and happier faces.
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4 sm:gap-5 mt-6">
-                  <button className="bg-[var(--primary)] text-white px-5 py-3 rounded-3xl font-semibold transition-all duration-300 hover:scale-105 w-full sm:w-auto">
+                  <button onClick={() => navigate("/contact")} className="bg-[var(--primary)] text-white px-5 py-3 rounded-3xl font-semibold transition-all duration-300 hover:scale-105 w-full sm:w-auto">
                     Contact Us
                   </button>
-                  <button className="bg-[var(--bg-section)] text-[var(--primary)] px-5 py-3 rounded-3xl font-semibold transition-all duration-300 hover:scale-105 w-full sm:w-auto">
+                  <button onClick={() => navigate("/services")} className="bg-[var(--bg-section)] text-[var(--primary)] px-5 py-3 rounded-3xl font-semibold transition-all duration-300 hover:scale-105 w-full sm:w-auto">
                     View Our Services
                   </button>
                 </div>
@@ -191,7 +195,7 @@ const About = () => {
             spaces that inspire comfort, confidence, and peace of mind.
             <br />
             <br />
-            At So-Nyah Cleaners, we envision a future where every environment is not
+            At So-nyah Cleaners, we envision a future where every environment is not
             only clean, but truly refreshed — creating happy faces everywhere we
             serve.
           </p>
@@ -212,7 +216,7 @@ const About = () => {
               </h2>
               <p className="max-w-full sm:max-w-[600px] text-white! text-sm sm:text-base mt-2 leading-6">
                 Every team member undergoes 120 hours of specialized training in
-                "The So-Nyah Method".
+                "The So-nyah Method".
               </p>
             </div>
           </div>
