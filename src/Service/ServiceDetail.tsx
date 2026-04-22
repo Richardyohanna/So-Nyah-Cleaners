@@ -111,7 +111,7 @@ const ServiceDetail = () => {
                       <h4 className="text-[17px] sm:text-[19px] font-semibold">
                         {item.title}
                       </h4>
-                      <p className="text-[15px] sm:text-[16px] lg:text-[17px] leading-7 text-white/90">
+                      <p className="text-[15px] sm:text-[16px] lg:text-[17px] leading-7 text-white/90!">
                         {item.description}
                       </p>
                     </div>
