@@ -250,7 +250,7 @@ Our promise is to turn construction sites into move-in ready, excellent environm
   {
     id: 3,
     slug: "facade-cleaning",
-    title: "Facad Cleaning Services",
+    title: "Facade Cleaning Services",
     shortDescription:
       "Your building is your first impression, make it count.",
     intro:
