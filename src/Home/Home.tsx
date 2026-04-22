@@ -12,7 +12,7 @@ import before from "../assets/before 1.jpeg";
 import after2 from "../assets/after 2.jpeg";
 import before2 from "../assets/before 2.jpeg";
 
-import facebook from "../assets/facebook.png";
+
 import instagram from "../assets/instagram.png";
 import twiter from "../assets/twiter.png";
 import mail from "../assets/mailto.png";
@@ -366,13 +366,7 @@ const Home = () => {
 
           {/* QUICK LINKS */}
           <div className="flex flex-row lg:flex-col gap-2 sm:gap-3 md:gap-4 items-center lg:self-center">
-            <button className="w-[43px] h-[43px] sm:w-[49px] sm:h-[49px] md:w-[52px] md:h-[52px] lg:w-[54px] lg:h-[54px] rounded-full border-[2px] lg:border-[3px] border-white flex items-center justify-center transition-all duration-300 ease-in-out hover:border-[var(--primary)] hover:bg-[var(--primary)] hover:scale-110">
-              <img
-                src={facebook}
-                alt="Facebook"
-                className="w-[25px] h-[25px] sm:w-[29px] sm:h-[29px] md:w-[31px] md:h-[31px] lg:w-[34px] lg:h-[34px] object-contain transition-all duration-300"
-              />
-            </button>
+
 
             <button className="w-[43px] h-[43px] sm:w-[49px] sm:h-[49px] md:w-[52px] md:h-[52px] lg:w-[54px] lg:h-[54px] rounded-full border-[2px] lg:border-[3px] border-white flex items-center justify-center transition-all duration-300 ease-in-out hover:border-[var(--primary)] hover:bg-[var(--primary)] hover:scale-110">
               <img

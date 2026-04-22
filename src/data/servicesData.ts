@@ -76,6 +76,7 @@ export const servicesData: ServiceItem[] = [
     title: "Space Cleaning",
     shortDescription:
       `Let your space speak before you do with the So-nyah effect.
+
       At So-nyah Cleaners handle deep cleaning of private residence, hotel apartments, corporate office, or commercial properties. A clean environment is not luxury, it is a reflection of standard, discipline, and attention to detail.
 
       We deliver structured and professional cleaning solutions designed to create smiles, elevate your space and restore order, using safe products and eco conscious methods that protect both your space and its occupants.
@@ -95,6 +96,7 @@ export const servicesData: ServiceItem[] = [
     ctaText: "Schedule Deep Clean",
     processIntro:
       `Let your space speak before you do with the So-nyah effect.
+
        At So-nyah Cleaners handle deep cleaning of private residence, hotel apartments, corporate office, or commercial properties. A clean environment is not luxury, it is a reflection of standard, discipline, and attention to detail.
 
         We deliver structured and professional cleaning solutions designed to create smiles, elevate your space and restore order, using safe products and eco conscious methods that protect both your space and its occupants.
@@ -165,7 +167,8 @@ export const servicesData: ServiceItem[] = [
     slug: "post-construction",
     title: "Post-Construction Cleaning",
     shortDescription:
-      `Construction may be complete, but the project is not finished until the space is professionally cleaned. So-nyah Cleaners turns your site to a statement.
+      `Construction may be complete, but the project is not finished until the space is professionally cleaned. 
+      So-nyah Cleaners turns your site to a statement.
 Over here, we understand that post-construction cleaning signifies a holistic approach that reveals the true quality of the work done. Dust, paint splashes, cement residue, adhesive marks, and debris can hide the beauty of a newly built or renovated space when left untouched.
 Our promise is to turn construction sites into move-in ready, excellent environments.
 `,
@@ -182,9 +185,11 @@ Our promise is to turn construction sites into move-in ready, excellent environm
     crewSize: "Lead Consultant + Team",
     ctaText: "Book Training Session",
     processIntro:
-      `Construction may be complete, but the project is not finished until the space is professionally cleaned. So-nyah Cleaners turns your site to a statement.
-Over here, we understand that post-construction cleaning signifies a holistic approach that reveals the true quality of the work done. Dust, paint splashes, cement residue, adhesive marks, and debris can hide the beauty of a newly built or renovated space when left untouched.
-Our promise is to turn construction sites into move-in ready, excellent environments.
+      `Construction may be complete, but the project is not finished until the space is professionally cleaned. So-nyah Cleaners turns your site to a statement. 
+      
+      Over here, we understand that post-construction cleaning signifies a holistic approach that reveals the true quality of the work done. Dust, paint splashes, cement residue, adhesive marks, and debris can hide the beauty of a newly built or renovated space when left untouched.
+      
+      Our promise is to turn construction sites into move-in ready, excellent environments.
 `,
     faqs: [
       {
@@ -255,6 +260,7 @@ Our promise is to turn construction sites into move-in ready, excellent environm
       "Your building is your first impression, make it count.",
     intro:
       `Your building is your first impression, make it count.
+
 A clean exterior communicates professionalism, excellence, and attention to detail before anyone steps inside.
 
 Using specialised equipment and safe cleaning methods, So-nyah restores building facades, glass panels, and exterior surfaces to a clean, polished, and professional standard.
@@ -268,6 +274,7 @@ Using specialised equipment and safe cleaning methods, So-nyah restores building
     ctaText: "Schedule Facade Cleaning",
     processIntro:
        `Your building is your first impression, make it count.
+
 A clean exterior communicates professionalism, excellence, and attention to detail before anyone steps inside.
 
 Using specialised equipment and safe cleaning methods, So-nyah restores building facades, glass panels, and exterior surfaces to a clean, polished, and professional standard.
@@ -345,6 +352,7 @@ So-nyah Cleaners provides comprehensive facility management services, from clean
 `,
     intro:
       `We manage your space Facility so you can focus on what matters.
+
 Maintaining a commercial property or residential estate requires structure, consistency, and attention to detail.
 
 So-nyah Cleaners provides comprehensive facility management services, from cleaning operations, maintenance coordination, and routine upkeep; ensuring your environment runs efficiently, professionally, and without disruption.
@@ -358,6 +366,7 @@ So-nyah Cleaners provides comprehensive facility management services, from clean
     ctaText: "Request Proposal",
     processIntro:
       `We manage your space Facility so you can focus on what matters.
+
 Maintaining a commercial property or residential estate requires structure, consistency, and attention to detail.
 
 So-nyah Cleaners provides comprehensive facility management services, from cleaning operations, maintenance coordination, and routine upkeep; ensuring your environment runs efficiently, professionally, and without disruption.
@@ -786,12 +795,14 @@ Our spraying and fogging pest control solutions are strategic, safe, and effecti
     title: "Gardening Care & Revamp",
     shortDescription:
       `First impressions begin before the door opens.
+
 Your outdoor environment sets the tone for everything inside. Well-maintained lawn, trimmed greenery, and clean surroundings communicate care and prestige.
 
 We provide professional garden maintenance and outdoor cleaning services that ensure your property stands out, always.
 `,
     intro:
       `First impressions begin before the door opens.
+
 Your outdoor environment sets the tone for everything inside. Well-maintained lawn, trimmed greenery, and clean surroundings communicate care and prestige.
 
 We provide professional garden maintenance and outdoor cleaning services that ensure your property stands out, always.
@@ -805,6 +816,7 @@ We provide professional garden maintenance and outdoor cleaning services that en
     ctaText: "Book Gardening",
     processIntro:
      `  First impressions begin before the door opens.
+
 Your outdoor environment sets the tone for everything inside. Well-maintained lawn, trimmed greenery, and clean surroundings communicate care and prestige.
 
 We provide professional garden maintenance and outdoor cleaning services that ensure your property stands out, always.`,
@@ -877,12 +889,14 @@ We provide professional garden maintenance and outdoor cleaning services that en
     `For more than seven (7) years, So-nyah Cleaners has immersed itself in various cleaning industry trainings, learning and hands-on experiences with proven results. We are well equipped to build capacity and guide prospective cleaners into the cleaning industry.
 
 Through our training and consulting services, we will be help individuals and organisations develop structured cleaning systems, well trained professional teams, and a strategically position their operations for long-term growth and profitability.
+
 The mandate of our Training and Consulting arm is hold each individual and orgnisation by hand and give in-depth guidance from start to finish.
 `,
   intro:
    `For more than seven (7) years, So-nyah Cleaners has immersed itself in various cleaning industry trainings, learning and hands-on experiences with proven results. We are well equipped to build capacity and guide prospective cleaners into the cleaning industry.
 
 Through our training and consulting services, we will be help individuals and organisations develop structured cleaning systems, well trained professional teams, and a strategically position their operations for long-term growth and profitability.
+
 The mandate of our Training and Consulting arm is hold each individual and orgnisation by hand and give in-depth guidance from start to finish.
 `,
   heroImage: hero3,
@@ -896,6 +910,7 @@ The mandate of our Training and Consulting arm is hold each individual and orgni
     `For more than seven (7) years, So-nyah Cleaners has immersed itself in various cleaning industry trainings, learning and hands-on experiences with proven results. We are well equipped to build capacity and guide prospective cleaners into the cleaning industry.
 
 Through our training and consulting services, we will be help individuals and organisations develop structured cleaning systems, well trained professional teams, and a strategically position their operations for long-term growth and profitability.
+
 The mandate of our Training and Consulting arm is hold each individual and orgnisation by hand and give in-depth guidance from start to finish.
 `,
   faqs: [

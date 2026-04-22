@@ -92,6 +92,8 @@ section {
 
 p {
   color: #52424F;
+  font-size: 20px;
+  line-height: 1.6;
 }
 
 .head {
