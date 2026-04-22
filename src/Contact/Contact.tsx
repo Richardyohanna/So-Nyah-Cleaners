@@ -1,7 +1,7 @@
 import addressIcon from "../assets/address.png";
 import inquiryIcon from "../assets/inquiry.png";
 
-import facebookIcon from "../assets/icons8-facebook-50.png";
+
 import linkedlnIcon from "../assets/icons8-linkedin-50.png";
 import instagramIcon from "../assets/icons8-instagram-50.png";
 import twiterIcon from "../assets/icons8-twitter-50.png";
@@ -186,13 +186,7 @@ const Contact = () => {
               </h3>
 
               <div className="flex pt-3 gap-3 sm:gap-4 flex-wrap">
-                <button>
-                  <img
-                    src={facebookIcon}
-                    alt="facebook"
-                    className="w-10 h-10 sm:w-12 sm:h-12"
-                  />
-                </button>
+
 
                 <button>
                   <img
