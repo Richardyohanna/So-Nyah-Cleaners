@@ -94,7 +94,11 @@ export const servicesData: ServiceItem[] = [
     crewSize: "3 Specialists",
     ctaText: "Schedule Deep Clean",
     processIntro:
-      "Your space, transformed from the inside out. At So-Nyah Cleaners, our Space Cleaning service goes beyond the surface. We combine professional deep cleaning, targeted pest control, and thorough sanitisation to give homes and offices in Abuja a genuinely fresh start.",
+      `Let your space speak before you do with the So-nyah effect.
+       At So-nyah Cleaners handle deep cleaning of private residence, hotel apartments, corporate office, or commercial properties. A clean environment is not luxury, it is a reflection of standard, discipline, and attention to detail.
+
+        We deliver structured and professional cleaning solutions designed to create smiles, elevate your space and restore order, using safe products and eco conscious methods that protect both your space and its occupants.
+      `,
     faqs: [
       {
         question: "Do i need to be home?",
@@ -178,7 +182,10 @@ Our promise is to turn construction sites into move-in ready, excellent environm
     crewSize: "Lead Consultant + Team",
     ctaText: "Book Training Session",
     processIntro:
-      "We turn newly built or renovated spaces into clean, polished, and move-in ready environments by removing dust, debris, paint splashes, and construction residue.",
+      `Construction may be complete, but the project is not finished until the space is professionally cleaned. So-nyah Cleaners turns your site to a statement.
+Over here, we understand that post-construction cleaning signifies a holistic approach that reveals the true quality of the work done. Dust, paint splashes, cement residue, adhesive marks, and debris can hide the beauty of a newly built or renovated space when left untouched.
+Our promise is to turn construction sites into move-in ready, excellent environments.
+`,
     faqs: [
       {
         question: "Is this only for cleaning companies?",
@@ -260,7 +267,11 @@ Using specialised equipment and safe cleaning methods, So-nyah restores building
     crewSize: "3-5 Specialists",
     ctaText: "Schedule Facade Cleaning",
     processIntro:
-      "Your building is your first impression, make it count.",
+       `Your building is your first impression, make it count.
+A clean exterior communicates professionalism, excellence, and attention to detail before anyone steps inside.
+
+Using specialised equipment and safe cleaning methods, So-nyah restores building facades, glass panels, and exterior surfaces to a clean, polished, and professional standard.
+`,
     faqs: [
       {
         question: "Can you clean high surfaces safely?",
@@ -327,7 +338,11 @@ Using specialised equipment and safe cleaning methods, So-nyah restores building
     slug: "facility-management",
     title: "Facility Management",
     shortDescription:
-      "We manage your space Facility so you can focus on what matters.",
+        `We manage your space Facility so you can focus on what matters.
+Maintaining a commercial property or residential estate requires structure, consistency, and attention to detail.
+
+So-nyah Cleaners provides comprehensive facility management services, from cleaning operations, maintenance coordination, and routine upkeep; ensuring your environment runs efficiently, professionally, and without disruption.
+`,
     intro:
       `We manage your space Facility so you can focus on what matters.
 Maintaining a commercial property or residential estate requires structure, consistency, and attention to detail.
@@ -413,7 +428,10 @@ So-nyah Cleaners provides comprehensive facility management services, from clean
     slug: "event-cleaning",
     title: "Event Cleaning",
     shortDescription:
-      "Pre-event preparation and post-event restoration for elite gatherings.",
+      `So-nyah Cleaners collaborates with Event managers, planners, coordinators and vendors to handle all cleaning concerns, from pre-event setup to post-event dismantle. Our mandate is to ensure your entire venue remains spotless at every stage.
+
+Your guests should remember the experience; not the mess. We take care of the cleaning, so you can focus on delivering excellence.
+`,
     intro:
       `So-nyah Cleaners collaborates with Event managers, planners, coordinators and vendors to handle all cleaning concerns, from pre-event setup to post-event dismantle. Our mandate is to ensure your entire venue remains spotless at every stage.
 
@@ -497,7 +515,10 @@ Your guests should remember the experience; not the mess. We take care of the cl
     slug: "upholstery-cleaning",
     title: "Upholstery Cleaning",
     shortDescription:
-      "Your furniture deserves more attention than just surface care.",
+      `Your furniture deserves more attention than just surface care. Sofas, chairs, and mattresses quietly accumulate dust mites, bacteria, and allergens that ordinary cleaning cannot remove. What you do not see often affects comfort, air quality, and overall wellbeing.
+
+Our deep upholstery cleaning process penetrates beneath the surface; removing embedded contaminants while restoring freshness, texture, and appearance.
+`,
     intro:
       `Your furniture deserves more attention than just surface care. Sofas, chairs, and mattresses quietly accumulate dust mites, bacteria, and allergens that ordinary cleaning cannot remove. What you do not see often affects comfort, air quality, and overall wellbeing.
 
@@ -511,7 +532,10 @@ Our deep upholstery cleaning process penetrates beneath the surface; removing em
     crewSize: "2 Specialists",
     ctaText: "Book Upholstery Clean",
     processIntro:
-      "So-Nyah Cleaners' Upholstery Cleaning service uses professional steam extraction and fabric-safe techniques to reach deep into your furniture fibres, lifting out what has built up over months or years.",
+      `Your furniture deserves more attention than just surface care. Sofas, chairs, and mattresses quietly accumulate dust mites, bacteria, and allergens that ordinary cleaning cannot remove. What you do not see often affects comfort, air quality, and overall wellbeing.
+
+Our deep upholstery cleaning process penetrates beneath the surface; removing embedded contaminants while restoring freshness, texture, and appearance.
+`,
     faqs: [
       {
         question: "Can you clean delicate fabrics?",
@@ -578,7 +602,12 @@ Our deep upholstery cleaning process penetrates beneath the surface; removing em
     slug: "carpet-revamp",
     title: "Carpet Revamp",
     shortDescription:
-      "So-nyah Cleaners do not just clean carpets, we specialise in restoring them, by paying attention to tough stains.",
+      `So-nyah Cleaners do not just clean carpets, we specialise in restoring them, by paying attention to tough stains.
+
+What appears worn-out or permanently stained is often the result of incomplete cleaning. With the right professional treatment, most carpets can be revived to a near new condition.
+
+Let So-nyah Carpet revamp bring life back into your space.
+`,
     intro:
      `So-nyah Cleaners do not just clean carpets, we specialise in restoring them, by paying attention to tough stains.
 
@@ -669,7 +698,10 @@ Let So-nyah Carpet revamp bring life back into your space.
     slug: "fumigation",
     title: "Pest Control & General Fumigation",
     shortDescription:
-      "In Nigeria’s climate, infestations can escalate quickly if not handled professionally.",
+      `In Nigeria’s climate, infestations can escalate quickly if not handled professionally. From insects to rodents, to reptiles to infestations, no space is completely immune.
+
+Our spraying and fogging pest control solutions are strategic, safe, and effective; eliminating existing infestations while preventing future occurrences using environmentally approved chemicals and responsible treatment methods
+`,
     intro:
       `In Nigeria’s climate, infestations can escalate quickly if not handled professionally. From insects to rodents, to reptiles to infestations, no space is completely immune.
 
@@ -753,7 +785,11 @@ Our spraying and fogging pest control solutions are strategic, safe, and effecti
     slug: "gardening",
     title: "Gardening Care & Revamp",
     shortDescription:
-      "First impressions begin before the door opens.",
+      `First impressions begin before the door opens.
+Your outdoor environment sets the tone for everything inside. Well-maintained lawn, trimmed greenery, and clean surroundings communicate care and prestige.
+
+We provide professional garden maintenance and outdoor cleaning services that ensure your property stands out, always.
+`,
     intro:
       `First impressions begin before the door opens.
 Your outdoor environment sets the tone for everything inside. Well-maintained lawn, trimmed greenery, and clean surroundings communicate care and prestige.
@@ -838,13 +874,17 @@ We provide professional garden maintenance and outdoor cleaning services that en
   slug: "training",
   title: "Cleaning Training & Consultancy Services",
   shortDescription:
-    "We equip individuals and organisations with the knowledge, systems, and guidance needed to build successful cleaning operations.",
+    `For more than seven (7) years, So-nyah Cleaners has immersed itself in various cleaning industry trainings, learning and hands-on experiences with proven results. We are well equipped to build capacity and guide prospective cleaners into the cleaning industry.
+
+Through our training and consulting services, we will be help individuals and organisations develop structured cleaning systems, well trained professional teams, and a strategically position their operations for long-term growth and profitability.
+The mandate of our Training and Consulting arm is hold each individual and orgnisation by hand and give in-depth guidance from start to finish.
+`,
   intro:
-    `For more than seven years, So-nyah Cleaners has gained extensive industry training, practical experience, and proven results in professional cleaning services.
+   `For more than seven (7) years, So-nyah Cleaners has immersed itself in various cleaning industry trainings, learning and hands-on experiences with proven results. We are well equipped to build capacity and guide prospective cleaners into the cleaning industry.
 
-Through our training and consultancy services, we help individuals and organisations build structured cleaning systems, develop well-trained professional teams, and position their operations for long-term growth and profitability.
-
-Our goal is to guide every client from start to finish with practical, in-depth support that builds confidence, capacity, and lasting success in the cleaning industry.`,
+Through our training and consulting services, we will be help individuals and organisations develop structured cleaning systems, well trained professional teams, and a strategically position their operations for long-term growth and profitability.
+The mandate of our Training and Consulting arm is hold each individual and orgnisation by hand and give in-depth guidance from start to finish.
+`,
   heroImage: hero3,
   cardIcon: gardening,
   whyChooseImage: survey4,
@@ -853,9 +893,11 @@ Our goal is to guide every client from start to finish with practical, in-depth 
   crewSize: "1-2 Consultants",
   ctaText: "Book Training",
   processIntro:
-    `For more than seven years, So-nyah Cleaners has built deep expertise through industry training, hands-on experience, and proven results.
+    `For more than seven (7) years, So-nyah Cleaners has immersed itself in various cleaning industry trainings, learning and hands-on experiences with proven results. We are well equipped to build capacity and guide prospective cleaners into the cleaning industry.
 
-We help individuals and organisations develop structured cleaning systems, train professional teams, and position their operations for sustainable growth and profitability.`,
+Through our training and consulting services, we will be help individuals and organisations develop structured cleaning systems, well trained professional teams, and a strategically position their operations for long-term growth and profitability.
+The mandate of our Training and Consulting arm is hold each individual and orgnisation by hand and give in-depth guidance from start to finish.
+`,
   faqs: [
     {
       question: "Who are these training and consultancy services for?",

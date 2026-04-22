@@ -53,10 +53,10 @@ const ServiceDetail = () => {
           className="absolute inset-0 w-full h-full object-cover"
         />
 
-        <div className="absolute inset-0 bg-black/40" />
+        <div className="absolute inset-0 bg-black/40  sm:bg-black/20 lg:bg-black/40"  />
 
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/25 to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/25 to-transparent sm:from-black/70 sm:via-black/25 lg:from-black/85 lg:via-black/30"></div>
         </div>
       </div>
 
@@ -67,9 +67,9 @@ const ServiceDetail = () => {
               {service.title}
             </h1>
 
-            <p className="max-w-[520px] !text-[#fffff0] mt-3 sm:mt-5 text-xs sm:text-base leading-5 sm:leading-7">
+            {/*<p className="max-w-[520px] !text-[#fffff0] mt-3 sm:mt-5 text-xs sm:text-base leading-5 sm:leading-7">
               {service.intro}
-            </p>
+            </p> */}
           </div>
         </div>
       </div>
@@ -80,7 +80,7 @@ const ServiceDetail = () => {
         className="flex flex-col lg:flex-row justify-between mt-10 gap-10 lg:gap-20 px-4 sm:px-6 md:px-10 lg:px-20"
       >
         <div className="flex flex-col max-w-[790px] w-full">
-          <h2 className="font-bold text-2xl sm:text-3xl">Our Meticulous Process</h2>
+          {/*<h2 className="font-bold text-2xl sm:text-3xl">Our Meticulous Process</h2> */}
           <p className="mt-4 text-sm sm:text-base">{service.processIntro}</p>
 
           <section
