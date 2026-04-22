@@ -232,9 +232,9 @@ const Home = () => {
   const [currentHeroImageIndex, setCurrentHeroImageIndex] = useState(0);
 
   const spaceCleaning = getServiceBySlug("space-cleaning");
-  const facadeCleaning = getServiceBySlug("facade-cleaning");
-  const fumigationCleaning = getServiceBySlug("fumigation");
-  const gardening = getServiceBySlug("gardening");
+  const facadeCleaning = getServiceBySlug("post-construction");
+  const fumigationCleaning = getServiceBySlug("facade-cleaning");
+  const gardening = getServiceBySlug("facility-management");
 
   const [expandedGalleryItem, setExpandedGalleryItem] = useState<null | {
     type: string;
@@ -317,10 +317,11 @@ const Home = () => {
             />
           ))}
 
-          <div className="absolute inset-0 bg-black/40" />
-          <div className="absolute inset-0 z-0">
-            <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/30 to-transparent" />
-          </div>
+        <div className="absolute inset-0 bg-black/20 sm:bg-black/30 lg:bg-black/40" />
+
+        <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 bg-gradient-to-r from-black/55 via-black/15 to-transparent sm:from-black/70 sm:via-black/25 lg:from-black/85 lg:via-black/30" />
+        </div>
         </div>
 
         {/* Foreground content */}
@@ -338,11 +339,11 @@ const Home = () => {
                   </span>
                 </h1>
 
-                <p className="max-w-[520px] !text-white mt-5 text-sm sm:text-base md:text-[15px] lg:text-base leading-6 md:leading-7">
+               {/*} <p className="max-w-[520px] !text-white mt-5 text-sm sm:text-base md:text-[15px] lg:text-base leading-6 md:leading-7">
                   Complete Space Care from deep cleaning to total facility
                   solutions (delivered with eco-friendly, safe, and responsible
                   cleaning practices)
-                </p>
+                </p> */}
 
                 <div className="flex flex-col sm:flex-row gap-4 sm:gap-5 mt-6 w-full sm:w-auto">
                   <button
@@ -994,7 +995,7 @@ const Home = () => {
         >
           <div className="bg-white rounded-2xl shadow-xl border border-[#00000010] px-4 py-3">
             <p className="text-sm sm:text-base text-[var(--text)] leading-5">
-              Hello 👋 Tell So-nyah Team what you want 😊
+              Hello, please tell So-nyah Team the service you need 😊
             </p>
           </div>
 
