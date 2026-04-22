@@ -159,7 +159,7 @@ export const servicesData: ServiceItem[] = [
     {
     id: 2,
     slug: "post-construction",
-    title: "POST-CONSTRUCTION CLEANING",
+    title: "Post-Construction Cleaning",
     shortDescription:
       `Construction may be complete, but the project is not finished until the space is professionally cleaned. So-nyah Cleaners turns your site to a statement.
 Over here, we understand that post-construction cleaning signifies a holistic approach that reveals the true quality of the work done. Dust, paint splashes, cement residue, adhesive marks, and debris can hide the beauty of a newly built or renovated space when left untouched.
