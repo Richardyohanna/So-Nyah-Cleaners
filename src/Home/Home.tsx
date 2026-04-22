@@ -988,7 +988,7 @@ const Home = () => {
           }`}
         >
           <div className="bg-white rounded-2xl shadow-xl border border-[#00000010] px-4 py-3">
-            <p className="text-sm sm:text-base text-[var(--text)] leading-5">
+            <p className="text-sm sm:text-base text-[14px]! text-[var(--text)] leading-5">
               Hello, please tell So-nyah Team the service you need 😊
             </p>
           </div>
