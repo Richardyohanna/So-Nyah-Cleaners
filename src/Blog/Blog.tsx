@@ -290,7 +290,7 @@ const Blog = () => {
 
                 <p className="mt-4 text-sm sm:text-base md:text-lg text-white/85! leading-7 max-w-[560px]">
                   Subscribe to receive practical cleaning tips, wellness-focused
-                  articles, eco-friendly ideas, and updates from So-Nyah Cleaners
+                  articles, eco-friendly ideas, and updates from <br/> So-nyah Cleaners
                   straight to your inbox.
                 </p>
 
