@@ -308,7 +308,7 @@ const Blog = () => {
                   </div>
 
                   <p className="text-[12px] sm:text-sm text-[#666] mt-3 px-1 leading-6 ">
-                    By subscribing, you agree to receive email updates from<br />So-Nyah Cleaners.
+                    By subscribing, you agree to receive email updates from<br />So-nyah Cleaners.
                   </p>
                 </div>
               </div>
