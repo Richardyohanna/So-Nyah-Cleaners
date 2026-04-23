@@ -139,39 +139,35 @@ const Blog = () => {
 
   return (
     <div className="px-4 sm:px-6 md:px-8 lg:px-10 py-8 sm:py-10 bg-white pb-16 sm:pb-20">
-      <section
-        id="searchHeader"
-        className="
-          bg-[rgba(246,243,242,1)]
-          backdrop-blur-md
-          rounded-2xl sm:rounded-3xl
-          flex flex-col lg:flex-row
-          lg:items-center
-          gap-4 sm:gap-5
-          p-4 sm:p-5
-          w-full
-        "
-      >
-        <div className="bg-white px-4 sm:px-5 flex items-center rounded-2xl sm:rounded-3xl h-[54px] sm:h-[58px] w-full lg:w-[380px] xl:w-[420px] shrink-0">
-          <img src={search} alt="Search" className="w-5 h-5 opacity-70 shrink-0" />
-          <input
-            type="text"
-            placeholder="Search for an article..."
-            className="px-3 py-2 rounded-md w-full bg-transparent outline-none text-[var(--primary)] placeholder:text-[var(--primary)] placeholder:opacity-70 text-sm sm:text-base"
-          />
-        </div>
-
-        <div
-          ref={scrollRef}
-          onWheel={handleWheelScroll}
-          className="
-            flex gap-3 w-full
-            overflow-x-auto overflow-y-hidden
-            whitespace-nowrap
-            scroll-smooth
-            scrollbar-hide
-          "
+        <section
+            id="searchHeader"
+            className="
+            bg-[rgba(246,243,242,1)]
+            backdrop-blur-md
+            rounded-2xl sm:rounded-3xl
+            flex flex-col lg:flex-row
+            lg:items-center
+            gap-4 sm:gap-5
+            p-4 sm:p-5
+            w-full max-w-full overflow-hidden
+            "
         >
+            
+            <input placeholder="Search for an article..." className="bg-white px-4 sm:px-5 flex items-center rounded-2xl sm:rounded-3xl h-[54px] sm:h-[58px] w-full lg:w-[380px] xl:w-[420px] shrink-0 outline-none" />
+            
+           
+
+            <div
+            ref={scrollRef}
+            onWheel={handleWheelScroll}
+            className="
+                flex gap-3 w-full max-w-full
+                overflow-x-auto overflow-y-hidden
+                whitespace-nowrap
+                scroll-smooth
+                scrollbar-hide
+            "
+            >
           {categories.map((category) => {
             const isActive = activeCategory === category.slug;
 
