@@ -699,7 +699,7 @@ const Home = () => {
 
       {/* BLOG SECTION */}
       <section id="blog" className="mt-20 min-h-[700px] overflow-hidden px-4 sm:px-6 md:px-8 lg:px-10">
-        <div className="flex flex-nowrap items-center justify-between gap-3 whitespace-nowrap w-full overflow-x-auto scrollbar-hide">
+        <div className="flex flex-nowrap items-center justify-between gap-3 whitespace-nowrap w-full ">
           <div className="flex flex-nowrap gap-2 sm:gap-3 whitespace-nowrap">
             <button
               onClick={() => {
