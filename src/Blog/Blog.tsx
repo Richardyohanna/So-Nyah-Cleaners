@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import search from "../assets/search.png";
+//import search from "../assets/search.png";
 
 import blog1 from "../assets/blog1.png";
 import blog2 from "../assets/blog2.png";
