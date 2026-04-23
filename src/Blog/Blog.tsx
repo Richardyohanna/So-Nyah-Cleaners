@@ -1,5 +1,4 @@
 import { useRef, useState } from "react";
-//import search from "../assets/search.png";
 
 import blog1 from "../assets/blog1.png";
 import blog2 from "../assets/blog2.png";
@@ -33,7 +32,7 @@ const categories: Category[] = [
   { name: "Cleaning Myths", slug: "cleaning-myths" },
 ];
 
-type Blog = {
+type BlogItem = {
   id: number;
   category: string;
   title: string;
@@ -43,7 +42,7 @@ type Blog = {
   aurthor_image: string;
 };
 
-const blogs: Blog[] = [
+const blogs: BlogItem[] = [
   {
     id: 1,
     category: "GREEN LIVING",
@@ -131,43 +130,53 @@ const Blog = () => {
   const scrollRef = useRef<HTMLDivElement | null>(null);
 
   const handleWheelScroll = (e: React.WheelEvent<HTMLDivElement>) => {
-    if (scrollRef.current) {
-      e.preventDefault();
-      scrollRef.current.scrollLeft += e.deltaY;
-    }
+    if (!scrollRef.current) return;
+    e.preventDefault();
+    scrollRef.current.scrollLeft += e.deltaY;
   };
 
   return (
-    <div className="px-4 sm:px-6 md:px-8 lg:px-10 py-8 sm:py-10 bg-white pb-16 sm:pb-20">
-        <section
-            id="searchHeader"
-            className="
-            bg-[rgba(246,243,242,1)]
-            backdrop-blur-md
+    <div className="px-4 sm:px-6 md:px-8 lg:px-10 py-8 sm:py-10 bg-white pb-16 sm:pb-20 overflow-x-hidden">
+      <section
+        id="searchHeader"
+        className="
+          bg-[rgba(246,243,242,1)]
+          backdrop-blur-md
+          rounded-2xl sm:rounded-3xl
+          flex flex-col lg:flex-row
+          lg:items-center
+          gap-4 sm:gap-5
+          p-4 sm:p-5
+          w-full max-w-full
+        "
+      >
+        <input
+          type="text"
+          placeholder="Search for an article..."
+          className="
+            bg-white
+            px-4 sm:px-5
             rounded-2xl sm:rounded-3xl
-            flex flex-col lg:flex-row
-            lg:items-center
-            gap-4 sm:gap-5
-            p-4 sm:p-5
-            w-full max-w-full overflow-hidden
-            "
-        >
-            
-            <input placeholder="Search for an article..." className="bg-white px-4 sm:px-5 flex items-center rounded-2xl sm:rounded-3xl h-[54px] sm:h-[58px] w-full lg:w-[380px] xl:w-[420px] shrink-0 outline-none" />
-            
-           
+            h-[54px] sm:h-[58px]
+            w-full lg:w-[380px] xl:w-[420px]
+            shrink-0
+            outline-none
+            text-[var(--primary)]
+            placeholder:text-[var(--primary)]/60
+          "
+        />
 
-            <div
-            ref={scrollRef}
-            onWheel={handleWheelScroll}
-            className="
-                flex gap-3 w-full max-w-full
-                overflow-x-auto overflow-y-hidden
-                whitespace-nowrap
-                scroll-smooth
-                scrollbar-hide
-            "
-            >
+        <div
+          ref={scrollRef}
+          onWheel={handleWheelScroll}
+          className="
+            flex gap-3 w-full min-w-0
+            overflow-x-auto overflow-y-hidden
+            whitespace-nowrap
+            scroll-smooth
+            scrollbar-hide
+          "
+        >
           {categories.map((category) => {
             const isActive = activeCategory === category.slug;
 
@@ -194,9 +203,9 @@ const Blog = () => {
 
       <section id="blogs" className="mt-8 sm:mt-10">
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 lg:gap-8">
-          {blogs.map((article, index) => (
+          {blogs.map((article) => (
             <div
-              key={index}
+              key={article.id}
               className="w-full cursor-pointer border border-[#0000001a] rounded-2xl overflow-hidden bg-white transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-[var(--primary)] group"
             >
               <img
@@ -244,7 +253,11 @@ const Blog = () => {
 
         <section className="flex gap-3 sm:gap-5 justify-center items-center mt-10 sm:mt-12 flex-wrap">
           <button className="rounded-full border border-[var(--primary)] w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center transition-all duration-300 hover:bg-[var(--primary)] hover:scale-105 group">
-            <img src={back} alt="back" className="w-4 h-4 sm:w-5 sm:h-5 group-hover:brightness-0 group-hover:invert" />
+            <img
+              src={back}
+              alt="back"
+              className="w-4 h-4 sm:w-5 sm:h-5 group-hover:brightness-0 group-hover:invert"
+            />
           </button>
 
           <button className="rounded-full text-white w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center bg-[var(--primary)] font-semibold">
@@ -252,7 +265,11 @@ const Blog = () => {
           </button>
 
           <button className="rounded-full border border-[var(--primary)] w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center transition-all duration-300 hover:bg-[var(--primary)] hover:scale-105 group">
-            <img src={next} alt="next" className="w-4 h-4 sm:w-5 sm:h-5 group-hover:brightness-0 group-hover:invert" />
+            <img
+              src={next}
+              alt="next"
+              className="w-4 h-4 sm:w-5 sm:h-5 group-hover:brightness-0 group-hover:invert"
+            />
           </button>
         </section>
 
@@ -271,9 +288,10 @@ const Blog = () => {
                   Get fresh cleaning insights delivered weekly.
                 </h2>
 
-                <p className="mt-4 text-sm sm:text-base md:text-lg text-white/85! leading-7 max-w-[560px]">
-                  Subscribe to receive practical cleaning tips, wellness-focused articles,
-                  eco-friendly ideas, and updates from So-Nyah Cleaners straight to your inbox.
+                <p className="mt-4 text-sm sm:text-base md:text-lg text-white/85 leading-7 max-w-[560px]">
+                  Subscribe to receive practical cleaning tips, wellness-focused
+                  articles, eco-friendly ideas, and updates from So-Nyah Cleaners
+                  straight to your inbox.
                 </p>
 
                 <div className="mt-5 flex flex-wrap gap-3 text-xs sm:text-sm text-white/85">
@@ -303,8 +321,10 @@ const Blog = () => {
                     </button>
                   </div>
 
-                  <p className="text-[12px] sm:text-sm text-[#666] mt-3 px-1 leading-6 ">
-                    By subscribing, you agree to receive email updates from<br />So-nyah Cleaners.
+                  <p className="text-[12px] sm:text-sm text-[#666] mt-3 px-1 leading-6">
+                    By subscribing, you agree to receive email updates from
+                    <br />
+                    So-Nyah Cleaners.
                   </p>
                 </div>
               </div>
