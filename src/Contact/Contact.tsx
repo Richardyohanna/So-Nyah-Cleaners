@@ -15,8 +15,8 @@ const Contact = () => {
         className="pt-10 px-4 sm:px-6 md:px-10 lg:px-14 xl:px-16 2xl:px-20"
       >
         <div className="justify-center flex flex-col items-center">
-          <h3 className="text-[var(--primary)] head text-center text-[26px] sm:text-[34px] lg:text-[42px] xl:text-[48px] leading-[1.1] font-bold">
-            Tell So-nyah Team what you need
+          <h3 className="text-[var(--primary)] tracking-normal! head text-center text-[26px] sm:text-[34px] lg:text-[42px] xl:text-[48px] font-bold">
+            Please tell So-nyah Team the service you need
           </h3>
           <div className="border-b-[5px] pt-2 w-[500px]! sm:w-[120px] border-[var(--primary)]"></div>
         </div>
@@ -28,7 +28,7 @@ const Contact = () => {
         <div className="bg-[var(--primary)]  flex flex-col p-5 sm:p-8 lg:p-10 w-full lg:max-w-[600px]">
         <form>
             <label className="flex justify-center text-2xl sm:text-3xl text-white font-bold tracking-wide text-center">
-            Get a Free Quote
+            Get a Free Estimate
             </label>
             <p className="!text-[#ffffffaa] justify-center flex text-center text-sm sm:text-base mt-2">
             We Respond within 1 hours, 7 days a week

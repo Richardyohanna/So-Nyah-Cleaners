@@ -10,7 +10,7 @@ const Service = () => {
     <div className="bg-white pd-20 sm:pb-20 md:pb-20 lg:pd-20">
       <section id="general-service" className="px-4 sm:px-6 md:px-10 lg:px-20 flex flex-col gap-10">
         <div className="mt-10 flex flex-col items-center">
-          <h3 className="text-[var(--primary)] head text-[32px] sm:text-[38px] lg:text-[48px] leading-[1.1] font-bold items-center text-center">
+          <h3 className="text-[var(--primary)] head text-[32px] sm:text-[38px] lg:text-[48px] tracking-normal! font-bold items-center text-center">
             Our  Services
           </h3>
 

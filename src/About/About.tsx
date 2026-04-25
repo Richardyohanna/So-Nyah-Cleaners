@@ -80,7 +80,7 @@ const About = () => {
     <div className="bg-white  pb-16">
       <section id="about-us" className="pt-20 px-4 sm:px-6 md:px-10 lg:px-16 xl:px-20">
         <div>
-          <h3 className="text-[var(--primary)] head text-[28px] sm:text-[34px] lg:text-[42px] xl:text-[48px] leading-[1.1] font-bold">
+          <h3 className="text-[var(--primary)] head text-[28px] sm:text-[34px] lg:text-[42px] xl:text-[48px] tracking-normal! font-bold">
             About Us
           </h3>
           <div className="border-b-[5px] w-[80px] sm:w-[100px] border-[var(--primary)]"></div>
@@ -163,7 +163,7 @@ const About = () => {
        <div className="mt-10">
 
         <div>
-          <h3 className="text-[var(--primary)] head text-[28px] sm:text-[34px] lg:text-[42px] xl:text-[48px] leading-[1.1] font-bold">
+          <h3 className="text-[var(--primary)] head text-[28px] sm:text-[34px] lg:text-[42px] xl:text-[48px] tracking-normal! font-bold">
             Our Mission
           </h3>
           <div className="border-b-[5px]  w-[80px] sm:w-[100px] border-[var(--primary)]"></div>
@@ -181,7 +181,7 @@ const About = () => {
         <div className="mt-10">
 
         <div>
-          <h3 className="text-[var(--primary)] head text-[28px] sm:text-[34px] lg:text-[42px] xl:text-[48px] leading-[1.1] font-bold">
+          <h3 className="text-[var(--primary)] head text-[28px] sm:text-[34px] lg:text-[42px] xl:text-[48px] tracking-normal! font-bold">
             Our Vision
           </h3>
           <div className="border-b-[5px]  w-[80px] sm:w-[100px] border-[var(--primary)]"></div>
@@ -228,7 +228,7 @@ const About = () => {
         className="px-4 sm:px-6 md:px-10 lg:px-16 xl:px-20 pt-20"
       >
         <div>
-          <h3 className="text-[var(--primary)] head text-[28px] sm:text-[34px] lg:text-[42px] xl:text-[48px] leading-[1.1] font-bold">
+          <h3 className="text-[var(--primary)] head text-[28px] sm:text-[34px] lg:text-[42px] xl:text-[48px] tracking-normal! font-bold">
             Our Team
           </h3>
           <div className="border-b-[5px] w-[80px] sm:w-[100px] border-[var(--primary)]"></div>

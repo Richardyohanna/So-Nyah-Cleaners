@@ -1,5 +1,5 @@
 import { useState } from "react";
-import logo from "../assets/logo.jpeg";
+import logo from "../assets/logo.png";
 import { NavLink } from "react-router-dom";
 import CustomButton from "../component/ui/custom-button";
 

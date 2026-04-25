@@ -1,4 +1,4 @@
-import logo from "../assets/logo.jpeg";
+import logo from "../assets/logo.png";
 import "./Footer.css";
 import { useNavigate } from "react-router-dom";
 import { getServiceBySlug } from "../data/servicesData";
@@ -24,7 +24,7 @@ const Footer = () => {
     >
       <div className="bg-[var(--primary)] flex flex-col md:flex-row md:flex-wrap lg:flex-nowrap justify-between gap-10 lg:gap-6">
         <div className="flex flex-col gap-6 sm:gap-8 lg:gap-10 max-w-[320px]">
-          <img src={logo} alt="" className="w-[130px] sm:w-[150px] h-auto cursor-pointer" onClick={() => navigate("/")} />
+          <img src={logo} alt="" className="w-[130px] sm:w-[150px] bg-white p-3 h-auto cursor-pointer" onClick={() => navigate("/")} />
           <p className="!text-[#fffff2] max-w-[300px] text-sm sm:text-base leading-7">
             Complete Space Care from deep cleaning to total facility solutions
             (delivered with eco-friendly, safe, and responsible cleaning practices)
