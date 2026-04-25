@@ -1,3 +1,4 @@
+// src/main.tsx
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
@@ -9,21 +10,21 @@ import "@fontsource/jost/400.css";
 import "@fontsource/jost/500.css";
 import "@fontsource/jost/600.css";
 import "@fontsource/jost/700.css";
-import Admin from './Admin/Admin.tsx';
+import AdminGuard from './Admin/AdminGuard.tsx'; 
 
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BrowserRouter>
-      <ScrollToTop />      
+      <ScrollToTop />
 
       <main>
         <Routes>
           <Route path="/*" element={<App />} />
-          <Route path="/admin" element= {<Admin />} />
+          <Route path="/admin" element={<AdminGuard />} /> 
         </Routes>
       </main>
 
-    </BrowserRouter>    
+    </BrowserRouter>
   </StrictMode>,
 )
