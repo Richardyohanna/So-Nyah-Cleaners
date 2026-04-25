@@ -61,9 +61,35 @@ const blogs: Blog[] = [
     aurthor_image: "",
   },
 ];
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { supabase, type Post } from "../Client/lib/supabase";
 
 const BlogDetail = () => {
+  const { id } = useParams();
+  const [blog, setBlog] = useState<Post | null>(null);
   const navivgate = useNavigate();
+
+  useEffect(() => {
+    const fetchBlog = async () => {
+      if (!id) return;
+
+      const { data, error } = await supabase
+        .from("posts")
+        .select("*")
+        .eq("id", id)
+        .single();
+
+      if (!error) {
+        setBlog(data);
+      }
+    };
+
+    fetchBlog();
+  }, [id]);
+
+  if (!blog) return <p className="p-10">Loading...</p>;
+
 
   return (
     <div className="px-4 sm:px-6 md:px-8 lg:px-10 py-8 sm:py-10 bg-white pb-16 sm:pb-20 overflow-x-hidden">
@@ -77,7 +103,7 @@ const BlogDetail = () => {
           <p className="text-xs! sm:text-sm!">Cleaners Article</p>
           <img src={next} className="w-3 h-3" />
           <p className="text-gray-700 text-xs! sm:text-sm!">
-            5 Eco-Friendly Cleaning Tips for Abuja Homes
+            {blog.title}
           </p>
         </div>
       </section>
@@ -86,12 +112,12 @@ const BlogDetail = () => {
       <section className="mt-3">
         <div
           className="relative rounded-b-3xl w-full min-h-[250px] sm:min-h-[300px] md:min-h-[400px] bg-center bg-cover flex items-end"
-          style={{ backgroundImage: `url(${blog1})` }}
+          style={{ backgroundImage: `url(${blog.image_url || blog1})` }}
         >
           <div className="absolute inset-0 bg-black/40 rounded-b-3xl"></div>
 
           <h3 className="relative text-xl sm:text-3xl md:text-5xl lg:text-[62px] text-white p-4 sm:p-6 leading-tight">
-            5 Eco-Friendly Cleaning Tips for Abuja Homes
+            {blog.title}
           </h3>
         </div>
 
@@ -103,9 +129,7 @@ const BlogDetail = () => {
           {/* ARTICLE */}
           <div className="flex-1">
             <p className="text-base! sm:text-lg! md:text-xl! lg:text-[24px]! text-black! leading-relaxed">
-              In the heart of Nigeria’s capital, where the harmattan dust meets
-              urban sophistication, maintaining a pristine home requires more
-              than just effort—it requires a philosophy.
+              {blog.introduction}
             </p>
 
             <div className="bg-[#F6F3F2] border-l-4 border-[var(--primary)] pl-4 mt-6 mb-8">
@@ -120,8 +144,7 @@ const BlogDetail = () => {
             </h2>
 
             <p className="text-sm sm:text-base! md:text-lg! lg:text-[20px]! leading-7 sm:leading-8 md:leading-10 pb-10 border-b">
-              Abuja's local markets are brimming with natural cleaners. Lemons
-              and limes are incredible natural degreasers.
+              {blog.content}
             </p>
 
             {/* TAGS */}

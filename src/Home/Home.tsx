@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getServiceBySlug } from "../data/servicesData";
+import { supabase, type Post } from "../Client/lib/supabase";
 
 import before1 from "../assets/enhanced-bg2.png";
 import after1 from "../assets/enhanced-bg1.png";
@@ -29,8 +30,7 @@ import client8 from "../assets/client8.png";
 import whatsApp from "../assets/whatsApp.png";
 import expand from "../assets/expand.png";
 import blog1 from "../assets/blog1.png";
-import blog2 from "../assets/blog2.png";
-import blog3 from "../assets/blog3.png";
+
 import nine9 from "../assets/99.png";
 import star from "../assets/star.png";
 
@@ -134,7 +134,7 @@ const heroImages: HeroImage[] = [
   },
 ];
 
-type Blog = {
+/* type Blog = {
   id: number;
   category: string;
   title: string;
@@ -142,7 +142,7 @@ type Blog = {
   image: string;
   aurthor: string;
   aurthor_image: string;
-};
+}; */
 
 type Review = {
   id: number;
@@ -179,7 +179,7 @@ const reviews: Review[] = [
   },
 ];
 
-const blogs: Blog[] = [
+/*const blogs: Blog[] = [
   {
     id: 1,
     category: "GREEN LIVING",
@@ -220,7 +220,7 @@ const blogs: Blog[] = [
     aurthor: "So-Nyah Editorial",
     aurthor_image: "",
   },
-];
+]; */
 
 const HEADER_HEIGHT = 66;
 
@@ -245,6 +245,30 @@ const Home = () => {
   }>(null);
 
   const [showChatBubble, setShowChatBubble] = useState(false);
+
+  const [blogs, setBlogs] = useState<Post[]>([]);
+const [loadingBlogs, setLoadingBlogs] = useState(true);
+
+useEffect(() => {
+  const fetchBlogs = async () => {
+    setLoadingBlogs(true);
+
+    const { data, error } = await supabase
+      .from("posts")
+      .select("*")
+      .eq("status", "published")
+      .order("created_at", { ascending: false })
+      .limit(6);
+
+    if (!error && data) {
+      setBlogs(data);
+    }
+
+    setLoadingBlogs(false);
+  };
+
+  fetchBlogs();
+}, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -368,7 +392,7 @@ const Home = () => {
           <div className="flex flex-row lg:flex-col gap-2 sm:gap-3 md:gap-4 items-center lg:self-center">
 
 
-            <button className="w-[43px] h-[43px] sm:w-[49px] sm:h-[49px] md:w-[52px] md:h-[52px] lg:w-[54px] lg:h-[54px] rounded-full border-[2px] lg:border-[3px] border-white flex items-center justify-center transition-all duration-300 ease-in-out hover:border-[var(--primary)] hover:bg-[var(--primary)] hover:scale-110">
+            <button onClick={() => window.open("https://instagram.com/sonyah_cleaners?utm_source=qr&igsh=MWRtdG9ud3YzNDFoZQ==", "_blank")} className="w-[43px] h-[43px] sm:w-[49px] sm:h-[49px] md:w-[52px] md:h-[52px] lg:w-[54px] lg:h-[54px] rounded-full border-[2px] lg:border-[3px] border-white flex items-center justify-center transition-all duration-300 ease-in-out hover:border-[var(--primary)] hover:bg-[var(--primary)] hover:scale-110">
               <img
                 src={instagram}
                 alt="Instagram"
@@ -376,7 +400,7 @@ const Home = () => {
               />
             </button>
 
-            <button className="w-[43px] h-[43px] sm:w-[49px] sm:h-[49px] md:w-[52px] md:h-[52px] lg:w-[54px] lg:h-[54px] rounded-full border-[2px] lg:border-[3px] border-white flex items-center justify-center transition-all duration-300 ease-in-out hover:border-[var(--primary)] hover:bg-[var(--primary)] hover:scale-110">
+            <button onClick={() => window.open("https://twitter.com/sonyah_cleaners", "_blank")} className="w-[43px] h-[43px] sm:w-[49px] sm:h-[49px] md:w-[52px] md:h-[52px] lg:w-[54px] lg:h-[54px] rounded-full border-[2px] lg:border-[3px] border-white flex items-center justify-center transition-all duration-300 ease-in-out hover:border-[var(--primary)] hover:bg-[var(--primary)] hover:scale-110">
               <img
                 src={twiter}
                 alt="Twitter"
@@ -384,7 +408,7 @@ const Home = () => {
               />
             </button>
 
-            <button className="w-[43px] h-[43px] sm:w-[49px] sm:h-[49px] md:w-[52px] md:h-[52px] lg:w-[54px] lg:h-[54px] rounded-full border-[2px] lg:border-[3px] border-white flex items-center justify-center transition-all duration-300 ease-in-out hover:border-[var(--primary)] hover:bg-[var(--primary)] hover:scale-110">
+            <button onClick={() => window.open("mailto:info@sonyahcleaners.com", "_blank")} className="w-[43px] h-[43px] sm:w-[49px] sm:h-[49px] md:w-[52px] md:h-[52px] lg:w-[54px] lg:h-[54px] rounded-full border-[2px] lg:border-[3px] border-white flex items-center justify-center transition-all duration-300 ease-in-out hover:border-[var(--primary)] hover:bg-[var(--primary)] hover:scale-110">
               <img
                 src={mail}
                 alt="Mail"
@@ -744,7 +768,7 @@ const Home = () => {
         </div>
 
         <div className="pt-3">
-          {isBlogGallery === "Blog" && (
+         {/*} {isBlogGallery === "Blog" && (
             <div className="overflow-x-auto pt-6 sm:pt-8 lg:pt-10 overflow-y-visible scrollbar-hide">
               <div className="grid grid-flow-col auto-cols-[260px] sm:auto-cols-[280px] md:auto-cols-[300px] lg:auto-cols-[320px] gap-6 lg:gap-10 bg-transparent">
                 {blogs.map((article, index) => (
@@ -787,7 +811,42 @@ const Home = () => {
                 ))}
               </div>
             </div>
-          )}
+          )} */}
+
+          {loadingBlogs ? (
+              <p className="text-center w-full">Loading blogs...</p>
+            ) : (
+              blogs.map((article) => (
+                <div
+                  key={article.id}
+                  onClick={() => navivgate(`/blog/${article.id}`)}
+                  className="w-full cursor-pointer border border-[#0000001a] rounded-2xl overflow-hidden bg-white transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-[var(--primary)] group"
+                >
+                  <img
+                    src={article.image_url || blog1}
+                    className="w-full h-[180px] object-cover"
+                  />
+
+                  <div className="p-6 flex flex-col gap-3">
+                    <h5 className="text-sm text-[var(--text-sub-h)]">
+                      {article.meta || "GENERAL"}
+                    </h5>
+
+                    <h4 className="text-[18px] font-bold">
+                      {article.title}
+                    </h4>
+
+                    <p className="text-sm line-clamp-3">
+                      {article.introduction}
+                    </p>
+
+                    <p className="text-sm text-[var(--primary)]">
+                      By So-Nyah Editorial
+                    </p>
+                  </div>
+                </div>
+              ))
+            )}
 
           {isBlogGallery === "Gallery" && (
             <>
@@ -996,7 +1055,7 @@ const Home = () => {
           <div className="absolute -bottom-2 right-6 w-4 h-4 bg-white border-r border-b border-[#00000010] rotate-45" />
         </div>
 
-        <button className="rounded-3xl flex px-4 sm:px-5 md:px-5 lg:px-6 shadow-xl text-white bg-[var(--text-sub-h)] py-3 items-center gap-2 sm:gap-3 text-sm sm:text-base transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+        <button onClick={() => window.open("https://wa.me/message/CXGU4I2ZUXS4I1", "_blank")} className="rounded-3xl flex px-4 sm:px-5 md:px-5 lg:px-6 shadow-xl text-white bg-[var(--text-sub-h)] py-3 items-center gap-2 sm:gap-3 text-sm sm:text-base transition-all duration-300 hover:scale-105 hover:shadow-2xl">
           <span className="hidden xs:inline">Chat with Us</span>
           <span className="sm:hidden">Chat</span>
 

@@ -23,6 +23,7 @@ import instagram from "./assets/instagram.png";
 import twiter from "./assets/twiter.png";
 import mail from "./assets/mailto.png";
 import BlogDetail from './Blog/BlogDetail';
+import Blog from './Blog/Blog';
 
 
 
@@ -72,7 +73,8 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/services" element={<Service />} />
           <Route path="/service/:slug" element={<ServiceDetail />} />
-          <Route path="/blog" element={<BlogDetail />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:id" element={<BlogDetail />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           
