@@ -330,10 +330,10 @@ const Home = () => {
           <div className="relative mt-2 w-full max-w-[880px] rounded-[32px]">
             <div className="relative z-10">
               <div>
-                <h1 className="text-[40px] sm:text-[54px] md:text-[60px] lg:text-[72px] xl:text-[86px] leading-[1] mt-5 tracking-[1px] sm:tracking-[2px] md:tracking-[2.5px] lg:tracking-[3px] xl:tracking-[4px] font-bold text-white">
+                <h1 className="text-[40px] tracking-normal! sm:text-[54px] md:text-[60px] lg:text-[72px] xl:text-[86px] leading-[1] mt-5  font-bold text-white">
                   Cleaning Spaces,
                   <br />
-                  <span className="text-[var(--primary)]">
+                  <span className="">
                     Creating <br />
                     Happy Faces
                   </span>
@@ -397,7 +397,7 @@ const Home = () => {
 
       {/* SERVICE SECTION */}
       <section id="service" className="mt-20 px-4 sm:px-6 md:px-8 lg:px-10">
-        <h3 className="text-[var(--primary)] head text-[32px] sm:text-[38px] md:text-[42px] lg:text-[48px] leading-[1.1] font-bold items-center text-center">
+        <h3 className="text-[var(--primary)] head text-[32px] sm:text-[38px] md:text-[42px] lg:text-[48px] tracking-normal! font-bold items-center text-center">
           Our Specialized Services
         </h3>
 
@@ -554,7 +554,7 @@ const Home = () => {
 
       {/* OUR CLIENTS */}
       <section id="clients" className="w-full mt-25 px-4 sm:px-6 md:px-8 lg:px-10 py-10 bg-[var(--primary)]">
-        <h3 className="text-white! head text-[32px] sm:text-[38px] md:text-[42px] lg:text-[48px] leading-[1] font-bold items-center text-center">
+        <h3 className="text-white! tracking-normal! head text-[32px] sm:text-[38px] md:text-[42px] lg:text-[48px] font-bold items-center text-center">
           Our Clients
         </h3>
 
@@ -586,7 +586,7 @@ const Home = () => {
 
       {/* REVIEWS */}
       <section id="reviews" className="mt-20 px-4 sm:px-6 md:px-8 lg:px-16 xl:px-20">
-        <h3 className="text-[var(--primary)] head text-[32px] sm:text-[38px] md:text-[42px] lg:text-[48px] leading-[1] font-bold items-center text-center">
+        <h3 className="text-[var(--primary)] tracking-normal! head text-[32px] sm:text-[38px] md:text-[42px] lg:text-[48px] leading-[1] font-bold items-center text-center">
           Voices Of Contentment
         </h3>
 

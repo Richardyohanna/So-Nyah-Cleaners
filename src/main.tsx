@@ -3,19 +3,27 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import "@fontsource-variable/epilogue";
 import App from './App.tsx'
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import ScrollToTop from './component/scroll-to-top.tsx';
 import "@fontsource/jost/400.css";
 import "@fontsource/jost/500.css";
 import "@fontsource/jost/600.css";
 import "@fontsource/jost/700.css";
+import Admin from './Admin/Admin.tsx';
 
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BrowserRouter>
-      <ScrollToTop />
-      <App />
+      <ScrollToTop />      
+
+      <main>
+        <Routes>
+          <Route path="/*" element={<App />} />
+          <Route path="/admin" element= {<Admin />} />
+        </Routes>
+      </main>
+
     </BrowserRouter>    
   </StrictMode>,
 )

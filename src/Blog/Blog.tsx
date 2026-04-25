@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+
 
 import blog1 from "../assets/blog1.png";
 import blog2 from "../assets/blog2.png";
@@ -6,31 +6,9 @@ import blog3 from "../assets/blog3.png";
 
 import back from "../assets/icons8-less-than-50.png";
 import next from "../assets/icons8-greater-than-50.png";
+import BlogSearch from "./BlogSearch";
 
-type Category = {
-  name: string;
-  slug: string;
-};
 
-const categories: Category[] = [
-  { name: "All", slug: "all" },
-  { name: "Cleaning Tips", slug: "cleaning-tips" },
-  { name: "Product Reviews", slug: "product-reviews" },
-  { name: "Company News", slug: "company-news" },
-  { name: "Customer Stories", slug: "customer-stories" },
-  { name: "Seasonal Cleaning", slug: "seasonal-cleaning" },
-  { name: "Eco-Friendly", slug: "eco-friendly" },
-  { name: "Organizational Tips", slug: "organizational-tips" },
-  { name: "DIY Cleaning", slug: "diy-cleaning" },
-  { name: "Health & Safety", slug: "health-safety" },
-  { name: "Special Offers", slug: "special-offers" },
-  { name: "Events & Community", slug: "events-community" },
-  { name: "Behind the Scenes", slug: "behind-the-scenes" },
-  { name: "Employee Spotlights", slug: "employee-spotlights" },
-  { name: "Sustainability", slug: "sustainability" },
-  { name: "Customer Q&A", slug: "customer-qa" },
-  { name: "Cleaning Myths", slug: "cleaning-myths" },
-];
 
 type BlogItem = {
   id: number;
@@ -126,80 +104,12 @@ const blogs: BlogItem[] = [
 ];
 
 const Blog = () => {
-  const [activeCategory, setActiveCategory] = useState("all");
-  const scrollRef = useRef<HTMLDivElement | null>(null);
 
-  const handleWheelScroll = (e: React.WheelEvent<HTMLDivElement>) => {
-    if (!scrollRef.current) return;
-    e.preventDefault();
-    scrollRef.current.scrollLeft += e.deltaY;
-  };
 
   return (
     <div className="px-4 sm:px-6 md:px-8 lg:px-10 py-8 sm:py-10 bg-white pb-16 sm:pb-20 overflow-x-hidden">
-      <section
-        id="searchHeader"
-        className="
-          bg-[rgba(246,243,242,1)]
-          backdrop-blur-md
-          rounded-2xl sm:rounded-3xl
-          flex flex-col lg:flex-row
-          lg:items-center
-          gap-4 sm:gap-5
-          p-4 sm:p-5
-          w-full max-w-full
-        "
-      >
-        <input
-          type="text"
-          placeholder="Search for an article..."
-          className="
-            bg-white
-            px-4 sm:px-5
-            rounded-2xl sm:rounded-3xl
-            h-[54px] sm:h-[58px]
-            w-full lg:w-[380px] xl:w-[420px]
-            shrink-0
-            outline-none
-            text-[var(--primary)]
-            placeholder:text-[var(--primary)]/60
-          "
-        />
 
-        <div
-          ref={scrollRef}
-          onWheel={handleWheelScroll}
-          className="
-            flex gap-3 w-full min-w-0
-            overflow-x-auto overflow-y-hidden
-            whitespace-nowrap
-            scroll-smooth
-            scrollbar-hide
-          "
-        >
-          {categories.map((category) => {
-            const isActive = activeCategory === category.slug;
-
-            return (
-              <button
-                key={category.slug}
-                onClick={() => setActiveCategory(category.slug)}
-                className={`
-                  shrink-0 rounded-full px-4 sm:px-5 py-2.5 border text-sm sm:text-base
-                  transition-all duration-300
-                  ${
-                    isActive
-                      ? "bg-[var(--primary)] text-white border-[var(--primary)]"
-                      : "bg-white text-[var(--primary)] border-[var(--primary)]/15 hover:bg-[var(--primary)] hover:text-white"
-                  }
-                `}
-              >
-                {category.name}
-              </button>
-            );
-          })}
-        </div>
-      </section>
+      <BlogSearch />
 
       <section id="blogs" className="mt-8 sm:mt-10">
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 lg:gap-8">

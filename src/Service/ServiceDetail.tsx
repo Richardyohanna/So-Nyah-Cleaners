@@ -62,7 +62,7 @@ const ServiceDetail = () => {
         <div className="relative z-10 flex items-center w-full h-full px-4 sm:px-6 md:px-10 lg:px-20 pt-20 sm:pt-24 lg:pt-16 pb-8 sm:pb-10">
           <div className="relative w-full max-w-[820px]">
             <div className="relative z-10">
-              <h1 className="text-[24px] sm:text-[40px] md:text-[54px] lg:text-[68px] leading-[1.05] sm:leading-[1.1] tracking-[1px] sm:tracking-[2px] md:tracking-[3px] font-bold text-white">
+              <h1 className="text-[24px] sm:text-[40px] md:text-[54px] lg:text-[68px] leading-[1.05] sm:leading-[1.1]  font-bold text-white">
                 {service.title}
               </h1>
 
@@ -86,7 +86,7 @@ const ServiceDetail = () => {
 
           <section
             id="why-choose-us"
-            className="flex flex-col lg:flex-row bg-black justify-between text-white mt-10 p-5 sm:p-8 lg:p-10 px-5 sm:px-8 lg:px-10 gap-8 lg:gap-10"
+            className="flex flex-col lg:flex-row bg-[var(--primary)] justify-between text-white mt-10 p-5 sm:p-8 lg:p-10 px-5 sm:px-8 lg:px-10 gap-8 lg:gap-10"
           >
             <div className="flex flex-col justify-center w-full">
               <h2 className="text-[30px] sm:text-[40px] lg:text-[48px] leading-[1.1]">
@@ -133,19 +133,7 @@ const ServiceDetail = () => {
               Experience the transformation. Estimates Provided within 2 hours
             </p>
 
-            <div className="mt-3 flex justify-between gap-4">
-              <p className="font-bold text-sm sm:text-base">Duration</p>
-              <p className="font-black text-[var(--primary)] !text-sm sm:!text-base text-right">
-                {service.duration}
-              </p>
-            </div>
 
-            <div className="mt-3 flex justify-between gap-4">
-              <p className="font-bold text-sm sm:text-base">Crew Size</p>
-              <p className="font-black text-[var(--primary)] !text-sm sm:!text-base text-right">
-                {service.crewSize}
-              </p>
-            </div>
 
             <div className="flex justify-center-safe mt-10 w-full">
               <CustomButton text={service.ctaText} />
