@@ -3,6 +3,10 @@ import CustomButton from "../component/ui/custom-button";
 import whatsApp from "../assets/whatsApp.png";
 import { useNavigate, useParams } from "react-router-dom";
 import { getServiceBySlug } from "../data/servicesData";
+import {  useMemo } from "react";
+import { usePosts } from "../hooks/usePosts";
+
+
 
 const HEADER_HEIGHT = 66;
 
@@ -11,6 +15,38 @@ const ServiceDetail = () => {
   const { slug } = useParams();
 
   const service = slug ? getServiceBySlug(slug) : undefined;
+
+   // ✅ Fetch blog posts
+  const { posts, loading } = usePosts({ status: "published", limit: 20 });
+
+  // ✅ Get RELATED + RANDOM posts
+  const relatedBlogs = useMemo(() => {
+    if (!service || !posts.length) return [];
+
+    // Match by service title or keywords inside hashtags/content
+    const keywords = service.title.toLowerCase().split(" ");
+
+    let filtered = posts.filter((post) => {
+      const text =
+        (post.title || "") +
+        " " +
+        (post.introduction || "") +
+        " " +
+        (post.hashtags?.join(" ") || "");
+
+      return keywords.some((word) =>
+        text.toLowerCase().includes(word)
+      );
+    });
+
+    // fallback → if nothing matches, use all posts
+    if (filtered.length === 0) filtered = posts;
+
+    // shuffle (random)
+    const shuffled = [...filtered].sort(() => 0.5 - Math.random());
+
+    return shuffled.slice(0, 3);
+  }, [posts, service]);
 
   if (!service) {
     return (
@@ -86,7 +122,7 @@ const ServiceDetail = () => {
 
           <section
             id="why-choose-us"
-            className="flex flex-col lg:flex-row bg-[var(--primary)] justify-between text-white mt-10 p-5 sm:p-8 lg:p-10 px-5 sm:px-8 lg:px-10 gap-8 lg:gap-10"
+            className="flex flex-col lg:flex-row bg-[#E5E2E1]  justify-between text-black mt-10 p-5 sm:p-8 lg:p-10 px-5 sm:px-8 lg:px-10 gap-8 lg:gap-10"
           >
             <div className="flex flex-col justify-center w-full">
               <h2 className="text-[30px] sm:text-[40px] lg:text-[48px] leading-[1.1]">
@@ -103,15 +139,15 @@ const ServiceDetail = () => {
                     key={index}
                     className="flex gap-4 mt-8 sm:mt-10 ml-0 sm:ml-5 items-start sm:items-center justify-start sm:justify-center"
                   >
-                    <div className="w-[40px] h-[40px] rounded-full items-center bg-[var(--accent-bg)] flex justify-center shrink-0">
-                      <img src={item.icon} alt="" className="object-contain" />
+                    <div className="w-[40px] h-[40px] rounded-full items-center bg-[var(--primary)] flex justify-center shrink-0">
+                      <img src={item.icon} alt="" className="object-contain inverted-colors:black" />
                     </div>
 
                     <div>
                       <h4 className="text-[17px] sm:text-[19px] font-semibold">
                         {item.title}
                       </h4>
-                      <p className="text-[15px] sm:text-[16px] lg:text-[17px] leading-7 text-white/90!">
+                      <p className="text-[15px] sm:text-[16px] lg:text-[17px] leading-7 text-black/90!">
                         {item.description}
                       </p>
                     </div>
@@ -130,13 +166,13 @@ const ServiceDetail = () => {
           <div className="rounded-2xl bg-[#E5E2E1] p-5 sm:p-8 lg:p-10">
             <h3 className="font-bold text-xl sm:text-2xl">Book This Service</h3>
             <p className="mt-2 text-[15px] sm:text-[16px] lg:text-[17px] leading-7 text-[#444]">
-              Experience the transformation. Estimates Provided within 2 hours
+              Experience the transformation. 
             </p>
 
 
 
             <div className="flex justify-center-safe mt-10 w-full">
-              <CustomButton text={service.ctaText} />
+              <CustomButton text={service.ctaText} onClickAction={() => navigate("/contact")} />
             </div>
           </div>
 
@@ -154,7 +190,57 @@ const ServiceDetail = () => {
               </div>
             ))}
           </div>
+
+                    
+          {/* BLOG SECTION */}
+          <div className="mt-10">
+            <h3 className="font-bold text-xl sm:text-2xl">Related Articles</h3>
+
+            <div className="mt-5 flex flex-col gap-3">
+
+              {loading && (
+                <p className="text-gray-400 text-sm">Loading articles...</p>
+              )}
+
+              {!loading && relatedBlogs.map((post) => (
+                <div
+                  key={post.id}
+                  onClick={() => navigate(`/blog/${post.id}`)}
+                  className="flex gap-3 p-3 rounded-lg hover:bg-[#eee] cursor-pointer transition"
+                >
+                  {/* IMAGE */}
+                  <div className="w-[60px] h-[60px] rounded-lg overflow-hidden bg-gray-100 shrink-0">
+                    {post.image_url ? (
+                      <img
+                        src={post.image_url}
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center text-xs text-gray-400">
+                        No image
+                      </div>
+                    )}
+                  </div>
+
+                  {/* TEXT */}
+                  <div className="flex flex-col justify-center">
+                    <h4 className="font-semibold text-[var(--primary)] text-sm line-clamp-2">
+                      {post.title}
+                    </h4>
+
+                    <p className="text-xs text-gray-400">
+                      {new Date(post.created_at).toLocaleDateString()}
+                    </p>
+                  </div>
+                </div>
+              ))}
+
+            </div>
+          </div>
+
         </div>
+
+        
       </section>
 
       <section
@@ -170,7 +256,7 @@ const ServiceDetail = () => {
             do. No guesswork, just expert results.
           </p>
 
-          <button className="rounded-lg flex px-4 sm:px-5 shadow text-white bg-[var(--text-sub-h)] p-2 items-center gap-3 text-sm sm:text-base">
+          <button onClick={() =>  window.open("https://wa.me/message/CXGU4I2ZUXS4I1", "_blank")} className="rounded-lg flex px-4 sm:px-5 shadow text-white bg-[var(--text-sub-h)] p-2 items-center gap-3 text-sm sm:text-base">
             Chat with Us <img src={whatsApp} alt="" />
           </button>
         </div>

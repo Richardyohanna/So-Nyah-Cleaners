@@ -141,7 +141,7 @@ const Header = () => {
 
           {/* Desktop Button */}
           <div className="hidden lg:block">
-            <CustomButton text="Contact Us" />
+            <CustomButton text="Contact Us" onClickAction={() =>  window.open("https://wa.me/message/CXGU4I2ZUXS4I1", "_blank")} />
           </div>
 
           {/* Mobile Menu Button */}
@@ -248,7 +248,7 @@ const Header = () => {
             </ul>
 
             <div className="mt-5 w-full sm:w-auto">
-              <CustomButton text="Contact Us" />
+              <CustomButton text="Contact Us" onClickAction={() =>  window.open("https://wa.me/message/CXGU4I2ZUXS4I1", "_blank")} />
             </div>
           </nav>
         </div>

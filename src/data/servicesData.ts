@@ -183,7 +183,7 @@ Our promise is to turn construction sites into move-in ready, excellent environm
     startingFrom: "N300,000",
     duration: "1-3 Days",
     crewSize: "Lead Consultant + Team",
-    ctaText: "Book Training Session",
+    ctaText: "Schedule a Post-Construction Clean",
     processIntro:
       `Construction may be complete, but the project is not finished until the space is professionally cleaned. So-nyah Cleaners turns your site to a statement. 
       
