@@ -15,8 +15,8 @@ const Contact = () => {
         className="pt-10 px-4 sm:px-6 md:px-10 lg:px-14 xl:px-16 2xl:px-20"
       >
         <div className="justify-center flex flex-col items-center">
-          <h3 className="text-[var(--primary)] tracking-normal! head text-center text-[26px] sm:text-[34px] lg:text-[42px] xl:text-[48px] font-bold">
-            Please tell So-nyah Team the service you need
+          <h3 className="text-[var(--primary)] tracking-normal! leading-[1] head text-center text-[20px] sm:text-[34px] lg:text-[42px] xl:text-[48px] font-bold">
+            Please tell So-nyah Team  The service you need
           </h3>
           <div className="border-b-[5px] pt-2 w-[500px]! sm:w-[120px] border-[var(--primary)]"></div>
         </div>
@@ -188,7 +188,7 @@ const Contact = () => {
               <div className="flex pt-3 gap-3 sm:gap-4 flex-wrap">
 
 
-                <button>
+                <button onClick={() =>  window.open("https://instagram.com/sonyah_cleaners?utm_source=qr&igsh=MWRtdG9ud3YzNDFoZQ==", "_blank")}>
                   <img
                     src={instagramIcon}
                     alt="instagram"
@@ -196,7 +196,7 @@ const Contact = () => {
                   />
                 </button>
 
-                <button>
+                <button onClick={() =>  window.open("https://www.linkedin.com/in/uchenna-linda-nzewigbo-b81b8aa1/", "_blank")}>
                   <img
                     src={linkedlnIcon}
                     alt="linkedin"
