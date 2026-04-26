@@ -109,7 +109,7 @@ const BlogDetail = () => {
               
               
               <div
-                className="relative rounded-3xl w-full min-h-[250px] sm:min-h-[300px] md:min-h-[400px] bg-center bg-cover flex justify-center items-center self-center "
+                className="relative rounded-3xl  min-h-[250px] sm:min-h-[300px] md:min-h-[400px] h-[500px] bg-center bg-cover flex justify-center items-center self-center "
                 
               >  
 
@@ -179,35 +179,7 @@ const BlogDetail = () => {
 
           </section>
 
-          {/* Newsletter */}
-        <section className="mt-12 sm:mt-14 lg:mt-16">
-          <div className="relative overflow-hidden rounded-[28px] bg-[var(--primary)] px-5 sm:px-8 md:px-10 lg:px-14 py-8 sm:py-10 lg:py-12 text-white">
-            <div className="absolute top-0 right-0 w-[180px] sm:w-[240px] h-[180px] sm:h-[240px] bg-white/10 rounded-full blur-3xl -translate-y-1/3 translate-x-1/4 pointer-events-none" />
-            <div className="absolute bottom-0 left-0 w-[160px] sm:w-[220px] h-[160px] sm:h-[220px] bg-white/10 rounded-full blur-3xl translate-y-1/3 -translate-x-1/4 pointer-events-none" />
-            <div className="relative z-10 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
-              <div className="max-w-[620px]">
-                <span className="inline-block bg-white/15 border border-white/20 rounded-full px-4 py-2 text-xs sm:text-sm tracking-wide uppercase mb-4">Newsletter</span>
-                <h2 className="text-[28px] sm:text-[34px] md:text-[40px] lg:text-[46px] font-semibold leading-tight">Get fresh cleaning insights delivered weekly.</h2>
-                <p className="mt-4 text-sm sm:text-base md:text-lg text-white/85! leading-7 max-w-[560px]">Subscribe to receive practical cleaning tips, wellness-focused articles, eco-friendly ideas, and updates from So-nyah Cleaners straight to your inbox.</p>
-                <div className="mt-5 flex flex-wrap gap-3 text-xs sm:text-sm text-white/85">
-                  <span className="bg-white/10 border border-white/15 px-3 py-2 rounded-full">Weekly tips</span>
-                  <span className="bg-white/10 border border-white/15 px-3 py-2 rounded-full">No spam</span>
-                  <span className="bg-white/10 border border-white/15 px-3 py-2 rounded-full">Unsubscribe anytime</span>
-                </div>
-              </div>
-              <div className="w-full lg:max-w-[500px]">
-                <div className="bg-white rounded-2xl p-3 sm:p-4 shadow-2xl">
-                  <div className="flex flex-col sm:flex-row gap-3">
-                    <input type="email" placeholder="Enter your email address"
-                      className="h-[52px] sm:h-[56px] px-4 sm:px-5 rounded-xl bg-[rgba(246,243,242,1)] w-full outline-none text-[var(--primary)] placeholder:text-[var(--primary)]/60 text-sm sm:text-base" />
-                    <button className="h-[52px] sm:h-[56px] px-6 sm:px-7 rounded-xl bg-[var(--primary)] text-white font-medium transition-all duration-300 hover:opacity-90 hover:scale-[1.02] whitespace-nowrap">Subscribe</button>
-                  </div>
-                  <p className="text-[12px] sm:text-sm text-[#666] mt-3 px-1 leading-6">By subscribing, you agree to receive email updates from So-Nyah Cleaners.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+
         </section>
       )}
 
@@ -257,6 +229,36 @@ const BlogDetail = () => {
           </div>
         </section>
       )}
+
+                {/* Newsletter */}
+        <section className="mt-12 sm:mt-14 lg:mt-16">
+          <div className="relative overflow-hidden rounded-[28px] bg-[var(--primary)] px-5 sm:px-8 md:px-10 lg:px-14 py-8 sm:py-10 lg:py-12 text-white">
+            <div className="absolute top-0 right-0 w-[180px] sm:w-[240px] h-[180px] sm:h-[240px] bg-white/10 rounded-full blur-3xl -translate-y-1/3 translate-x-1/4 pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-[160px] sm:w-[220px] h-[160px] sm:h-[220px] bg-white/10 rounded-full blur-3xl translate-y-1/3 -translate-x-1/4 pointer-events-none" />
+            <div className="relative z-10 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
+              <div className="max-w-[620px]">
+                <span className="inline-block bg-white/15 border border-white/20 rounded-full px-4 py-2 text-xs sm:text-sm tracking-wide uppercase mb-4">Newsletter</span>
+                <h2 className="text-[28px] sm:text-[34px] md:text-[40px] lg:text-[46px] font-semibold leading-tight">Get fresh cleaning insights delivered weekly.</h2>
+                <p className="mt-4 text-sm sm:text-base md:text-lg text-white/85! leading-7 max-w-[560px]">Subscribe to receive practical cleaning tips, wellness-focused articles, eco-friendly ideas, and updates from So-nyah Cleaners straight to your inbox.</p>
+                <div className="mt-5 flex flex-wrap gap-3 text-xs sm:text-sm text-white/85">
+                  <span className="bg-white/10 border border-white/15 px-3 py-2 rounded-full">Weekly tips</span>
+                  <span className="bg-white/10 border border-white/15 px-3 py-2 rounded-full">No spam</span>
+                  <span className="bg-white/10 border border-white/15 px-3 py-2 rounded-full">Unsubscribe anytime</span>
+                </div>
+              </div>
+              <div className="w-full lg:max-w-[500px]">
+                <div className="bg-white rounded-2xl p-3 sm:p-4 shadow-2xl">
+                  <div className="flex flex-col sm:flex-row gap-3">
+                    <input type="email" placeholder="Enter your email address"
+                      className="h-[52px] sm:h-[56px] px-4 sm:px-5 rounded-xl bg-[rgba(246,243,242,1)] w-full outline-none text-[var(--primary)] placeholder:text-[var(--primary)]/60 text-sm sm:text-base" />
+                    <button className="h-[52px] sm:h-[56px] px-6 sm:px-7 rounded-xl bg-[var(--primary)] text-white font-medium transition-all duration-300 hover:opacity-90 hover:scale-[1.02] whitespace-nowrap">Subscribe</button>
+                  </div>
+                  <p className="text-[12px] sm:text-sm text-[#666] mt-3 px-1 leading-6">By subscribing, you agree to receive email updates from So-Nyah Cleaners.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
     </div>
   );
 };
