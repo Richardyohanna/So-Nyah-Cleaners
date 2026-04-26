@@ -110,8 +110,10 @@ const BlogDetail = () => {
               
               <div
                 className="relative rounded-3xl w-full min-h-[250px] sm:min-h-[300px] md:min-h-[400px] bg-center bg-cover flex justify-center items-center self-center "
-                style={{ backgroundImage: post.image_url ? `url(${post.image_url})` : "linear-gradient(135deg, var(--primary), #2d5a8e)" }}
-              >                     
+                
+              >  
+
+                <img src={post.image_url ? post.image_url : share} alt={post.title} className={`w-full h-full object-cover rounded-3xl ${post.image_url ? "opacity-100" : "opacity-20"}`} />                   
               </div>
               
               {post.introduction && (
