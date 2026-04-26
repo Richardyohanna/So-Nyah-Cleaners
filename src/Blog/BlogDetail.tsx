@@ -100,16 +100,20 @@ const BlogDetail = () => {
 
       {!loading && !error && post && (
         <section className="mt-3">
-          <div
-            className="relative rounded-b-3xl w-full min-h-[250px] sm:min-h-[300px] md:min-h-[400px] bg-center bg-cover flex items-end"
-            style={{ backgroundImage: post.image_url ? `url(${post.image_url})` : "linear-gradient(135deg, var(--primary), #2d5a8e)" }}
-          >
-            <div className="absolute inset-0 bg-black/40 rounded-b-3xl" />
-            <h3 className="relative text-xl sm:text-3xl md:text-5xl lg:text-[62px] text-white p-4 sm:p-6 leading-tight">{post.title}</h3>
-          </div>
 
-          <section className="mt-10 flex flex-col lg:flex-row gap-8 lg:gap-10">
-            <div className="flex-1">
+          <section className="mt-10 flex flex-col lg:flex-row gap-8 lg:gap-30">
+            
+            <div className="flex-1 max-w-[1000px] flex flex-col gap-4">
+
+              <h3 className="relative text-xl sm:text-3xl md:text-5xl lg:text-[32px] font-bold pb-5 leading-tight">{post.title}</h3>
+              
+              
+              <div
+                className="relative rounded-3xl w-full min-h-[250px] sm:min-h-[300px] md:min-h-[400px] bg-center bg-cover flex justify-center items-center self-center "
+                style={{ backgroundImage: post.image_url ? `url(${post.image_url})` : "linear-gradient(135deg, var(--primary), #2d5a8e)" }}
+              >                     
+              </div>
+              
               {post.introduction && (
                 <p className="text-base! sm:text-lg! md:text-xl! lg:text-[24px]! text-black! leading-relaxed">{post.introduction}</p>
               )}
@@ -143,10 +147,14 @@ const BlogDetail = () => {
                   ))}
                 </div>
               )}
+
+
             </div>
 
             {/* Sidebar */}
-            <div className="flex flex-col gap-2 w-full items-center lg:max-w-[250px]">
+            <div className="flex ">
+
+             <div className="flex flex-col gap-2 w-full  lg:max-w-[250px]">
               <div className="w-[50px] h-[50px] rounded-full bg-[var(--primary)] flex items-center justify-center">
                 <span className="text-white text-lg font-bold">S</span>
               </div>
@@ -164,6 +172,9 @@ const BlogDetail = () => {
                 ← Back to all articles
               </button>
             </div>
+
+            </div>
+
           </section>
 
           {/* Newsletter */}

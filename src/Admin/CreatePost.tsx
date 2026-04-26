@@ -477,7 +477,7 @@ export default function CreatePost({ editPost = null, onSaved }: Props) {
         <button
           onClick={() => save("published")}
           disabled={saving}
-          className="bg-[#1e3a5f] border-none rounded-lg px-5 py-2 text-sm text-white cursor-pointer font-[Georgia,serif] font-semibold hover:bg-[#162d4a] disabled:opacity-50"
+          className="bg-[var(--primary)] border-none rounded-lg px-5 py-2 text-sm text-white cursor-pointer font-[Georgia,serif] font-semibold hover:bg-[#162d4a] disabled:opacity-50"
         >
           {saving ? "Publishing…" : "Publish Post"}
         </button>
