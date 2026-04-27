@@ -31,7 +31,7 @@ const Contact = () => {
             Get a Free Estimate
             </label>
             <p className="!text-[#ffffffaa] justify-center flex text-center text-sm sm:text-base mt-2">
-            We Respond within 1 hours, 7 days a week
+            We Respond within 1 hour, 7 days a week
             </p>
 
             <div className="flex flex-col md:flex-row pt-6 sm:pt-8 justify-between gap-5 md:gap-6">
