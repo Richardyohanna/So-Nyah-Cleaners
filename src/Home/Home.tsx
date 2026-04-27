@@ -167,7 +167,7 @@ const Home = () => {
             <div className="absolute inset-0 bg-gradient-to-r from-black/55 via-black/15 to-transparent sm:from-black/70 sm:via-black/25 lg:from-black/85 lg:via-black/30" />
           </div>
         </div>
-        <div className="relative z-10 flex flex-col lg:flex-row justify-center lg:justify-between w-full gap-8 md:gap-10 lg:gap-12 items-start lg:items-center min-h-[calc(100vh-66px)] px-4 sm:px-6 md:px-8 lg:px-16 xl:px-20 py-10 md:py-14 lg:py-0">
+        <div className="relative z-10 flex flex-col lg:flex-row justify-center lg:justify-between w-full gap-8 md:gap-10 lg:gap-12 items-start lg:items-center min-h-[calc(100vh-66px)]  px-4 sm:px-6 md:px-8 lg:px-10">
           <div className="relative mt-2 w-full max-w-[880px] rounded-[32px]">
             <div className="relative z-10">
               <div>
@@ -185,7 +185,7 @@ const Home = () => {
               </div>
             </div>
           </div>
-          <div className="flex flex-row lg:flex-col gap-2 sm:gap-3 md:gap-4 items-center lg:self-center">
+          <div className="flex  flex-row lg:flex-col gap-2 sm:gap-3 md:gap-4 items-center lg:self-center">
            
 
               <button onClick={()=> window.open('https://www.instagram.com/sonyah_cleaners?utm_source=qr&igsh=MWRtdG9ud3YzNDFoZQ%3D%3D', '_blank')} className="w-[43px] h-[43px] sm:w-[49px] sm:h-[49px] md:w-[52px] md:h-[52px] lg:w-[54px] lg:h-[54px] rounded-full border-[2px] lg:border-[3px] border-white flex items-center justify-center transition-all duration-300 ease-in-out hover:border-[var(--primary)] hover:bg-[var(--primary)] hover:scale-110">
