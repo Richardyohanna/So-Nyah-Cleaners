@@ -150,6 +150,8 @@ const Home = () => {
     return () => window.clearInterval(interval);
   }, []);
 
+  const showNavigation = reviews.length > 3;
+
   return (
     <div className="overflow-hidden w-full bg-white flex flex-col gap-10 pb-20">
 
@@ -253,27 +255,107 @@ const Home = () => {
         <h3 className="text-[var(--primary)] tracking-normal! head text-[32px] sm:text-[38px] md:text-[42px] lg:text-[48px] leading-[1] font-bold items-center text-center">Voices Of Contentment</h3>
         <h4 className="text-center text-[var(--accent-text)] text-sm sm:text-base mt-2">Trust earned through every polished surface.</h4>
         <div className="mt-8 flex justify-center items-center gap-2 sm:gap-4">
-          <button onClick={prevReviews} className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-[#00000018] flex items-center justify-center text-[var(--primary)] transition-all duration-300 hover:bg-[var(--primary)] hover:text-white shrink-0">←</button>
+          
+          {/* ⬅️ PREV BUTTON */}
+          {showNavigation && (
+            <button
+              onClick={prevReviews}
+              className="hidden md:flex w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-[#00000018] items-center justify-center text-[var(--primary)] transition-all duration-300 hover:bg-[var(--primary)] hover:text-white shrink-0"
+            >
+              ←
+            </button>
+          )}
+
+          {/* REVIEWS GRID */}
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 justify-items-center w-full gap-4 sm:gap-6">
             {getVisibleReviews().map((review, index) => {
               const isMiddle = index === 1 && getVisibleReviews().length === 3;
+
               return (
-                <div key={`${review.id}-${index}`} className={`w-full max-w-[380px] h-[340px] sm:h-[360px] md:h-[370px] lg:h-[380px] overflow-hidden p-5 sm:p-6 flex flex-col justify-between gap-4 rounded-3xl transition-all duration-500 transform ${isMiddle ? "bg-[var(--primary)] text-white shadow-2xl xl:scale-105" : "bg-white border border-[#00000014] text-black hover:-translate-y-2 hover:shadow-xl"}`}>
-                  <div className="flex justify-end px-2"><img src={nine9} alt="quote" className={`shrink-0 transition-all duration-300 ${isMiddle ? "opacity-100" : "opacity-70"}`} /></div>
-                  <div className="flex gap-1">{[...Array(5)].map((_, starIndex) => (<img key={starIndex} src={star} alt="star" className={`w-4 h-4 sm:w-5 sm:h-5 ${isMiddle ? "brightness-0 invert" : ""}`} />))}</div>
-                  <p className={`leading-relaxed transition-colors duration-300 text-sm sm:text-base overflow-hidden line-clamp-6 ${isMiddle ? "!text-white" : "text-[var(--accent-text)]"}`}>"{review.review}"</p>
+                <div
+                  key={`${review.id}-${index}`}
+                  className={`w-full max-w-[380px] h-[340px] sm:h-[360px] md:h-[370px] lg:h-[380px] overflow-hidden p-5 sm:p-6 flex flex-col justify-between gap-4 rounded-3xl transition-all duration-500 transform ${
+                    isMiddle
+                      ? "bg-[var(--primary)] text-white shadow-2xl xl:scale-105"
+                      : "bg-white border border-[#00000014] text-black hover:-translate-y-2 hover:shadow-xl"
+                  }`}
+                >
+                  <div className="flex justify-end px-2">
+                    <img
+                      src={nine9}
+                      alt="quote"
+                      className={`shrink-0 transition-all duration-300 ${
+                        isMiddle ? "opacity-100" : "opacity-70"
+                      }`}
+                    />
+                  </div>
+
+                  <div className="flex gap-1">
+                    {[...Array(5)].map((_, starIndex) => (
+                      <img
+                        key={starIndex}
+                        src={star}
+                        alt="star"
+                        className={`w-4 h-4 sm:w-5 sm:h-5 ${
+                          isMiddle ? "brightness-0 invert" : ""
+                        }`}
+                      />
+                    ))}
+                  </div>
+
+                  <p
+                    className={`leading-relaxed transition-colors duration-300 text-sm sm:text-base overflow-hidden line-clamp-6 ${
+                      isMiddle ? "!text-white" : "text-[var(--accent-text)]"
+                    }`}
+                  >
+                    "{review.review}"
+                  </p>
+
                   <div className="flex items-center gap-3 mt-3">
-                    <div className={`w-12 h-12 rounded-full flex items-center justify-center font-bold transition-all duration-300 ${isMiddle ? "bg-white text-[var(--primary)]" : "bg-[var(--primary)] text-white"}`}>{review.name.charAt(0)}</div>
+                    <div
+                      className={`w-12 h-12 rounded-full flex items-center justify-center font-bold transition-all duration-300 ${
+                        isMiddle
+                          ? "bg-white text-[var(--primary)]"
+                          : "bg-[var(--primary)] text-white"
+                      }`}
+                    >
+                      {review.name.charAt(0)}
+                    </div>
+
                     <div>
-                      <h6 className={`font-bold transition-colors duration-300 text-sm sm:text-base ${isMiddle ? "text-white" : "text-[var(--primary)]"}`}>{review.name}</h6>
-                      <p className={`text-xs sm:text-sm transition-colors duration-300 ${isMiddle ? "!text-white/80" : "text-[var(--accent-text)]"}`}>{review.role}</p>
+                      <h6
+                        className={`font-bold transition-colors duration-300 text-sm sm:text-base ${
+                isMiddle ? "text-white" : "text-[var(--primary)]"
+              }`}
+            >
+                        {review.name}
+                      </h6>
+
+                      <p
+                        className={`text-xs sm:text-sm transition-colors duration-300 ${
+                          isMiddle
+                            ? "!text-white/80"
+                            : "text-[var(--accent-text)]"
+                        }`}
+                      >
+                        {review.role}
+                      </p>
                     </div>
                   </div>
                 </div>
               );
             })}
           </div>
-          <button onClick={nextReviews} className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-[#00000018] flex items-center justify-center text-[var(--primary)] transition-all duration-300 hover:bg-[var(--primary)] hover:text-white shrink-0">→</button>
+
+          {/* ➡️ NEXT BUTTON */}
+          {showNavigation && (
+            <button
+              onClick={nextReviews}
+              className="hidden md:flex w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-[#00000018] items-center justify-center text-[var(--primary)] transition-all duration-300 hover:bg-[var(--primary)] hover:text-white shrink-0"
+            >
+              →
+            </button>
+          )}
         </div>
       </section>
 
