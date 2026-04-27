@@ -2,6 +2,7 @@ import { useState } from "react";
 import logo from "../assets/logo.png";
 import { NavLink } from "react-router-dom";
 import CustomButton from "../component/ui/custom-button";
+import { useNavigate } from "react-router-dom";
 
 const HEADER_HEIGHT = 66;
 
@@ -17,6 +18,8 @@ type NavItem = {
 };
 
 const Header = () => {
+    const navigate = useNavigate();
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [mobileOpenDropdown, setMobileOpenDropdown] = useState<string | null>(null);
 
@@ -44,7 +47,7 @@ const Header = () => {
         { label: "Our Team", hash: "#our-team" },
       ],
     },
-    { name: "Contact", path: "/contact" },
+    { name: "Gallery", path: "/gallery" },
   ];
 
   const toggleMobileDropdown = (name: string) => {
@@ -141,7 +144,7 @@ const Header = () => {
 
           {/* Desktop Button */}
           <div className="hidden lg:block">
-            <CustomButton text="Contact Us" onClickAction={() =>  window.open("https://wa.me/message/CXGU4I2ZUXS4I1", "_blank")} />
+            <CustomButton text="Contact Us" onClickAction={() =>  navigate("/contact")} />
           </div>
 
           {/* Mobile Menu Button */}
@@ -248,7 +251,7 @@ const Header = () => {
             </ul>
 
             <div className="mt-5 w-full sm:w-auto">
-              <CustomButton text="Contact Us" onClickAction={() =>  window.open("https://wa.me/message/CXGU4I2ZUXS4I1", "_blank")} />
+              <CustomButton text="Contact Us" onClickAction={() =>  navigate("/contact")} />
             </div>
           </nav>
         </div>

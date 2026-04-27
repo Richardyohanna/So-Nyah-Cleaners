@@ -24,6 +24,7 @@ import twiter from "./assets/twiter.png";
 import mail from "./assets/mailto.png";
 import BlogDetail from './Blog/BlogDetail';
 import Blog from './Blog/Blog';
+import Gallery from './Gallery/Gallery';
 
 
 
@@ -77,7 +78,7 @@ const App = () => {
           <Route path="/blog/:id" element={<BlogDetail />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
-          
+          <Route path="/gallery" element={<Gallery />} />
         </Routes>
       </main>
       <Footer />
