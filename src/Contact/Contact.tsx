@@ -15,7 +15,7 @@ const Contact = () => {
         className="pt-10 px-4 sm:px-6 md:px-10 lg:px-14 xl:px-16 2xl:px-20"
       >
         <div className="justify-center flex flex-col items-center">
-          <h3 className="text-[var(--primary)] tracking-normal! leading-[1] head text-center text-[20px] sm:text-[34px] lg:text-[42px] xl:text-[48px] font-bold">
+          <h3 className="text-[var(--primary)] tracking-normal! leading-[1] head text-center text-[20px] sm:text-[24px] lg:text-[20px] xl:text-[28px] font-bold">
             Please tell So-nyah Team  The service you need
           </h3>
           <div className="border-b-[5px] pt-2 w-[500px]! sm:w-[120px] border-[var(--primary)]"></div>
@@ -192,7 +192,7 @@ const Contact = () => {
                   <img
                     src={instagramIcon}
                     alt="instagram"
-                    className="w-10 h-10 sm:w-12 sm:h-12"
+                    className="w-8 h-8 sm:w-12 sm:h-12"
                   />
                 </button>
 
@@ -200,7 +200,7 @@ const Contact = () => {
                   <img
                     src={linkedlnIcon}
                     alt="linkedin"
-                    className="w-10 h-10 sm:w-12 sm:h-12"
+                    className="w-8 h-8 sm:w-12 sm:h-12"
                   />
                 </button>
 
@@ -208,7 +208,7 @@ const Contact = () => {
                   <img
                     src={twiterIcon}
                     alt="twitter"
-                    className="w-10 h-10 sm:w-12 sm:h-12"
+                    className="w-8 h-8 sm:w-12 sm:h-12"
                   />
                 </button>
               </div>

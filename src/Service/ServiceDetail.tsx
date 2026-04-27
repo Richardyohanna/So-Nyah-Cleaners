@@ -122,18 +122,15 @@ const ServiceDetail = () => {
 
           <section
             id="why-choose-us"
-            className="flex flex-col lg:flex-row bg-[#E5E2E1]  justify-between text-black mt-10 p-5 sm:p-8 lg:p-10 px-5 sm:px-8 lg:px-10 gap-8 lg:gap-10"
+            className="flex flex-col lg:flex-row bg-[#E5E2E1] rounded-2xl justify-between text-black mt-10 p-5 sm:p-8 lg:p-10 px-5 sm:px-8 lg:px-10 gap-8 lg:gap-10"
           >
             <div className="flex flex-col justify-center w-full">
-              <h2 className="text-[30px] sm:text-[40px] lg:text-[48px] leading-[1.1]">
-                WHY CHOOSE
-                <br />
-                <span className="text-[30px] sm:text-[40px] lg:text-[48px] text-[var(--text-sub-h)] whitespace-nowrap">
-                  So-nyah Cleaners
-                </span>
+              <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold leading-[1] whitespace-nowrap">
+                Why Choose So-nyah Cleaners
+                
               </h2>
 
-              <div className="flex flex-col justify-center items-start sm:items-center lg:items-center">
+              <div className="flex flex-col justify-center items-start sm:items-start lg:items-start">
                 {service.whyChooseUs.map((item, index) => (
                   <div
                     key={index}
