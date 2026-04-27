@@ -238,7 +238,7 @@ const Home = () => {
       {/* ── OUR CLIENTS (unchanged) ──────────────────────────────────────────── */}
       <section id="clients" className="w-full mt-25 px-4 sm:px-6 md:px-8 lg:px-10 py-10 bg-[var(--primary)]">
         <h3 className="text-white! tracking-normal! head text-[32px] sm:text-[38px] md:text-[42px] lg:text-[48px] font-bold items-center text-center">Our Clients</h3>
-        <h4 className="text-center text-white text-sm sm:text-base mt-2">Trust by most recognized names</h4>
+        
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-8 gap-y-8 gap-x-6 bg-white mt-10 place-items-center p-4 sm:p-6 md:p-8 rounded-2xl">
           {clients.map((client) => (
             <div key={client.id} className="w-full flex items-center justify-center">
