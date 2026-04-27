@@ -33,7 +33,7 @@ const Gallery = () => {
 
     return (
 
-        <section>
+        <section className="p-10 bg-white">
                       {/* ── GALLERY TAB (completely unchanged from your original) ────────── */}
   
                         <>
