@@ -370,7 +370,7 @@ const Home = () => {
               </button>
             ))}
           </div>
-          <button onClick={() => isBlogGallery === "Blog" ? navigate("/blog") : alert("Still working on the gallery page")}
+          <button onClick={() => isBlogGallery === "Blog" ? navigate("/blog") : navigate("/gallery")}
             className="flex flex-row items-center justify-between gap-3 shrink-0 whitespace-nowrap ml-2">
             <span className="text-[var(--primary)] font-bold whitespace-nowrap">View all</span>
             <img src={expand} alt="expand" className="shrink-0" />
