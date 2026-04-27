@@ -283,7 +283,7 @@ const Blog = () => {
               <div className="max-w-[620px]">
                 <span className="inline-block bg-white/15 border border-white/20 rounded-full px-4 py-2 text-xs sm:text-sm tracking-wide uppercase mb-4">Newsletter</span>
                 <h2 className="text-[28px] sm:text-[34px] md:text-[40px] lg:text-[46px] font-semibold leading-tight">Get fresh cleaning insights delivered weekly.</h2>
-                <p className="mt-4 text-sm sm:text-base md:text-lg text-white/85! leading-7 max-w-[560px]">Subscribe to receive practical cleaning tips, wellness-focused articles, eco-friendly ideas, and updates from So-nyah Cleaners straight to your inbox.</p>
+                <p className="mt-4 text-sm! sm:text-base! md:text-lg! text-white/85! leading-7 max-w-[560px]">Subscribe to receive practical cleaning tips, wellness-focused articles, eco-friendly ideas, and updates from So-nyah Cleaners straight to your inbox.</p>
                 <div className="mt-5 flex flex-wrap gap-3 text-xs sm:text-sm text-white/85">
                   <span className="bg-white/10 border border-white/15 px-3 py-2 rounded-full">Weekly tips</span>
                   <span className="bg-white/10 border border-white/15 px-3 py-2 rounded-full">No spam</span>
@@ -297,7 +297,7 @@ const Blog = () => {
                       className="h-[52px] sm:h-[56px] px-4 sm:px-5 rounded-xl bg-[rgba(246,243,242,1)] w-full outline-none text-[var(--primary)] placeholder:text-[var(--primary)]/60 text-sm sm:text-base" />
                     <button className="h-[52px] sm:h-[56px] px-6 sm:px-7 rounded-xl bg-[var(--primary)] text-white font-medium transition-all duration-300 hover:opacity-90 hover:scale-[1.02] whitespace-nowrap">Subscribe</button>
                   </div>
-                  <p className="text-[12px] sm:text-sm text-[#666] mt-3 px-1 leading-6">By subscribing, you agree to receive email updates from So-Nyah Cleaners.</p>
+                  <p className="text-[12px]! sm:text-sm! text-[#666]! mt-3 px-1 leading-6">By subscribing, you agree to receive email updates from So-nyah Cleaners.</p>
                 </div>
               </div>
             </div>
