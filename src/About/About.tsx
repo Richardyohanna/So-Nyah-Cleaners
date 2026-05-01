@@ -96,35 +96,23 @@ const About = () => {
             <div className="relative z-10">
               <div>
                 <p className="w-full max-w-full lg:max-w-[520px] text-[15px] sm:text-[16px] leading-7 text-[var(--accent-text)] mt-5">
-                  At So-nyah Cleaners, we believe a clean environment is more than
-                  appearance — it is comfort, confidence, health, and peace of mind.
-                  Founded with a commitment to excellence, we provide premium cleaning
-                  solutions for homes, offices, commercial spaces, furniture, carpets,
-                  and post-construction environments. Our mission is to redefine the
-                  standards of hygiene through eco-conscious practices, attention to
-                  detail, and a deep understanding of what clean truly means.
+                    Sonyah is more than a cleaning company; we are a detail obsessed 
+                    service brand built for people who value excellence. We understand 
+                    that your space is a reflection of you, and we treat it with the 
+                    same level of care, precision, and respect it deserves.
                   <br />
                   <br />
-                  We do not simply clean spaces — we restore freshness, improve
-                  comfort, and create environments where people can feel safe,
-                  productive, and proud.
+                    From Residental to Corporate environments, our approach is simple: 
+                    deliver a flawless finish, every time. We combine skilled 
+                    professionals, refined processes, and a deep commitment to quality 
+                    to create spaces that don’t just look clean; they feel elevated.
+
                   <br />
                   <br />
-                  Whether it is a family home, a busy office, a newly completed
-                  building, or a cherished piece of furniture, our team approaches
-                  every project with professionalism, precision, and care. We combine
-                  modern cleaning methods with trusted products to deliver results that
-                  are visible, lasting, and refreshing.
-                  <br />
-                  <br />
-                  What makes So-nyah different is our dedication to quality,
-                  reliability, and customer satisfaction. We understand that every
-                  client and every space is unique, which is why we tailor our
-                  services to meet specific needs and expectations.
-                  <br />
-                  <br />
-                  At So-nyah Cleaners, our goal is simple: to create cleaner spaces,
-                  healthier environments, and happier faces.
+                    At So-nyah Cleaners, we don’t just clean. We restore order, enhance 
+                    comfort, and give you the confidence that your environment is exactly
+                    as it should be.
+
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4 sm:gap-5 mt-6">
@@ -158,9 +146,13 @@ const About = () => {
 
 
     {/** Our Mission */}
-    <section id="our-mission " className="px-20" >
+    <section
+        id="our-mission"
+        className="px-4 sm:px-6 md:px-10 lg:px-16 xl:px-20 mt-20"
+      >
 
-       <div className="mt-10">
+
+        <div className="mt-10">
 
         <div>
           <h3 className="text-[var(--primary)] head text-[28px] sm:text-[34px] lg:text-[42px] xl:text-[48px] tracking-normal! font-bold">
@@ -168,6 +160,11 @@ const About = () => {
           </h3>
           <div className="border-b-[5px]  w-[80px] sm:w-[100px] border-[var(--primary)]"></div>
         </div>
+
+          <p className="text-[15px] mt-5 sm:text-[16px] leading-7 text-[var(--accent-text)]">
+              To deliver exceptional, detail obsessed cleaning services 
+              that transform spaces and exceed client expectations at every touchpoint.
+          </p>
       </ div>
 
     </section>
@@ -188,16 +185,9 @@ const About = () => {
         </div>
 
           <p className="text-[15px] mt-5 sm:text-[16px] leading-7 text-[var(--accent-text)]">
-            Our vision is to become the most trusted name in eco-conscious cleaning,
-            transforming homes, offices, and commercial spaces into healthier,
-            brighter, and happier environments. We strive to redefine the standards
-            of hygiene through innovation, professionalism, and care, while creating
-            spaces that inspire comfort, confidence, and peace of mind.
-            <br />
-            <br />
-            At So-nyah Cleaners, we envision a future where every environment is not
-            only clean, but truly refreshed — creating happy faces everywhere we
-            serve.
+              To be a globally revered cleaning brand, synonymous with luxury, 
+              precision, and uncompromising excellence.
+
           </p>
         </div>
 
@@ -215,7 +205,7 @@ const About = () => {
                 The Elite Fleet
               </h2>
               <p className="max-w-full sm:max-w-[600px] text-white! text-sm sm:text-base mt-2 leading-6">
-                Every team member undergoes 120 hours of specialized training in
+                Every team member undergoes 120 hours of specialized training in <br />
                 "The So-nyah Method".
               </p>
             </div>
