@@ -108,7 +108,7 @@ Deno.serve(async (req) => {
                       style="display:block;margin:0 auto 12px;" />
 
                   <h1 style="color:#fff;margin:0;font-size:22px;font-weight:700;">
-                    So-Nyah Cleaners
+                    So-nyah Cleaners
                   </h1>
 
                   <p style="color:#ffffffcc;margin:6px 0 0;font-size:12px;">
@@ -161,7 +161,7 @@ Deno.serve(async (req) => {
               <tr>
                 <td style="background:#791E7E;padding:18px;text-align:center;">
                   <p style="color:#ffffffaa;font-size:11px;margin:0;">
-                    © ${new Date().getFullYear()} So-Nyah Cleaners
+                    © ${new Date().getFullYear()} So-nyah Cleaners
                   </p>
                 </td>
               </tr>
