@@ -173,7 +173,7 @@ const ServiceDetail = () => {
             </div>
           </div>
 
-          <div className="flex flex-col mt-10">
+         {/*} <div className="flex flex-col mt-10">
             <h3 className="font-bold text-xl sm:text-2xl">Common Questions</h3>
 
             {service.faqs.map((faq, index) => (
@@ -186,7 +186,7 @@ const ServiceDetail = () => {
                 </p>
               </div>
             ))}
-          </div>
+          </div> */}
 
                     
           {/* BLOG SECTION */}
