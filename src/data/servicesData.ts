@@ -2,7 +2,6 @@ import hero1 from "../assets/enhanced-bg1.png";
 import facade_hero from "../assets/facade hero.png";
 import fumigation_hero from "../assets/fumigation hero.png";
 import space_hero from "../assets/space-cleaning hero.png";
-import hero2 from "../assets/enhanced-bg2.png";
 import hero3 from "../assets/enhanced-bg3.png";
 import hero4 from "../assets/enhanced-bg4.png"
 
@@ -10,7 +9,6 @@ import hero4 from "../assets/enhanced-bg4.png"
 // card icons
 import broom from "../assets/broom.png";
 import upholstery from "../assets/chushion.png";
-import carpet from "../assets/carpet.png";
 import gardening from "../assets/gradening.png";
 import pest from "../assets/pest.png";
 import facility from "../assets/facility.png";
@@ -26,7 +24,6 @@ import fast from "../assets/fast.png";
 // change these to your real images later
 import survey from "../assets/survey.png";
 import survey2 from "../assets/survey.png";
-import survey3 from "../assets/survey.png";
 import survey4 from "../assets/survey.png";
 import survey5 from "../assets/survey.png";
 import survey6 from "../assets/survey.png";
@@ -116,21 +113,21 @@ export const servicesData: ServiceItem[] = [
     whyChooseUs: [
       {
         icon: assess,
-        title: "Eco-certified cleaning",
+        title: "Deep Cleaning Excellence",
         description:
-          "We use biodegradable cleaning products that are safe for homes, offices, children, and pets.",
+          "From hidden corners to high traffic surfaces, our team delivers a thorough cleaning experience designed to transform your space with eco friendly products.",
       },
       {
         icon: steam,
-        title: "Deep cleaning + sanitisation",
+        title: "Professional & Trusted Team",
         description:
-          "We go beyond surface cleaning to refresh your environment thoroughly and professionally.",
+          "Every SO-NYAH cleaner is trained to maintain professionalism, discretion, proper hygiene, and high service standards on every project.",
       },
       {
         icon: fast,
-        title: "Flexible scheduling",
+        title: "Flexible Service Scheduling",
         description:
-          "Early mornings, evenings, and weekends are available across Abuja districts.",
+          "We work around your lifestyle and operations with morning, evening, weekend, and custom cleaning schedules available across Abuja.",
       },
     ],
     processSteps: [
@@ -206,21 +203,21 @@ Our promise is to turn construction sites into move-in ready, excellent environm
     whyChooseUs: [
       {
         icon: assess,
-        title: "Practical experience",
+        title: "Move-In Ready Finishing",
         description:
-          "Our guidance is based on real-world field experience, not theory only.",
+          "Our team transforms newly completed projects into clean, polished, and ready to use spaces.",
       },
       {
         icon: steam,
-        title: "Operations-focused training",
+        title: "Detailed Surface Restoration",
         description:
-          "We focus on systems, workflows, and standards that actually work.",
+          "From floors and windows to fittings and corners, we carefully clean and restore every visible surface with precision and professionalism.",
       },
       {
         icon: fast,
-        title: "Sustainable improvement",
+        title: "Trained & Equipped Professionals",
         description:
-          "The goal is stronger service quality, better trust, and repeat business.",
+          "SO-NYAH Cleaners are trained to handle post construction sites safely, efficiently, and with the attention high value properties require.",
       },
     ],
     processSteps: [
@@ -605,105 +602,11 @@ Our deep upholstery cleaning process penetrates beneath the surface; removing em
       },
     ],
   },
-
-  {
-    id: 7,
-    slug: "carpet-revamp",
-    title: "Carpet Revamp",
-    shortDescription:
-      `So-nyah Cleaners do not just clean carpets, we specialise in restoring them, by paying attention to tough stains.
-
-What appears worn-out or permanently stained is often the result of incomplete cleaning. With the right professional treatment, most carpets can be revived to a near new condition.
-
-Let So-nyah Carpet revamp bring life back into your space.
-`,
-    intro:
-     `So-nyah Cleaners do not just clean carpets, we specialise in restoring them, by paying attention to tough stains.
-
-What appears worn-out or permanently stained is often the result of incomplete cleaning. With the right professional treatment, most carpets can be revived to a near new condition.
-
-Let So-nyah Carpet revamp bring life back into your space.
-`,
-    heroImage: hero2,
-    cardIcon: carpet,
-    whyChooseImage: survey3,
-    startingFrom: "N220,000",
-    duration: "4-6 Hours",
-    crewSize: "2-3 Specialists",
-    ctaText: "Book Carpet Revamp",
-    processIntro:
-      `So-nyah Cleaners do not just clean carpets, we specialise in restoring them, by paying attention to tough stains.
-
-What appears worn-out or permanently stained is often the result of incomplete cleaning. With the right professional treatment, most carpets can be revived to a near new condition.
-
-Let So-nyah Carpet revamp bring life back into your space.
-`,
-    faqs: [
-      {
-        question: "Can old stains be removed?",
-        answer:
-          "Many stains can be significantly improved, especially with early treatment and the right extraction process.",
-      },
-      {
-        question: "How long will drying take?",
-        answer:
-          "Most carpets are ready within 4-6 hours depending on thickness and airflow.",
-      },
-    ],
-    whyChooseUs: [
-      {
-        icon: assess,
-        title: "Professional stain treatment",
-        description:
-          "We assess stains and fibre type before applying the right treatment.",
-      },
-      {
-        icon: steam,
-        title: "Hot water extraction",
-        description:
-          "A deep-cleaning method that lifts dirt and odours from carpet fibres.",
-      },
-      {
-        icon: fast,
-        title: "Extends carpet lifespan",
-        description:
-          "A proper revamp can restore presentation and delay replacement costs.",
-      },
-    ],
-    processSteps: [
-      {
-        title: "Carpet Inspection",
-        description:
-          "We inspect fibre condition, stains, and traffic patterns.",
-      },
-      {
-        title: "Pre-vacuuming",
-        description:
-          "Loose dirt and debris are removed before wet treatment begins.",
-      },
-      {
-        title: "Stain Pre-treatment",
-        description:
-          "Heavy marks and problem areas are treated with suitable solutions.",
-      },
-      {
-        title: "Hot Water Extraction",
-        description:
-          "We deep-clean the carpet fibres to remove embedded grime and odours.",
-      },
-      {
-        title: "Drying & Grooming",
-        description:
-          "The carpet is groomed for even drying and a better final finish.",
-      },
-    ],
-  },
-
   
 
 
  {
-    id: 8,
+    id: 7,
     slug: "fumigation",
     title: "Pest Control & General Fumigation",
     shortDescription:
@@ -790,7 +693,7 @@ Our spraying and fogging pest control solutions are strategic, safe, and effecti
   },
 
   {
-    id: 9,
+    id: 8,
     slug: "gardening",
     title: "Gardening Care & Revamp",
     shortDescription:
@@ -882,7 +785,7 @@ We provide professional garden maintenance and outdoor cleaning services that en
   },
 
   {
-  id: 10,
+  id: 9,
   slug: "training",
   title: "Cleaning Training & Consultancy Services",
   shortDescription:
