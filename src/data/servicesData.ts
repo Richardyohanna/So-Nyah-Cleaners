@@ -22,12 +22,12 @@ import steam from "../assets/steam.png";
 import fast from "../assets/fast.png";
 
 // change these to your real images later
-import survey from "../assets/survey.png";
+import survey from "../assets/spaceCleaningDemo.png";
 import survey2 from "../assets/survey.png";
 import survey4 from "../assets/survey.png";
 import survey5 from "../assets/survey.png";
 import survey6 from "../assets/survey.png";
-import survey7 from "../assets/survey.png";
+import survey7 from "../assets/eventCleaning.jpeg";
 import survey8 from "../assets/survey.png";
 import survey9 from "../assets/survey.png";
 
@@ -443,7 +443,7 @@ Your guests should remember the experience; not the mess. We take care of the cl
 
 Your guests should remember the experience; not the mess. We take care of the cleaning, so you can focus on delivering excellence.
 `,
-    heroImage: hero1,
+    heroImage: survey7,
     cardIcon: eventCleaning,
     whyChooseImage: survey7,
     startingFrom: "N200,000",

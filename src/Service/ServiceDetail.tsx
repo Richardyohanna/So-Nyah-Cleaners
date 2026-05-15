@@ -249,8 +249,7 @@ const ServiceDetail = () => {
             Ready for a transformation?
           </h2>
           <p className="text-center text-[15px] sm:text-[16px] lg:text-[17px] leading-7 text-[#555]">
-            Send us a photo on WhatsApp and we'll tell you exactly what we can
-            do. No guesswork, just expert results.
+            Send us a Video on WhatsApp, or Schedule an inspection and we'll consult for you. No guess work; just experience. 
           </p>
 
           <button onClick={() =>  window.open("https://wa.me/message/CXGU4I2ZUXS4I1", "_blank")} className="rounded-lg flex px-4 sm:px-5 shadow text-white bg-[var(--text-sub-h)] p-2 items-center gap-3 text-sm sm:text-base">
