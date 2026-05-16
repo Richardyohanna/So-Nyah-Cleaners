@@ -1,7 +1,7 @@
 import hero1 from "../assets/enhanced-bg1.png";
 import facade_hero from "../assets/facade hero.png";
 import fumigation_hero from "../assets/fumigation hero.png";
-import space_hero from "../assets/space-cleaning hero.png";
+import space_hero from "../assets/spaceCleaningOriginal.jpeg";
 import hero3 from "../assets/enhanced-bg3.png";
 import hero4 from "../assets/enhanced-bg4.png"
 
