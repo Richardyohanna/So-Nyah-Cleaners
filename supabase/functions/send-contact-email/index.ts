@@ -59,8 +59,8 @@ Deno.serve(async (req) => {
       phone,
       email,
       area,
-      service,
-      preferredDate,
+     
+     
       details,
     } = await req.json();
 
@@ -81,9 +81,9 @@ Deno.serve(async (req) => {
     // ✅ SEND CLIENT EMAIL
     if (email) {await sendEmail(
           email,
-          "Thank you for contacting So-Nyah Cleaners 🌿",
+          "Thank you for contacting So-nyah Cleaners 🌿",
           `<!DOCTYPE html>
-        <html>
+          <html>
         <head>
           <meta charset="utf-8"/>
           <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;600;700&display=swap" rel="stylesheet">
@@ -102,10 +102,12 @@ Deno.serve(async (req) => {
                 <td style="background:#791E7E;padding:30px;text-align:center;">
 
                   <!-- LOGO -->
-                  <img src="../assets/logo.png"
-                      alt="So-nyah Cleaners"
-                      width="80"
-                      style="display:block;margin:0 auto 12px;" />
+                  <div style="background: #fff; padding: 5px; padding-top: 15px; padding-left: 10; padding-right: 10px; width: fit-content; margin: auto; justify-content: center; align-items: center; text-align: center; display: flex; ">
+                    <img src="https://pltuxx4q1i7colum.public.blob.vercel-storage.com/logo.png"
+                        alt="So-nyah Cleaners"
+                        width="80"
+                        style="display:block;margin:0 auto 12px; background: #fff;" />
+                  </div>
 
                   <h1 style="color:#fff;margin:0;font-size:22px;font-weight:700;">
                     So-nyah Cleaners
@@ -135,9 +137,10 @@ Deno.serve(async (req) => {
                       Request Summary
                     </p>
 
-                    <p style="margin:4px 0;"><strong>Service:</strong> ${service}</p>
-                    <p style="margin:4px 0;"><strong>Area:</strong> ${area}</p>
-                    <p style="margin:4px 0;"><strong>Phone:</strong> ${phone}</p>
+                    
+                    <p style="margin:4px 0;"><strong>Area:</strong>  ${area} </p>
+                    <p style="margin:4px 0;"><strong>Phone:</strong> ${phone} </p>
+                    <p style="margin:4px 0;"><strong>Details:</strong> ${details} </p>
                   </div>
 
                   <!-- CTA -->
@@ -165,7 +168,6 @@ Deno.serve(async (req) => {
                   </p>
                 </td>
               </tr>
-
             </table>
 
           </td></tr>
@@ -179,11 +181,82 @@ Deno.serve(async (req) => {
     await sendEmail(
       SONYAH_EMAIL,
       `New Request — ${fullName}`,
-      `<p><strong>Name:</strong> ${fullName}</p>
-       <p><strong>Service:</strong> ${service}</p>
-       <p><strong>Phone:</strong> ${phone}</p>
-       <p><strong>Area:</strong> ${area}</p>
-       <p><strong>Details:</strong> ${details ?? "-"}</p>`
+       `<!DOCTYPE html>
+        <html>
+        <head>
+          <meta charset="utf-8"/>
+          <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;600;700&display=swap" rel="stylesheet">
+        </head>
+
+        <body style="margin:0;padding:0;background:#f6f3f2;font-family:'Jost', Arial, sans-serif;">
+        <table width="100%" cellpadding="0" cellspacing="0" style="padding:40px 16px;">
+          <tr><td align="center">
+
+            <table width="600" cellpadding="0" cellspacing="0"
+              style="max-width:600px;background:#fff;border-radius:18px;overflow:hidden;
+                    box-shadow:0 4px 24px rgba(0,0,0,0.08);">
+
+              <!-- HEADER -->
+              <tr>
+                <td style="background:#791E7E;padding:30px;text-align:center;">
+
+                  <!-- LOGO -->
+                  <div style="background: #fff; padding: 5px; padding-top: 15px; padding-left: 10; padding-right: 10px; width: fit-content; margin: auto; justify-content: center; align-items: center; text-align: center; display: flex; ">
+                    <img src="https://pltuxx4q1i7colum.public.blob.vercel-storage.com/logo.png"
+                        alt="So-nyah Cleaners"
+                        width="80"
+                        style="display:block;margin:0 auto 12px; background: #fff;" />
+                  </div>
+
+                  <h1 style="color:#fff;margin:0;font-size:22px;font-weight:700;">
+                    So-nyah Cleaners
+                  </h1>
+
+                  <p style="color:#ffffffcc;margin:6px 0 0;font-size:12px;">
+                    CLEANING SPACES · CREATING HAPPY FACES
+                  </p>
+                </td>
+              </tr>
+
+              <!-- CONTENT -->
+              <tr>
+                <td style="padding:35px 40px;">
+
+                  <h2 style="color:#791E7E;margin:0 0 12px;font-size:20px;">
+                    New Request From, ${firstName}
+                  </h2>
+
+
+                  <!-- SUMMARY BOX -->
+                  <div style="background:#f4e9f6;border-radius:12px;padding:20px;margin:25px 0;">
+                    <p style="margin:0 0 10px;font-weight:600;color:#791E7E;">
+                      Request Summary
+                    </p>
+
+                    
+                      <p><strong>Name:</strong> ${fullName}</p>       
+                      <p><strong>Phone:</strong> ${phone}</p>
+                      <p><strong>Area:</strong> ${area}</p>
+                      <p><strong>Details:</strong> ${details ?? "-"}</p>
+                  </div>
+
+                </td>
+              </tr>
+
+              <!-- FOOTER -->
+              <tr>
+                <td style="background:#791E7E;padding:18px;text-align:center;">
+                  <p style="color:#ffffffaa;font-size:11px;margin:0;">
+                    © ${new Date().getFullYear()} So-nyah Cleaners
+                  </p>
+                </td>
+              </tr>
+            </table>
+
+          </td></tr>
+        </table>
+        </body>
+        </html>`
     );
 
     return new Response(JSON.stringify({ success: true }), {
