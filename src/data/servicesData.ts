@@ -291,9 +291,9 @@ Using specialised equipment and safe cleaning methods, So-nyah restores building
     whyChooseUs: [
       {
         icon: assess,
-        title: "Surface-specific cleaning",
+        title: "Safety Consideration",
         description:
-          "We match the right method to the surface type for safer results.",
+          "So-nyah Cleaners follows all safety procedure to efficiently clean high facade buildings",
       },
       {
         icon: steam,
@@ -478,7 +478,7 @@ Your guests should remember the experience; not the mess. We take care of the cl
         icon: steam,
         title: "Discreet team",
         description:
-          "Our cleaners work around guests and activities without disruption.",
+          "We make use of modern machineries for timely delivery",
       },
       {
         icon: fast,
@@ -565,13 +565,13 @@ Our deep upholstery cleaning process penetrates beneath the surface; removing em
         icon: steam,
         title: "Steam extraction",
         description:
-          "We remove trapped dirt, allergens, and bacteria from deep inside the fibres.",
+          " Our steam  vacuum remove trapped dirt, allergens, and bacteria from deep inside the fibres.",
       },
       {
         icon: fast,
-        title: "Fast drying",
+        title: "Fast Drying",
         description:
-          "Most furniture is ready for use within hours, not days.",
+          "We are equipped with drying machines to ensure furniture is ready for use within hours, not days.",
       },
     ],
     processSteps: [
@@ -646,9 +646,9 @@ Our spraying and fogging pest control solutions are strategic, safe, and effecti
     whyChooseUs: [
       {
         icon: assess,
-        title: "Thorough inspection",
+        title: "Execution",
         description:
-          "We find the source of the infestation, not just the visible signs.",
+          "We make use of Spraying and Fogging Methods to effectively eliminate all kinds of infestations.",
       },
       {
         icon: steam,

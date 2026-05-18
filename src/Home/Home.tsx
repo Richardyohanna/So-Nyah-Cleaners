@@ -1,8 +1,7 @@
-
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { getServiceBySlug } from "../data/servicesData";
-import { usePosts } from "../hooks/usePosts";  
+import { usePosts } from "../hooks/usePosts";
 
 import before1 from "../assets/enhanced-bg2.png";
 import after1 from "../assets/enhanced-bg1.png";
@@ -29,8 +28,7 @@ import client8 from "../assets/client8.png";
 
 import whatsApp from "../assets/whatsApp.png";
 import expand from "../assets/expand.png";
-import nine9 from "../assets/99.png";
-import star from "../assets/star.png";
+
 
 import teamAtwork from "../assets/teamAtWork.jpeg";
 import teamAtwork2 from "../assets/teamAtWork 2.jpeg";
@@ -43,6 +41,23 @@ import team from "../assets/team.jpeg";
 
 
 
+// Base animation classes — add to tailwind config or use inline styles
+// We use inline style approach so no tailwind config changes are needed.
+const fadeUp = (visible: boolean, delay = 0): React.CSSProperties => ({
+  opacity: visible ? 1 : 0,
+  transform: visible ? "translateY(0px)" : "translateY(36px)",
+  transition: `opacity 0.65s ease ${delay}ms, transform 0.65s ease ${delay}ms`,
+});
+
+const fadeIn = (visible: boolean, delay = 0): React.CSSProperties => ({
+  opacity: visible ? 1 : 0,
+  transition: `opacity 0.7s ease ${delay}ms`,
+});
+
+
+
+
+// ── Types ────────────────────────────────────────────────────────────────────
 type Clients = {
   id: number;
   image: string;
@@ -72,9 +87,9 @@ const heroImages: HeroImage[] = [
 
 type Review = { id: number; review: string; name: string; role: string; image?: string };
 const reviews: Review[] = [
-  { id: 1, review: "Excellent work! My husband was genuinely surprised when he entered the house even the kids noticed the difference. Truly impressive results.", name: "Asma'u Buba", role: "", image: "" },
-  { id: 2, review: "My husband specifically mentioned the depth and thoroughness of the cleaning your team carried out. Thank you for such a detailed job", name: "Pee Dinnah2", role: "", image: "" },
-  { id: 3, review: "I would give the service an 8.5 out of 10. This is not due to any dissatisfaction, but rather room for improvement. Overall, I am very satisfied with the service, and my husband shares the same opinion.", name: "Ms. Summi", role: "", image: "" },
+  { id: 1, review: "Excellent work! My husband was genuinely surprised when he entered the house even the kids noticed the difference. Truly impressive results.", name: "Asmau Buba", role: "Civil Cervant", image: "" },
+  { id: 2, review: "My husband specifically mentioned the depth and thoroughness of the cleaning your team carried out. Thank you for such a detailed job", name: "Patience Dimmah", role: "NGO Consultant", image: "" },
+  { id: 3, review: "I would give the service an 8.5 out of 10. This is not due to any dissatisfaction, but rather room for improvement. Overall, I am very satisfied with the service, and my husband shares the same opinion.", name: "Ms. Summi", role: "Enterprenuer", image: "" },
 ];
 
 const HEADER_HEIGHT = 66;
@@ -100,7 +115,6 @@ const Home = () => {
   const [reviewStartIndex, setReviewStartIndex] = useState(0);
   const [currentHeroImageIndex, setCurrentHeroImageIndex] = useState(0);
 
-  // ── Fetch latest 4 published posts from Supabase ──────────────────────────
   const { posts: livePosts, loading: postsLoading } = usePosts({ status: "published", limit: 4 });
 
   const spaceCleaning = getServiceBySlug("space-cleaning");
@@ -113,6 +127,49 @@ const Home = () => {
   }>(null);
 
   const [showChatBubble, setShowChatBubble] = useState(false);
+
+  // ── Scroll reveal refs for sections ─────────────────────────────────────
+  const serviceRef = useRef<HTMLElement>(null);
+  const [serviceVisible, setServiceVisible] = useState(false);
+
+  const clientsRef = useRef<HTMLElement>(null);
+  const [clientsVisible, setClientsVisible] = useState(false);
+
+  const reviewsRef = useRef<HTMLElement>(null);
+  const [reviewsVisible, setReviewsVisible] = useState(false);
+
+  const blogRef = useRef<HTMLElement>(null);
+  const [blogVisible, setBlogVisible] = useState(false);
+
+  useEffect(() => {
+    const observers: IntersectionObserver[] = [];
+
+    const makeObserver = (
+      ref: React.RefObject<HTMLElement | null>,
+      setter: (v: boolean) => void
+    ) => {
+      const el = ref.current;
+      if (!el) return;
+      const obs = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            setter(true);
+            obs.unobserve(el);
+          }
+        },
+        { threshold: 0.08, rootMargin: "0px 0px -30px 0px" }
+      );
+      obs.observe(el);
+      observers.push(obs);
+    };
+
+    makeObserver(serviceRef, setServiceVisible);
+    makeObserver(clientsRef, setClientsVisible);
+    makeObserver(reviewsRef, setReviewsVisible);
+    makeObserver(blogRef, setBlogVisible);
+
+    return () => observers.forEach((o) => o.disconnect());
+  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -155,7 +212,7 @@ const Home = () => {
   return (
     <div className="overflow-hidden w-full bg-white flex flex-col gap-10 pb-20">
 
-      {/* ── HERO SECTION (unchanged) ─────────────────────────────────────────── */}
+      {/* ── HERO SECTION ─────────────────────────────────────────────────────── */}
       <section id="hero" className="relative overflow-hidden" style={{ minHeight: `calc(100vh - ${HEADER_HEIGHT}px)` }}>
         <div className="absolute inset-0">
           {heroImages.map((item, index) => (
@@ -167,53 +224,80 @@ const Home = () => {
             <div className="absolute inset-0 bg-gradient-to-r from-black/55 via-black/15 to-transparent sm:from-black/70 sm:via-black/25 lg:from-black/85 lg:via-black/30" />
           </div>
         </div>
-        <div className="relative z-10 flex flex-col lg:flex-row justify-center lg:justify-between w-full gap-8 md:gap-10 lg:gap-12 items-start lg:items-center min-h-[calc(100vh-66px)]  px-4 sm:px-6 md:px-8 lg:px-10">
-          <div className="relative mt-2 w-full max-w-[880px] rounded-[32px]">
+
+        <div className="relative z-10 flex flex-col lg:flex-row justify-center lg:justify-between w-full gap-8 md:gap-10 lg:gap-12 items-start lg:items-center min-h-[calc(100vh-66px)] px-4 sm:px-6 md:px-8 lg:px-10">
+          {/* Hero text — animate in on mount */}
+          <div
+            className="relative mt-2 w-full max-w-[880px] rounded-[32px]"
+            style={{
+              opacity: 1,
+              animation: "heroFadeUp 0.9s ease 0.2s both",
+            }}
+          >
+            <style>{`
+              @keyframes heroFadeUp {
+                from { opacity: 0; transform: translateY(40px); }
+                to   { opacity: 1; transform: translateY(0); }
+              }
+              @keyframes heroSocialIn {
+                from { opacity: 0; transform: translateX(30px); }
+                to   { opacity: 1; transform: translateX(0); }
+              }
+            `}</style>
             <div className="relative z-10">
-              <div>
-                <h1 className="text-[40px] tracking-normal! sm:text-[54px] md:text-[60px] lg:text-[72px] xl:text-[86px] leading-[1] mt-5 font-bold text-white">
-                  Cleaning Spaces,<br /><span>Creating <br />Happy Faces</span>
-                </h1>
-                <div className="flex flex-col sm:flex-row gap-4 sm:gap-5 mt-6 w-full sm:w-auto">
-                  <button onClick={() => navigate(`/contact`)} className="bg-white text-[var(--primary)] px-5 md:px-6 py-3 rounded-2xl shadow-xl font-semibold transition-all duration-300 hover:scale-105 hover:bg-[var(--primary)] hover:text-white w-full sm:w-auto">
-                    Schedule a Visit
-                  </button>
-                  <button onClick={() => navigate(`/services`)} className="bg-transparent text-white! px-5 md:px-6 py-3 rounded-2xl shadow-xl font-semibold transition-all duration-300 hover:scale-105 hover:bg-[var(--primary)] hover:text-white w-full sm:w-auto border-2! border-white! hover:border-transparent!">
-                    View Our Services
-                  </button>
-                </div>
+              <h1 className="text-[40px] tracking-normal! sm:text-[54px] md:text-[60px] lg:text-[72px] xl:text-[86px] leading-[1] mt-5 font-bold text-white">
+                Cleaning Spaces,<br /><span>Creating <br />Happy Faces</span>
+              </h1>
+              <div className="flex flex-col sm:flex-row gap-4 sm:gap-5 mt-6 w-full sm:w-auto">
+                <button onClick={() => navigate(`/contact`)} className="bg-white text-[var(--primary)] px-5 md:px-6 py-3 rounded-2xl shadow-xl font-semibold transition-all duration-300 hover:scale-105 hover:bg-[var(--primary)] hover:text-white w-full sm:w-auto">
+                  Schedule a Visit
+                </button>
+                <button onClick={() => navigate(`/services`)} className="bg-transparent text-white! px-5 md:px-6 py-3 rounded-2xl shadow-xl font-semibold transition-all duration-300 hover:scale-105 hover:bg-[var(--primary)] hover:text-white w-full sm:w-auto border-2! border-white! hover:border-transparent!">
+                  View Our Services
+                </button>
               </div>
             </div>
           </div>
-          <div className="flex  flex-row lg:flex-col gap-2 sm:gap-3 md:gap-4 items-center lg:self-center">
-           
 
-              <button onClick={()=> window.open('https://www.instagram.com/sonyah_cleaners?utm_source=qr&igsh=MWRtdG9ud3YzNDFoZQ%3D%3D', '_blank')} className="w-[43px] h-[43px] sm:w-[49px] sm:h-[49px] md:w-[52px] md:h-[52px] lg:w-[54px] lg:h-[54px] rounded-full border-[2px] lg:border-[3px] border-white flex items-center justify-center transition-all duration-300 ease-in-out hover:border-[var(--primary)] hover:bg-[var(--primary)] hover:scale-110">
-                <img src={instagram} className="w-[25px] h-[25px] sm:w-[29px] sm:h-[29px] md:w-[31px] md:h-[31px] lg:w-[34px] lg:h-[34px] object-contain transition-all duration-300" />
-              </button>
-
-              <button onClick={()=> window.open('https://www.linkedin.com/in/uchenna-linda-nzewigbo-b81b8aa1/', '_blank')} className="w-[43px] h-[43px] sm:w-[49px] sm:h-[49px] md:w-[52px] md:h-[52px] lg:w-[54px] lg:h-[54px] rounded-full border-[2px] lg:border-[3px] border-white flex items-center justify-center transition-all duration-300 ease-in-out hover:border-[var(--primary)] hover:bg-[var(--primary)] hover:scale-110">
-                <img src={linkedin} className="w-[25px] h-[25px] sm:w-[29px] sm:h-[29px] md:w-[31px] md:h-[31px] lg:w-[34px] lg:h-[34px] object-contain transition-all duration-300" />
-              </button>
-
-             <button onClick={()=> window.open('mailto:info@sonyahcleaners.com', '_blank')} className="w-[43px] h-[43px] sm:w-[49px] sm:h-[49px] md:w-[52px] md:h-[52px] lg:w-[54px] lg:h-[54px] rounded-full border-[2px] lg:border-[3px] border-white flex items-center justify-center transition-all duration-300 ease-in-out hover:border-[var(--primary)] hover:bg-[var(--primary)] hover:scale-110">
-                <img src={mail} className="w-[25px] h-[25px] sm:w-[29px] sm:h-[29px] md:w-[31px] md:h-[31px] lg:w-[34px] lg:h-[34px] object-contain transition-all duration-300" />
-              </button>
-
+          <div
+            className="flex flex-row lg:flex-col gap-2 sm:gap-3 md:gap-4 items-center lg:self-center"
+            style={{ animation: "heroSocialIn 0.9s ease 0.5s both" }}
+          >
+            <button onClick={() => window.open('https://www.instagram.com/sonyah_cleaners?utm_source=qr&igsh=MWRtdG9ud3YzNDFoZQ%3D%3D', '_blank')} className="w-[43px] h-[43px] sm:w-[49px] sm:h-[49px] md:w-[52px] md:h-[52px] lg:w-[54px] lg:h-[54px] rounded-full border-[2px] lg:border-[3px] border-white flex items-center justify-center transition-all duration-300 ease-in-out hover:border-[var(--primary)] hover:bg-[var(--primary)] hover:scale-110">
+              <img src={instagram} className="w-[25px] h-[25px] sm:w-[29px] sm:h-[29px] md:w-[31px] md:h-[31px] lg:w-[34px] lg:h-[34px] object-contain transition-all duration-300" />
+            </button>
+            <button onClick={() => window.open('https://www.linkedin.com/in/uchenna-linda-nzewigbo-b81b8aa1/', '_blank')} className="w-[43px] h-[43px] sm:w-[49px] sm:h-[49px] md:w-[52px] md:h-[52px] lg:w-[54px] lg:h-[54px] rounded-full border-[2px] lg:border-[3px] border-white flex items-center justify-center transition-all duration-300 ease-in-out hover:border-[var(--primary)] hover:bg-[var(--primary)] hover:scale-110">
+              <img src={linkedin} className="w-[25px] h-[25px] sm:w-[29px] sm:h-[29px] md:w-[31px] md:h-[31px] lg:w-[34px] lg:h-[34px] object-contain transition-all duration-300" />
+            </button>
+            <button onClick={() => window.open('mailto:info@sonyahcleaners.com', '_blank')} className="w-[43px] h-[43px] sm:w-[49px] sm:h-[49px] md:w-[52px] md:h-[52px] lg:w-[54px] lg:h-[54px] rounded-full border-[2px] lg:border-[3px] border-white flex items-center justify-center transition-all duration-300 ease-in-out hover:border-[var(--primary)] hover:bg-[var(--primary)] hover:scale-110">
+              <img src={mail} className="w-[25px] h-[25px] sm:w-[29px] sm:h-[29px] md:w-[31px] md:h-[31px] lg:w-[34px] lg:h-[34px] object-contain transition-all duration-300" />
+            </button>
           </div>
         </div>
       </section>
 
-      {/* ── SERVICE SECTION (unchanged) ──────────────────────────────────────── */}
-      <section id="service" className="mt-20 px-4 sm:px-6 md:px-8 lg:px-10">
-        <h3 className="text-[var(--primary)] head text-[32px] sm:text-[38px] md:text-[42px] lg:text-[48px] tracking-normal! font-bold items-center text-center">
+      {/* ── SERVICE SECTION ───────────────────────────────────────────────────── */}
+      <section
+        id="service"
+        ref={serviceRef}
+        className="mt-20 px-4 sm:px-6 md:px-8 lg:px-10"
+      >
+        <h3
+          className="text-[var(--primary)] head text-[32px] sm:text-[38px] md:text-[42px] lg:text-[48px] tracking-normal! font-bold items-center text-center"
+          style={fadeUp(serviceVisible, 0)}
+        >
           Our Specialized Services
         </h3>
+
         <div className="mt-10 flex gap-8 md:gap-8 lg:gap-10 justify-center flex-wrap w-full">
           {[spaceCleaning, facadeCleaning, fumigationCleaning, gardening].map((service, idx) => (
             service && (
-              <div key={idx} onClick={() => navigate(`/service/${service.slug}`)}
-                className="w-full sm:max-w-[323px] md:max-w-[340px] lg:max-w-[323px] flex flex-col cursor-pointer group transition-all duration-300 hover:-translate-y-2">
+              <div
+                key={idx}
+                onClick={() => navigate(`/service/${service.slug}`)}
+                className="w-full sm:max-w-[323px] md:max-w-[340px] lg:max-w-[323px] flex flex-col cursor-pointer group transition-all duration-300 hover:-translate-y-2"
+                style={fadeUp(serviceVisible, 100 + idx * 120)}
+              >
                 <div className="overflow-hidden rounded-2xl">
                   <img src={service.heroImage} alt="service" className="rounded-2xl h-[260px] sm:h-[320px] md:h-[300px] lg:max-h-[360px] w-full object-cover transition-transform duration-500 group-hover:scale-105" />
                 </div>
@@ -228,49 +312,106 @@ const Home = () => {
               </div>
             )
           ))}
-          <button onClick={() => navigate("/services")} className="flex flex-row items-center justify-between gap-3 h-fit self-start md:self-center lg:self-start transition-all duration-300 hover:translate-x-[3px] group">
+
+          <button
+            onClick={() => navigate("/services")}
+            className="flex flex-row items-center justify-between gap-3 h-fit self-start md:self-center lg:self-start transition-all duration-300 hover:translate-x-[3px] group"
+            style={fadeUp(serviceVisible, 600)}
+          >
             <span className="text-[var(--primary)] font-bold">View all Services</span>
             <img src={expand} alt="expand" className="shrink-0 transition-all duration-300 group-hover:scale-110" />
           </button>
         </div>
       </section>
 
-      {/* ── OUR CLIENTS (unchanged) ──────────────────────────────────────────── */}
-      <section id="clients" className="w-full mt-25 px-4 sm:px-6 md:px-8 lg:px-10 py-10 bg-[var(--primary)]">
-        <h3 className="text-white! tracking-normal! head text-[32px] sm:text-[38px] md:text-[42px] lg:text-[48px] font-bold items-center text-center">Our Clients</h3>
-        
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-8 gap-y-8 gap-x-6 bg-white mt-10 place-items-center p-4 sm:p-6 md:p-8 rounded-2xl">
-          {clients.map((client) => (
-            <div key={client.id} className="w-full flex items-center justify-center">
-              <div className="w-[120px] sm:w-[130px] md:w-[140px] h-[90px] md:h-[100px] flex items-center justify-center">
-                <img src={client.image} alt={client.companyName} className={`object-contain transition-all duration-300 hover:scale-105 ${client.logoWidth || "w-[100px]"} ${client.logoHeight || "h-[70px]"}`} />
-              </div>
+      {/* ── OUR CLIENTS ───────────────────────────────────────────────────────── */}
+      <section
+        id="clients"
+        ref={clientsRef}
+        className="w-full mt-25 px-4 sm:px-6 md:px-8 lg:px-10 py-10 bg-[var(--primary)]"
+      >
+        <h3
+          className="text-white! tracking-normal! head text-[32px] sm:text-[38px] md:text-[42px] lg:text-[48px] font-bold items-center text-center"
+          style={fadeUp(clientsVisible, 0)}
+        >
+          Our Clients
+        </h3>
+     
+        <div
+          className="bg-white mt-10 p-4 sm:p-6 md:p-8 rounded-2xl overflow-hidden"
+          style={fadeIn(clientsVisible, 200)}
+        >
+          {/* Row 1 — scrolls left */}
+          <div className="relative overflow-hidden mb-6">
+            <div
+              className="flex gap-8 w-max"
+              style={{
+                animation: "marqueeLeft 18s linear infinite",
+              }}
+            >
+              {[...clients, ...clients].map((client, idx) => (
+                <div
+                  key={idx}
+                  className="flex items-center justify-center shrink-0 w-[120px] sm:w-[130px] md:w-[140px] h-[90px] md:h-[100px]"
+                >
+                  <img
+                    src={client.image}
+                    alt={client.companyName}
+                    className={`object-contain transition-all duration-300 hover:scale-105 ${client.logoWidth || "w-[100px]"} ${client.logoHeight || "h-[70px]"}`}
+                  />
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
+
+
+
+          <style>{`
+            @keyframes marqueeLeft {
+              0%   { transform: translateX(0); }
+              100% { transform: translateX(-50%); }
+            }
+            @keyframes marqueeRight {
+              0%   { transform: translateX(-50%); }
+              100% { transform: translateX(0); }
+            }
+            /* Pause on hover */
+            .relative:hover > div[style] {
+              animation-play-state: paused;
+            }
+          `}</style>
         </div>
       </section>
 
-      {/* ── REVIEWS (unchanged) ──────────────────────────────────────────────── */}
-      <section id="reviews" className="mt-20 px-4 sm:px-6 md:px-8 lg:px-16 xl:px-20">
-        <h3 className="text-[var(--primary)] tracking-normal! head text-[32px] sm:text-[38px] md:text-[42px] lg:text-[48px] leading-[1] font-bold items-center text-center">Voices Of Contentment</h3>
-        <h4 className="text-center text-[var(--accent-text)] text-sm sm:text-base mt-2">Trust earned through every polished surface.</h4>
+      {/* ── REVIEWS ───────────────────────────────────────────────────────────── */}
+      <section
+        id="reviews"
+        ref={reviewsRef}
+        className="mt-20 px-4 sm:px-6 md:px-8 lg:px-16 xl:px-20"
+      >
+        <h3
+          className="text-[var(--primary)] tracking-normal! head text-[32px] sm:text-[38px] md:text-[42px] lg:text-[48px] leading-[1] font-bold items-center text-center"
+          style={fadeUp(reviewsVisible, 0)}
+        >
+          Some Of Our Happy Faces
+        </h3>
+        <h4
+          className="text-center text-[var(--accent-text)] text-sm sm:text-base mt-2"
+          style={fadeUp(reviewsVisible, 120)}
+        >
+          Trust earned through every polished surface.
+        </h4>
+
         <div className="mt-8 flex justify-center items-center gap-2 sm:gap-4">
-          
-          {/* ⬅️ PREV BUTTON */}
           {showNavigation && (
-            <button
-              onClick={prevReviews}
-              className="hidden md:flex w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-[#00000018] items-center justify-center text-[var(--primary)] transition-all duration-300 hover:bg-[var(--primary)] hover:text-white shrink-0"
-            >
+            <button onClick={prevReviews} className="hidden md:flex w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-[#00000018] items-center justify-center text-[var(--primary)] transition-all duration-300 hover:bg-[var(--primary)] hover:text-white shrink-0">
               ←
             </button>
           )}
 
-          {/* REVIEWS GRID */}
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 justify-items-center w-full gap-4 sm:gap-6">
             {getVisibleReviews().map((review, index) => {
               const isMiddle = index === 1 && getVisibleReviews().length === 3;
-
               return (
                 <div
                   key={`${review.id}-${index}`}
@@ -279,65 +420,24 @@ const Home = () => {
                       ? "bg-[var(--primary)] text-white shadow-2xl xl:scale-105"
                       : "bg-white border border-[#00000014] text-black hover:-translate-y-2 hover:shadow-xl"
                   }`}
+                  style={fadeUp(reviewsVisible, 150 + index * 150)}
                 >
-                  <div className="flex justify-end px-2">
-                    <img
-                      src={nine9}
-                      alt="quote"
-                      className={`shrink-0 transition-all duration-300 ${
-                        isMiddle ? "opacity-100" : "opacity-70"
-                      }`}
-                    />
-                  </div>
 
                   <div className="flex gap-1">
-                    {[...Array(5)].map((_, starIndex) => (
-                      <img
-                        key={starIndex}
-                        src={star}
-                        alt="star"
-                        className={`w-4 h-4 sm:w-5 sm:h-5 ${
-                          isMiddle ? "brightness-0 invert" : ""
-                        }`}
-                      />
-                    ))}
-                  </div>
 
-                  <p
-                    className={`leading-relaxed transition-colors duration-300 text-sm sm:text-base overflow-hidden line-clamp-6 ${
-                      isMiddle ? "!text-white" : "text-[var(--accent-text)]"
-                    }`}
-                  >
+                  </div>
+                  <p className={`leading-relaxed transition-colors duration-300 text-sm sm:text-base overflow-hidden line-clamp-6 ${isMiddle ? "!text-white" : "text-[var(--accent-text)]"}`}>
                     "{review.review}"
                   </p>
-
                   <div className="flex items-center gap-3 mt-3">
-                    <div
-                      className={`w-12 h-12 rounded-full flex items-center justify-center font-bold transition-all duration-300 ${
-                        isMiddle
-                          ? "bg-white text-[var(--primary)]"
-                          : "bg-[var(--primary)] text-white"
-                      }`}
-                    >
+                    <div className={`w-12 h-12 rounded-full flex items-center justify-center font-bold transition-all duration-300 ${isMiddle ? "bg-white text-[var(--primary)]" : "bg-[var(--primary)] text-white"}`}>
                       {review.name.charAt(0)}
                     </div>
-
                     <div>
-                      <h6
-                        className={`font-bold transition-colors duration-300 text-sm sm:text-base ${
-                isMiddle ? "text-white" : "text-[var(--primary)]"
-              }`}
-            >
+                      <h6 className={`font-bold transition-colors duration-300 text-sm sm:text-base ${isMiddle ? "text-white!" : "text-[var(--primary)]!"}`}>
                         {review.name}
                       </h6>
-
-                      <p
-                        className={`text-xs sm:text-sm transition-colors duration-300 ${
-                          isMiddle
-                            ? "!text-white/80"
-                            : "text-[var(--accent-text)]"
-                        }`}
-                      >
+                      <p className={`text-xs! sm:text-sm! transition-colors duration-300 ${isMiddle ? "text-white/80!" : "text-[var(--accent-text)]!"}`}>
                         {review.role}
                       </p>
                     </div>
@@ -347,12 +447,8 @@ const Home = () => {
             })}
           </div>
 
-          {/* ➡️ NEXT BUTTON */}
           {showNavigation && (
-            <button
-              onClick={nextReviews}
-              className="hidden md:flex w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-[#00000018] items-center justify-center text-[var(--primary)] transition-all duration-300 hover:bg-[var(--primary)] hover:text-white shrink-0"
-            >
+            <button onClick={nextReviews} className="hidden md:flex w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-[#00000018] items-center justify-center text-[var(--primary)] transition-all duration-300 hover:bg-[var(--primary)] hover:text-white shrink-0">
               →
             </button>
           )}
@@ -360,8 +456,15 @@ const Home = () => {
       </section>
 
       {/* ── BLOG / GALLERY SECTION ────────────────────────────────────────────── */}
-      <section id="blog" className="mt-20 min-h-[700px] overflow-hidden px-4 sm:px-6 md:px-8 lg:px-10">
-        <div className="flex flex-nowrap items-center justify-between gap-3 whitespace-nowrap w-full">
+      <section
+        id="blog"
+        ref={blogRef}
+        className="mt-20 min-h-[700px] overflow-hidden px-4 sm:px-6 md:px-8 lg:px-10"
+      >
+        <div
+          className="flex flex-nowrap items-center justify-between gap-3 whitespace-nowrap w-full"
+          style={fadeIn(blogVisible, 0)}
+        >
           <div className="flex flex-nowrap gap-2 sm:gap-3 whitespace-nowrap">
             {["Blog", "Gallery"].map((tab) => (
               <button key={tab} onClick={() => setBlogGallery(tab)}
@@ -378,42 +481,38 @@ const Home = () => {
         </div>
 
         <div className="pt-3">
-          {/* ── BLOG TAB — now from Supabase ─────────────────────────────────── */}
+          {/* ── BLOG TAB ─────────────────────────────────────────────────────── */}
           {isBlogGallery === "Blog" && (
             <div className="overflow-x-auto pt-6 sm:pt-8 lg:pt-10 overflow-y-visible scrollbar-hide">
               <div className="grid grid-flow-col auto-cols-[260px] sm:auto-cols-[280px] md:auto-cols-[300px] lg:auto-cols-[320px] gap-6 lg:gap-10 bg-transparent">
-
-                {/* Skeletons while loading */}
                 {postsLoading && Array.from({ length: 4 }).map((_, i) => <BlogSkeleton key={i} />)}
 
-                {/* No posts yet */}
                 {!postsLoading && livePosts.length === 0 && (
                   <div className="col-span-full flex flex-col items-center justify-center py-16 text-gray-400">
                     <p className="text-sm">No articles published yet.</p>
                   </div>
                 )}
 
-                {/* Live posts */}
-                {!postsLoading && livePosts.map((article) => (
-                  <div key={article.id} onClick={() => navigate(`/blog/${article.id}`)}
-                    className="w-full cursor-pointer border border-[#0000001a] rounded-2xl overflow-hidden bg-white transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-[var(--primary)] group">
-
-                    {/* Thumbnail */}
+                {!postsLoading && livePosts.map((article, idx) => (
+                  <div
+                    key={article.id}
+                    onClick={() => navigate(`/blog/${article.id}`)}
+                    className="w-full cursor-pointer border border-[#0000001a] rounded-2xl overflow-hidden bg-white transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-[var(--primary)] group"
+                    style={fadeUp(blogVisible, 100 + idx * 100)}
+                  >
                     <div className="w-full h-[180px] md:h-[190px] overflow-hidden bg-gray-100">
                       {article.image_url ? (
-                        <img src={article.image_url} alt={article.title}
-                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                        <img src={article.image_url} alt={article.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                       ) : (
                         <div className="w-full h-full flex items-center justify-center bg-gray-100">
                           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#d1d5db" strokeWidth="1.5">
-                            <rect x="3" y="3" width="18" height="18" rx="3"/>
-                            <circle cx="8.5" cy="8.5" r="1.5"/>
-                            <path d="M21 15l-5-5L5 21"/>
+                            <rect x="3" y="3" width="18" height="18" rx="3" />
+                            <circle cx="8.5" cy="8.5" r="1.5" />
+                            <path d="M21 15l-5-5L5 21" />
                           </svg>
                         </div>
                       )}
                     </div>
-
                     <div className="p-6 sm:p-8 md:p-7 lg:p-10 flex flex-col gap-3">
                       <h5 className="text-[var(--text-sub-h)] transition-colors duration-300 group-hover:text-[var(--primary)] text-sm uppercase">
                         {article.hashtags?.[0] ?? "Article"}
@@ -439,7 +538,7 @@ const Home = () => {
             </div>
           )}
 
-          {/* ── GALLERY TAB (completely unchanged from your original) ────────── */}
+          {/* ── GALLERY TAB ──────────────────────────────────────────────────── */}
           {isBlogGallery === "Gallery" && (
             <>
               <div className="overflow-x-auto pt-6 sm:pt-8 lg:pt-10 scrollbar-hide">
@@ -459,8 +558,12 @@ const Home = () => {
                     { type: "single", image: teamAtwork, title: "Interior Space Care" },
                     { type: "single", image: team, title: "Space Care" },
                   ].map((item, index) => (
-                    <div key={index} onClick={() => setExpandedGalleryItem(item)}
-                      className="group bg-white rounded-3xl overflow-hidden border border-[#00000014] shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer">
+                    <div
+                      key={index}
+                      onClick={() => setExpandedGalleryItem(item)}
+                      className="group bg-white rounded-3xl overflow-hidden border border-[#00000014] shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer"
+                      style={fadeUp(blogVisible, 80 + index * 60)}
+                    >
                       {item.type === "before-after" ? (
                         <div className="flex flex-row h-[220px] md:h-[240px] overflow-hidden relative">
                           <div className="relative w-1/2 h-full overflow-hidden">
@@ -516,7 +619,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* ── Floating WhatsApp (unchanged) ───────────────────────────────────── */}
+      {/* ── Floating WhatsApp ────────────────────────────────────────────────── */}
       <div className="fixed z-[1000] bottom-4 sm:bottom-6 md:bottom-8 lg:bottom-10 right-4 sm:right-6 md:right-8 lg:right-10 flex flex-col items-end gap-3">
         <div className={`relative max-w-[220px] sm:max-w-[250px] transition-all duration-500 ease-in-out ${showChatBubble ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2 pointer-events-none"}`}>
           <div className="bg-white rounded-2xl shadow-xl border border-[#00000010] px-4 py-3">
