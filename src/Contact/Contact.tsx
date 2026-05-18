@@ -4,10 +4,12 @@ import { supabase } from "../Client/lib/supabase";
 
 import addressIcon  from "../assets/address.png";
 import inquiryIcon  from "../assets/inquiry.png";
-import linkedlnIcon from "../assets/icons8-linkedin-50.png";
-import instagramIcon from "../assets/icons8-instagram-50.png";
-import twiterIcon   from "../assets/icons8-twitter-50.png";
+import linkedlnIcon from "../assets/linkedlnPrimary1.png";
+import instagramIcon from "../assets/instagramPrimary1.png";
+
 import mailtoIcon   from "../assets/@Icon.png";
+import { useEffect } from "react";
+
 
 interface FormState {
   firstName: string;
@@ -15,14 +17,15 @@ interface FormState {
   phone: string;
   email: string;
   area: string;
-  service: string;
-  preferredDate: string;
+  //service: string;
+  //preferredDate: string;
   details: string;
 }
 
 const EMPTY: FormState = {
   firstName: "", lastName: "", phone: "", email: "",
-  area: "", service: "", preferredDate: "", details: "",
+  area: "",// service: "", preferredDate: "", 
+  details: "",
 };
 
 type Status = "idle" | "sending" | "success" | "error";
@@ -59,6 +62,38 @@ function StatusBanner({ status, onClose }: { status: Status; onClose: () => void
 const Contact = () => {
   const [form, setForm]   = useState<FormState>(EMPTY);
   const [status, setStatus] = useState<Status>("idle");
+  const [errors, setErrors] = useState({
+    firstName: "",
+    lastName: "",
+    phone: "",
+    area: "",
+  });
+
+
+ const [area, setArea] = useState("");
+  const [results, setResults] = useState<any[]>([]);
+  const [showResults, setShowResults] = useState(false);
+
+  useEffect(() => {
+    if (area.length < 2) {
+      setResults([]);
+      return;
+    }
+
+    const delayDebounce = setTimeout(() => {
+      fetch(
+        `https://nominatim.openstreetmap.org/search?format=json&q=${area}&countrycodes=ng&limit=5`
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          setResults(data);
+          setShowResults(true);
+        })
+        .catch((err) => console.log(err));
+    }, 500);
+
+    return () => clearTimeout(delayDebounce);
+  }, [area]);
 
   const set = (field: keyof FormState) =>
     (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) =>
@@ -66,12 +101,44 @@ const Contact = () => {
 
   const handleSubmit = async () => {
     // Basic validation
-    if (!form.firstName || !form.lastName || !form.phone || !form.area || !form.service) {
-      alert("Please fill in all required fields (name, phone, area and service).");
-      return;
+    const newErrors = {
+      firstName: "",
+      lastName: "",
+      phone: "",
+      area: "",
+    };
+
+    let hasError = false;
+
+    if (!form.firstName.trim()) {
+      newErrors.firstName = "First name is required";
+      hasError = true;
     }
 
+    if (!form.lastName.trim()) {
+      newErrors.lastName = "Surname is required";
+      hasError = true;
+    }
+
+    if (!form.phone.trim()) {
+      newErrors.phone = "Phone number is required";
+      hasError = true;
+    }
+
+    if (!area.trim()) {
+      newErrors.area = "Location is required";
+      hasError = true;
+    }
+
+    setErrors(newErrors);
+
+    if (hasError) return;
+
     setStatus("sending");
+
+    form.area = area;
+
+    console.log(form.area);
 
     try {
       // 1. Save contact to Supabase
@@ -81,8 +148,8 @@ const Contact = () => {
         phone:          form.phone,
         email:          form.email || null,
         area:           form.area,
-        service:        form.service,
-        preferred_date: form.preferredDate || null,
+       // service:        form.service,
+       // preferred_date: form.preferredDate || null,
         details:        form.details || null,
       }]);
 
@@ -104,8 +171,8 @@ const Contact = () => {
           phone:         form.phone,
           email:         form.email,
           area:          form.area,
-          service:       form.service,
-          preferredDate: form.preferredDate,
+         // service:       form.service,
+          //preferredDate: form.preferredDate,
           details:       form.details,
         },
       });
@@ -137,40 +204,70 @@ const Contact = () => {
 
       <section id="contact" className="pt-10 px-4 sm:px-6 md:px-10 lg:px-14 xl:px-16 2xl:px-20">
 
-        <div className="justify-center flex flex-col items-center">
+        {/*<div className="justify-center flex flex-col items-center">
           <h3 className="text-[var(--primary)] tracking-normal! leading-[1] head text-center text-[20px] sm:text-[24px] lg:text-[20px] xl:text-[28px] font-bold">
             Please tell So-Nyah Team the service you need
           </h3>
           <div className="border-b-[5px] pt-2 w-[500px]! sm:w-[120px] border-[var(--primary)]" />
-        </div>
+        </div> */}
 
         <div className="flex flex-col lg:flex-row justify-center gap-10 lg:gap-14 xl:gap-20 pt-10 lg:pt-15">
 
           {/* ── Form ─────────────────────────────────────────────────────────── */}
           <div className="bg-[var(--primary)] flex flex-col p-5 sm:p-8 lg:p-10 w-full lg:max-w-[600px]">
 
-            <label className="flex justify-center text-2xl sm:text-3xl text-white font-bold tracking-wide text-center">
+          {/*  <label className="flex justify-center text-2xl sm:text-3xl text-white font-bold tracking-wide text-center">
               Get a Free Estimate
             </label>
             <p className="!text-[#ffffffaa] justify-center flex text-center text-sm sm:text-base mt-2">
               We respond within 1 hour, 7 days a week
-            </p>
+            </p>  */}
 
             {/* Row 1 — Name */}
-            <div className="flex flex-col md:flex-row pt-6 sm:pt-8 justify-between gap-5 md:gap-6">
+            <div className="flex flex-col md:flex-row   justify-between gap-5 md:gap-6">
               <div className="flex flex-col w-full gap-2">
                 <label className="font-bold text-white text-base sm:text-xl">
                   First Name <span className="text-red-300">*</span>
                 </label>
-                <input value={form.firstName} onChange={set("firstName")}
-                  placeholder="Type your firstname" className={inputClass} />
+                <input
+                  value={form.firstName}
+                  onChange={(e) => {
+                    set("firstName")(e);
+                    if (errors.firstName) {
+                      setErrors((prev) => ({ ...prev, firstName: "" }));
+                    }
+                  }}
+                  placeholder="Type your firstname"
+                  className={`${inputClass} ${
+                    errors.firstName ? "border-2! border-red-500!" : ""
+                  }`}
+                />
+
+                {errors.firstName && (
+                  <p className="text-red-400! text-sm!">{errors.firstName}</p>
+                )}
               </div>
               <div className="flex flex-col w-full gap-2">
                 <label className="font-bold text-white text-base sm:text-xl">
                   Surname <span className="text-red-300">*</span>
                 </label>
-                <input value={form.lastName} onChange={set("lastName")}
-                  placeholder="Type your surname" className={inputClass} />
+                <input
+                  value={form.lastName}
+                  onChange={(e) => {
+                    set("lastName")(e);
+                    if (errors.lastName) {
+                      setErrors((prev) => ({ ...prev, lastName: "" }));
+                    }
+                  }}
+                  placeholder="Type your surname"
+                  className={`${inputClass} ${
+                    errors.lastName ? "border-2! border-red-500!" : ""
+                  }`}
+                />
+
+                {errors.lastName && (
+                  <p className="text-red-400! text-sm!">{errors.lastName}</p>
+                )}
               </div>
             </div>
 
@@ -178,23 +275,73 @@ const Contact = () => {
             <div className="flex flex-col md:flex-row pt-5 justify-between gap-5 md:gap-6">
               <div className="flex flex-col w-full gap-2">
                 <label className="font-bold text-white text-base sm:text-xl">
-                  Phone / WhatsApp <span className="text-red-300">*</span>
+                  Phone  <span className="text-red-300">*</span>
                 </label>
-                <input value={form.phone} onChange={set("phone")}
-                  placeholder="+234 8*** ***" className={inputClass} />
-              </div>
-              <div className="flex flex-col w-full gap-2">
-                <label className="font-bold text-white text-base sm:text-xl">
-                  Area in Abuja <span className="text-red-300">*</span>
-                </label>
-                <select value={form.area} onChange={set("area")} className={inputClass}>
-                  <option value="">Select your area</option>
-                  {["Maitama","Asokoro","Wuse","Wuse 2","Garki","Jabi","Utako","Gwarinpa",
-                    "Life Camp","Lokogoma","Katampe","Durumi","Apo","Lugbe","Kubwa"].map((a) => (
-                    <option key={a} value={a}>{a}</option>
-                  ))}
-                </select>
-              </div>
+                <input
+                  value={form.phone}
+                  onChange={(e) => {
+                    set("phone")(e);
+                    if (errors.phone) {
+                      setErrors((prev) => ({ ...prev, phone: "" }));
+                    }
+                  }}
+                  placeholder="+234 (0) 123 456 7890"
+                  className={`${inputClass} ${
+                    errors.phone ? "border-2! border-red-500!" : ""
+                  }`}
+                />
+
+                {errors.phone && (
+                  <p className="text-red-400! text-sm!">{errors.phone}</p>
+                )}
+                              </div>
+              <div className="flex flex-col w-full gap-2 relative">
+                  <label className="font-bold text-white text-base sm:text-xl">
+                    Location <span className="text-red-300">*</span>
+                  </label>
+
+                  <input
+                    type="text"
+                    value={area}
+                    onChange={(e) => {
+                      setArea(e.target.value);
+
+                      
+                      if (errors.area) {
+                        setErrors((prev) => ({ ...prev, area: "" }));
+                      }
+                    }}
+                    placeholder="Search your location"
+                    className={`${inputClass} ${
+                      errors.area ? "border-2! border-red-500!" : ""
+                    }`}
+                  />
+
+                  {errors.area && (
+                    <p className="text-red-400! text-sm!">{errors.area}</p>
+                  )}
+
+                  {showResults && results.length > 0 && (
+                    <div className="absolute top-full mt-1 w-full bg-white rounded-lg shadow-lg z-50 max-h-60 overflow-y-auto">
+                      {results.map((place, index) => (
+                        <div
+                          key={index}
+                          onClick={() => {
+                            setArea(place.display_name);
+                            setShowResults(false);
+
+                            if (errors.area) {
+                              setErrors((prev) => ({ ...prev, area: "" }));
+                            }
+                          }}
+                          className="p-3 cursor-pointer hover:bg-gray-100 text-black text-sm"
+                        >
+                          {place.display_name}
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
             </div>
 
             {/* Email — new field for notifications */}
@@ -210,7 +357,7 @@ const Contact = () => {
             </div>
 
             {/* Service */}
-            <div className="flex flex-col pt-5 w-full gap-2">
+          {/*  <div className="flex flex-col pt-5 w-full gap-2">
               <label className="font-bold text-white text-base sm:text-xl">
                 Service Needed <span className="text-red-300">*</span>
               </label>
@@ -222,14 +369,14 @@ const Contact = () => {
                   <option key={s} value={s}>{s}</option>
                 ))}
               </select>
-            </div>
+            </div> */}
 
             {/* Preferred date */}
-            <div className="flex flex-col pt-5 w-full gap-2">
+             {/*  <div className="flex flex-col pt-5 w-full gap-2">
               <label className="font-bold text-white text-base sm:text-xl">Preferred Date</label>
               <input type="date" value={form.preferredDate} onChange={set("preferredDate")}
                 className={inputClass} />
-            </div>
+            </div>  */}
 
             {/* Details */}
             <div className="flex flex-col pt-5 w-full gap-2">
@@ -238,7 +385,7 @@ const Contact = () => {
               </label>
               <textarea value={form.details} onChange={set("details")}
                 placeholder="Tell us more about what you need"
-                rows={6}
+                rows={4}
                 className={`${inputClass} resize-none min-h-[160px]`} />
             </div>
 
@@ -307,16 +454,13 @@ const Contact = () => {
             </div>
 
             <div>
-              <h3 className="text-[var(--primary)] text-xl sm:text-2xl font-black tracking-wide">CONNECT WITH US</h3>
+              <h3 className="text-[var(--primary)] text-lg! sm:text-md! font-black! tracking-wide">CONNECT WITH US ON:</h3>
               <div className="flex pt-3 gap-3 sm:gap-4 flex-wrap">
                 <button onClick={() => window.open("https://instagram.com/sonyah_cleaners?utm_source=qr&igsh=MWRtdG9ud3YzNDFoZQ==", "_blank")}>
-                  <img src={instagramIcon} alt="instagram" className="w-8 h-8 sm:w-12 sm:h-12" />
+                  <img src={instagramIcon} alt="instagram" className="w-8! h-8! sm:w-16 sm:h-16" />
                 </button>
                 <button onClick={() => window.open("https://www.linkedin.com/in/uchenna-linda-nzewigbo-b81b8aa1/", "_blank")}>
-                  <img src={linkedlnIcon} alt="linkedin" className="w-8 h-8 sm:w-12 sm:h-12" />
-                </button>
-                <button>
-                  <img src={twiterIcon} alt="twitter" className="w-8 h-8 sm:w-12 sm:h-12" />
+                  <img src={linkedlnIcon} alt="linkedin" className="w-8! h-8! sm:w-16 sm:h-16" />
                 </button>
               </div>
             </div>
