@@ -250,7 +250,7 @@ const Home = () => {
               </h1>
               <div className="flex flex-col sm:flex-row gap-4 sm:gap-5 mt-6 w-full sm:w-auto">
                 <button onClick={() => navigate(`/contact`)} className="bg-white text-[var(--primary)] px-5 md:px-6 py-3 rounded-2xl shadow-xl font-semibold transition-all duration-300 hover:scale-105 hover:bg-[var(--primary)] hover:text-white w-full sm:w-auto">
-                  Schedule a Visit
+                  Schedule an Inspection
                 </button>
                 <button onClick={() => navigate(`/services`)} className="bg-transparent text-white! px-5 md:px-6 py-3 rounded-2xl shadow-xl font-semibold transition-all duration-300 hover:scale-105 hover:bg-[var(--primary)] hover:text-white w-full sm:w-auto border-2! border-white! hover:border-transparent!">
                   View Our Services
@@ -352,7 +352,7 @@ const Home = () => {
               {[...clients, ...clients].map((client, idx) => (
                 <div
                   key={idx}
-                  className="flex items-center justify-center shrink-0 w-[120px] sm:w-[130px] md:w-[140px] h-[90px] md:h-[100px]"
+                  className="flex items-center justify-center shrink-0 w-[120px] sm:w-[130px]! md:w-[140px]! h-[90px] md:h-[100px]!"
                 >
                   <img
                     src={client.image}
