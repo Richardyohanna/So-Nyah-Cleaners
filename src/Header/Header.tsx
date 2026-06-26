@@ -35,7 +35,7 @@ const Header = () => {
         { label: "Blog / Gallery", hash: "#blog" },
       ],
     },
-    { name: "Service", path: "/services" },
+    { name: "Services", path: "/services" },
     { name: "Blog", path: "/blog" },
     {
       name: "About",
