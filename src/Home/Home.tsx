@@ -4,7 +4,7 @@ import { getServiceBySlug } from "../data/servicesData";
 import { usePosts } from "../hooks/usePosts";
 
 import before1 from "../assets/enhanced-bg2.png";
-import after1 from "../assets/enhanced-bg1.png";
+//import after1 from "../assets/enhanced-bg1.png";
 import bgCover from "../assets/enhanced-bg3.png";
 import bgCover2 from "../assets/enhanced-bg4.png";
 
@@ -80,7 +80,7 @@ const clients: Clients[] = [
 type HeroImage = { id: number; image: string };
 const heroImages: HeroImage[] = [
   { id: 1, image: before1 },
-  { id: 4, image: after1 },
+ // { id: 4, image: after1 },
   { id: 3, image: bgCover },
   { id: 2, image: bgCover2 },
 ];
@@ -545,9 +545,9 @@ const Home = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 lg:gap-8">
                   {[
                     { type: "before-after", before: before, after: after, title: "Office Cleaning" },
-                    { type: "before-after", before: before1, after: after1, title: "Compound Maintenance" },
+                    // { type: "before-after", before: before1, after: after1, title: "Compound Maintenance" },
                     { type: "before-after", before: before2, after: after2, title: "Residential Cleaning" },
-                    { type: "single", image: after1, title: "Post Cleaning Result" },
+                    //{ type: "single", image: after1, title: "Post Cleaning Result" },
                     { type: "single", image: before1, title: "Interior Space Care" },
                     { type: "single", image: teamAtwork7, title: "Interior Space Care" },
                     { type: "single", image: teamAtwork6, title: "Interior Space Care" },
@@ -627,7 +627,8 @@ const Home = () => {
           </div>
           <div className="absolute -bottom-2 right-6 w-4 h-4 bg-white border-r border-b border-[#00000010] rotate-45" />
         </div>
-        <button onClick={() => window.open("https://wa.me/message/CXGU4I2ZUXS4I1", "_blank")} className="rounded-3xl flex px-4 sm:px-5 md:px-5 lg:px-6 shadow-xl text-white bg-[var(--text-sub-h)] py-3 items-center gap-2 sm:gap-3 text-sm sm:text-base transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+        <button onClick={() => window.open("https://wa.me/message/CXGU4I2ZUXS4I1", "_blank")} className="relative rounded-3xl flex px-4 sm:px-5 md:px-5 lg:px-6 shadow-xl text-white bg-[var(--text-sub-h)] py-3 items-center gap-2 sm:gap-3 text-sm sm:text-base transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+           <span className="absolute -top-1 -right-[0px] w-3 h-3 border-2  bg-red-500 rounded-full"></span>
           <span className="hidden xs:inline">Chat with Us</span>
           <span className="sm:hidden">Chat</span>
           <img src={whatsApp} alt="" className="w-5 h-5 sm:w-5 sm:h-5 md:w-6 md:h-6" />
