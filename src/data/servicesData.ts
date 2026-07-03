@@ -1,9 +1,9 @@
-import hero1 from "../assets/enhanced-bg1.png";
+import hero1 from "../assets/Post Construction.jpeg";
 import facade_hero from "../assets/facade hero.png";
 import fumigation_hero from "../assets/fumigation hero.png";
 import space_hero from "../assets/spaceCleaningOriginal.jpeg";
-import hero3 from "../assets/enhanced-bg3.png";
-import hero4 from "../assets/enhanced-bg4.png"
+import hero3 from "../assets/Gardening Care.jpeg";
+import hero4 from "../assets/Facility Management.jpeg"
 
 
 // card icons
@@ -23,13 +23,15 @@ import fast from "../assets/fast.png";
 
 // change these to your real images later
 import survey from "../assets/spaceCleaningDemo.png";
-import survey2 from "../assets/survey.png";
-import survey4 from "../assets/survey.png";
+import survey2 from "../assets/Upholstery.jpeg";
+import survey4 from "../assets/Gardening Care.jpeg";
 import survey5 from "../assets/survey.png";
-import survey6 from "../assets/survey.png";
-import survey7 from "../assets/eventCleaning.jpeg";
+import survey6 from "../assets/Facility Management.jpeg";
+import survey7 from "../assets/Event Management.jpeg";
 import survey8 from "../assets/survey.png";
 import survey9 from "../assets/survey.png";
+
+import comingSoon from "../assets/comingSoonLearn.png";
 
 export type FAQ = {
   question: string;
@@ -530,7 +532,7 @@ Our deep upholstery cleaning process penetrates beneath the surface; removing em
 
 Our deep upholstery cleaning process penetrates beneath the surface; removing embedded contaminants while restoring freshness, texture, and appearance.
 `,
-    heroImage: hero1,
+    heroImage: survey2,
     cardIcon: upholstery,
     whyChooseImage: survey2,
     startingFrom: "N180,000",
@@ -802,9 +804,9 @@ Through our training and consulting services, we will be help individuals and or
 
 The mandate of our Training and Consulting arm is hold each individual and orgnisation by hand and give in-depth guidance from start to finish.
 `,
-  heroImage: hero3,
+  heroImage: comingSoon,
   cardIcon: gardening,
-  whyChooseImage: survey4,
+  whyChooseImage: comingSoon,
   startingFrom: "Custom Quote",
   duration: "1-3 Days",
   crewSize: "1-2 Consultants",
