@@ -17,6 +17,14 @@ import teamAtwork6 from "../assets/teamAtWork 6.jpeg";
 import teamAtwork7 from "../assets/teamAtWork 7.jpeg";
 import team from "../assets/team.jpeg";
 
+import upholstery from "../assets/Upholstery.jpeg";
+import fumigation from "../assets/fumigation hero.png";
+import eventmanagement from "../assets/Event Management.jpeg";
+import gardening from "../assets/Gardening Care.jpeg";
+import facilitymanagement from "../assets/Facility Management.jpeg";
+import postconstruction from "../assets/Post Construction.jpeg";
+ 
+
 // ── Scroll animation helpers ─────────────────────────────────────────────────
 const fadeUp = (visible: boolean, delay = 0): React.CSSProperties => ({
   opacity: visible ? 1 : 0,
@@ -131,6 +139,13 @@ const galleryItems: GalleryItem[] = [
   { type: "single", image: teamAtwork2, title: "Interior Space Care" },
   { type: "single", image: teamAtwork, title: "Interior Space Care" },
   { type: "single", image: team, title: "Space Care" },
+  { type: "single", image: upholstery, title: "Upholstery Cleaning" },
+  { type: "single", image: fumigation, title: "Fumigation" },
+  { type: "single", image: eventmanagement, title: "Event Management" },
+  { type: "single", image: gardening, title: "Gardening Care" },
+  { type: "single", image: facilitymanagement, title: "Facility Management" },
+  { type: "single", image: postconstruction, title: "Post Construction Cleaning" },
+  
 ];
 
 // ── Component ────────────────────────────────────────────────────────────────

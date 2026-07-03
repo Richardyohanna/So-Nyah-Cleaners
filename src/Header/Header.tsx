@@ -37,6 +37,8 @@ const Header = () => {
     },
     { name: "Services", path: "/services" },
     { name: "Blog", path: "/blog" },
+    
+    { name: "Gallery", path: "/gallery" },
     {
       name: "About",
       path: "/about",
@@ -46,8 +48,7 @@ const Header = () => {
         { label: "Our Vision", hash: "#our-vision" },
         { label: "Our Team", hash: "#our-team" },
       ],
-    },
-    { name: "Gallery", path: "/gallery" },
+    }
   ];
 
   const toggleMobileDropdown = (name: string) => {
