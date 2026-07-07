@@ -36,7 +36,6 @@ import teamAtwork3 from "../assets/teamAtWork 3.jpeg";
 import teamAtwork4 from "../assets/teamAtWork 4.jpeg";
 import teamAtwork5 from "../assets/teamAtWork 5.jpeg";
 import teamAtwork6 from "../assets/teamAtWork 6.jpeg";
-import teamAtwork7 from "../assets/teamAtWork 7.jpeg";
 import team from "../assets/team.jpeg";
 
 
@@ -549,7 +548,6 @@ const Home = () => {
                     { type: "before-after", before: before2, after: after2, title: "Residential Cleaning" },
                     //{ type: "single", image: after1, title: "Post Cleaning Result" },
                     { type: "single", image: before1, title: "Interior Space Care" },
-                    { type: "single", image: teamAtwork7, title: "Interior Space Care" },
                     { type: "single", image: teamAtwork6, title: "Interior Space Care" },
                     { type: "single", image: teamAtwork5, title: "Fumigation" },
                     { type: "single", image: teamAtwork4, title: "Interior Space Care" },
