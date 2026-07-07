@@ -4,7 +4,7 @@ const stats = [
   {
     number: 7,
     suffix: "",
-    label: "Year of Experience",
+    label: "Years of Experience",
   },
   {
     number: 400,
