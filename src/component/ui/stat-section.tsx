@@ -2,20 +2,21 @@ import { useEffect, useRef, useState } from "react";
 
 const stats = [
   {
-    number: 500,
+    number: 7,
+    suffix: "",
+    label: "Year of Experience",
+  },
+  {
+    number: 400,
     suffix: "+",
     label: "Happy Clients",
   },
   {
-    number: 700,
+    number: 500,
     suffix: "+",
     label: "Cleaned Spaces",
   },
-  {
-    number: 7,
-    suffix: "",
-    label: "Years of Experience",
-  },
+
 ];
 
 export default function StatsSection() {
