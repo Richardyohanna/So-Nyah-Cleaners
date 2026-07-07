@@ -364,7 +364,7 @@ So-nyah Cleaners provides comprehensive facility management services, from clean
     crewSize: "Dedicated Team",
     ctaText: "Request Proposal",
     processIntro:
-      `We manage your Facility so you can focus on what matters.
+      `We manage your facility so you can focus on what matters.
 
 Maintaining a commercial property or residential estate requires structure, consistency, and attention to detail.
 
@@ -793,16 +793,16 @@ We provide professional garden maintenance and outdoor cleaning services that en
   shortDescription:
     `For more than seven (7) years, So-nyah Cleaners has immersed itself in various cleaning industry trainings, learning and hands-on experiences with proven results. We are well equipped to build capacity and guide prospective cleaners into the cleaning industry.
 
-Through our training and consulting services, we will be help individuals and organisations develop structured cleaning systems, well trained professional teams, and a strategically position their operations for long-term growth and profitability.
+Through our training and consulting services, we will be helping individuals and organisations develop structured cleaning systems, well trained professional teams, and a strategically position their operations for long-term growth and profitability.
 
-The mandate of our Training and Consulting arm is hold each individual and orgnisation by hand and give in-depth guidance from start to finish.
+The mandate of our Training and Consulting arm is to hold each individual and orgnisation by hand and give in-depth guidance from start to finish.
 `,
   intro:
    `For more than seven (7) years, So-nyah Cleaners has immersed itself in various cleaning industry trainings, learning and hands-on experiences with proven results. We are well equipped to build capacity and guide prospective cleaners into the cleaning industry.
 
-Through our training and consulting services, we will be help individuals and organisations develop structured cleaning systems, well trained professional teams, and a strategically position their operations for long-term growth and profitability.
+Through our training and consulting services, we will be helping individuals and organisations develop structured cleaning systems, well trained professional teams, and a strategically position their operations for long-term growth and profitability.
 
-The mandate of our Training and Consulting arm is hold each individual and orgnisation by hand and give in-depth guidance from start to finish.
+The mandate of our Training and Consulting arm is to hold each individual and orgnisation by hand and give in-depth guidance from start to finish.
 `,
   heroImage: comingSoon,
   cardIcon: gardening,
