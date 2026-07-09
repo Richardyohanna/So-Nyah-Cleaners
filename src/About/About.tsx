@@ -3,6 +3,7 @@ import team from "../assets/team.jpeg";
 import facade from "../assets/facade hero.png";
 import StatsSection from "../component/ui/stat-section";
 import { useNavigate } from "react-router-dom";
+import about from "../assets/about1.mp4";
 
 // ── Scroll animation helpers ─────────────────────────────────────────────────
 function useScrollReveal(options?: IntersectionObserverInit) {
@@ -32,11 +33,6 @@ const fadeUp = (visible: boolean, delay = 0): React.CSSProperties => ({
   opacity: visible ? 1 : 0,
   transform: visible ? "translateY(0px)" : "translateY(36px)",
   transition: `opacity 0.65s ease ${delay}ms, transform 0.65s ease ${delay}ms`,
-});
-
-const fadeIn = (visible: boolean, delay = 0): React.CSSProperties => ({
-  opacity: visible ? 1 : 0,
-  transition: `opacity 0.7s ease ${delay}ms`,
 });
 
 const slideLeft = (visible: boolean, delay = 0): React.CSSProperties => ({
@@ -73,12 +69,14 @@ function AnimatedTeamCard({ teamData, index }: { teamData: TeamData; index: numb
       <img
         src={teamData.image}
         alt={teamData.name}
-        className="w-full h-[240px] sm:h-[260px] object-cover rounded-t-xl"
+        className="w-full h-[240px] sm:h-[260px] object-cover rounded-full"
       />
-      <div className="border-t-4 border-[var(--primary)] pt-3">
-        <h3 className="text-xl sm:text-2xl font-bold tracking-wide">{teamData.name}</h3>
-        <h4 className="text-[var(--primary)] font-bold">{teamData.position}</h4>
-        <p className="pt-3 text-sm sm:text-base leading-7">{teamData.word}</p>
+       <h3 className="text-xl text-center pt-3 sm:text-2xl font-bold tracking-wide">{teamData.name}</h3>
+        <h4 className="text-[var(--primary)] text-center font-bold">{teamData.position}</h4>
+        <p className="pt-3 text-sm sm:text-base text-center leading-7">{teamData.word}</p>
+      <div className="flex items-center-safe pt-3">       
+       
+        
       </div>
     </div>
   );
@@ -89,11 +87,11 @@ type HeroImage = { id: number; image: string };
 const heroImages: HeroImage[] = [{ id: 1, image: team }];
 
 const teams: TeamData[] = [
-  { id: 1, image: facade, name: "So-nyah Manager", position: "CEO & Founder", word: "With 12 years in the industry, Sarah built SparkClean on the belief that professional cleaning should be both exceptional and ethical. She personally certifies every new hire." },
-  { id: 2, image: facade, name: "So-nyah Manager", position: "CEO & Founder", word: "With 12 years in the industry, Sarah built SparkClean on the belief that professional cleaning should be both exceptional and ethical. She personally certifies every new hire." },
-  { id: 3, image: facade, name: "So-nyah Manager", position: "CEO & Founder", word: "With 12 years in the industry, Sarah built SparkClean on the belief that professional cleaning should be both exceptional and ethical. She personally certifies every new hire." },
-  { id: 4, image: facade, name: "So-nyah Manager", position: "CEO & Founder", word: "With 12 years in the industry, Sarah built SparkClean on the belief that professional cleaning should be both exceptional and ethical. She personally certifies every new hire." },
-  { id: 5, image: facade, name: "So-nyah Manager", position: "CEO & Founder", word: "With 12 years in the industry, Sarah built SparkClean on the belief that professional cleaning should be both exceptional and ethical. She personally certifies every new hire." },
+  { id: 1, image: facade, name: "So-nyah Manager", position: "CEO", word: "With 12 years in the industry, Sarah built SparkClean on the belief that professional cleaning should be both exceptional and ethical. She personally certifies every new hire." },
+  { id: 2, image: facade, name: "So-nyah Manager", position: "COO", word: "With 12 years in the industry, Sarah built SparkClean on the belief that professional cleaning should be both exceptional and ethical. She personally certifies every new hire." },
+  { id: 3, image: facade, name: "So-nyah Manager", position: "Manager", word: "With 12 years in the industry, Sarah built SparkClean on the belief that professional cleaning should be both exceptional and ethical. She personally certifies every new hire." },
+  { id: 4, image: facade, name: "So-nyah Manager", position: "Head Site Supervisor", word: "With 12 years in the industry, Sarah built SparkClean on the belief that professional cleaning should be both exceptional and ethical. She personally certifies every new hire." },
+ 
 ];
 
 // ── Component ────────────────────────────────────────────────────────────────
@@ -116,15 +114,15 @@ const About = () => {
   const visionRef = useRef<HTMLElement>(null);
   const [visionVisible, setVisionVisible] = useState(false);
 
-  const teamRef = useRef<HTMLElement>(null);
-  const [teamVisible, setTeamVisible] = useState(false);
+  
+  
 
   useEffect(() => {
     const pairs: [React.RefObject<HTMLElement | HTMLDivElement | null>, (v: boolean) => void][] = [
       [heroRef, setHeroVisible],
       [missionRef, setMissionVisible],
       [visionRef, setVisionVisible],
-      [teamRef, setTeamVisible],
+      
     ];
 
     const observers = pairs.map(([ref, setter]) => {
@@ -147,31 +145,42 @@ const About = () => {
   }, []);
 
   return (
+
+    <>
+   
+      <section className="relative flex items-center justify-center overflow-hidden bg-[var(--primary)] px-4 py-5 sm:px-5 sm:py-6">
+          
+          <h3 className="text-white! head text-[32px] sm:text-[38px] lg:text-[48px] tracking-normal! font-bold items-center text-center">
+            ABOUT US
+          </h3>
+      </section>
     <div className="bg-white pb-16">
 
-      {/* ── ABOUT HERO ──────────────────────────────────────────────────────── */}
-      <section id="about-us" className="pt-20 px-4 sm:px-6 md:px-10 lg:px-16 xl:px-20">
 
-        {/* Heading — animate in on mount */}
-        <div style={{ animation: "aboutHeadIn 0.75s ease 0.1s both" }}>
-          <style>{`
-            @keyframes aboutHeadIn {
-              from { opacity: 0; transform: translateY(28px); }
-              to   { opacity: 1; transform: translateY(0); }
-            }
-            @keyframes underlineDraw {
-              from { width: 0; }
-              to   { width: 100px; }
-            }
-          `}</style>
-          <h3 className="text-[var(--primary)] head text-[28px] sm:text-[34px] lg:text-[42px] xl:text-[48px] tracking-normal! font-bold">
-            About Us
-          </h3>
-          <div
-            className="border-b-[5px] border-[var(--primary)]"
-            style={{ animation: "underlineDraw 0.7s ease 0.4s both", width: 0 }}
-          />
-        </div>
+
+      {/* ── ABOUT HERO ──────────────────────────────────────────────────────── */}
+      <section id="about-us" className="px-4 pt-8 sm:px-6 sm:pt-12 md:px-10 lg:px-16 lg:pt-16 xl:px-20">
+
+        {/* Heading — animate in on mount
+        // <div style={{ animation: "aboutHeadIn 0.75s ease 0.1s both" }}>
+        //   <style>{`
+        //     @keyframes aboutHeadIn {
+        //       from { opacity: 0; transform: translateY(28px); }
+        //       to   { opacity: 1; transform: translateY(0); }
+        //     }
+        //     @keyframes underlineDraw {
+        //       from { width: 0; }
+        //       to   { width: 100px; }
+        //     }
+        //   `}</style>
+        //   <h3 className="text-[var(--primary)] head text-[28px] sm:text-[34px] lg:text-[42px] xl:text-[48px] tracking-normal! font-bold">
+        //     About Us
+        //   </h3>
+        //   <div
+        //     className="border-b-[5px] border-[var(--primary)]"
+        //     style={{ animation: "underlineDraw 0.7s ease 0.4s both", width: 0 }}
+        //   />
+        // </div> */}
 
         <section id="hero" className="relative bg-transparent">
           <div
@@ -204,10 +213,10 @@ const About = () => {
                   className="flex flex-col sm:flex-row gap-4 sm:gap-5 mt-6"
                   style={fadeUp(heroVisible, 250)}
                 >
-                  <button onClick={() => navigate("/contact")} className="bg-[var(--primary)] text-white px-5 py-3 rounded-3xl font-semibold transition-all duration-300 hover:scale-105 w-full sm:w-auto">
+                  <button onClick={() => navigate("/contact")} className="bg-[var(--primary)] text-white px-5 py-3 font-semibold transition-all duration-300 hover:scale-105 w-full sm:w-auto">
                     Contact Us
                   </button>
-                  <button onClick={() => navigate("/services")} className="bg-[var(--bg-section)] text-[var(--primary)] px-5 py-3 rounded-3xl font-semibold transition-all duration-300 hover:scale-105 w-full sm:w-auto">
+                  <button onClick={() => navigate("/services")} className="bg-[var(--bg-section)] text-[var(--primary)] px-5 py-3 font-semibold transition-all duration-300 hover:scale-105 w-full sm:w-auto">
                     View Our Services
                   </button>
                 </div>
@@ -216,15 +225,27 @@ const About = () => {
 
             {/* RIGHT — image slides in from right */}
             <div
-              className="relative flex w-full lg:w-1/2 items-center justify-center mt-2 lg:mt-10 rounded-[24px] sm:rounded-[32px]"
+              className="relative flex w-full lg:w-1/2 items-center justify-center mt-2 lg:mt-10 "
               style={slideRight(heroVisible, 150)}
             >
               <div className="relative w-full max-w-[700px] h-[260px] sm:h-[340px] md:h-[420px] lg:h-[500px] overflow-hidden">
-                <img
+                {/* <img
                   src={team}
                   alt="Our team"
                   className="absolute inset-0 w-full h-full object-cover object-top"
-                />
+                /> */}
+
+                <video 
+                  width= "100%"
+                  height= "100%"
+                  controls
+                  autoPlay
+                  playsInline
+                  loop
+                  className="object-bottom inset-0 max:h-114 "
+                >
+                  <source src={about} type="video/mp4" />
+                </video>
               </div>
             </div>
           </div>
@@ -233,14 +254,22 @@ const About = () => {
         </section>
       </section>
 
+       <section       
+       id="our-mission"
+        ref={missionRef}
+         className="relative mt-12 flex items-center justify-center overflow-hidden bg-[var(--primary)] px-4 py-5 sm:mt-16 sm:px-5 lg:mt-20">
+          <h3 className="text-white! head text-[32px] sm:text-[38px] lg:text-[48px] tracking-normal! font-bold items-center text-center">
+            OUR MISSION
+          </h3>
+      </section>
+
       {/* ── OUR MISSION ─────────────────────────────────────────────────────── */}
       <section
-        id="our-mission"
-        ref={missionRef}
-        className="px-4 sm:px-6 md:px-10 lg:px-16 xl:px-20 mt-20"
+  
+        className="px-4 sm:px-6 md:px-10 lg:px-16 xl:px-20 mt-10"
       >
         <div className="mt-10">
-          <div style={fadeUp(missionVisible, 0)}>
+          {/* <div style={fadeUp(missionVisible, 0)}>
             <h3 className="text-[var(--primary)] head text-[28px] sm:text-[34px] lg:text-[42px] xl:text-[48px] tracking-normal! font-bold">
               Our Mission
             </h3>
@@ -252,7 +281,7 @@ const About = () => {
                 overflow: "hidden",
               }}
             />
-          </div>
+          </div> */}
 
           <p
             className="text-[15px] mt-5 sm:text-[16px] leading-7 text-[var(--accent-text)]"
@@ -264,14 +293,21 @@ const About = () => {
         </div>
       </section>
 
-      {/* ── OUR VISION ──────────────────────────────────────────────────────── */}
+{/* ── OUR VISION ──────────────────────────────────────────────────────── */}
+      <section  id="our-vision" ref={visionRef} className="relative mt-12 flex items-center justify-center overflow-hidden bg-[var(--primary)] px-4 py-5 sm:mt-16 sm:px-5 lg:mt-20">
+          
+          <h3 className="text-white! head text-[32px] sm:text-[38px] lg:text-[48px] tracking-normal! font-bold items-center text-center">
+            OUR VISSION
+          </h3>
+      </section>
+
+      
       <section
-        id="our-vision"
-        ref={visionRef}
-        className="px-4 sm:px-6 md:px-10 lg:px-16 xl:px-20 mt-20"
+          
+        className="px-4 sm:px-6 md:px-10 lg:px-16 xl:px-20 mt-10"
       >
         <div className="mt-10">
-          <div style={fadeUp(visionVisible, 0)}>
+          {/* <div style={fadeUp(visionVisible, 0)}>
             <h3 className="text-[var(--primary)] head text-[28px] sm:text-[34px] lg:text-[42px] xl:text-[48px] tracking-normal! font-bold">
               Our Vision
             </h3>
@@ -283,7 +319,7 @@ const About = () => {
                 overflow: "hidden",
               }}
             />
-          </div>
+          </div> */}
 
           <p
             className="text-[15px] mt-5 sm:text-[16px] leading-7 text-[var(--accent-text)]"
@@ -294,14 +330,14 @@ const About = () => {
           </p>
         </div>
 
-        <div
-          className="relative rounded-2xl w-full h-[220px] sm:h-[260px] md:h-[300px] mt-6 overflow-hidden bg-cover bg-top"
+        {/* <div
+          className="relative  w-full h-[220px] sm:h-[260px] md:h-[300px] mt-6 overflow-hidden bg-cover bg-top"
           style={{
             backgroundImage: `url(${facade})`,
             ...fadeIn(visionVisible, 350),
           }}
         >
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" /> 
           <div
             className="relative z-10 h-full flex items-end p-4 sm:p-6 md:p-8 text-white"
             style={fadeUp(visionVisible, 500)}
@@ -316,16 +352,26 @@ const About = () => {
               </p>
             </div>
           </div>
-        </div>
+        </div> */}
       </section>
 
+
+      <section       
+      
+          id="our-team"
+          // ref={teamRef}
+          className="bg-[var(--primary)] mt-20 p-5 relative overflow-hidden flex justify-center items-center">
+          
+          <h3 className="text-white! head text-[32px] sm:text-[38px] lg:text-[48px] tracking-normal! font-bold items-center text-center">
+            OUR TEAM
+          </h3>
+      </section>
       {/* ── OUR TEAM ────────────────────────────────────────────────────────── */}
       <section
-        id="our-team"
-        ref={teamRef}
-        className="px-4 sm:px-6 md:px-10 lg:px-16 xl:px-20 pt-20"
+
+        className="px-4 sm:px-6 md:px-10 lg:px-16 xl:px-20 pt-10"
       >
-        <div style={fadeUp(teamVisible, 0)}>
+        {/* <div style={fadeUp(teamVisible, 0)}>
           <h3 className="text-[var(--primary)] head text-[28px] sm:text-[34px] lg:text-[42px] xl:text-[48px] tracking-normal! font-bold">
             Our Team
           </h3>
@@ -337,7 +383,7 @@ const About = () => {
               overflow: "hidden",
             }}
           />
-        </div>
+        </div> */}
 
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-8 lg:gap-10 pt-10">
           {teams.map((teamData, index) => (
@@ -346,6 +392,8 @@ const About = () => {
         </div>
       </section>
     </div>
+
+    </>
   );
 };
 

@@ -69,7 +69,7 @@ const App = () => {
   return (
     <>
       <Header />
-      <main>
+      <main className="overflow-x-hidden">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/services" element={<Service />} />
