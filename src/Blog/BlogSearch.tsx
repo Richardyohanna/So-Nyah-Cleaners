@@ -1,5 +1,4 @@
 // src/pages/BlogSearch.tsx
-import { useRef } from "react";
 
 export type Category = {
   name: string;
@@ -36,16 +35,7 @@ interface BlogSearchProps {
 const BlogSearch = ({
   searchQuery,
   onSearchChange,
-  activeCategory,
-  onCategoryChange,
 }: BlogSearchProps) => {
-  const scrollRef = useRef<HTMLDivElement | null>(null);
-
-  const handleWheelScroll = (e: React.WheelEvent<HTMLDivElement>) => {
-    if (!scrollRef.current) return;
-    e.preventDefault();
-    scrollRef.current.scrollLeft += e.deltaY;
-  };
 
   return (
     <section
@@ -53,7 +43,7 @@ const BlogSearch = ({
       className="
         bg-[rgba(246,243,242,1)]
         backdrop-blur-md
-        rounded-2xl sm:rounded-3xl
+         
         flex flex-col lg:flex-row
         lg:items-center
         gap-4 sm:gap-5
@@ -62,8 +52,8 @@ const BlogSearch = ({
       "
     >
       {/* Search input */}
-      <div className="relative shrink-0 w-full lg:w-[380px] xl:w-[420px]">
-        <div className="absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none">
+      <div className="relative shrink-0 w-full ">
+        <div className="absolute left-4 top-1/2 -translate-y-1/2 pointer -events-none">
           <svg
             width="16"
             height="16"
@@ -87,7 +77,7 @@ const BlogSearch = ({
           className="
             bg-white
             pl-10 pr-10
-            rounded-2xl sm:rounded-3xl
+             
             h-[54px] sm:h-[58px]
             w-full
             outline-none
@@ -112,7 +102,7 @@ const BlogSearch = ({
       </div>
 
       {/* Category pills */}
-      <div
+      {/* <div
         ref={scrollRef}
         onWheel={handleWheelScroll}
         className="
@@ -130,7 +120,7 @@ const BlogSearch = ({
               key={category.slug}
               onClick={() => onCategoryChange(category.slug)}
               className={`
-                shrink-0 rounded-full px-4 sm:px-5 py-2.5 border text-sm sm:text-base
+                shrink-0  px-4 sm:px-5 py-2.5 border text-sm sm:text-base
                 transition-all duration-300
                 ${
                   isActive
@@ -143,7 +133,7 @@ const BlogSearch = ({
             </button>
           );
         })}
-      </div>
+      </div> */}
     </section>
   );
 };
