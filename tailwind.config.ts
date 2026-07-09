@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import defaultTheme from "tailwindcss/defaultTheme";
 
 export default {
   content: [
@@ -8,7 +9,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        jost: ["Jost", "sans-serif"],
+        sans: ["Poppins", ...defaultTheme.fontFamily.sans],
       },
     },
   },

@@ -199,10 +199,18 @@ const Contact = () => {
   const isSending = status === "sending";
 
   return (
+
+    <>
+    
+        <section className="relative flex items-center justify-center overflow-hidden bg-[var(--primary)] px-4 py-5 sm:px-5 sm:py-6">
+          <h3 className="head text-white! text-[32px] sm:text-[38px] lg:text-[48px] tracking-normal! font-bold items-center text-center">
+            CONTACT US
+          </h3>
+      </section>
     <div className="bg-white pb-10">
       <StatusBanner status={status} onClose={() => setStatus("idle")} />
 
-      <section id="contact" className="pt-10 px-4 sm:px-6 md:px-10 lg:px-14 xl:px-16 2xl:px-20">
+      <section id="contact" className="px-4 pt-6 sm:px-6 sm:pt-8 md:px-10 lg:px-14 lg:pt-10 xl:px-16 2xl:px-20">
 
         {/*<div className="justify-center flex flex-col items-center">
           <h3 className="text-[var(--primary)] tracking-normal! leading-[1] head text-center text-[20px] sm:text-[24px] lg:text-[20px] xl:text-[28px] font-bold">
@@ -211,10 +219,10 @@ const Contact = () => {
           <div className="border-b-[5px] pt-2 w-[500px]! sm:w-[120px] border-[var(--primary)]" />
         </div> */}
 
-        <div className="flex flex-col lg:flex-row justify-center gap-10 lg:gap-14 xl:gap-20 pt-10 lg:pt-15">
+        <div className="flex flex-col justify-center gap-8 pt-6 sm:gap-10 sm:pt-8 lg:flex-row lg:gap-14 lg:pt-10 xl:gap-20">
 
           {/* ── Form ─────────────────────────────────────────────────────────── */}
-          <div className="bg-[var(--primary)] flex flex-col p-5 sm:p-8 lg:p-10 w-full lg:max-w-[600px]">
+          <div className="flex w-full flex-col bg-[var(--primary)] p-4 sm:p-6 sm:p-8 lg:max-w-[600px] lg:p-10">
 
           {/*  <label className="flex justify-center text-2xl sm:text-3xl text-white font-bold tracking-wide text-center">
               Get a Free Estimate
@@ -469,6 +477,8 @@ const Contact = () => {
         </div>
       </section>
     </div>
+
+    </>
   );
 };
 

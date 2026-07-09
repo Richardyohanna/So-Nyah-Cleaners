@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { servicesData } from "../data/servicesData";
+import CustomButton from "../component/ui/custom-button";
 
 // ── Scroll animation helpers ─────────────────────────────────────────────────
 function useScrollReveal(options?: IntersectionObserverInit) {
@@ -51,18 +52,18 @@ function AnimatedServiceCard({
       className="w-full sm:max-w-[323px] flex flex-col cursor-pointer group transition-all duration-300 hover:-translate-y-2"
       style={fadeUp(isVisible, index * 80)}
     >
-      <div className="overflow-hidden rounded-2xl">
+      <div className="overflow-hidden ">
         <img
           src={service.heroImage}
           alt="service"
-          className="rounded-2xl h-[260px] sm:h-[320px] lg:max-h-[360px] w-full object-cover transition-transform duration-500 group-hover:scale-105"
+          className=" h-[260px] sm:h-[320px] lg:max-h-[360px] w-full object-cover transition-transform duration-500 group-hover:scale-105"
         />
       </div>
 
       <div className="flex flex-row mt-3 gap-4 sm:gap-5">
-        <h3 className="text-3xl sm:text-4xl text-[var(--service-number)] shrink-0 transition-colors duration-300 group-hover:text-[var(--primary)]">
+        {/* <h3 className="text-3xl sm:text-4xl text-[var(--service-number)] shrink-0 transition-colors duration-300 group-hover:text-[var(--primary)]">
           0{service.id}
-        </h3>
+        </h3> */}
 
         <div className="w-full min-w-0 gap-3 flex flex-col items-start">
           <h4 className="text-base sm:text-lg font-bold transition-colors duration-300 group-hover:text-[var(--primary)]">
@@ -73,9 +74,8 @@ function AnimatedServiceCard({
             {service.shortDescription}
           </p>
 
-          <button className="text-[var(--primary)] transition-all duration-300 hover:underline group-hover:translate-x-1">
-            Read More...
-          </button>
+          <CustomButton text="Read More" onClickAction={onClick} />
+                   
         </div>
       </div>
     </div>
@@ -87,7 +87,7 @@ const Service = () => {
 
   // Header reveal
   const headerRef = useRef<HTMLDivElement>(null);
-  const [headerVisible, setHeaderVisible] = useState(false);
+  
 
   useEffect(() => {
     const el = headerRef.current;
@@ -95,7 +95,7 @@ const Service = () => {
     const obs = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setHeaderVisible(true);
+          
           obs.unobserve(el);
         }
       },
@@ -106,20 +106,25 @@ const Service = () => {
   }, []);
 
   return (
-    <div className="bg-white pd-20 sm:pb-20 md:pb-20 lg:pd-20">
-      <section id="general-service" className="px-4 sm:px-6 md:px-10 lg:px-20 flex flex-col gap-10">
+    
+    <div className="bg-white pb-16 sm:pb-20 md:pb-20 lg:pb-20">
+
+      <section className="bg-[var(--primary)] p-5 relative overflow-hidden flex justify-center items-center">
+          
+          <h3 className="text-white! head text-[32px] sm:text-[38px] lg:text-[48px] tracking-normal! font-bold items-center text-center">
+            OUR SERVICES
+          </h3>
+      </section>
+
+      <section id="general-service" >
 
         {/* Header */}
-        <div
+        {/* <div
           ref={headerRef}
           className="mt-10 flex flex-col items-center"
           style={fadeUp(headerVisible, 0)}
-        >
-          <h3 className="text-[var(--primary)] head text-[32px] sm:text-[38px] lg:text-[48px] tracking-normal! font-bold items-center text-center">
-            Our Services
-          </h3>
-
-          {/* Underline */}
+        >          
+          {/* Underline 
           <div
             className="border-b sm:border-b-2 md:border-b-4 lg:border-b-5 border-[var(--primary)] items-center text-center flex"
             style={{
@@ -128,10 +133,10 @@ const Service = () => {
               overflow: "hidden",
             }}
           />
-        </div>
+        </div> */}
 
         {/* Cards grid — each card self-animates */}
-        <div className="mt-3 sm:mt-4 md:mt-6 lg:mt-10 flex gap-8 md:gap-10 justify-center flex-wrap w-full">
+        <div className="mt-4 flex w-full flex-wrap justify-center gap-6 px-4 sm:mt-6 sm:gap-8 sm:px-6 md:mt-8 md:gap-10 lg:mt-10 lg:px-10">
           {servicesData.map((service, index) => (
             <AnimatedServiceCard
               key={index}

@@ -1,5 +1,4 @@
 import back from "../assets/back.png";
-import CustomButton from "../component/ui/custom-button";
 import whatsApp from "../assets/whatsApp.png";
 import { useNavigate, useParams } from "react-router-dom";
 import { getServiceBySlug } from "../data/servicesData";
@@ -7,8 +6,6 @@ import {  useMemo } from "react";
 import { usePosts } from "../hooks/usePosts";
 
 
-
-const HEADER_HEIGHT = 66;
 
 const ServiceDetail = () => {
   const navigate = useNavigate();
@@ -60,7 +57,28 @@ const ServiceDetail = () => {
 
   return (
     <div className="bg-white pb-20">
-      <section
+
+      <section className="bg-[var(--primary)] relative overflow-hidden flex justify-center items-center">
+
+        <div className="absolute z-[100] top-4 sm:top-6 lg:top-8 left-4 sm:left-6 lg:left-8">
+          <button
+            onClick={() => navigate(-1)}
+            className="border-[3px] border-white text-[var(--primary)] px-2 sm:px-3 lg:px-4 py-2 font-semibold transition-all duration-300 hover:scale-105 hover:bg-[var(--primary)]"
+          >
+            <img
+              src={back}
+              alt=""
+              className="w-[24px] h-[24px] sm:w-[30px] sm:h-[30px] lg:w-[40px] lg:h-[40px] invert brightness-0"
+            />
+          </button>
+        </div>
+
+        <div className="max-w-[828px] w-full mx-auto px-4 sm:px-6 md:px-10 lg:px-20 py-4 sm:py-6 lg:py-8 text-white text-center text-[17px] sm:text-[19px] lg:text-[41px] font-semibold">
+          {service.title.toUpperCase()}
+        </div>
+      </section>
+      
+      {/*<section
         id="service-hero"
         className="relative overflow-hidden flex justify-center items-center"
         style={{
@@ -104,25 +122,31 @@ const ServiceDetail = () => {
 
               {/* <p className="max-w-[520px] !text-[#fffff0] mt-3 sm:mt-5 text-xs sm:text-base leading-5 sm:leading-7">
                 {service.intro}
-              </p> */}
+              </p> 
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       <section
         id="details"
-        className="flex flex-col lg:flex-row justify-between mt-10 gap-10 lg:gap-20 px-4 sm:px-6 md:px-10 lg:px-20"
+        className="mt-8 flex flex-col gap-8 px-4 sm:mt-10 sm:px-6 sm:gap-10 md:px-10 lg:flex-row lg:justify-between lg:gap-20 lg:px-20"
       >
         <div className="flex flex-col max-w-[790px] w-full">
           {/* <h2 className="font-bold text-2xl sm:text-3xl">Our Meticulous Process</h2> */}
+
+          <img
+            src={service.heroImage}
+            alt={service.title}
+            className="h-auto w-full max-w-full object-cover sm:max-w-[700px] sm:max-h-[400px] lg:max-w-[800px] lg:max-h-[500px] 2xl:max-w-[900px] 2xl:max-h-[600px]"
+          />
           <p className="mt-4 text-[15px] sm:text-[17px] lg:text-[18px] leading-7 sm:leading-8 text-[#444] break-words whitespace-pre-line">
             {service.processIntro}
           </p>
 
           <section
             id="why-choose-us"
-            className="flex flex-col lg:flex-row bg-[#E5E2E1] rounded-2xl justify-between text-black mt-10 p-5 sm:p-8 lg:p-10 px-5 sm:px-8 lg:px-10 gap-8 lg:gap-10"
+            className="flex flex-col lg:flex-row bg-[#E5E2E1] justify-between text-black mt-10 p-5 sm:p-8 lg:p-10 px-5 sm:px-8 lg:px-10 gap-8 lg:gap-10"
           >
             <div className="flex flex-col justify-center w-full">
               <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold leading-[1] ">
@@ -136,7 +160,7 @@ const ServiceDetail = () => {
                     key={index}
                     className="flex gap-4 mt-8 sm:mt-10 ml-0 sm:ml-5 items-start sm:items-center justify-start sm:justify-center"
                   >
-                    <div className="w-[40px] h-[40px] rounded-full items-center bg-[var(--primary)] flex justify-center shrink-0">
+                    <div className="w-[40px] h-[40px]  items-center bg-[var(--primary)] flex justify-center shrink-0">
                       <img src={item.icon} alt="" className="object-contain inverted-colors:black" />
                     </div>
 
@@ -160,7 +184,7 @@ const ServiceDetail = () => {
         </div>
 
         <div className="flex flex-col w-full lg:max-w-[420px]">
-          <div className="rounded-2xl bg-[#E5E2E1] p-5 sm:p-8 lg:p-10">
+          <div className=" bg-[#E5E2E1] p-5 sm:p-8 lg:p-10">
             <h3 className="font-bold text-xl sm:text-2xl">Book This Service</h3>
             <p className="mt-2 text-[15px] sm:text-[16px] lg:text-[17px] leading-7 text-[#444]">
               Experience the transformation. 
@@ -169,7 +193,11 @@ const ServiceDetail = () => {
 
 
             <div className="flex justify-center-safe mt-10 w-full">
-              <CustomButton text={service.ctaText} onClickAction={() => navigate("/contact")} />
+
+          <button onClick={() =>  window.open("https://wa.me/message/CXGU4I2ZUXS4I1", "_blank")} className=" flex px-4 sm:px-5 shadow text-white bg-[var(--text-sub-h)] p-2 items-center gap-3 text-sm sm:text-base">
+            Chat with Us <img src={whatsApp} alt="" />
+          </button>
+             {/*} <CustomButton text={service.ctaText} onClickAction={() => navigate("/contact")} /> */}
             </div>
           </div>
 
@@ -240,6 +268,7 @@ const ServiceDetail = () => {
         
       </section>
 
+              {/*}
       <section
         id="ready-for-transformation"
         className="flex justify-center px-4 sm:px-6 md:px-10"
@@ -256,7 +285,7 @@ const ServiceDetail = () => {
             Chat with Us <img src={whatsApp} alt="" />
           </button>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 };
