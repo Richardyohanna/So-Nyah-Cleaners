@@ -7,15 +7,16 @@ const stats = [
     label: "Years of Experience",
   },
   {
-    number: 400,
-    suffix: "+",
-    label: "Happy Clients",
-  },
-  {
     number: 500,
     suffix: "+",
     label: "Cleaned Spaces",
   },
+  {
+    number: 400,
+    suffix: "+",
+    label: "Happy Clients",
+  },
+
 
 ];
 

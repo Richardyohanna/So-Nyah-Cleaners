@@ -3,6 +3,7 @@ import logo from "../assets/logo.png";
 import { NavLink } from "react-router-dom";
 import CustomButton from "../component/ui/custom-button";
 import { useNavigate } from "react-router-dom";
+import { Menu, X } from "lucide-react";
 
 type SectionLink = {
   label: string;
@@ -94,7 +95,7 @@ const Header = () => {
                   Contact Us
                 </span>
                 <span className="text-[15px] font-semibold text-[var(--text)]">
-                  +234 909 478 2495
+                  +234 90 947 824 95
                 </span>
               </span>
             </a>
@@ -103,26 +104,22 @@ const Header = () => {
           </div>
 
           {/* Mobile Menu Button */}
-          <button
+            <button
             onClick={() => setIsMenuOpen((prev) => !prev)}
-            className="lg:hidden flex h-11 w-11 items-center justify-center gap-1 rounded-lg border border-[var(--border)] transition-all duration-300 hover:border-[var(--primary)] sm:h-12 sm:w-12"
+            className="lg:hidden flex h-11 w-11 items-center justify-center rounded-lg border border-[var(--border)] transition-all duration-300 hover:border-[var(--primary)] sm:h-12 sm:w-12"
             aria-label="Toggle menu"
           >
-            <span
-              className={`block h-[2px] w-5 bg-[var(--primary)] transition-all duration-300 ${
-                isMenuOpen ? "rotate-45 translate-y-[6px]" : ""
-              }`}
-            />
-            <span
-              className={`block h-[2px] w-5 bg-[var(--primary)] transition-all duration-300 ${
-                isMenuOpen ? "opacity-0" : ""
-              }`}
-            />
-            <span
-              className={`block h-[2px] w-5 bg-[var(--primary)] transition-all duration-300 ${
-                isMenuOpen ? "-rotate-45 -translate-y-[6px]" : ""
-              }`}
-            />
+            {isMenuOpen ? (
+              <X
+                size={24}
+                className="text-[var(--primary)] transition-transform duration-300"
+              />
+            ) : (
+              <Menu
+                size={24}
+                className="text-[var(--primary)] transition-transform duration-300"
+              />
+            )}
           </button>
         </div>
 
@@ -147,7 +144,7 @@ const Header = () => {
                   Contact Us
                 </span>
                 <span className="text-[14px] font-semibold text-[var(--text)]">
-                  0912 948 5335
+                  +234 90 947 824 95
                 </span>
               </span>
             </a>
@@ -230,7 +227,7 @@ const Header = () => {
       </header>
 
         {/* Nav row: centered, uppercase, letter-spaced */}
-        <div className="sticky top-0 z-[1999]  bg-white lg:block">
+        <div className="sticky hidden top-0 z-[1999]  bg-white lg:block">
           <div className="mx-auto flex h-[48px] w-full max-w-[1100px] items-center justify-center border-t-2 border-[var(--border)] px-4 sm:px-6 lg:px-12">
 
           <nav className="hidden lg:block w-full">
