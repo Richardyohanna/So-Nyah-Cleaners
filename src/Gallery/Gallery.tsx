@@ -16,6 +16,11 @@ import teamAtwork4 from "../assets/teamAtWork 4.jpeg";
 import teamAtwork5 from "../assets/teamAtWork 5.jpeg";
 import teamAtwork6 from "../assets/teamAtWork 6.jpeg";
 
+import pecna1  from "../assets/PECNA AWARD1.jpeg";
+import pecna2 from  "../assets/PECNA AWARD2.jpeg";
+import pecna3 from "../assets/PECNA AWARD3.png";
+
+
 import church1 from "../assets/church1.png";
 import church2 from "../assets/church2.png";
 import church3 from "../assets/church3.png";
@@ -49,6 +54,8 @@ const CATEGORIES = [
   "Facility Management",
   "Post Construction",
   "Church Cleaning Charity Project",
+  "Prime Environment Cleaners Network Association (PECNA) Award Night",
+  
 ] as const;
 
 type Category = (typeof CATEGORIES)[number];
@@ -173,7 +180,10 @@ const galleryItems: GalleryItem[] = [
   { type: "single", image: church2, title: "Church Cleaning Charity Project", category: "Church Cleaning Charity Project" },
   { type: "single", image: church3, title: "Church Cleaning Charity Project", category: "Church Cleaning Charity Project" },
   { type: "single", image: church4, title: "Church Cleaning Charity Project", category: "Church Cleaning Charity Project" },
-  { type: "single", image: church5, title: "Church Cleaning Charity Project", category: "Church Cleaning Charity Project" },
+  { type: "single", image: church5, title: "Church Cleaning Charity Project", category: "Church Cleaning Charity Project" }, //Prime Environment Cleaners Network Association (PECNA) Award Night
+  { type: "single", image: pecna1, title: "Prime Environment Cleaners Network Association (PECNA) Award Night", category: "Prime Environment Cleaners Network Association (PECNA) Award Night" },
+  { type: "single", image: pecna2, title: "Prime Environment Cleaners Network Association (PECNA) Award Night", category: "Prime Environment Cleaners Network Association (PECNA) Award Night" },
+  { type: "single", image: pecna3, title: "Prime Environment Cleaners Network Association (PECNA) Award Night", category: "Prime Environment Cleaners Network Association (PECNA) Award Night" },
 ];
 
 // ── Component ────────────────────────────────────────────────────────────────
