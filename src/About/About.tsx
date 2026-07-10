@@ -3,7 +3,7 @@ import team from "../assets/team.jpeg";
 import facade from "../assets/facade hero.png";
 import StatsSection from "../component/ui/stat-section";
 import { useNavigate } from "react-router-dom";
-import about from "../assets/about1.mp4";
+import about from "../assets/about2.mp4";
 
 // ── Scroll animation helpers ─────────────────────────────────────────────────
 function useScrollReveal(options?: IntersectionObserverInit) {
@@ -333,7 +333,6 @@ const About = () => {
                   controls
                   autoPlay
                   playsInline
-                  muted
                   loop
                   className="object-bottom inset-0 max:h-114 "
                 >
