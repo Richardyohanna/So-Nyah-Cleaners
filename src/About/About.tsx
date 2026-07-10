@@ -58,27 +58,111 @@ type TeamData = {
 
 function AnimatedTeamCard({ teamData, index }: { teamData: TeamData; index: number }) {
   const { ref, isVisible } = useScrollReveal();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalVisible, setModalVisible] = useState(false);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+    // next tick so the transition actually animates in
+    requestAnimationFrame(() => setModalVisible(true));
+  };
+
+  const closeModal = () => {
+    setModalVisible(false);
+    setTimeout(() => setIsModalOpen(false), 250);
+  };
+
+  useEffect(() => {
+    if (!isModalOpen) return;
+    document.body.style.overflow = "hidden";
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closeModal();
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [isModalOpen]);
 
   return (
-    <div
-      ref={ref as React.Ref<HTMLDivElement>}
-      key={teamData.id}
-      className="w-full max-w-full sm:max-w-[320px] mx-auto"
-      style={fadeUp(isVisible, index * 100)}
-    >
-      <img
-        src={teamData.image}
-        alt={teamData.name}
-        className="w-full h-[240px] sm:h-[260px] object-cover rounded-full"
-      />
-       <h3 className="text-xl text-center pt-3 sm:text-2xl font-bold tracking-wide">{teamData.name}</h3>
+    <>
+      <div
+        ref={ref as React.Ref<HTMLDivElement>}
+        key={teamData.id}
+        className="w-full max-w-full sm:max-w-[320px] mx-auto"
+        style={fadeUp(isVisible, index * 100)}
+      >
+        <img
+          src={teamData.image}
+          alt={teamData.name}
+          className="w-full h-[290px] object-cover rounded-full"
+        />
+        <h3 className="text-[20px]! text-center pt-3! sm:text-2xl font-bold tracking-wide">
+          {teamData.name}
+        </h3>
         <h4 className="text-[var(--primary)] text-center font-bold">{teamData.position}</h4>
-        <p className="pt-3 text-sm sm:text-base text-center leading-7">{teamData.word}</p>
-      <div className="flex items-center-safe pt-3">       
-       
-        
+        <p className="pt-3 text-sm sm:text-base text-center leading-7 line-clamp-3">
+          {teamData.word}
+        </p>
+
+        <div className="flex items-center justify-center pt-3">
+          <button
+            type="button"
+            onClick={openModal}
+            className="bg-[var(--primary)] text-lg! text-white px-5 py-2  font-semibold transition-all duration-300 hover:bg-purple-900 hover:scale-105"
+          >
+            Read more about the {teamData.position}
+          </button>
+        </div>
       </div>
-    </div>
+
+      {isModalOpen && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm px-4 sm:px-6"
+          style={{
+            opacity: modalVisible ? 1 : 0,
+            transition: "opacity 0.25s ease",
+          }}
+          onClick={closeModal}
+        >
+          <div
+            className="bg-white rounded-2xl max-w-md w-full max-h-[85vh] overflow-y-auto p-6 sm:p-8 relative shadow-2xl"
+            style={{
+              opacity: modalVisible ? 1 : 0,
+              transform: modalVisible ? "translateY(0px) scale(1)" : "translateY(20px) scale(0.97)",
+              transition: "opacity 0.25s ease, transform 0.25s ease",
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              type="button"
+              onClick={closeModal}
+              className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full text-[var(--primary)] hover:bg-[var(--bg-section)] text-xl font-bold transition-colors cursor-pointer"
+              aria-label="Close"
+            >
+              &times;
+            </button>
+
+            <img
+              src={teamData.image}
+              alt={teamData.name}
+              className="w-24 h-24 sm:w-28 sm:h-28 object-cover rounded-full mx-auto"
+            />
+            <h3 className="text-xl sm:text-2xl text-center pt-4 font-bold tracking-wide">
+              {teamData.name}
+            </h3>
+            <h4 className="text-[var(--primary)] text-center font-bold pt-1">
+              {teamData.position}
+            </h4>
+            <div className="border-b-[3px] border-[var(--primary)] w-[60px] mx-auto mt-3" />
+            <p className="pt-5 text-sm sm:text-base text-[var(--accent-text)] text-left leading-7 whitespace-pre-line">
+              {teamData.word}
+            </p>
+          </div>
+        </div>
+      )}
+    </>
   );
 }
 
@@ -87,9 +171,14 @@ type HeroImage = { id: number; image: string };
 const heroImages: HeroImage[] = [{ id: 1, image: team }];
 
 const teams: TeamData[] = [
-  { id: 1, image: facade, name: "So-nyah Manager", position: "CEO", word: "With 12 years in the industry, Sarah built SparkClean on the belief that professional cleaning should be both exceptional and ethical. She personally certifies every new hire." },
+  { id: 1, image: facade, name: "Uchenna Linda Nzewigbo", position: "Founder/Managing Director", word: `Uchenna Linda Nzewigbo is the Founder and Managing Director So-nyah Integrated Ventures Ltd, a company committed to delivering professional cleaning, facility management, maintenance, and environmental solutions.
+With 7 years in the cleaning industry and driven by excellence, Uchenna has built So-nyah with a strong focus on professionalism, reliability, and customer satisfaction. He believes that clean and well-maintained spaces contribute to healthier lives, better productivity, and happier communities.
+
+Beyond business, Uchenna is dedicated to promoting higher standards within the cleaning industry through leadership, collaboration, and continuous learning. Her vision is to build a trusted brand known for quality service, integrity, and lasting impact.` },
   { id: 2, image: facade, name: "So-nyah Manager", position: "COO", word: "With 12 years in the industry, Sarah built SparkClean on the belief that professional cleaning should be both exceptional and ethical. She personally certifies every new hire." },
-  { id: 3, image: facade, name: "So-nyah Manager", position: "Manager", word: "With 12 years in the industry, Sarah built SparkClean on the belief that professional cleaning should be both exceptional and ethical. She personally certifies every new hire." },
+  { id: 3, image: facade, name: "Shedrack Emmanuel", position: "Manager", word: `Shedrack Emmanuel serves as the Manager at So-nyah Integrated Ventures Ltd, where he has been a dedicated member of the team for over three years. Through consistent performance, hands-on experience, and professional training supported by the company, he has developed strong expertise in cleaning operations, facility support, and environmental services.
+
+Known for his reliability, willingness to learn, and commitment to continuous improvement, Shedrack plays an important role in ensuring that projects are executed efficiently and to the high standards that So-nyah is known for.` },
   { id: 4, image: facade, name: "So-nyah Manager", position: "Head Site Supervisor", word: "With 12 years in the industry, Sarah built SparkClean on the belief that professional cleaning should be both exceptional and ethical. She personally certifies every new hire." },
  
 ];
@@ -194,6 +283,9 @@ const About = () => {
             >
               <div className="relative z-10">
                 <p className="w-full max-w-full lg:max-w-[520px] text-[15px] sm:text-[16px] leading-7 text-[var(--accent-text)] mt-5">
+                  
+                                 
+                  
                   Sonyah is more than a cleaning company; we are a detail obsessed
                   service brand built for people who value excellence. We understand
                   that your space is a reflection of you, and we treat it with the
@@ -241,6 +333,7 @@ const About = () => {
                   controls
                   autoPlay
                   playsInline
+                  muted
                   loop
                   className="object-bottom inset-0 max:h-114 "
                 >
@@ -297,7 +390,7 @@ const About = () => {
       <section  id="our-vision" ref={visionRef} className="relative mt-12 flex items-center justify-center overflow-hidden bg-[var(--primary)] px-4 py-5 sm:mt-16 sm:px-5 lg:mt-20">
           
           <h3 className="text-white! head text-[32px] sm:text-[38px] lg:text-[48px] tracking-normal! font-bold items-center text-center">
-            OUR VISSION
+            OUR VISION
           </h3>
       </section>
 
