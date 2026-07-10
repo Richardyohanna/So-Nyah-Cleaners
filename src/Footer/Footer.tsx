@@ -33,7 +33,7 @@ const Footer = () => {
         </div>
 
         <div className="flex flex-col gap-2 min-w-[180px]">
-          <h6 className="font-bold mb-4 sm:mb-6 lg:mb-8 text-[18px]! sm:text-[20px]! !text-[#fffff2] max-w-[300px]">
+          <h6 className="font-bold  text-[18px] sm:text-[20px] !text-[#fffff2] max-w-[300px]">
             Services
           </h6>
           <p onClick={() => navigate(`/service/${spaceCleaning?.slug}`)}  className="!text-[#fffff2] cursor-pointer max-w-[300px] text-sm! sm:text-base!">
@@ -66,7 +66,7 @@ const Footer = () => {
         </div>
 
         <div className="flex flex-col gap-2 min-w-[180px]">
-          <h6 className="font-bold mb-4 sm:mb-6 lg:mb-8 text-[18px]! sm:text-[20px]! !text-[#fffff2] max-w-[300px]">
+          <h6 className="font-bold  text-[18px]! sm:text-[20px]! !text-[#fffff2] max-w-[300px]">
             Company
           </h6>
           <p onClick={() => navigate("/about")} className="!text-[#fffff2] max-w-[300px] cursor-pointer text-sm! sm:text-base!">
@@ -87,14 +87,14 @@ const Footer = () => {
         </div>
 
         <div className="flex flex-col gap-2 min-w-[180px]">
-          <h6 className="font-bold mb-4 sm:mb-6 lg:mb-8 text-[18px]! sm:text-[20px]! !text-[#fffff2] max-w-[300px]">
+          <h6 className="font-bold text-[18px]! sm:text-[20px]! !text-[#fffff2] max-w-[300px]">
             Contact
           </h6>
           <p className="!text-[#fffff2] max-w-[300px] text-sm! sm:text-base!">
             Ahmadu Bello Way, NTA Headquaters Axis, Area 11 Garki Abuja
           </p>
           <p className="!text-[#fffff2] max-w-[300px] text-sm! sm:text-base!">
-            +234 909 478 2495
+            +234 90 947 824 95
           </p>
           <p className="!text-[#fffff2] max-w-[300px] text-sm! sm:text-base!">
             sonyahintegratedventures@gmail.com
