@@ -91,13 +91,13 @@ function AnimatedTeamCard({ teamData, index }: { teamData: TeamData; index: numb
       <div
         ref={ref as React.Ref<HTMLDivElement>}
         key={teamData.id}
-        className="w-full max-w-full sm:max-w-[320px] mx-auto"
+        className="w-full max-w-full flex flex-col items-center sm:max-w-[320px] mx-auto"
         style={fadeUp(isVisible, index * 100)}
       >
         <img
           src={teamData.image}
           alt={teamData.name}
-          className="w-full h-[350px] object-center rounded-full"
+          className="w-32 h-32 sm:w-40 sm:h-40 md:w-60 md:h-60 lg:w-66 lg:h-66 justify-center  object-center rounded-full max-auto"
         />
         <h3 className="text-[20px]! text-center pt-3! sm:text-2xl font-bold tracking-wide">
           {teamData.name}
