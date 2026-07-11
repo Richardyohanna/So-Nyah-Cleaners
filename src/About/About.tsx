@@ -4,6 +4,7 @@ import facade from "../assets/facade hero.png";
 import StatsSection from "../component/ui/stat-section";
 import { useNavigate } from "react-router-dom";
 import about from "../assets/about2.mp4";
+import ceo from "../assets/CEO.png";
 
 // ── Scroll animation helpers ─────────────────────────────────────────────────
 function useScrollReveal(options?: IntersectionObserverInit) {
@@ -96,7 +97,7 @@ function AnimatedTeamCard({ teamData, index }: { teamData: TeamData; index: numb
         <img
           src={teamData.image}
           alt={teamData.name}
-          className="w-full h-[290px] object-cover rounded-full"
+          className="w-full h-[350px] object-center rounded-full"
         />
         <h3 className="text-[20px]! text-center pt-3! sm:text-2xl font-bold tracking-wide">
           {teamData.name}
@@ -112,7 +113,7 @@ function AnimatedTeamCard({ teamData, index }: { teamData: TeamData; index: numb
             onClick={openModal}
             className="bg-[var(--primary)] text-lg! text-white px-5 py-2  font-semibold transition-all duration-300 hover:bg-purple-900 hover:scale-105"
           >
-            Read more about the {teamData.position}
+            Read more
           </button>
         </div>
       </div>
@@ -147,7 +148,7 @@ function AnimatedTeamCard({ teamData, index }: { teamData: TeamData; index: numb
             <img
               src={teamData.image}
               alt={teamData.name}
-              className="w-24 h-24 sm:w-28 sm:h-28 object-cover rounded-full mx-auto"
+              className="w-24 h-24 sm:w-28 sm:h-28 object-center rounded-full mx-auto"
             />
             <h3 className="text-xl sm:text-2xl text-center pt-4 font-bold tracking-wide">
               {teamData.name}
@@ -171,7 +172,7 @@ type HeroImage = { id: number; image: string };
 const heroImages: HeroImage[] = [{ id: 1, image: team }];
 
 const teams: TeamData[] = [
-  { id: 1, image: facade, name: "Uchenna Linda Nzewigbo", position: "Founder/Managing Director", word: `Uchenna Linda Nzewigbo is the Founder and Managing Director So-nyah Integrated Ventures Ltd, a company committed to delivering professional cleaning, facility management, maintenance, and environmental solutions.
+  { id: 1, image: ceo, name: "Uchenna Linda Nzewigbo", position: "Founder/Managing Director", word: `Uchenna Linda Nzewigbo is the Founder and Managing Director So-nyah Integrated Ventures Ltd, a company committed to delivering professional cleaning, facility management, maintenance, and environmental solutions.
 With 7 years in the cleaning industry and driven by excellence, Uchenna has built So-nyah with a strong focus on professionalism, reliability, and customer satisfaction. He believes that clean and well-maintained spaces contribute to healthier lives, better productivity, and happier communities.
 
 Beyond business, Uchenna is dedicated to promoting higher standards within the cleaning industry through leadership, collaboration, and continuous learning. Her vision is to build a trusted brand known for quality service, integrity, and lasting impact.` },
@@ -446,6 +447,45 @@ const About = () => {
           </div>
         </div> */}
       </section>
+
+      {/* ── OUR CORE VALUE ──────────────────────────────────────────────────────── */}
+      <section  id="our-vision" ref={visionRef} className="relative mt-12 flex items-center justify-center overflow-hidden bg-[var(--primary)] px-4 py-5 sm:mt-16 sm:px-5 lg:mt-20">
+          
+          <h3 className="text-white! head text-[32px] sm:text-[38px] lg:text-[48px] tracking-normal! font-bold items-center text-center">
+            OUR CORE VALUE
+          </h3>
+      </section>
+
+      
+      <section          
+        className="px-4 sm:px-6 md:px-10 lg:px-16 xl:px-20 mt-10"
+      >
+        <div className="mt-10">
+          <p
+            className="text-[15px] mt-5 sm:text-[16px] leading-7 text-[var(--accent-text)]"
+            style={fadeUp(visionVisible, 200)}
+          >
+            <b>Excellence in Every Detail -</b> We believe exceptional results come from careful attention to detail. From post-construction cleaning to facility management, we approach every task with precision, thoroughness, and a commitment to quality.
+
+            <br />
+            <br />
+            <b>Reliability & Integrity -</b> Our word is our bond. We honor our commitments, arrive prepared, communicate honestly, and consistently deliver the results we promise.
+            <br />
+            <br />
+            <b>Professionalism -</b> We conduct ourselves with discipline, respect, and accountability. From our appearance to our service delivery, we maintain standards that inspire confidence and trust.
+
+            <br />
+            <br />
+            <b>Punctuality & Proactive Service -</b> We value time. By arriving early, planning ahead, and responding promptly, we ensure our clients experience a smooth and dependable service every time.
+
+            <br />
+            <br />
+            <b>People, Relationships & Culture -</b> Cleaning is more than a service; it is a relationship. We treat clients, employees, and partners with respect, build lasting connections, and promote a culture of teamwork, trust, and care.
+          </p>
+        </div>
+
+      </section>
+
 
 
       <section       
