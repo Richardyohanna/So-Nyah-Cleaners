@@ -48,7 +48,7 @@ const Footer = () => {
           <p onClick={() => navigate(`/service/${gardening?.slug}`)} className="!text-[#fffff2] cursor-pointer max-w-[300px] text-sm! sm:text-base!">
             Gardening
           </p>
-          <p onClick={() => navigate(`/service/${carpetRevamp?.slug}`)} className="!text-[#fffff2]  cursor-pointer max-w-[300px] text-sm sm:text-base!">
+          <p onClick={() => navigate(`/service/${carpetRevamp?.slug}`)} className="!text-[#fffff2]  cursor-pointer max-w-[300px] text-sm! sm:text-base!">
             Carpet Revamp
           </p>
           <p onClick={() => navigate(`/service/${facilityManagement?.slug}`)} className="!text-[#fffff2] cursor-pointer max-w-[300px] text-sm! sm:text-base">
