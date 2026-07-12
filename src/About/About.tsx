@@ -91,14 +91,19 @@ function AnimatedTeamCard({ teamData, index }: { teamData: TeamData; index: numb
       <div
         ref={ref as React.Ref<HTMLDivElement>}
         key={teamData.id}
-        className="w-full max-w-full flex flex-col items-center sm:max-w-[320px] mx-auto"
+        className="w-full max-w-full flex flex-col  items-center sm:max-w-[320px] mx-auto"
         style={fadeUp(isVisible, index * 100)}
       >
+      <div className="w-72 h-72 rounded-full overflow-hidden mx-auto">
         <img
           src={teamData.image}
           alt={teamData.name}
-          className="w-32 h-32 sm:w-40 sm:h-40 md:w-60 md:h-60 lg:w-66 lg:h-66 justify-center  object-center rounded-full max-auto"
+          className="w-full h-full object-cover"
+          style={{
+            objectPosition: "center 18%",
+          }}
         />
+      </div>
         <h3 className="text-[20px]! text-center pt-3! sm:text-2xl font-bold tracking-wide">
           {teamData.name}
         </h3>
@@ -517,7 +522,7 @@ const About = () => {
           />
         </div> */}
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-8 lg:gap-10 pt-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2  xl:grid-cols-4 gap-8 lg:gap-30 pt-10">
           {teams.map((teamData, index) => (
             <AnimatedTeamCard key={teamData.id} teamData={teamData} index={index} />
           ))}
