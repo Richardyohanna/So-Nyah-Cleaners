@@ -457,7 +457,7 @@ const About = () => {
       <section  id="our-vision" ref={visionRef} className="relative mt-12 flex items-center justify-center overflow-hidden bg-[var(--primary)] px-4 py-5 sm:mt-16 sm:px-5 lg:mt-20">
           
           <h3 className="text-white! head text-[32px] sm:text-[38px] lg:text-[48px] tracking-normal! font-bold items-center text-center">
-            OUR CORE VALUE
+            OUR CORE VALUES
           </h3>
       </section>
 
