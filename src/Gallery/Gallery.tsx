@@ -31,6 +31,7 @@ import team from "../assets/team.jpeg";
 
 import upholstery from "../assets/Upholstery.jpeg";
 import fumigation from "../assets/fumigation hero.png";
+import fumigation1 from "../assets/fumigationImage.jpeg";
 import eventmanagement from "../assets/Event Management.jpeg";
 import gardening from "../assets/Gardening Care.jpeg";
 import facilitymanagement from "../assets/Facility Management.jpeg";
@@ -134,11 +135,11 @@ function AnimatedGalleryCard({
           <div className="absolute left-1/2 top-0 bottom-0 w-[2px] bg-white/70 -translate-x-1/2" />
         </div>
       ) : ( */}
-        <div className="relative h-[220px] md:h-[240px] overflow-hidden">
+        <div className="relative h-[460px] md:h-[460px] overflow-hidden">
           <img
             src={item.image}
             alt={item.title}
-            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+            className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-110"
           />
           {/* <div className="absolute top-3 left-3 bg-[var(--primary)] text-white text-xs sm:text-sm px-3 py-1 ">
             {item.category}
@@ -172,6 +173,7 @@ const galleryItems: GalleryItem[] = [
   { type: "single", image: team, title: "Space Care", category: "Interior Space Care" },
   { type: "single", image: upholstery, title: "Upholstery Cleaning", category: "Upholstery Cleaning" },
   { type: "single", image: fumigation, title: "Fumigation", category: "Fumigation" },
+  { type: "single", image: fumigation1, title: "Fumigation", category: "Fumigation" },
   { type: "single", image: eventmanagement, title: "Event Management", category: "Event Management" },
   { type: "single", image: gardening, title: "Gardening Care", category: "Gardening Care" },
   { type: "single", image: facilitymanagement, title: "Facility Management", category: "Facility Management" },
@@ -184,6 +186,7 @@ const galleryItems: GalleryItem[] = [
   { type: "single", image: pecna1, title: "Prime Environment Cleaners Network Association (PECNA) Award Night", category: "Prime Environment Cleaners Network Association (PECNA) Award Night" },
   { type: "single", image: pecna2, title: "Prime Environment Cleaners Network Association (PECNA) Award Night", category: "Prime Environment Cleaners Network Association (PECNA) Award Night" },
   { type: "single", image: pecna3, title: "Prime Environment Cleaners Network Association (PECNA) Award Night", category: "Prime Environment Cleaners Network Association (PECNA) Award Night" },
+   
 ];
 
 // ── Component ────────────────────────────────────────────────────────────────
@@ -293,7 +296,7 @@ const Gallery = () => {
                   <img
                     src={expandedGalleryItem.image}
                     alt={expandedGalleryItem.title}
-                    className="w-full max-h-[75vh] object-cover"
+                    className="w-full max-h-[75vh] object-contain"
                   />
                 </div>
               {/* )} */}
