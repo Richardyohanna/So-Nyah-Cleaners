@@ -37,6 +37,26 @@ import gardening from "../assets/Gardening Care.jpeg";
 import facilitymanagement from "../assets/Facility Management.jpeg";
 import postconstruction from "../assets/Post Construction.jpeg";
 
+import church_charity from "../assets/church_charity.jpg";
+
+import postConstruction1 from "../assets/post_construction1.jpg";
+import postConstruction2 from "../assets/post_construction2.jpg";
+import postConstruction3 from "../assets/post_construction3.jpg";
+import postConstruction4 from "../assets/post_construction4.jpg";
+import postConstruction5 from "../assets/post_construction5.jpg";
+import postConstruction6 from "../assets/post_construction6.jpg";
+import postConstruction7 from "../assets/post_construction7.jpg";
+import postConstruction8 from "../assets/post_construction8.jpg";
+
+
+import spaceCare from "../assets/Space Care.mp4";
+import upholsteryVideo from "../assets/upholstery.mp4";
+
+// Example: import a video the same way you import images.
+// Vite/CRA will bundle it and give you a URL string, just like an image import.
+// import fumigationClip from "../assets/fumigation-clip.mp4";
+// import fumigationClipPoster from "../assets/fumigation-clip-poster.jpeg";
+
 // ── Scroll animation helpers ─────────────────────────────────────────────────
 const fadeUp = (visible: boolean, delay = 0): React.CSSProperties => ({
   opacity: visible ? 1 : 0,
@@ -47,7 +67,7 @@ const fadeUp = (visible: boolean, delay = 0): React.CSSProperties => ({
 // ── Categories ────────────────────────────────────────────────────────────────
 const CATEGORIES = [
   "All",
-  "Interior Space Care",
+  "Space Care",
   "Fumigation",
   "Upholstery Cleaning",
   "Event Management",
@@ -64,9 +84,15 @@ type Category = (typeof CATEGORIES)[number];
 // ── Per-card animated wrapper — each card self-observes ──────────────────────
 type GalleryItem = {
   type: string;
+  // "image" (default when omitted) or "video"
+  mediaType?: "image" | "video";
   before?: string;
   after?: string;
   image?: string;
+  // src for a video item
+  video?: string;
+  // optional thumbnail shown before the video loads/plays; falls back to first frame if omitted
+  poster?: string;
   title: string;
   category: Category;
 };
@@ -82,6 +108,7 @@ function AnimatedGalleryCard({
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
+  const isVideo = item.mediaType === "video";
 
   useEffect(() => {
     const el = ref.current;
@@ -110,83 +137,113 @@ function AnimatedGalleryCard({
       style={fadeUp(isVisible, rowDelay)}
     >
        <img src={expand} alt="expand" className="absolute z-30 right-0 bg-white p-1 shrink-0" />
-      {/* {item.type === "before-after" ? (
-        <div className="flex flex-row h-[220px] md:h-[240px] overflow-hidden relative">
-          <div className="relative w-1/2 h-full overflow-hidden">
-            <img
-              src={item.before}
-              alt="Before"
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-            />
-            <div className="absolute top-3 left-3 bg-black/70 text-white text-xs sm:text-sm px-3 py-1 ">
-              Before
-            </div>
-          </div>
-          <div className="relative w-1/2 h-full overflow-hidden">
-            <img
-              src={item.after}
-              alt="After"
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-            />
-            <div className="absolute top-3 right-3 bg-[var(--primary)] text-white text-xs sm:text-sm px-3 py-1 ">
-              After
-            </div>
-          </div>
-          <div className="absolute left-1/2 top-0 bottom-0 w-[2px] bg-white/70 -translate-x-1/2" />
-        </div>
-      ) : ( */}
+
         <div className="relative h-[460px] md:h-[460px] overflow-hidden">
-          <img
-            src={item.image}
-            alt={item.title}
-            className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-110"
-          />
-          {/* <div className="absolute top-3 left-3 bg-[var(--primary)] text-white text-xs sm:text-sm px-3 py-1 ">
-            {item.category}
-          </div> */}
+          {isVideo ? (
+            <>
+              <video
+                src={item.video}
+                poster={item.poster}
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-110"
+                onMouseEnter={(e) => e.currentTarget.play().catch(() => {})}
+                onMouseLeave={(e) => {
+                  e.currentTarget.pause();
+                  e.currentTarget.currentTime = 0;
+                }}
+              />
+              {/* Play badge so it reads as a video in the grid, not a static photo */}
+              <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+                <div className="w-14 h-14 rounded-full bg-black/50 flex items-center justify-center">
+                  <div
+                    className="w-0 h-0 ml-1"
+                    style={{
+                      borderTop: "9px solid transparent",
+                      borderBottom: "9px solid transparent",
+                      borderLeft: "14px solid white",
+                    }}
+                  />
+                </div>
+              </div>
+            </>
+          ) : (
+            <img
+              src={item.image}
+              alt={item.title}
+              className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-110"
+            />
+          )}
         </div>
-      {/* // )} */}
-      {/* <div className="p-5 sm:p-6">
-        <h4 className="text-[18px] sm:text-[20px] font-bold text-[var(--primary)]">
-          {item.title}
-        </h4>
-      </div> */}
     </div>
   );
 }
 
 // ── Gallery items data (each tagged with a category) ─────────────────────────
 const galleryItems: GalleryItem[] = [
-  // { type: "before-after", before, after, title: "Office Cleaning", category: "Before & After" },
-  // { type: "before-after", before: before1, after: after1, title: "Compound Maintenance", category: "Before & After" },
-  // { type: "before-after", before: before2, after: after2, title: "Residential Cleaning", category: "Before & After" },
-  { type: "single", image: after, title: "Office Cleaning", category: "Interior Space Care" },
-  { type: "single", image: after2, title: "Residential Cleaning", category: "Interior Space Care" },
-  { type: "single", image: after1, title: "Compound Maintenance", category: "Interior Space Care" },
-  // { type: "single", image: before1, title: "Interior Space Care", category: "Interior Space Care" },
-  { type: "single", image: teamAtwork6, title: "Interior Space Care", category: "Interior Space Care" },
+  {
+  type: "single",
+  mediaType: "video",
+  video:spaceCare,
+  poster:spaceCare, 
+  title: "Space Care",
+  category: "Space Care",
+  },
+
+    {
+  type: "single",
+  mediaType: "video",
+  video:upholsteryVideo,
+  poster:upholsteryVideo, 
+  title: "Upholstery",
+  category: "Upholstery Cleaning",
+  },
+  { type: "single", image: after, title: "Office Cleaning", category: "Space Care" },
+  { type: "single", image: after2, title: "Residential Cleaning", category: "Space Care" },
+  { type: "single", image: after1, title: "Compound Maintenance", category: "Space Care" },
+  { type: "single", image: teamAtwork6, title: "Space Care", category: "Space Care" },
   { type: "single", image: teamAtwork5, title: "Fumigation", category: "Fumigation" },
   { type: "single", image: teamAtwork4, title: "Event Management", category: "Event Management" },
-  { type: "single", image: teamAtwork3, title: "Interior Space Care", category: "Interior Space Care" },
-  { type: "single", image: teamAtwork2, title: "Interior Space Care", category: "Interior Space Care" },
-  { type: "single", image: teamAtwork, title: "Interior Space Care", category: "Interior Space Care" },
-  { type: "single", image: team, title: "Space Care", category: "Interior Space Care" },
+  { type: "single", image: teamAtwork3, title: "Space Care", category: "Space Care" },
+  { type: "single", image: postConstruction2, title: "Post Construction Cleaning", category: "Post Construction" },
+  { type: "single", image: teamAtwork2, title: "Space Care", category: "Space Care" },
+  { type: "single", image: postConstruction1, title: "Post Construction Cleaning", category: "Post Construction" },
+  { type: "single", image: teamAtwork, title: "Space Care", category: "Space Care" },
+  { type: "single", image: team, title: "Space Care", category: "Space Care" },
   { type: "single", image: upholstery, title: "Upholstery Cleaning", category: "Upholstery Cleaning" },
   { type: "single", image: fumigation, title: "Fumigation", category: "Fumigation" },
+  { type: "single", image: postConstruction3, title: "Post Construction Cleaning", category: "Post Construction" },
   { type: "single", image: fumigation1, title: "Fumigation", category: "Fumigation" },
   { type: "single", image: eventmanagement, title: "Event Management", category: "Event Management" },
   { type: "single", image: gardening, title: "Gardening Care", category: "Gardening Care" },
   { type: "single", image: facilitymanagement, title: "Facility Management", category: "Facility Management" },
   { type: "single", image: postconstruction, title: "Post Construction Cleaning", category: "Post Construction" },
   { type: "single", image: church1, title: "Church Cleaning Charity Project", category: "Church Cleaning Charity Project" },
+  { type: "single", image: postConstruction4, title: "Post Construction Cleaning", category: "Post Construction" },
   { type: "single", image: church2, title: "Church Cleaning Charity Project", category: "Church Cleaning Charity Project" },
+  { type: "single", image: postConstruction5, title: "Post Construction Cleaning", category: "Post Construction" },
   { type: "single", image: church3, title: "Church Cleaning Charity Project", category: "Church Cleaning Charity Project" },
+  { type: "single", image: postConstruction6, title: "Post Construction Cleaning", category: "Post Construction" },
   { type: "single", image: church4, title: "Church Cleaning Charity Project", category: "Church Cleaning Charity Project" },
-  { type: "single", image: church5, title: "Church Cleaning Charity Project", category: "Church Cleaning Charity Project" }, //Prime Environment Cleaners Network Association (PECNA) Award Night
+  { type: "single", image: postConstruction7, title: "Post Construction Cleaning", category: "Post Construction" },
+  { type: "single", image: church5, title: "Church Cleaning Charity Project", category: "Church Cleaning Charity Project" },
+  { type: "single", image: postConstruction8, title: "Post Construction Cleaning", category: "Post Construction" },
   { type: "single", image: pecna1, title: "Prime Environment Cleaners Network Association (PECNA) Award Night", category: "Prime Environment Cleaners Network Association (PECNA) Award Night" },
+  { type: "single", image: church_charity, title: "Church Cleaning Charity Project", category: "Church Cleaning Charity Project" },
   { type: "single", image: pecna2, title: "Prime Environment Cleaners Network Association (PECNA) Award Night", category: "Prime Environment Cleaners Network Association (PECNA) Award Night" },
   { type: "single", image: pecna3, title: "Prime Environment Cleaners Network Association (PECNA) Award Night", category: "Prime Environment Cleaners Network Association (PECNA) Award Night" },
-   
+
+  // ── Example video entries — drop your imported clip in `video`, add `mediaType: "video"` ──
+  // {
+  //   type: "single",
+  //   mediaType: "video",
+  //   video: fumigationClip,
+  //   poster: fumigationClipPoster,
+  //   title: "Fumigation in Action",
+  //   category: "Fumigation",
+  // },
 ];
 
 // ── Component ────────────────────────────────────────────────────────────────
@@ -268,38 +325,23 @@ const Gallery = () => {
                 {expandedGalleryItem.title}
               </h3>
 
-              {/* {expandedGalleryItem.type === "before-after" ? (
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
-                  <div className="relative  overflow-hidden">
-                    <img
-                      src={expandedGalleryItem.before}
-                      alt="Before"
-                      className="w-full max-h-[70vh] object-cover"
-                    />
-                    <div className="absolute top-3 left-3 bg-black/70 text-white text-sm px-3 py-1 ">
-                      Before
-                    </div>
-                  </div>
-                  <div className="relative  overflow-hidden">
-                    <img
-                      src={expandedGalleryItem.after}
-                      alt="After"
-                      className="w-full max-h-[70vh] object-cover"
-                    />
-                    <div className="absolute top-3 right-3 bg-[var(--primary)] text-white text-sm px-3 py-1 ">
-                      After
-                    </div>
-                  </div>
-                </div>
-              ) : ( */}
-                <div className=" overflow-hidden">
+              <div className=" overflow-hidden">
+                {expandedGalleryItem.mediaType === "video" ? (
+                  <video
+                    src={expandedGalleryItem.video}
+                    poster={expandedGalleryItem.poster}
+                    controls
+                    autoPlay
+                    className="w-full max-h-[75vh] object-contain"
+                  />
+                ) : (
                   <img
                     src={expandedGalleryItem.image}
                     alt={expandedGalleryItem.title}
                     className="w-full max-h-[75vh] object-contain"
                   />
-                </div>
-              {/* )} */}
+                )}
+              </div>
             </div>
           </div>
         )}
