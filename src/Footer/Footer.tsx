@@ -118,7 +118,7 @@ const Footer = () => {
 
       <div className="flex flex-col md:flex-row w-full justify-between items-start md:items-center border-t-2 border-white pt-4 gap-4 md:gap-5 mt-12 sm:mt-16 lg:mt-20">
         <p className="flex-1 !text-white text-sm sm:text-base">
-          © 2024 So-nyah Cleaners
+          © 2026 So-nyah Cleaners
         </p>
 
         <div className="flex flex-col sm:flex-row gap-3 sm:gap-5">
