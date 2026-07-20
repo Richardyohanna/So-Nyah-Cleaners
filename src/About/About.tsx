@@ -150,11 +150,22 @@ function AnimatedTeamCard({ teamData, index }: { teamData: TeamData; index: numb
               &times;
             </button>
 
-            <img
+            <div className="w-72 h-72 rounded-full overflow-hidden mx-auto">
+              <img
+                src={teamData.image}
+                alt={teamData.name}
+                className="w-full h-full object-cover"
+                style={{
+                  objectPosition: "center 18%",
+                }}
+              />
+            </div>
+
+            {/* <img
               src={teamData.image}
               alt={teamData.name}
-              className="w-24 h-24 sm:w-28 sm:h-28 object-center rounded-full mx-auto"
-            />
+              className="w-24 h-24 sm:w-28 sm:h-28 w-full h-full object-cover object-center rounded-full mx-auto"
+            /> */}
             <h3 className="text-xl sm:text-2xl text-center pt-4 font-bold tracking-wide">
               {teamData.name}
             </h3>
@@ -181,7 +192,13 @@ const teams: TeamData[] = [
 With 7 years in the cleaning industry and driven by excellence, Uchenna has built So-nyah with a strong focus on professionalism, reliability, and customer satisfaction. He believes that clean and well-maintained spaces contribute to healthier lives, better productivity, and happier communities.
 
 Beyond business, Uchenna is dedicated to promoting higher standards within the cleaning industry through leadership, collaboration, and continuous learning. Her vision is to build a trusted brand known for quality service, integrity, and lasting impact.` },
-  { id: 2, image: facade, name: "So-nyah Manager", position: "Chief Operating Officer", word: "With 12 years in the industry, Sarah built SparkClean on the belief that professional cleaning should be both exceptional and ethical. She personally certifies every new hire." },
+  { id: 2, image: facade, name: "Amanda Essien-Nsa", position: "Chief Operating Officer", word: `Amanda Essien-Nsa serves as the Chief Operating Officer of So-nyah Integrated Ventures Ltd, where she plays a key role in driving the company's operational excellence and business growth. Since joining the organization over three years ago, she has consistently demonstrated exceptional dedication, strategic thinking, and a strong commitment to delivering results.
+
+With a background in Political Science, Amanda has been instrumental in securing major business opportunities while ensuring projects are executed to the highest professional standards. Her ability to build lasting client relationships, coordinate teams effectively, and oversee seamless operations has contributed significantly to the company's continued growth and reputation for excellence.
+
+Beyond her role at So-nyah, she is also an accomplished event planner and entrepreneur, successfully managing her own event planning business. Her diverse experience, attention to detail, and passion for service excellence bring valuable insight to every project she leads.
+
+Amanda remains committed to advancing the vision of So-nyah Integrated Ventures Ltd, ensuring that every client receives an exceptional and credible service.`},
   { id: 3, image: facade, name: "Shedrack Emmanuel", position: "Manager", word: `Shedrack Emmanuel serves as the Manager at So-nyah Integrated Ventures Ltd, where he has been a dedicated member of the team for over three years. Through consistent performance, hands-on experience, and professional training supported by the company, he has developed strong expertise in cleaning operations, facility support, and environmental services.
 
 Known for his reliability, willingness to learn, and commitment to continuous improvement, Shedrack plays an important role in ensuring that projects are executed efficiently and to the high standards that So-nyah is known for.` },

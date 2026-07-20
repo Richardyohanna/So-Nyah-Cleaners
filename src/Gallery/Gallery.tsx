@@ -21,7 +21,7 @@ import pecna2 from  "../assets/PECNA AWARD2.jpeg";
 import pecna3 from "../assets/PECNA AWARD3.png";
 
 
-import church1 from "../assets/church1.png";
+
 import church2 from "../assets/church2.png";
 import church3 from "../assets/church3.png";
 import church4 from "../assets/church4.png"
@@ -30,7 +30,7 @@ import church5 from "../assets/church5.png"
 import team from "../assets/team.jpeg";
 
 import upholstery from "../assets/Upholstery.jpeg";
-import fumigation from "../assets/fumigation hero.png";
+
 import fumigation1 from "../assets/fumigationImage.jpeg";
 import eventmanagement from "../assets/Event Management.jpeg";
 import gardening from "../assets/Gardening Care.jpeg";
@@ -202,7 +202,7 @@ const galleryItems: GalleryItem[] = [
   },
   { type: "single", image: after, title: "Office Cleaning", category: "Space Care" },
   { type: "single", image: after2, title: "Residential Cleaning", category: "Space Care" },
-  { type: "single", image: after1, title: "Compound Maintenance", category: "Space Care" },
+  { type: "single", image: after1, title: "Compound Maintenance", category: "Church Cleaning Charity Project" },
   { type: "single", image: teamAtwork6, title: "Space Care", category: "Space Care" },
   { type: "single", image: teamAtwork5, title: "Fumigation", category: "Fumigation" },
   { type: "single", image: teamAtwork4, title: "Event Management", category: "Event Management" },
@@ -210,17 +210,17 @@ const galleryItems: GalleryItem[] = [
   { type: "single", image: postConstruction2, title: "Post Construction Cleaning", category: "Post Construction" },
   { type: "single", image: teamAtwork2, title: "Space Care", category: "Space Care" },
   { type: "single", image: postConstruction1, title: "Post Construction Cleaning", category: "Post Construction" },
-  { type: "single", image: teamAtwork, title: "Space Care", category: "Space Care" },
-  { type: "single", image: team, title: "Space Care", category: "Space Care" },
+  { type: "single", image: teamAtwork, title: "Church Cleaning Charity Projecte", category: "Church Cleaning Charity Project" },
+  { type: "single", image: team, title: "Church Cleaning Charity Project", category: "Church Cleaning Charity Project" },
   { type: "single", image: upholstery, title: "Upholstery Cleaning", category: "Upholstery Cleaning" },
-  { type: "single", image: fumigation, title: "Fumigation", category: "Fumigation" },
+  //{ type: "single", image: fumigation, title: "Fumigation", category: "Fumigation" },
   { type: "single", image: postConstruction3, title: "Post Construction Cleaning", category: "Post Construction" },
   { type: "single", image: fumigation1, title: "Fumigation", category: "Fumigation" },
   { type: "single", image: eventmanagement, title: "Event Management", category: "Event Management" },
   { type: "single", image: gardening, title: "Gardening Care", category: "Gardening Care" },
   { type: "single", image: facilitymanagement, title: "Facility Management", category: "Facility Management" },
   { type: "single", image: postconstruction, title: "Post Construction Cleaning", category: "Post Construction" },
-  { type: "single", image: church1, title: "Church Cleaning Charity Project", category: "Church Cleaning Charity Project" },
+  //{ type: "single", image: church1, title: "Church Cleaning Charity Project", category: "Church Cleaning Charity Project" },
   { type: "single", image: postConstruction4, title: "Post Construction Cleaning", category: "Post Construction" },
   { type: "single", image: church2, title: "Church Cleaning Charity Project", category: "Church Cleaning Charity Project" },
   { type: "single", image: postConstruction5, title: "Post Construction Cleaning", category: "Post Construction" },
