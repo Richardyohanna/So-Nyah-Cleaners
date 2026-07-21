@@ -20,7 +20,8 @@ import pecna1  from "../assets/PECNA AWARD1.jpeg";
 import pecna2 from  "../assets/PECNA AWARD2.jpeg";
 import pecna3 from "../assets/PECNA AWARD3.png";
 
-
+import fumigation2 from "../assets/fumigation1.png";
+import fumigation3 from "../assets/fumigation2.png";
 
 import church2 from "../assets/church2.png";
 import church3 from "../assets/church3.png";
@@ -207,9 +208,11 @@ const galleryItems: GalleryItem[] = [
   { type: "single", image: teamAtwork5, title: "Fumigation", category: "Fumigation" },
   { type: "single", image: teamAtwork4, title: "Event Management", category: "Event Management" },
   { type: "single", image: teamAtwork3, title: "Space Care", category: "Space Care" },
+  { type: "single", image: fumigation2, title: "Fumigation", category: "Fumigation" },
   { type: "single", image: postConstruction2, title: "Post Construction Cleaning", category: "Post Construction" },
   { type: "single", image: teamAtwork2, title: "Space Care", category: "Space Care" },
   { type: "single", image: postConstruction1, title: "Post Construction Cleaning", category: "Post Construction" },
+  { type: "single", image: fumigation3, title: "Fumigation", category: "Fumigation" },
   { type: "single", image: teamAtwork, title: "Church Cleaning Charity Projecte", category: "Church Cleaning Charity Project" },
   { type: "single", image: team, title: "Church Cleaning Charity Project", category: "Church Cleaning Charity Project" },
   { type: "single", image: upholstery, title: "Upholstery Cleaning", category: "Upholstery Cleaning" },
