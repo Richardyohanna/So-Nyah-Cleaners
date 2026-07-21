@@ -5,6 +5,7 @@ import StatsSection from "../component/ui/stat-section";
 import { useNavigate } from "react-router-dom";
 import about from "../assets/about2.mp4";
 import ceo from "../assets/CEO.png";
+import coo from "../assets/COO .jpeg";
 
 // ── Scroll animation helpers ─────────────────────────────────────────────────
 function useScrollReveal(options?: IntersectionObserverInit) {
@@ -192,7 +193,7 @@ const teams: TeamData[] = [
 With 7 years in the cleaning industry and driven by excellence, Uchenna has built So-nyah with a strong focus on professionalism, reliability, and customer satisfaction. He believes that clean and well-maintained spaces contribute to healthier lives, better productivity, and happier communities.
 
 Beyond business, Uchenna is dedicated to promoting higher standards within the cleaning industry through leadership, collaboration, and continuous learning. Her vision is to build a trusted brand known for quality service, integrity, and lasting impact.` },
-  { id: 2, image: facade, name: "Amanda Essien-Nsa", position: "Chief Operating Officer", word: `Amanda Essien-Nsa serves as the Chief Operating Officer of So-nyah Integrated Ventures Ltd, where she plays a key role in driving the company's operational excellence and business growth. Since joining the organization over three years ago, she has consistently demonstrated exceptional dedication, strategic thinking, and a strong commitment to delivering results.
+  { id: 2, image: coo, name: "Amanda Essien-Nsa", position: "Chief Operating Officer", word: `Amanda Essien-Nsa serves as the Chief Operating Officer of So-nyah Integrated Ventures Ltd, where she plays a key role in driving the company's operational excellence and business growth. Since joining the organization over three years ago, she has consistently demonstrated exceptional dedication, strategic thinking, and a strong commitment to delivering results.
 
 With a background in Political Science, Amanda has been instrumental in securing major business opportunities while ensuring projects are executed to the highest professional standards. Her ability to build lasting client relationships, coordinate teams effectively, and oversee seamless operations has contributed significantly to the company's continued growth and reputation for excellence.
 
