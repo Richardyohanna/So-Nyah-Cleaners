@@ -96,14 +96,17 @@ function AnimatedTeamCard({ teamData, index }: { teamData: TeamData; index: numb
         style={fadeUp(isVisible, index * 100)}
       >
       <div className="w-72 h-72 rounded-full overflow-hidden mx-auto">
-        <img
-          src={teamData.image}
-          alt={teamData.name}
-          className="w-full h-full object-cover"
-          style={{
-            objectPosition: "center 18%",
-          }}
-        />
+      <img
+        src={teamData.image}
+        alt={teamData.name}
+        className="w-full h-full object-cover"
+        style={{
+          objectPosition:
+            teamData.position == "Chief Operating Officer"
+              ? "left 18%" 
+              : "center 18%",
+        }}
+      />
       </div>
         <h3 className="text-[20px]! text-center pt-3! sm:text-2xl font-bold tracking-wide">
           {teamData.name}
@@ -167,7 +170,7 @@ function AnimatedTeamCard({ teamData, index }: { teamData: TeamData; index: numb
               alt={teamData.name}
               className="w-24 h-24 sm:w-28 sm:h-28 w-full h-full object-cover object-center rounded-full mx-auto"
             /> */}
-            <h3 className="text-xl sm:text-2xl text-center pt-4 font-bold tracking-wide">
+            <h3 className="text-xl sm:text-2xl text-center pt-4 font-bold tracking-wide whitespace-nowrap overflow-hidden text-ellipsis">
               {teamData.name}
             </h3>
             <h4 className="text-[var(--primary)] text-center font-bold pt-1">
@@ -190,7 +193,7 @@ const heroImages: HeroImage[] = [{ id: 1, image: team }];
 
 const teams: TeamData[] = [
   { id: 1, image: ceo, name: "Uchenna Linda Nzewigbo", position: "Founder/Managing Director", word: `Uchenna Linda Nzewigbo is the Founder and Managing Director So-nyah Integrated Ventures Ltd, a company committed to delivering professional cleaning, facility management, maintenance, and environmental solutions.
-With 7 years in the cleaning industry and driven by excellence, Uchenna has built So-nyah with a strong focus on professionalism, reliability, and customer satisfaction. He believes that clean and well-maintained spaces contribute to healthier lives, better productivity, and happier communities.
+With 7 years in the cleaning industry and driven by excellence, Uchenna has built So-nyah with a strong focus on professionalism, reliability, and customer satisfaction. She believes that clean and well-maintained spaces contribute to healthier lives, better productivity, and happier communities.
 
 Beyond business, Uchenna is dedicated to promoting higher standards within the cleaning industry through leadership, collaboration, and continuous learning. Her vision is to build a trusted brand known for quality service, integrity, and lasting impact.` },
   { id: 2, image: coo, name: "Amanda Essien-Nsa", position: "Chief Operating Officer", word: `Amanda Essien-Nsa serves as the Chief Operating Officer of So-nyah Integrated Ventures Ltd, where she plays a key role in driving the company's operational excellence and business growth. Since joining the organization over three years ago, she has consistently demonstrated exceptional dedication, strategic thinking, and a strong commitment to delivering results.
@@ -203,7 +206,7 @@ Amanda remains committed to advancing the vision of So-nyah Integrated Ventures 
   { id: 3, image: facade, name: "Shedrack Emmanuel", position: "Manager", word: `Shedrack Emmanuel serves as the Manager at So-nyah Integrated Ventures Ltd, where he has been a dedicated member of the team for over three years. Through consistent performance, hands-on experience, and professional training supported by the company, he has developed strong expertise in cleaning operations, facility support, and environmental services.
 
 Known for his reliability, willingness to learn, and commitment to continuous improvement, Shedrack plays an important role in ensuring that projects are executed efficiently and to the high standards that So-nyah is known for.` },
-  { id: 4, image: facade, name: "So-nyah Manager", position: "Head Site Supervisor", word: "With 12 years in the industry, Sarah built SparkClean on the belief that professional cleaning should be both exceptional and ethical. She personally certifies every new hire." },
+  // { id: 4, image: facade, name: "So-nyah Manager", position: "Head Site Supervisor", word: "With 12 years in the industry, Sarah built SparkClean on the belief that professional cleaning should be both exceptional and ethical. She personally certifies every new hire." },
  
 ];
 

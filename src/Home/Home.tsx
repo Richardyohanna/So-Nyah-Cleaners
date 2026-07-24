@@ -92,6 +92,7 @@ const reviews: Review[] = [
   { id: 1, review: "Excellent work! My husband was genuinely surprised when he entered the house even the kids noticed the difference. Truly impressive results.", name: "Asmau Buba", role: "Civil Cervant", image: "" },
   { id: 2, review: "My husband specifically mentioned the depth and thoroughness of the cleaning your team carried out. Thank you for such a detailed job", name: "Patience Dimmah", role: "NGO Consultant", image: "" },
   { id: 3, review: "I would give the service an 8.5 out of 10. This is not due to any dissatisfaction, but rather room for improvement. Overall, I am very satisfied with the service, and my husband shares the same opinion.", name: "Ms. Summi", role: "Enterprenuer", image: "" },
+   { id: 4, review: "Thank you. I really appreciate your excellent service. Please keep up the great work you are doing an outstanding job.", name: "Head of General Services", role: "NTA", image: "" },
 ];
 
 // ── Blog card skeleton ────────────────────────────────────────────────────────
