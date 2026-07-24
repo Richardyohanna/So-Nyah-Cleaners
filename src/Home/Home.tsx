@@ -408,7 +408,7 @@ const Home = () => {
 
         <div className="mt-8 flex justify-center items-center gap-2 sm:gap-4">
           {showNavigation && (
-            <button onClick={prevReviews} className="hidden md:flex w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-[#00000018] items-center justify-center text-[var(--primary)] transition-all duration-300 hover:bg-[var(--primary)] hover:text-white shrink-0">
+            <button onClick={prevReviews} className="hidden md:flex w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-[#00000018] text-3xl! text-bold! items-center justify-center text-[var(--primary)] transition-all duration-300 hover:bg-[var(--primary)] hover:text-white shrink-0">
               ←
             </button>
           )}
@@ -452,7 +452,7 @@ const Home = () => {
           </div>
 
           {showNavigation && (
-            <button onClick={nextReviews} className="hidden md:flex w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-[#00000018] items-center justify-center text-[var(--primary)] transition-all duration-300 hover:bg-[var(--primary)] hover:text-white shrink-0">
+            <button onClick={nextReviews} className="hidden md:flex w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-[#00000018] items-center justify-center text-[var(--primary)] text-3xl! text-bold! transition-all duration-300 hover:bg-[var(--primary)] hover:text-white shrink-0">
               →
             </button>
           )}
