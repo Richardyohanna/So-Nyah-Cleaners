@@ -12,7 +12,7 @@ import expand from "../assets/expand.png";
 import teamAtwork from "../assets/teamAtWork.jpeg";
 import teamAtwork2 from "../assets/teamAtWork 2.jpeg";
 import teamAtwork3 from "../assets/teamAtWork 3.jpeg";
-import teamAtwork4 from "../assets/teamAtWork 4.jpeg";
+//import teamAtwork4 from "../assets/teamAtWork 4.jpeg";
 import teamAtwork5 from "../assets/teamAtWork 5.jpeg";
 import teamAtwork6 from "../assets/teamAtWork 6.jpeg";
 
@@ -206,7 +206,7 @@ const galleryItems: GalleryItem[] = [
   { type: "single", image: after1, title: "Compound Maintenance", category: "Church Cleaning Charity Project" },
   { type: "single", image: teamAtwork6, title: "Space Care", category: "Space Care" },
   { type: "single", image: teamAtwork5, title: "Fumigation", category: "Fumigation" },
-  { type: "single", image: teamAtwork4, title: "Event Management", category: "Event Management" },
+  //{ type: "single", image: teamAtwork4, title: "Event Management", category: "Event Management" },
   { type: "single", image: teamAtwork3, title: "Space Care", category: "Space Care" },
   { type: "single", image: fumigation2, title: "Fumigation", category: "Fumigation" },
   { type: "single", image: postConstruction2, title: "Post Construction Cleaning", category: "Post Construction" },
