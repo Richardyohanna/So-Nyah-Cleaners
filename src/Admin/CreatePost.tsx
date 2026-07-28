@@ -1,4 +1,7 @@
 // src/components/CreatePost.tsx
+// Key change: after a successful PUBLISH, calls the notify-subscribers Edge Function
+// Everything else is identical to your current CreatePost.
+
 import { useState, useRef, useCallback, useEffect } from "react";
 import { supabase, type Post } from "../Client/lib/supabase";
 
@@ -218,6 +221,10 @@ export default function CreatePost({ editPost = null, onSaved }: Props) {
   const editorRef = useRef<HTMLDivElement>(null);
   const [saving, setSaving] = useState(false);
   const [saveError, setSaveError] = useState<string | null>(null);
+<<<<<<< HEAD
+=======
+  // Track if subscribers were notified for success feedback
+>>>>>>> 16c80a74640db8449e755433c41774f07b3a18a7
   const [notifyStatus, setNotifyStatus] = useState<"idle"|"notified"|"skipped">("idle");
 
   const [form, setForm] = useState<FormData>({
@@ -331,6 +338,10 @@ export default function CreatePost({ editPost = null, onSaved }: Props) {
 
     if (error) { setSaveError(error.message); return; }
 
+<<<<<<< HEAD
+=======
+    // ── Notify subscribers only on PUBLISH (not draft) ────────────────────────
+>>>>>>> 16c80a74640db8449e755433c41774f07b3a18a7
     if (status === "published" && savedPost) {
       try {
         const { error: fnError } = await supabase.functions.invoke("notify-subscribers", {
@@ -373,6 +384,7 @@ export default function CreatePost({ editPost = null, onSaved }: Props) {
         </button>
       </div>
 
+<<<<<<< HEAD
       {/* ── Mode toggle: this was missing before ─────────────────────────── */}
       <div className="flex gap-2 mb-4 max-w-[1200px] mx-auto">
         <button
@@ -417,6 +429,8 @@ export default function CreatePost({ editPost = null, onSaved }: Props) {
         </div>
       )}
 
+=======
+>>>>>>> 16c80a74640db8449e755433c41774f07b3a18a7
       <div className="flex flex-col lg:flex-row gap-5 lg:gap-6 max-w-[1200px] mx-auto">
         <div className="flex-1 flex flex-col gap-4 md:gap-5 min-w-0">
 
