@@ -109,11 +109,11 @@ const BlogDetail = () => {
               
               
               <div
-                className="relative rounded-3xl  min-h-[250px] sm:min-h-[300px] md:min-h-[400px] h-[500px] bg-center bg-cover flex justify-center items-center self-center "
+                className="relative   min-h-[250px] sm:min-h-[300px] md:min-h-[400px] h-[500px] bg-center bg-cover flex justify-center items-center self-center "
                 
               >  
 
-                <img src={post.image_url ? post.image_url : share} alt={post.title} className={`w-full h-full object-cover rounded-3xl ${post.image_url ? "opacity-100" : "opacity-20"}`} />                   
+                <img src={post.image_url ? post.image_url : share} alt={post.title} className={`w-full h-full object-cover ${post.image_url ? "opacity-100" : "opacity-20"}`} />                   
               </div>
               
               {post.introduction && (
