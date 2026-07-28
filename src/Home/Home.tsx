@@ -504,11 +504,7 @@ const Home = () => {
                     className="w-full cursor-pointer border border-[#0000001a]  overflow-hidden bg-white transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-[var(--primary)] group"
                     style={fadeUp(blogVisible, 100 + idx * 100)}
                   >
-<<<<<<< HEAD
                     <div className="w-full h-[290px] md:h-[490px] overflow-hidden bg-gray-100">
-=======
-                    <div className="w-full h-[180px] md:h-[190px] overflow-hidden bg-gray-100">
->>>>>>> 16c80a74640db8449e755433c41774f07b3a18a7
                       {article.image_url ? (
                         <img src={article.image_url} alt={article.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                       ) : (
