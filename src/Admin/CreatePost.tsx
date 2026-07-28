@@ -1,7 +1,4 @@
 // src/components/CreatePost.tsx
-// Key change: after a successful PUBLISH, calls the notify-subscribers Edge Function
-// Everything else is identical to your current CreatePost.
-
 import { useState, useRef, useCallback, useEffect } from "react";
 import { supabase, type Post } from "../Client/lib/supabase";
 
@@ -221,7 +218,6 @@ export default function CreatePost({ editPost = null, onSaved }: Props) {
   const editorRef = useRef<HTMLDivElement>(null);
   const [saving, setSaving] = useState(false);
   const [saveError, setSaveError] = useState<string | null>(null);
-  // Track if subscribers were notified for success feedback
   const [notifyStatus, setNotifyStatus] = useState<"idle"|"notified"|"skipped">("idle");
 
   const [form, setForm] = useState<FormData>({
@@ -241,6 +237,45 @@ export default function CreatePost({ editPost = null, onSaved }: Props) {
       if (editorRef.current) editorRef.current.innerHTML = "";
     }
   }, [editPost]);
+
+  // ── Import-from-link state ─────────────────────────────────────────────────
+  const [mode, setMode] = useState<"manual" | "link">("manual");
+  const [linkUrl, setLinkUrl] = useState("");
+  const [fetchingPreview, setFetchingPreview] = useState(false);
+  const [importedOk, setImportedOk] = useState(false);
+
+  const importFromLink = async () => {
+    if (!linkUrl.trim()) return;
+    setFetchingPreview(true);
+    setSaveError(null);
+    setImportedOk(false);
+
+    const { data, error } = await supabase.functions.invoke("fetch-link-preview", {
+      body: { url: linkUrl },
+    });
+
+    setFetchingPreview(false);
+
+    if (error || data?.error) {
+      setSaveError("Couldn't fetch that link. Check the URL and try again.");
+      return;
+    }
+
+    setForm((f) => ({
+      ...f,
+      title: data.title ?? f.title,
+      introduction: data.description ?? f.introduction,
+      imagePreview: data.image ?? f.imagePreview,
+      existingImageUrl: data.image ?? null,
+      image: null,
+    }));
+
+    if (editorRef.current) {
+      editorRef.current.innerHTML = `<p><a href="${linkUrl}" target="_blank" rel="noopener noreferrer">View on ${data.siteName ?? "original site"} →</a></p>`;
+    }
+
+    setImportedOk(true);
+  };
 
   const handleImage = (file: File) => {
     const reader = new FileReader();
@@ -296,7 +331,6 @@ export default function CreatePost({ editPost = null, onSaved }: Props) {
 
     if (error) { setSaveError(error.message); return; }
 
-    // ── Notify subscribers only on PUBLISH (not draft) ────────────────────────
     if (status === "published" && savedPost) {
       try {
         const { error: fnError } = await supabase.functions.invoke("notify-subscribers", {
@@ -338,6 +372,50 @@ export default function CreatePost({ editPost = null, onSaved }: Props) {
           {saving ? "Publishing…" : "Publish Post"}
         </button>
       </div>
+
+      {/* ── Mode toggle: this was missing before ─────────────────────────── */}
+      <div className="flex gap-2 mb-4 max-w-[1200px] mx-auto">
+        <button
+          onClick={() => setMode("manual")}
+          className={`px-4 py-2 rounded-lg text-sm font-medium transition ${
+            mode === "manual" ? "bg-[var(--primary)] text-white" : "bg-white text-gray-600 border border-gray-200 hover:bg-gray-50"
+          }`}
+        >
+           Write Manually
+        </button>
+        <button
+          onClick={() => setMode("link")}
+          className={`px-4 py-2 rounded-lg text-sm font-medium transition ${
+            mode === "link" ? "bg-[var(--primary)] text-white" : "bg-white text-gray-600 border border-gray-200 hover:bg-gray-50"
+          }`}
+        >
+           Import From Link
+        </button>
+      </div>
+
+      {mode === "link" && (
+        <div className="bg-white rounded-[12px] p-4 md:p-5 shadow-[0_1px_4px_rgba(0,0,0,0.06)] max-w-[1200px] mx-auto mb-4">
+          <Label text="Import From Link" />
+          <div className="flex gap-2 flex-wrap">
+            <input value={linkUrl} onChange={(e) => setLinkUrl(e.target.value)}
+              placeholder="Paste a Selar link (or any URL)…"
+              className="flex-1 min-w-[200px] border-[1.5px] border-gray-200 rounded-[10px] px-3 py-2 text-sm outline-none" />
+            <button onClick={importFromLink} disabled={fetchingPreview || !linkUrl.trim()}
+              className="bg-[var(--primary)] text-white rounded-lg px-4 py-2 text-sm disabled:opacity-50">
+              {fetchingPreview ? "Fetching…" : "Fetch Preview"}
+            </button>
+          </div>
+          {importedOk && (
+            <p className="text-xs text-green-600 mt-2 flex items-center gap-1">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><path d="M20 6L9 17l-5-5"/></svg>
+              Pulled in title, description and image below — review and edit before publishing.
+            </p>
+          )}
+          {!importedOk && (
+            <p className="text-xs text-gray-400 mt-2">Pulls title, description and cover image from the link — you can edit everything below before publishing.</p>
+          )}
+        </div>
+      )}
 
       <div className="flex flex-col lg:flex-row gap-5 lg:gap-6 max-w-[1200px] mx-auto">
         <div className="flex-1 flex flex-col gap-4 md:gap-5 min-w-0">

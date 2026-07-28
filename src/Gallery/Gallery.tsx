@@ -12,6 +12,7 @@ import expand from "../assets/expand.png";
 import teamAtwork from "../assets/teamAtWork.jpeg";
 import teamAtwork2 from "../assets/teamAtWork 2.jpeg";
 import teamAtwork3 from "../assets/teamAtWork 3.jpeg";
+import eventcleaningVideo from "../assets/eventcleaningvideo.mp4";
 //import teamAtwork4 from "../assets/teamAtWork 4.jpeg";
 import teamAtwork5 from "../assets/teamAtWork 5.jpeg";
 import teamAtwork6 from "../assets/teamAtWork 6.jpeg";
@@ -220,7 +221,16 @@ const galleryItems: GalleryItem[] = [
   { type: "single", image: postConstruction3, title: "Post Construction Cleaning", category: "Post Construction" },
   { type: "single", image: fumigation1, title: "Fumigation", category: "Fumigation" },
   { type: "single", image: eventmanagement, title: "Event Management", category: "Event Management" },
-  { type: "single", image: gardening, title: "Gardening Care", category: "Gardening Care" },
+ // { type: "single", image: eventcleaningVideo, title: "Event Management", category: "Event Management" },
+ {
+  type: "single",
+  mediaType: "video",
+  video:eventcleaningVideo,
+  poster:eventcleaningVideo, 
+  title: "Event Cleaning",
+  category: "Event Management",
+  }, 
+ { type: "single", image: gardening, title: "Gardening Care", category: "Gardening Care" },
   { type: "single", image: facilitymanagement, title: "Facility Management", category: "Facility Management" },
   { type: "single", image: postconstruction, title: "Post Construction Cleaning", category: "Post Construction" },
   //{ type: "single", image: church1, title: "Church Cleaning Charity Project", category: "Church Cleaning Charity Project" },
