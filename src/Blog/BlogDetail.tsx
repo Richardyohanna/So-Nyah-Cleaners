@@ -161,7 +161,7 @@ const BlogDetail = () => {
                 <span className="text-white text-lg font-bold">S</span>
               </div>
               <h4 className="text-lg sm:text-[20px] font-bold">AUTHOR</h4>
-              <h3>So-Nyah Editorial</h3>
+              <h3>So-nyah Editorial</h3>
               {formattedDate && (
                 <>
                   <h4 className="mt-5 text-lg sm:text-[20px] font-bold">PUBLISHED ON</h4>

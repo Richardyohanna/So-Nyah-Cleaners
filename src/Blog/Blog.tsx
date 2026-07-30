@@ -245,7 +245,7 @@ const Blog = () => {
                     </div>
                     <div>
                       <p className="transition-colors duration-300 group-hover:text-[var(--primary)] text-sm sm:text-base font-medium">
-                        By So-Nyah Editorial
+                        By So-nyah Editorial
                       </p>
                       <p className="text-xs text-gray-400">
                         {new Date(article.created_at).toLocaleDateString("en-GB", {

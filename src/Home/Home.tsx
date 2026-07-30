@@ -532,7 +532,7 @@ const Home = () => {
                           <span className="text-[var(--primary)] text-sm font-semibold">S</span>
                         </div>
                         <p className="transition-colors duration-300 group-hover:text-[var(--primary)] text-sm sm:text-base">
-                          By So-Nyah Editorial
+                          By So-nyah Editorial
                         </p>
                       </div>
                     </div>
