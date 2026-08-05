@@ -13,6 +13,9 @@ import teamAtwork from "../assets/teamAtWork.jpeg";
 import teamAtwork2 from "../assets/teamAtWork 2.jpeg";
 import teamAtwork3 from "../assets/teamAtWork 3.jpeg";
 import eventcleaningVideo from "../assets/eventcleaningvideo.mp4";
+import eventcleaningVideo1 from "../assets/eventManagementVid1.mp4";
+import eventcleaningVideo2 from "../assets/eventManagementVid2.mp4";
+import eventcleaningVideo3 from "../assets/eventManagementVid3.mp4";
 //import teamAtwork4 from "../assets/teamAtWork 4.jpeg";
 import teamAtwork5 from "../assets/teamAtWork 5.jpeg";
 import teamAtwork6 from "../assets/teamAtWork 6.jpeg";
@@ -230,6 +233,14 @@ const galleryItems: GalleryItem[] = [
   title: "Event Cleaning",
   category: "Event Management",
   }, 
+   {
+  type: "single",
+  mediaType: "video",
+  video:eventcleaningVideo1,
+  poster:eventcleaningVideo1, 
+  title: "Event Cleaning",
+  category: "Event Management",
+  }, 
  { type: "single", image: gardening, title: "Gardening Care", category: "Gardening Care" },
   { type: "single", image: facilitymanagement, title: "Facility Management", category: "Facility Management" },
   { type: "single", image: postconstruction, title: "Post Construction Cleaning", category: "Post Construction" },
@@ -239,10 +250,26 @@ const galleryItems: GalleryItem[] = [
   { type: "single", image: postConstruction5, title: "Post Construction Cleaning", category: "Post Construction" },
   { type: "single", image: church3, title: "Church Cleaning Charity Project", category: "Church Cleaning Charity Project" },
   { type: "single", image: postConstruction6, title: "Post Construction Cleaning", category: "Post Construction" },
+   {
+  type: "single",
+  mediaType: "video",
+  video:eventcleaningVideo2,
+  poster:eventcleaningVideo2, 
+  title: "Event Cleaning",
+  category: "Event Management",
+  }, 
   { type: "single", image: church4, title: "Church Cleaning Charity Project", category: "Church Cleaning Charity Project" },
   { type: "single", image: postConstruction7, title: "Post Construction Cleaning", category: "Post Construction" },
   { type: "single", image: church5, title: "Church Cleaning Charity Project", category: "Church Cleaning Charity Project" },
   { type: "single", image: postConstruction8, title: "Post Construction Cleaning", category: "Post Construction" },
+   {
+  type: "single",
+  mediaType: "video",
+  video:eventcleaningVideo3,
+  poster:eventcleaningVideo3, 
+  title: "Event Cleaning",
+  category: "Event Management",
+  }, 
   { type: "single", image: pecna1, title: "Prime Environment Cleaners Network Association (PECNA) Award Night", category: "Prime Environment Cleaners Network Association (PECNA) Award Night" },
   { type: "single", image: church_charity, title: "Church Cleaning Charity Project", category: "Church Cleaning Charity Project" },
   { type: "single", image: pecna2, title: "Prime Environment Cleaners Network Association (PECNA) Award Night", category: "Prime Environment Cleaners Network Association (PECNA) Award Night" },
