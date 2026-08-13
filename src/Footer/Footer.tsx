@@ -97,7 +97,7 @@ const Footer = () => {
             +234 90 947 824 95
           </p>
           <p className="!text-[#fffff2] max-w-[300px] text-sm! sm:text-base!">
-            sonyahintegratedventures@gmail.com
+            infosonyahintegratedventures.com
           </p>
         </div>
       </div>
