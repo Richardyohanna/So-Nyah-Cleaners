@@ -457,7 +457,7 @@ const Contact = () => {
               </div>
               <div>
                 <h4 className="text-[var(--primary)] text-lg sm:text-xl font-bold tracking-wide">EMAIL</h4>
-                <p className="text-sm sm:text-base break-all sm:break-normal">inf0@sonyahintegratedventures.com</p>
+                <p className="text-sm sm:text-base break-all sm:break-normal">info@sonyahintegratedventures.com</p>
               </div>
             </div>
 
