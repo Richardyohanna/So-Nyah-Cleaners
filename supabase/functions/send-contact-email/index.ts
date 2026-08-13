@@ -12,7 +12,7 @@ if (!SUPABASE_URL) throw new Error("Missing SUPABASE_URL");
 if (!SUPABASE_SERVICE) throw new Error("Missing SUPABASE_SERVICE_ROLE_KEY");
 
 const SONYAH_EMAIL = Deno.env.get("SONYAH_EMAIL") ?? "sonyahintegratedventures@gmail.com";
-const SITE_URL = Deno.env.get("SITE_URL") ?? "https://sonyahcleaners.com";
+const SITE_URL = Deno.env.get("SITE_URL") ?? "https://www.sonyahintegratedventures.com";
 
 // ⚠️ Use onboarding@resend.dev until your domain is verified
 const FROM_EMAIL = Deno.env.get("FROM_EMAIL") ?? "onboarding@resend.dev";
@@ -32,7 +32,7 @@ async function sendEmail(to: string, subject: string, html: string) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      from: `So-Nyah Cleaners <${FROM_EMAIL}>`,
+      from: `So-nyah Cleaners <${FROM_EMAIL}>`,
       to,
       subject,
       html,
@@ -236,6 +236,7 @@ Deno.serve(async (req) => {
                     
                       <p><strong>Name:</strong> ${fullName}</p>       
                       <p><strong>Phone:</strong> ${phone}</p>
+                      <p><strong>Email:</strong> ${email}</p>
                       <p><strong>Area:</strong> ${area}</p>
                       <p><strong>Details:</strong> ${details ?? "-"}</p>
                   </div>

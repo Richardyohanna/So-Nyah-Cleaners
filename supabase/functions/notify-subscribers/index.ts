@@ -11,7 +11,7 @@ if (!RESEND_API_KEY) throw new Error("Missing RESEND_API_KEY");
 if (!SUPABASE_URL) throw new Error("Missing SUPABASE_URL");
 if (!SUPABASE_SERVICE) throw new Error("Missing SUPABASE_SERVICE_ROLE_KEY");
 
-const SITE_URL = Deno.env.get("SITE_URL") ?? "https://sonyahcleaners.com";
+const SITE_URL = Deno.env.get("SITE_URL") ?? "https://www.sonyahintegratedventures.com";
 const FROM_EMAIL = Deno.env.get("FROM_EMAIL") ?? "onboarding@resend.dev";
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE);
@@ -29,7 +29,7 @@ async function sendEmail(to: string, subject: string, html: string) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      from: `So-Nyah Cleaners <${FROM_EMAIL}>`,
+      from: `So-nyah Cleaners <${FROM_EMAIL}>`,
       to,
       subject,
       html,

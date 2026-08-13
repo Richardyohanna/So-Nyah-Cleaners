@@ -2,6 +2,8 @@ import logo from "../assets/logo.png";
 import "./Footer.css";
 import { useNavigate } from "react-router-dom";
 import { getServiceBySlug } from "../data/servicesData";
+import { useState } from "react";
+import { supabase } from "../Client/lib/supabase";
 
 const Footer = () => {
 
@@ -15,6 +17,54 @@ const Footer = () => {
     const eventCleaning = getServiceBySlug("event-cleaning");
     const upholsteryCleaning = getServiceBySlug("upholstery-cleaning");
     const training = getServiceBySlug("training-consulting");
+
+  const [email, setEmail] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState("");
+
+  const handleSubscribe = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!email.trim()) {
+      setMessage("Please enter your email address.");
+      return;
+    }
+
+    setLoading(true);
+    setMessage("");
+
+    try {
+      const { data, error } = await supabase.functions.invoke(
+        "subscribe",
+        {
+          body: {
+            email: email.trim(),
+          },
+        }
+      );
+
+      if (error) {
+        throw error;
+      }
+
+      if (!data?.success) {
+        throw new Error(data?.error || "Subscription failed.");
+      }
+
+      setMessage("You're subscribed! Check your email.");
+      setEmail("");
+    } catch (error) {
+      console.error("Subscription error:", error);
+
+      setMessage(
+        error instanceof Error
+          ? error.message
+          : "Something went wrong. Please try again."
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const navigate = useNavigate();
   return (
@@ -102,18 +152,45 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="pt-5">
-         <div className="w-full lg:max-w-[500px]">
-                <div className="bg-white  p-3 sm:p-4 shadow-2xl">
-                  <div className="flex flex-col sm:flex-row gap-3">
-                    <input type="email" placeholder="Enter your email address"
-                      className="h-[52px] sm:h-[56px] px-4 sm:px-5  bg-[rgba(246,243,242,1)] w-full outline-none text-[var(--primary)] placeholder:text-[var(--primary)]/60 text-sm sm:text-base" />
-                    <button className="h-[52px] sm:h-[56px] px-6 sm:px-7  bg-[var(--primary)] text-white font-medium transition-all duration-300 hover:opacity-90 hover:scale-[1.02] whitespace-nowrap">Subscribe</button>
-                  </div>
-                  <p className="text-[12px]! sm:text-sm! text-[#666]! mt-3 px-1 leading-6">By subscribing, you agree to receive email updates from So-nyah Cleaners.</p>
-                </div>
-           </div>
+    <div className="pt-5">
+      <div className="w-full lg:max-w-[500px]">
+        <form
+          onSubmit={handleSubscribe}
+          className="bg-white p-3 sm:p-4 shadow-2xl"
+        >
+          <div className="flex flex-col sm:flex-row gap-3">
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Enter your email address"
+              required
+              disabled={loading}
+              className="h-[52px] sm:h-[56px] px-4 sm:px-5 bg-[rgba(246,243,242,1)] w-full outline-none text-[var(--primary)] placeholder:text-[var(--primary)]/60 text-sm sm:text-base"
+            />
+
+            <button
+              type="submit"
+              disabled={loading}
+              className="h-[52px] sm:h-[56px] px-6 sm:px-7 bg-[var(--primary)] text-white font-medium transition-all duration-300 hover:opacity-90 hover:scale-[1.02] whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {loading ? "Subscribing..." : "Subscribe"}
+            </button>
+          </div>
+
+          <p className="text-[12px]! sm:text-sm! text-[#666]! mt-3 px-1 leading-6">
+            By subscribing, you agree to receive email updates from
+            So-nyah Cleaners.
+          </p>
+
+          {message && (
+            <p className="mt-3 px-1 text-sm text-[var(--primary)]">
+              {message}
+            </p>
+          )}
+        </form>
       </div>
+    </div>
 
 
       <div className="flex flex-col md:flex-row w-full justify-between items-start md:items-center border-t-2 border-white pt-4 gap-4 md:gap-5 mt-12 sm:mt-16 lg:mt-20">
