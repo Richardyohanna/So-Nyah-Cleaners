@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import team from "../assets/team.jpeg";
-import facade from "../assets/facade hero.png";
+import user from "../assets/user.jpeg";
 import StatsSection from "../component/ui/stat-section";
 import { useNavigate } from "react-router-dom";
 import about from "../assets/about2.mp4";
@@ -203,7 +203,7 @@ With a background in Political Science, Amanda has been instrumental in securing
 Beyond her role at So-nyah, she is also an accomplished event planner and entrepreneur, successfully managing her own event planning business. Her diverse experience, attention to detail, and passion for service excellence bring valuable insight to every project she leads.
 
 Amanda remains committed to advancing the vision of So-nyah Integrated Ventures Ltd, ensuring that every client receives an exceptional and credible service.`},
-  { id: 3, image: facade, name: "Shedrack Emmanuel", position: "Manager", word: `Shedrack Emmanuel serves as the Manager at So-nyah Integrated Ventures Ltd, where he has been a dedicated member of the team for over three years. Through consistent performance, hands-on experience, and professional training supported by the company, he has developed strong expertise in cleaning operations, facility support, and environmental services.
+  { id: 3, image: user, name: "Shedrack Emmanuel", position: "Manager", word: `Shedrack Emmanuel serves as the Manager at So-nyah Integrated Ventures Ltd, where he has been a dedicated member of the team for over three years. Through consistent performance, hands-on experience, and professional training supported by the company, he has developed strong expertise in cleaning operations, facility support, and environmental services.
 
 Known for his reliability, willingness to learn, and commitment to continuous improvement, Shedrack plays an important role in ensuring that projects are executed efficiently and to the high standards that So-nyah is known for.` },
   // { id: 4, image: facade, name: "So-nyah Manager", position: "Head Site Supervisor", word: "With 12 years in the industry, Sarah built SparkClean on the belief that professional cleaning should be both exceptional and ethical. She personally certifies every new hire." },
