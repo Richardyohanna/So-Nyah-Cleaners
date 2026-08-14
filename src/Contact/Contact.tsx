@@ -9,6 +9,7 @@ import instagramIcon from "../assets/instagramPrimary1.png";
 
 import mailtoIcon   from "../assets/@Icon.png";
 import { useEffect } from "react";
+import SEO from "../component/SEO";
 
 
 interface FormState {
@@ -202,6 +203,11 @@ const Contact = () => {
 
     <>
     
+    <SEO
+      title="Contact So-nyah Cleaners | Request Cleaning Services"
+      description="Contact So-nyah Cleaners to request professional cleaning, fumigation, post-construction or facility management services."
+    />
+
         <section className="relative flex items-center justify-center overflow-hidden bg-[var(--primary)] px-4 py-5 sm:px-5 sm:py-6">
           <h3 className="head text-white! text-[32px] sm:text-[38px] lg:text-[48px] tracking-normal! font-bold items-center text-center">
             CONTACT US
