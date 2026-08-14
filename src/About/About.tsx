@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import about from "../assets/about2.mp4";
 import ceo from "../assets/CEO.png";
 import coo from "../assets/COO .jpeg";
+import SEO from "../component/SEO";
 
 // ── Scroll animation helpers ─────────────────────────────────────────────────
 function useScrollReveal(options?: IntersectionObserverInit) {
@@ -264,7 +265,12 @@ const About = () => {
 
     <>
    
-      <section className="relative flex items-center justify-center overflow-hidden bg-[var(--primary)] px-4 py-5 sm:px-5 sm:py-6">
+    <SEO
+      title="About So-nyah Cleaners | Professional Cleaning Company"
+      description="Learn about So-nyah Cleaners, our team, experience and commitment to professional cleaning and facility management services."
+    />
+
+    <section className="relative flex items-center justify-center overflow-hidden bg-[var(--primary)] px-4 py-5 sm:px-5 sm:py-6">
           
           <h3 className="text-white! head text-[32px] sm:text-[38px] lg:text-[48px] tracking-normal! font-bold items-center text-center">
             ABOUT US

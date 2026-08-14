@@ -60,6 +60,8 @@ import postConstruction8 from "../assets/post_construction8.jpg";
 import spaceCare from "../assets/Space Care.mp4";
 import upholsteryVideo from "../assets/upholstery.mp4";
 
+import SEO from "../component/SEO";
+
 // Example: import a video the same way you import images.
 // Vite/CRA will bundle it and give you a URL string, just like an image import.
 // import fumigationClip from "../assets/fumigation-clip.mp4";
@@ -314,6 +316,12 @@ const Gallery = () => {
 
   return (
     <>
+
+    <SEO
+      title="Cleaning Projects & Gallery | So-nyah Cleaners"
+      description="View cleaning projects, before-and-after results and professional cleaning work completed by So-nyah Cleaners."
+    />
+
       <section className="relative flex items-center justify-center overflow-hidden bg-[var(--primary)] px-4 py-5 sm:px-5 sm:py-6">
         <h3 className="text-white! head text-[32px] sm:text-[38px] lg:text-[48px] tracking-normal! font-bold items-center text-center">
           GALLERY

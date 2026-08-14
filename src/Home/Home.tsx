@@ -40,6 +40,7 @@ import teamAtwork6 from "../assets/teamAtWork 6.jpeg";
 // import team from "../assets/team.jpeg";
 import CustomButton from "../component/ui/custom-button";
 
+import SEO from "../component/SEO";
 
 
 // Base animation classes — add to tailwind config or use inline styles
@@ -213,6 +214,10 @@ const Home = () => {
   return (
     <div className="w-full bg-white flex flex-col gap-6 pb-16 sm:gap-8 sm:pb-20 lg:gap-10">
 
+      <SEO
+        title="So-nyah Cleaners | Professional Cleaning Services in Nigeria"
+        description="So-nyah Cleaners provides professional residential, commercial, post-construction, fumigation and facility management services in Nigeria."
+      />
 
       {/* ── HERO SECTION ─────────────────────────────────────────────────────── */}
       <section id="hero" className="relative overflow-hidden" style={{ minHeight: `calc(100svh - 86px)` }}>
@@ -291,7 +296,7 @@ const Home = () => {
           OUR SPECIALIZED SERVICES
         </h3>
 
-        <div className="mt-10 flex gap-8 md:gap-8 lg:gap-10 justify-center flex-wrap w-full">
+        <div className="mt-10 flex gap-8 md:gap-8 lg:gap-10 justify-center flex-wrap ">
           {[spaceCleaning, facadeCleaning, fumigationCleaning, gardening].map((service, idx) => (
             service && (
               <div

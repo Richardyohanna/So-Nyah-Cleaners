@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { servicesData } from "../data/servicesData";
 import CustomButton from "../component/ui/custom-button";
 
+import SEO from "../component/SEO";
+
 // ── Scroll animation helpers ─────────────────────────────────────────────────
 function useScrollReveal(options?: IntersectionObserverInit) {
   const ref = useRef<HTMLElement | null>(null);
@@ -46,7 +48,14 @@ function AnimatedServiceCard({
   const { ref, isVisible } = useScrollReveal();
 
   return (
-    <div
+    <>
+
+      <SEO
+        title="Cleaning Services in Nigeria | So-nyah Cleaners"
+        description="Explore professional residential, commercial, post-construction, fumigation and facility management services from So-nyah Cleaners."
+      />
+
+          <div
       ref={ref as React.Ref<HTMLDivElement>}
       onClick={onClick}
       className="w-full sm:max-w-[323px] flex flex-col cursor-pointer group transition-all duration-300 hover:-translate-y-2"
@@ -79,6 +88,8 @@ function AnimatedServiceCard({
         </div>
       </div>
     </div>
+    </>
+
   );
 }
 
