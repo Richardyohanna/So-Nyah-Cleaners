@@ -184,7 +184,7 @@ const Footer = () => {
           </p>
 
           {message && (
-            <p className="mt-3 px-1 text-sm text-[var(--primary)]">
+            <p className="mt-3! px-1! text-sm! text-[var(--primary)]!">
               {message}
             </p>
           )}
