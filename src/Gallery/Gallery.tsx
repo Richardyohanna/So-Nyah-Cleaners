@@ -6,6 +6,9 @@ import after1 from "../assets/enhanced-bg1.png";
 import after from "../assets/after 1.jpeg";
 // import before from "../assets/before 1.jpeg";
 import after2 from "../assets/after 2.jpeg";
+import eventCleaningPoster from "../assets/eventCleaning.jpeg";
+import spaceCarePoster from "../assets/spaceCleaningDemo.png";
+import upholsteryPoster from "../assets/Upholstery.jpeg";
 // import before2 from "../assets/before 2.jpeg";
 import expand from "../assets/expand.png";
 
@@ -113,6 +116,7 @@ function AnimatedGalleryCard({
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
+  const [shouldLoadVideo, setShouldLoadVideo] = useState(false);
   const isVideo = item.mediaType === "video";
 
   useEffect(() => {
@@ -122,14 +126,17 @@ function AnimatedGalleryCard({
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true);
+          if (isVideo) {
+            setShouldLoadVideo(true);
+          }
           observer.unobserve(el);
         }
       },
-      { threshold: 0.1, rootMargin: "0px 0px -20px 0px" }
+      { threshold: 0.1, rootMargin: "300px 0px 200px 0px" }
     );
     observer.observe(el);
     return () => observer.disconnect();
-  }, []);
+  }, [isVideo]);
 
   // Stagger within each row of 4 by index mod 4
   const rowDelay = (index % 4) * 80;
@@ -147,14 +154,18 @@ function AnimatedGalleryCard({
           {isVideo ? (
             <>
               <video
-                src={item.video}
-                poster={item.poster}
+                src={shouldLoadVideo ? item.video : undefined}
+                poster={item.poster || item.video}
                 muted
                 loop
                 playsInline
-                preload="metadata"
+                preload={shouldLoadVideo ? "metadata" : "none"}
                 className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-110"
-                onMouseEnter={(e) => e.currentTarget.play().catch(() => {})}
+                onMouseEnter={(e) => {
+                  if (shouldLoadVideo) {
+                    e.currentTarget.play().catch(() => {});
+                  }
+                }}
                 onMouseLeave={(e) => {
                   e.currentTarget.pause();
                   e.currentTarget.currentTime = 0;
@@ -192,7 +203,7 @@ const galleryItems: GalleryItem[] = [
   type: "single",
   mediaType: "video",
   video:spaceCare,
-  poster:spaceCare, 
+  poster:spaceCarePoster,
   title: "Space Care",
   category: "Space Care",
   },
@@ -201,7 +212,7 @@ const galleryItems: GalleryItem[] = [
   type: "single",
   mediaType: "video",
   video:upholsteryVideo,
-  poster:upholsteryVideo, 
+  poster:upholsteryPoster,
   title: "Upholstery",
   category: "Upholstery Cleaning",
   },
@@ -229,7 +240,7 @@ const galleryItems: GalleryItem[] = [
   type: "single",
   mediaType: "video",
   video:eventcleaningVideo,
-  poster:eventcleaningVideo, 
+  poster:eventCleaningPoster,
   title: "Event Cleaning",
   category: "Event Management",
   }, 
@@ -237,7 +248,7 @@ const galleryItems: GalleryItem[] = [
   type: "single",
   mediaType: "video",
   video:eventcleaningVideo1,
-  poster:eventcleaningVideo1, 
+  poster:eventCleaningPoster,
   title: "Event Cleaning",
   category: "Event Management",
   }, 
@@ -254,7 +265,7 @@ const galleryItems: GalleryItem[] = [
   type: "single",
   mediaType: "video",
   video:eventcleaningVideo2,
-  poster:eventcleaningVideo2, 
+  poster:eventCleaningPoster,
   title: "Event Cleaning",
   category: "Event Management",
   }, 
@@ -266,7 +277,7 @@ const galleryItems: GalleryItem[] = [
   type: "single",
   mediaType: "video",
   video:eventcleaningVideo3,
-  poster:eventcleaningVideo3, 
+  poster:eventCleaningPoster,
   title: "Event Cleaning",
   category: "Event Management",
   }, 
@@ -369,9 +380,10 @@ const Gallery = () => {
                 {expandedGalleryItem.mediaType === "video" ? (
                   <video
                     src={expandedGalleryItem.video}
-                    poster={expandedGalleryItem.poster}
+                    poster={expandedGalleryItem.poster || expandedGalleryItem.video}
                     controls
                     autoPlay
+                    preload="metadata"
                     className="w-full max-h-[75vh] object-contain"
                   />
                 ) : (
