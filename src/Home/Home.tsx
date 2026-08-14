@@ -297,7 +297,7 @@ const Home = () => {
               <div
                 key={idx}
                 onClick={() => navigate(`/service/${service.slug}`)}
-                className="w-full sm:max-w-[323px] md:max-w-[340px] lg:max-w-[323px] flex flex-col cursor-pointer group transition-all duration-300 hover:-translate-y-2"
+                className="w-full sm:max-w-[300px] md:max-w-[300px] lg:max-w-[280px] flex flex-col cursor-pointer group transition-all duration-300 hover:-translate-y-2"
                 style={fadeUp(serviceVisible, 100 + idx * 120)}
               >
                 <div className="overflow-hidden">
