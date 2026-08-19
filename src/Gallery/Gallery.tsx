@@ -56,6 +56,19 @@ import postConstruction6 from "../assets/post_construction6.jpg";
 import postConstruction7 from "../assets/post_construction7.jpg";
 import postConstruction8 from "../assets/post_construction8.jpg";
 
+import yaz1 from "../assets/yaz1.jpeg";
+import yaz2 from "../assets/yaz2.jpeg";
+import yaz3 from "../assets/yaz3.jpeg";
+import yaz4 from "../assets/yaz4.jpeg";
+import yaz5 from "../assets/yaz5.jpeg";
+import yaz6 from "../assets/yaz6.jpeg";
+import yaz7 from "../assets/yaz7.jpeg";
+import yaz8 from "../assets/yaz8.jpeg";
+import yaz9 from "../assets/yaz9.jpeg";
+// import yaz10 from "../assets/yaz10.jpeg";
+// import yaz1 from "../assets/yaz1.jpeg";
+
+
 
 import spaceCare from "../assets/Space Care.mp4";
 import upholsteryVideo from "../assets/upholstery.mp4";
@@ -86,7 +99,7 @@ const CATEGORIES = [
   "Post Construction",
   "Church Cleaning Charity Project",
   "Prime Environment Cleaners Network Association (PECNA) Award Night",
-  
+  "(EHCON) The Environmental Health Council of Nigeria"
 ] as const;
 
 type Category = (typeof CATEGORIES)[number];
@@ -191,7 +204,7 @@ function AnimatedGalleryCard({
             <img
               src={item.image}
               alt={item.title}
-              className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-110"
+              className="w-full h-full inset-0 object-center object-cover transition-transform duration-700 group-hover:scale-110"
             />
           )}
         </div>
@@ -220,22 +233,33 @@ const galleryItems: GalleryItem[] = [
   },
   { type: "single", image: after, title: "Office Cleaning", category: "Space Care" },
   { type: "single", image: after2, title: "Residential Cleaning", category: "Space Care" },
+  //  { type: "single", image: yaz10, title: "(EHCON) The Environmental Health Council of Nigeria", category: "(EHCON) The Environmental Health Council of Nigeria" },
   { type: "single", image: after1, title: "Compound Maintenance", category: "Church Cleaning Charity Project" },
+   { type: "single", image: yaz9, title: "(EHCON) The Environmental Health Council of Nigeria", category: "(EHCON) The Environmental Health Council of Nigeria" },
   { type: "single", image: teamAtwork6, title: "Space Care", category: "Space Care" },
   { type: "single", image: teamAtwork5, title: "Fumigation", category: "Fumigation" },
+   { type: "single", image: yaz8, title: "(EHCON) The Environmental Health Council of Nigeria", category: "(EHCON) The Environmental Health Council of Nigeria" },
   //{ type: "single", image: teamAtwork4, title: "Event Management", category: "Event Management" },
   { type: "single", image: teamAtwork3, title: "Space Care", category: "Space Care" },
+   { type: "single", image: yaz7, title: "(EHCON) The Environmental Health Council of Nigeria", category: "(EHCON) The Environmental Health Council of Nigeria" },
   { type: "single", image: fumigation2, title: "Fumigation", category: "Fumigation" },
+   { type: "single", image: yaz6, title: "(EHCON) The Environmental Health Council of Nigeria", category: "(EHCON) The Environmental Health Council of Nigeria" },
   { type: "single", image: postConstruction2, title: "Post Construction Cleaning", category: "Post Construction" },
   { type: "single", image: teamAtwork2, title: "Space Care", category: "Space Care" },
+   { type: "single", image: yaz5, title: "(EHCON) The Environmental Health Council of Nigeria", category: "(EHCON) The Environmental Health Council of Nigeria" },
   { type: "single", image: postConstruction1, title: "Post Construction Cleaning", category: "Post Construction" },
   { type: "single", image: fumigation3, title: "Fumigation", category: "Fumigation" },
   { type: "single", image: teamAtwork, title: "Church Cleaning Charity Projecte", category: "Church Cleaning Charity Project" },
   { type: "single", image: team, title: "Church Cleaning Charity Project", category: "Church Cleaning Charity Project" },
+   { type: "single", image: yaz4, title: "(EHCON) The Environmental Health Council of Nigeria", category: "(EHCON) The Environmental Health Council of Nigeria" },
   { type: "single", image: upholstery, title: "Upholstery Cleaning", category: "Upholstery Cleaning" },
   //{ type: "single", image: fumigation, title: "Fumigation", category: "Fumigation" },
   { type: "single", image: postConstruction3, title: "Post Construction Cleaning", category: "Post Construction" },
   { type: "single", image: fumigation1, title: "Fumigation", category: "Fumigation" },
+
+   { type: "single", image: yaz1, title: "(EHCON) The Environmental Health Council of Nigeria", category: "(EHCON) The Environmental Health Council of Nigeria" },
+ { type: "single", image: yaz2, title: "(EHCON) The Environmental Health Council of Nigeria", category: "(EHCON) The Environmental Health Council of Nigeria" },
+  { type: "single", image: yaz3, title: "(EHCON) The Environmental Health Council of Nigeria", category: "(EHCON) The Environmental Health Council of Nigeria" },
   { type: "single", image: eventmanagement, title: "Event Management", category: "Event Management" },
  // { type: "single", image: eventcleaningVideo, title: "Event Management", category: "Event Management" },
  {
