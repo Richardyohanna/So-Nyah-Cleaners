@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import team from "../assets/team.jpeg";
-import user from "../assets/user.jpeg";
+import user from "../assets/emma.jpeg";
 import StatsSection from "../component/ui/stat-section";
 import { useNavigate } from "react-router-dom";
 import about from "../assets/about2.mp4";
