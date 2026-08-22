@@ -41,7 +41,8 @@ import teamAtwork6 from "../assets/teamAtWork 6.jpeg";
 import CustomButton from "../component/ui/custom-button";
 
 import SEO from "../component/SEO";
-
+import { useReviews } from "../Client/hooks/useReviews";
+import ReviewForm from "../component/ReviewForm";
 
 // Base animation classes — add to tailwind config or use inline styles
 // We use inline style approach so no tailwind config changes are needed.
@@ -88,13 +89,13 @@ const heroImages: HeroImage[] = [
   { id: 2, image: bgCover2 },
 ];
 
-type Review = { id: number; review: string; name: string; role: string; image?: string };
-const reviews: Review[] = [
-  { id: 1, review: "Excellent work! My husband was genuinely surprised when he entered the house even the kids noticed the difference. Truly impressive results.", name: "Asmau Buba", role: "Civil Cervant", image: "" },
-  { id: 2, review: "My husband specifically mentioned the depth and thoroughness of the cleaning your team carried out. Thank you for such a detailed job", name: "Patience Dimmah", role: "NGO Consultant", image: "" },
-  { id: 3, review: "I would give the service an 8.5 out of 10. This is not due to any dissatisfaction, but rather room for improvement. Overall, I am very satisfied with the service, and my husband shares the same opinion.", name: "Ms. Summi", role: "Enterprenuer", image: "" },
-   { id: 4, review: "Thank you. I really appreciate your excellent service. Please keep up the great work you are doing an outstanding job.", name: "Head of General Services", role: "NTA", image: "" },
-];
+// type Review = { id: number; review: string; name: string; role: string; image?: string };
+// const reviews: Review[] = [
+//   { id: 1, review: "Excellent work! My husband was genuinely surprised when he entered the house even the kids noticed the difference. Truly impressive results.", name: "Asmau Buba", role: "Civil Cervant", image: "" },
+//   { id: 2, review: "My husband specifically mentioned the depth and thoroughness of the cleaning your team carried out. Thank you for such a detailed job", name: "Patience Dimmah", role: "NGO Consultant", image: "" },
+//   { id: 3, review: "I would give the service an 8.5 out of 10. This is not due to any dissatisfaction, but rather room for improvement. Overall, I am very satisfied with the service, and my husband shares the same opinion.", name: "Ms. Summi", role: "Enterprenuer", image: "" },
+//    { id: 4, review: "Thank you. I really appreciate your excellent service. Please keep up the great work you are doing an outstanding job.", name: "Head of General Services", role: "NTA", image: "" },
+// ];
 
 // ── Blog card skeleton ────────────────────────────────────────────────────────
 function BlogSkeleton() {
@@ -118,6 +119,7 @@ const Home = () => {
   const [currentHeroImageIndex, setCurrentHeroImageIndex] = useState(0);
 
   const { posts: livePosts, loading: postsLoading } = usePosts({ status: "published", limit: 4 });
+  const { reviews, loading: reviewsLoading } = useReviews({ status: "approved", limit: 12 });
 
   const spaceCleaning = getServiceBySlug("space-cleaning");
   const facadeCleaning = getServiceBySlug("post-construction");
@@ -190,6 +192,7 @@ const Home = () => {
   }, []);
 
   const getVisibleReviews = () => {
+    if (reviews.length === 0) return [];
     if (reviews.length <= 3) return reviews;
     return [
       reviews[reviewStartIndex % reviews.length],
@@ -207,7 +210,7 @@ const Home = () => {
       setReviewStartIndex((prev) => (prev + 1) % reviews.length);
     }, 5000);
     return () => window.clearInterval(interval);
-  }, []);
+  }, [reviews.length]);
 
   const showNavigation = reviews.length > 3;
 
@@ -419,41 +422,69 @@ const Home = () => {
           )}
 
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 justify-items-center w-full gap-4 sm:gap-6">
-            {getVisibleReviews().map((review, index) => {
-              const isMiddle = index === 1 && getVisibleReviews().length === 3;
-              return (
+            {reviewsLoading &&
+              Array.from({ length: 3 }).map((_, i) => (
                 <div
-                  key={`${review.id}-${index}`}
-                  className={`w-full max-w-[380px] h-[340px] sm:h-[360px] md:h-[370px] lg:h-[380px] overflow-hidden p-5 sm:p-6 flex flex-col justify-between gap-4  transition-all duration-500 transform ${
-                    isMiddle
-                      ? "bg-[var(--primary)] text-white shadow-2xl xl:scale-105"
-                      : "bg-white border border-[#00000014] text-black hover:-translate-y-2 hover:shadow-xl"
-                  }`}
-                  style={fadeUp(reviewsVisible, 150 + index * 150)}
-                >
+                  key={i}
+                  className="w-full max-w-[380px] h-[340px] sm:h-[360px] md:h-[370px] lg:h-[380px] bg-gray-100 animate-pulse"
+                />
+              ))}
 
-                  <div className="flex gap-1">
+            {!reviewsLoading && reviews.length === 0 && (
+              <div className="col-span-full text-center text-[var(--accent-text)] py-10">
+                <p>No reviews yet — be the first to share your experience below!</p>
+              </div>
+            )}
 
-                  </div>
-                  <p className={`leading-relaxed transition-colors duration-300 text-sm sm:text-base overflow-hidden line-clamp-6 ${isMiddle ? "!text-white" : "text-[var(--accent-text)]"}`}>
-                    "{review.review}"
-                  </p>
-                  <div className="flex items-center gap-3 mt-3">
-                    <div className={`w-12 h-12 rounded-full flex items-center justify-center font-bold transition-all duration-300 ${isMiddle ? "bg-white text-[var(--primary)]" : "bg-[var(--primary)] text-white"}`}>
-                      {review.name.charAt(0)}
+            {!reviewsLoading &&
+              getVisibleReviews().map((review, index) => {
+                const isMiddle = index === 1 && getVisibleReviews().length === 3;
+                return (
+                  <div
+                    key={`${review.id}-${index}`}
+                    className={`w-full max-w-[380px] h-[340px] sm:h-[360px] md:h-[370px] lg:h-[380px] overflow-hidden p-5 sm:p-6 flex flex-col justify-between gap-4 transition-all duration-500 transform ${
+                      isMiddle
+                        ? "bg-[var(--primary)] text-white shadow-2xl xl:scale-105"
+                        : "bg-white border border-[#00000014] text-black hover:-translate-y-2 hover:shadow-xl"
+                    }`}
+                    style={fadeUp(reviewsVisible, 150 + index * 150)}
+                  >
+                    <div className="flex gap-1"></div>
+                    <p
+                      className={`leading-relaxed transition-colors duration-300 text-sm sm:text-base overflow-hidden line-clamp-6 ${
+                        isMiddle ? "!text-white" : "text-[var(--accent-text)]"
+                      }`}
+                    >
+                      "{review.review}"
+                    </p>
+                    <div className="flex items-center gap-3 mt-3">
+                      <div
+                        className={`w-12 h-12 rounded-full flex items-center justify-center font-bold transition-all duration-300 ${
+                          isMiddle ? "bg-white text-[var(--primary)]" : "bg-[var(--primary)] text-white"
+                        }`}
+                      >
+                        {review.name.charAt(0)}
+                      </div>
+                      <div>
+                        <h6
+                          className={`font-bold transition-colors duration-300 text-sm sm:text-base ${
+                            isMiddle ? "text-white!" : "text-[var(--primary)]!"
+                          }`}
+                        >
+                          {review.name}
+                        </h6>
+                        <p
+                          className={`text-xs! sm:text-sm! transition-colors duration-300 ${
+                            isMiddle ? "text-white/80!" : "text-[var(--accent-text)]!"
+                          }`}
+                        >
+                          {review.role}
+                        </p>
+                      </div>
                     </div>
-                    <div>
-                      <h6 className={`font-bold transition-colors duration-300 text-sm sm:text-base ${isMiddle ? "text-white!" : "text-[var(--primary)]!"}`}>
-                        {review.name}
-                      </h6>
-                      <p className={`text-xs! sm:text-sm! transition-colors duration-300 ${isMiddle ? "text-white/80!" : "text-[var(--accent-text)]!"}`}>
-                        {review.role}
-                      </p>
-                    </div>
                   </div>
-                </div>
-              );
-            })}
+                );
+              })}
           </div>
 
           {showNavigation && (
@@ -463,6 +494,8 @@ const Home = () => {
           )}
         </div>
       </section>
+
+
 
       {/* ── BLOG / GALLERY SECTION ────────────────────────────────────────────── */}
       <section
@@ -629,6 +662,20 @@ const Home = () => {
             </>
           )}
         </div>
+      </section>
+
+      {/* ── LEAVE A REVIEW ───────────────────────────────────────────────────── */}
+      <section id="leave-review" className="mt-16 px-4 sm:mt-20 sm:px-6 md:px-8 lg:px-10">
+        <div className="w-full max-w-[560px] mx-auto bg-[var(--primary)] border border-[#00000014] block items-center p-2 justify-center">
+          <h3 className="text-white! head text-[28px] sm:text-[32px] md:text-[36px] tracking-normal! text-center">
+            SHARE YOUR EXPERIENCE
+          </h3>
+          <h4 className="text-center text-white! text-sm sm:text-base">
+            Had a great experience with us? We'd love to hear about it.
+          </h4>
+        </div>
+
+        <ReviewForm />
       </section>
 
       {/* ── Floating WhatsApp ────────────────────────────────────────────────── */}

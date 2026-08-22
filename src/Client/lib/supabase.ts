@@ -25,3 +25,15 @@ export interface Post {
   created_at: string;
   updated_at: string;
 }
+
+
+// ── Review type ──────────────────────────────────────────────────────────────
+export interface Review {
+  id: string;
+  name: string;
+  role: string | null;
+  review: string;
+  rating: number | null;
+  status: "pending" | "approved" | "rejected";
+  created_at: string;
+}
