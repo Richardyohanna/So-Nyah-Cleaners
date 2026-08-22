@@ -42,7 +42,7 @@ import CustomButton from "../component/ui/custom-button";
 
 import SEO from "../component/SEO";
 import { useReviews } from "../Client/hooks/useReviews";
-import ReviewForm from "../component/ReviewForm";
+// import ReviewForm from "../component/ReviewForm";
 
 // Base animation classes — add to tailwind config or use inline styles
 // We use inline style approach so no tailwind config changes are needed.
@@ -665,7 +665,7 @@ const Home = () => {
       </section>
 
       {/* ── LEAVE A REVIEW ───────────────────────────────────────────────────── */}
-      <section id="leave-review" className="mt-16 px-4 sm:mt-20 sm:px-6 md:px-8 lg:px-10">
+      {/* <section id="leave-review" className="mt-16 px-4 sm:mt-20 sm:px-6 md:px-8 lg:px-10">
         <div className="w-full max-w-[560px] mx-auto bg-[var(--primary)] border border-[#00000014] block items-center p-2 justify-center">
           <h3 className="text-white! head text-[28px] sm:text-[32px] md:text-[36px] tracking-normal! text-center">
             SHARE YOUR EXPERIENCE
@@ -676,7 +676,7 @@ const Home = () => {
         </div>
 
         <ReviewForm />
-      </section>
+      </section> */}
 
       {/* ── Floating WhatsApp ────────────────────────────────────────────────── */}
       <div className="fixed z-[800] bottom-4 sm:bottom-6 md:bottom-8 lg:bottom-10 right-4 sm:right-6 md:right-8 lg:right-10 flex flex-col items-end gap-3">
