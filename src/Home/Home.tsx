@@ -146,6 +146,33 @@ const Home = () => {
   const [blogVisible, setBlogVisible] = useState(false);
 
   useEffect(() => {
+  if (window.location.hash !== "#leave-review") return;
+
+  let attempts = 0;
+
+  const scrollToReview = () => {
+    const element = document.getElementById("leave-review");
+
+    if (element) {
+      element.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+      return;
+    }
+
+    // Give React more time to render the section
+    attempts++;
+
+    if (attempts < 20) {
+      setTimeout(scrollToReview, 100);
+    }
+  };
+
+  scrollToReview();
+}, []);
+
+  useEffect(() => {
     const observers: IntersectionObserver[] = [];
 
     const makeObserver = (
@@ -212,6 +239,7 @@ const Home = () => {
     return () => window.clearInterval(interval);
   }, [reviews.length]);
 
+  
   const showNavigation = reviews.length > 3;
 
   return (
