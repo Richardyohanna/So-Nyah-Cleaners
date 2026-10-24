@@ -61,6 +61,7 @@ const Header = () => {
         { label: "Our Team", hash: "#our-team" },
       ],
     },
+    { name: "Beyond Business", path: "/beyond-business" },
   ];
 
   const toggleMobileDropdown = (name: string) => {

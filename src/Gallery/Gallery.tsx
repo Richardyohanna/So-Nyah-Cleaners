@@ -72,7 +72,8 @@ import yaz9 from "../assets/yaz9.jpeg";
 
 import spaceCare from "../assets/Space Care.mp4";
 import upholsteryVideo from "../assets/upholstery.mp4";
-
+import pechna1 from "../assets/IMG_1469.mov";
+import pechna2 from "../assets/IMG_2304.mov";
 import SEO from "../component/SEO";
 
 // Example: import a video the same way you import images.
@@ -214,6 +215,22 @@ function AnimatedGalleryCard({
 
 // ── Gallery items data (each tagged with a category) ─────────────────────────
 const galleryItems: GalleryItem[] = [
+        {
+  type: "single",
+  mediaType: "video",
+  video:pechna1,
+  poster:pechna1,
+  title: "Prime Environment Cleaners Network Association (PECNA) Award Night",
+  category: "Prime Environment Cleaners Network Association (PECNA) Award Night",
+  }, 
+  {
+  type: "single",
+  mediaType: "video",
+  video:pechna2,
+  poster:pechna2,
+  title: "Prime Environment Cleaners Network Association (PECNA) Award Night",
+  category: "Prime Environment Cleaners Network Association (PECNA) Award Night",
+  }, 
   {
   type: "single",
   mediaType: "video",
@@ -246,7 +263,8 @@ const galleryItems: GalleryItem[] = [
    { type: "single", image: yaz6, title: "(EHCON) The Environmental Health Council of Nigeria", category: "(EHCON) The Environmental Health Council of Nigeria" },
   { type: "single", image: postConstruction2, title: "Post Construction Cleaning", category: "Post Construction" },
   { type: "single", image: teamAtwork2, title: "Space Care", category: "Space Care" },
-   { type: "single", image: yaz5, title: "(EHCON) The Environmental Health Council of Nigeria", category: "(EHCON) The Environmental Health Council of Nigeria" },
+
+  { type: "single", image: yaz5, title: "(EHCON) The Environmental Health Council of Nigeria", category: "(EHCON) The Environmental Health Council of Nigeria" },
   { type: "single", image: postConstruction1, title: "Post Construction Cleaning", category: "Post Construction" },
   { type: "single", image: fumigation3, title: "Fumigation", category: "Fumigation" },
   { type: "single", image: teamAtwork, title: "Church Cleaning Charity Projecte", category: "Church Cleaning Charity Project" },
