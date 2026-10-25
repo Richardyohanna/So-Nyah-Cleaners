@@ -6,19 +6,12 @@ import after1 from "../assets/enhanced-bg1.png";
 import after from "../assets/after 1.jpeg";
 // import before from "../assets/before 1.jpeg";
 import after2 from "../assets/after 2.jpeg";
-import eventCleaningPoster from "../assets/eventCleaning.jpeg";
-import spaceCarePoster from "../assets/spaceCleaningDemo.png";
-import upholsteryPoster from "../assets/Upholstery.jpeg";
 // import before2 from "../assets/before 2.jpeg";
 import expand from "../assets/expand.png";
 
 import teamAtwork from "../assets/teamAtWork.jpeg";
 import teamAtwork2 from "../assets/teamAtWork 2.jpeg";
 import teamAtwork3 from "../assets/teamAtWork 3.jpeg";
-import eventcleaningVideo from "../assets/eventcleaningvideo.mp4";
-import eventcleaningVideo1 from "../assets/eventManagementVid1.mp4";
-import eventcleaningVideo2 from "../assets/eventManagementVid2.mp4";
-import eventcleaningVideo3 from "../assets/eventManagementVid3.mp4";
 //import teamAtwork4 from "../assets/teamAtWork 4.jpeg";
 import teamAtwork5 from "../assets/teamAtWork 5.jpeg";
 import teamAtwork6 from "../assets/teamAtWork 6.jpeg";
@@ -70,23 +63,7 @@ import yaz9 from "../assets/yaz9.jpeg";
 
 
 
-import spaceCare from "../assets/Space Care.mp4";
-import upholsteryVideo from "../assets/upholstery.mp4";
-import pechna1 from "../assets/IMG_1469.mov";
-import pechna2 from "../assets/IMG_2304.mov";
 import SEO from "../component/SEO";
-
-// Example: import a video the same way you import images.
-// Vite/CRA will bundle it and give you a URL string, just like an image import.
-// import fumigationClip from "../assets/fumigation-clip.mp4";
-// import fumigationClipPoster from "../assets/fumigation-clip-poster.jpeg";
-
-// ── Scroll animation helpers ─────────────────────────────────────────────────
-const fadeUp = (visible: boolean, delay = 0): React.CSSProperties => ({
-  opacity: visible ? 1 : 0,
-  transform: visible ? "translateY(0px)" : "translateY(36px)",
-  transition: `opacity 0.6s ease ${delay}ms, transform 0.6s ease ${delay}ms`,
-});
 
 // ── Categories ────────────────────────────────────────────────────────────────
 const CATEGORIES = [
@@ -121,121 +98,80 @@ type GalleryItem = {
   category: Category;
 };
 
-function AnimatedGalleryCard({
-  item,
-  index,
-  onClick,
-}: {
-  item: GalleryItem;
-  index: number;
-  onClick: () => void;
-}) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
-  const [shouldLoadVideo, setShouldLoadVideo] = useState(false);
+function GalleryCard({ item, index, onClick }: { item: GalleryItem; index: number; onClick: () => void }) {
   const isVideo = item.mediaType === "video";
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          if (isVideo) {
-            setShouldLoadVideo(true);
-          }
-          observer.unobserve(el);
-        }
-      },
-      { threshold: 0.1, rootMargin: "300px 0px 200px 0px" }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, [isVideo]);
-
   // Stagger within each row of 4 by index mod 4
   const rowDelay = (index % 4) * 80;
 
   return (
-    <div
-      ref={ref}
+    <button
+      type="button"
+      data-gallery-card
       onClick={onClick}
-      className="group bg-white  overflow-hidden border border-[#00000014] shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer"
-      style={fadeUp(isVisible, rowDelay)}
+      aria-label={`${isVideo ? "Watch video" : "View image"}: ${item.title}`}
+      className="group relative block w-full overflow-hidden border border-[#00000014] bg-white text-left shadow-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl focus-visible:outline-4 focus-visible:outline-(--primary) focus-visible:outline-offset-2"
+      style={{
+        opacity: 0,
+        transform: "translateY(36px)",
+        transition: `opacity 0.6s ease ${rowDelay}ms, transform 0.6s ease ${rowDelay}ms, box-shadow 0.5s ease`,
+      }}
     >
-       <img src={expand} alt="expand" className="absolute z-30 right-0 bg-white p-1 shrink-0" />
-
-        <div className="relative h-[460px] md:h-[460px] overflow-hidden">
-          {isVideo ? (
-            <>
-              <video
-                src={shouldLoadVideo ? item.video : undefined}
-                poster={item.poster || item.video}
-                muted
-                loop
-                playsInline
-                preload={shouldLoadVideo ? "metadata" : "none"}
-                className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-110"
-                onMouseEnter={(e) => {
-                  if (shouldLoadVideo) {
-                    e.currentTarget.play().catch(() => {});
-                  }
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.pause();
-                  e.currentTarget.currentTime = 0;
+      <img src={expand} alt="" aria-hidden="true" className="absolute right-0 z-30 shrink-0 bg-white p-1" />
+      <div className="relative h-115 overflow-hidden">
+        <img
+          src={isVideo ? item.poster : item.image}
+          alt={isVideo ? "" : item.title}
+          loading="lazy"
+          decoding="async"
+          className="inset-0 h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-110"
+        />
+        {isVideo && (
+          <div className="pointer-events-none absolute inset-0 flex items-center justify-center" aria-hidden="true">
+            <div className="flex h-14 w-14 items-center justify-center rounded-full bg-black/50">
+              <div
+                className="ml-1 h-0 w-0"
+                style={{
+                  borderTop: "9px solid transparent",
+                  borderBottom: "9px solid transparent",
+                  borderLeft: "14px solid white",
                 }}
               />
-              {/* Play badge so it reads as a video in the grid, not a static photo */}
-              <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-                <div className="w-14 h-14 rounded-full bg-black/50 flex items-center justify-center">
-                  <div
-                    className="w-0 h-0 ml-1"
-                    style={{
-                      borderTop: "9px solid transparent",
-                      borderBottom: "9px solid transparent",
-                      borderLeft: "14px solid white",
-                    }}
-                  />
-                </div>
-              </div>
-            </>
-          ) : (
-            <img
-              src={item.image}
-              alt={item.title}
-              className="w-full h-full inset-0 object-center object-cover transition-transform duration-700 group-hover:scale-110"
-            />
-          )}
-        </div>
-    </div>
+            </div>
+          </div>
+        )}
+      </div>
+    </button>
   );
 }
+
+const videoUrl = (filename: string) =>
+  `${import.meta.env.BASE_URL}videos/optimized/${encodeURIComponent(filename)}`;
+const posterUrl = (filename: string) =>
+  `${import.meta.env.BASE_URL}videos/posters/${encodeURIComponent(filename)}`;
 
 // ── Gallery items data (each tagged with a category) ─────────────────────────
 const galleryItems: GalleryItem[] = [
         {
   type: "single",
   mediaType: "video",
-  video:pechna1,
-  poster:pechna1,
+  video: videoUrl("IMG_1469.mp4"),
+  poster: posterUrl("IMG_1469.webp"),
   title: "Prime Environment Cleaners Network Association (PECNA) Award Night",
   category: "Prime Environment Cleaners Network Association (PECNA) Award Night",
   }, 
   {
   type: "single",
   mediaType: "video",
-  video:pechna2,
-  poster:pechna2,
+  video: videoUrl("IMG_2304.mp4"),
+  poster: posterUrl("IMG_2304.webp"),
   title: "Prime Environment Cleaners Network Association (PECNA) Award Night",
   category: "Prime Environment Cleaners Network Association (PECNA) Award Night",
   }, 
   {
   type: "single",
   mediaType: "video",
-  video:spaceCare,
-  poster:spaceCarePoster,
+  video: videoUrl("Space Care.mp4"),
+  poster: posterUrl("Space Care.webp"),
   title: "Space Care",
   category: "Space Care",
   },
@@ -243,8 +179,8 @@ const galleryItems: GalleryItem[] = [
     {
   type: "single",
   mediaType: "video",
-  video:upholsteryVideo,
-  poster:upholsteryPoster,
+  video: videoUrl("upholstery.mp4"),
+  poster: posterUrl("upholstery.webp"),
   title: "Upholstery",
   category: "Upholstery Cleaning",
   },
@@ -283,16 +219,16 @@ const galleryItems: GalleryItem[] = [
  {
   type: "single",
   mediaType: "video",
-  video:eventcleaningVideo,
-  poster:eventCleaningPoster,
+  video: videoUrl("eventcleaningvideo.mp4"),
+  poster: posterUrl("eventcleaningvideo.webp"),
   title: "Event Cleaning",
   category: "Event Management",
   }, 
    {
   type: "single",
   mediaType: "video",
-  video:eventcleaningVideo1,
-  poster:eventCleaningPoster,
+  video: videoUrl("eventManagementVid1.mp4"),
+  poster: posterUrl("eventManagementVid1.webp"),
   title: "Event Cleaning",
   category: "Event Management",
   }, 
@@ -308,8 +244,8 @@ const galleryItems: GalleryItem[] = [
    {
   type: "single",
   mediaType: "video",
-  video:eventcleaningVideo2,
-  poster:eventCleaningPoster,
+  video: videoUrl("eventManagementVid2.mp4"),
+  poster: posterUrl("eventManagementVid2.webp"),
   title: "Event Cleaning",
   category: "Event Management",
   }, 
@@ -320,8 +256,8 @@ const galleryItems: GalleryItem[] = [
    {
   type: "single",
   mediaType: "video",
-  video:eventcleaningVideo3,
-  poster:eventCleaningPoster,
+  video: videoUrl("eventManagementVid3.mp4"),
+  poster: posterUrl("eventManagementVid3.webp"),
   title: "Event Cleaning",
   category: "Event Management",
   }, 
@@ -330,21 +266,14 @@ const galleryItems: GalleryItem[] = [
   { type: "single", image: pecna2, title: "Prime Environment Cleaners Network Association (PECNA) Award Night", category: "Prime Environment Cleaners Network Association (PECNA) Award Night" },
   { type: "single", image: pecna3, title: "Prime Environment Cleaners Network Association (PECNA) Award Night", category: "Prime Environment Cleaners Network Association (PECNA) Award Night" },
 
-  // ── Example video entries — drop your imported clip in `video`, add `mediaType: "video"` ──
-  // {
-  //   type: "single",
-  //   mediaType: "video",
-  //   video: fumigationClip,
-  //   poster: fumigationClipPoster,
-  //   title: "Fumigation in Action",
-  //   category: "Fumigation",
-  // },
 ];
 
 // ── Component ────────────────────────────────────────────────────────────────
 const Gallery = () => {
   const [expandedGalleryItem, setExpandedGalleryItem] = useState<GalleryItem | null>(null);
   const [activeCategory, setActiveCategory] = useState<Category>("All");
+  const galleryGridRef = useRef<HTMLDivElement>(null);
+  const modalVideoRef = useRef<HTMLVideoElement>(null);
 
   // Only show categories that actually have items, plus "All"
   const availableCategories = CATEGORIES.filter(
@@ -355,6 +284,58 @@ const Gallery = () => {
     activeCategory === "All"
       ? galleryItems
       : galleryItems.filter((item) => item.category === activeCategory);
+
+  useEffect(() => {
+    const grid = galleryGridRef.current;
+    if (!grid) return;
+
+    const cards = grid.querySelectorAll<HTMLElement>("[data-gallery-card]");
+    if (!("IntersectionObserver" in window)) {
+      cards.forEach((card) => {
+        card.style.opacity = "1";
+        card.style.transform = "translateY(0px)";
+      });
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const card = entry.target as HTMLElement;
+            card.style.opacity = "1";
+            card.style.transform = "translateY(0px)";
+            observer.unobserve(card);
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: "300px 0px 200px 0px" }
+    );
+
+    cards.forEach((card) => observer.observe(card));
+    return () => observer.disconnect();
+  }, [activeCategory]);
+
+  useEffect(() => {
+    const video = modalVideoRef.current;
+    if (!video) return;
+
+    video.play().catch(() => undefined);
+    return () => {
+      video.pause();
+    };
+  }, [expandedGalleryItem]);
+
+  useEffect(() => {
+    if (!expandedGalleryItem) return;
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setExpandedGalleryItem(null);
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [expandedGalleryItem]);
 
   return (
     <>
@@ -389,9 +370,9 @@ const Gallery = () => {
         </div>
 
         <div className="overflow-x-auto pt-2 scrollbar-hide">
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 lg:gap-8">
+          <div ref={galleryGridRef} className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:gap-8 xl:grid-cols-4">
             {filteredItems.map((item, index) => (
-              <AnimatedGalleryCard
+              <GalleryCard
                 key={`${activeCategory}-${index}`}
                 item={item}
                 index={index}
@@ -411,28 +392,35 @@ const Gallery = () => {
           <div
             className="fixed inset-0 z-[2000] bg-black/80 flex items-center justify-center p-4 sm:p-6"
             onClick={() => setExpandedGalleryItem(null)}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="gallery-modal-title"
           >
             <div
               className="relative bg-white  max-w-6xl w-full max-h-[90vh] overflow-auto p-4 sm:p-6"
               onClick={(e) => e.stopPropagation()}
             >
               <button
+                type="button"
                 onClick={() => setExpandedGalleryItem(null)}
-                className="absolute top-4 right-4 bg-[var(--primary)] text-white w-10 h-10  flex items-center justify-center text-xl font-bold hover:scale-105 transition-all duration-300"
+                aria-label="Close preview"
+                className="absolute top-4 right-4 flex h-10 w-10 items-center justify-center bg-[var(--primary)] text-xl font-bold text-white transition-all duration-300 hover:scale-105 focus-visible:outline-4 focus-visible:outline-white"
               >
                 ×
               </button>
-              <h3 className="text-[var(--primary)] text-xl sm:text-2xl font-bold mb-5 pr-12">
+              <h3 id="gallery-modal-title" className="mb-5 pr-12 text-xl font-bold text-[var(--primary)] sm:text-2xl">
                 {expandedGalleryItem.title}
               </h3>
 
               <div className=" overflow-hidden">
                 {expandedGalleryItem.mediaType === "video" ? (
                   <video
+                    key={expandedGalleryItem.video}
+                    ref={modalVideoRef}
                     src={expandedGalleryItem.video}
-                    poster={expandedGalleryItem.poster || expandedGalleryItem.video}
+                    poster={expandedGalleryItem.poster}
                     controls
-                    autoPlay
+                    playsInline
                     preload="metadata"
                     className="w-full max-h-[75vh] object-contain"
                   />

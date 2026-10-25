@@ -1,10 +1,8 @@
-const CACHE_VERSION = "v1";
+const CACHE_VERSION = "v2";
 const APP_CACHE = `sonyah-media-${CACHE_VERSION}`;
 const MAX_CACHE_BYTES = 200 * 1024 * 1024;
-const SAFE_VIDEO_SIZE_BYTES = 12 * 1024 * 1024;
 const ASSET_PATTERNS = [
   /\.(png|jpg|jpeg|gif|webp|svg|avif|ico|css|js)$/i,
-  /\.(mp4|webm|ogg|m4v)$/i,
 ];
 
 const STATIC_CACHE_ALLOWLIST = [
@@ -64,16 +62,6 @@ const shouldCacheResponse = (request, response) => {
     return false;
   }
 
-  if (url.pathname.match(/\.(mp4|webm|ogg|m4v)$/i)) {
-    const size = getResponseSize(response);
-    if (size !== null && size > SAFE_VIDEO_SIZE_BYTES) {
-      return false;
-    }
-    if (size === null) {
-      return false;
-    }
-  }
-
   return ASSET_PATTERNS.some((pattern) => pattern.test(url.pathname));
 };
 
@@ -126,6 +114,10 @@ self.addEventListener("fetch", (event) => {
     return;
   }
 
+  if (/\.(mp4|webm|ogg|m4v)$/i.test(url.pathname)) {
+    return;
+  }
+
   const isNavigationRequest = request.mode === "navigate";
 
   if (isNavigationRequest) {
@@ -137,31 +129,6 @@ self.addEventListener("fetch", (event) => {
           return response;
         })
         .catch(() => caches.match(request).then((cached) => cached || Response.error()))
-    );
-    return;
-  }
-
-  if (url.pathname.endsWith(".mp4") || url.pathname.endsWith(".webm") || url.pathname.endsWith(".ogg") || url.pathname.endsWith(".m4v")) {
-    event.respondWith(
-      caches.match(request).then((cached) => {
-        if (cached) {
-          return cached;
-        }
-
-        return fetch(request)
-          .then((response) => {
-            if (response.ok && response.body) {
-              const clone = response.clone();
-              if (shouldCacheResponse(request, clone)) {
-                caches.open(APP_CACHE).then((cache) => {
-                  return cache.put(request, clone).then(() => trimCache(APP_CACHE));
-                }).catch(() => undefined);
-              }
-            }
-            return response;
-          })
-          .catch(() => cached || Response.error());
-      })
     );
     return;
   }

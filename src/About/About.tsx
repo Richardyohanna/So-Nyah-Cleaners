@@ -3,10 +3,12 @@ import team from "../assets/team.jpeg";
 import user from "../assets/emma.jpeg";
 import StatsSection from "../component/ui/stat-section";
 import { useNavigate } from "react-router-dom";
-import about from "../assets/about2.mp4";
 import ceo from "../assets/CEO.png";
 import coo from "../assets/COO .jpeg";
 import SEO from "../component/SEO";
+
+const aboutVideo = `${import.meta.env.BASE_URL}videos/optimized/about2.mp4`;
+const aboutPoster = `${import.meta.env.BASE_URL}videos/posters/about2.webp`;
 
 // ── Scroll animation helpers ─────────────────────────────────────────────────
 function useScrollReveal(options?: IntersectionObserverInit) {
@@ -367,9 +369,11 @@ const About = () => {
                   autoPlay
                   playsInline
                   loop
+                  poster={aboutPoster}
+                  preload="metadata"
                   className="object-bottom inset-0 max:h-114 "
                 >
-                  <source src={about} type="video/mp4" />
+                  <source src={aboutVideo} type="video/mp4" />
                 </video>
               </div>
             </div>
