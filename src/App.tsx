@@ -125,7 +125,7 @@ const App = () => {
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:id" element={<BlogDetail />} />
           <Route path="/about" element={<About />} />
-          <Route path="/beyond-business" element={<BeyondBusiness />} />
+          <Route path="/so-nyah-beyond-business" element={<BeyondBusiness />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/gallery" element={<Gallery />} />
         </Routes>
