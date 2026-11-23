@@ -61,7 +61,7 @@ const Header = () => {
         { label: "Our Team", hash: "#our-team" },
       ],
     },
-    { name: "Beyond Business", path: "/beyond-business" },
+    { name: "So-nyah Beyond Business", path: "/So-nyah-beyond-business" },
   ];
 
   const toggleMobileDropdown = (name: string) => {
@@ -229,7 +229,7 @@ const Header = () => {
 
         {/* Nav row: centered, uppercase, letter-spaced */}
         <div className="sticky hidden top-0 z-[1999]  bg-white lg:block">
-          <div className="mx-auto flex h-[48px] w-full max-w-[1100px] items-center justify-center border-t-2 border-[var(--border)] px-4 sm:px-6 lg:px-12">
+          <div className="mx-auto flex h-[48px] w-full max-w-[1200px] items-center justify-center border-t-2 border-[var(--border)] px-4 sm:px-6 lg:px-12">
 
           <nav className="hidden lg:block w-full">
             <ul className="flex flex-row w-full items-center justify-between gap-12">
@@ -243,7 +243,7 @@ const Header = () => {
                         {({ isActive }) => (
                           <div className="flex items-center gap-1.5">
                             <span
-                              className={`text-[13px] tracking-[0.3em] transition-colors duration-300 ${
+                              className={`text-[13px] tracking-[0.3em] transition-colors text-center duration-300 ${
                                 isActive
                                   ? "bg-[var(--primary)] p-[0.5em] pl-7 pr-7 text-white "
                                   : "text-[var(--text)]"
