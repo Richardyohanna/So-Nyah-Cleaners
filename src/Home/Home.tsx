@@ -26,6 +26,7 @@ import client6 from "../assets/client6.png";
 import client7 from "../assets/client7.png";
 import client8 from "../assets/client8.png";
 import client9 from "../assets/city boys.png";
+import client10 from "../assets/Mediterranean.png";
 
 import whatsApp from "../assets/whatsApp.png";
 import expand from "../assets/expand.png";
@@ -79,6 +80,7 @@ const clients: Clients[] = [
   { id: 7, image: client7, companyName: "", logoWidth: "w-full", logoHeight: "h-[100px]" },
   { id: 8, image: client8, companyName: "", logoWidth: "w-full", logoHeight: "h-[120px]" },
   { id: 9, image: client9, companyName: "city boys", logoWidth: "w-full", logoHeight: "h-[100px]" },
+  { id: 10, image: client10, companyName: "Mediterranean", logoWidth: "w-full", logoHeight: "h-[100px]" },
 ];
 
 type HeroImage = { id: number; image: string };
