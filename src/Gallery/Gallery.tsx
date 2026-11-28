@@ -61,9 +61,21 @@ import yaz9 from "../assets/yaz9.jpeg";
 // import yaz10 from "../assets/yaz10.jpeg";
 // import yaz1 from "../assets/yaz1.jpeg";
 
+import toilet1 from "../assets/toilet1.jpeg";
+import toilet2 from "../assets/toilet2.jpeg";
+import toilet3 from "../assets/toilet3.jpeg";
+import toilet4 from "../assets/toilet4.jpeg";
+import toilet5 from "../assets/toilet5.jpeg";
+import toilet6 from "../assets/toilet6.jpeg";
+import toilet7 from "../assets/toilet7.jpeg";
+import toilet8 from "../assets/toilet8.jpeg";
+import toilet9 from "../assets/toilet9.jpeg";
+import toilet10 from "../assets/toilet10.jpeg";
+import toilet11 from "../assets/toilet11.jpeg";
 
 
 import SEO from "../component/SEO";
+import { CategoryFilter } from "../component/CategoryFilter";
 
 // ── Categories ────────────────────────────────────────────────────────────────
 const CATEGORIES = [
@@ -77,10 +89,12 @@ const CATEGORIES = [
   "Post Construction",
   "Church Cleaning Charity Project",
   "Prime Environment Cleaners Network Association (PECNA) Award Night",
-  "(EHCON) The Environmental Health Council of Nigeria"
+  "(EHCON) The Environmental Health Council of Nigeria",
+  "World Toilet Day",
 ] as const;
 
 type Category = (typeof CATEGORIES)[number];
+type CategoryFilter = Category | "All Categories";
 
 // ── Per-card animated wrapper — each card self-observes ──────────────────────
 type GalleryItem = {
@@ -90,6 +104,9 @@ type GalleryItem = {
   before?: string;
   after?: string;
   image?: string;
+  imageSrcSet?: string;
+  imageWidth?: number;
+  imageHeight?: number;
   // src for a video item
   video?: string;
   // optional thumbnail shown before the video loads/plays; falls back to first frame if omitted
@@ -100,6 +117,7 @@ type GalleryItem = {
 
 function GalleryCard({ item, index, onClick }: { item: GalleryItem; index: number; onClick: () => void }) {
   const isVideo = item.mediaType === "video";
+  const image = isVideo ? item.poster : item.image;
   // Stagger within each row of 4 by index mod 4
   const rowDelay = (index % 4) * 80;
 
@@ -118,13 +136,24 @@ function GalleryCard({ item, index, onClick }: { item: GalleryItem; index: numbe
     >
       <img src={expand} alt="" aria-hidden="true" className="absolute right-0 z-30 shrink-0 bg-white p-1" />
       <div className="relative h-115 overflow-hidden">
-        <img
-          src={isVideo ? item.poster : item.image}
-          alt={isVideo ? "" : item.title}
-          loading="lazy"
-          decoding="async"
-          className="inset-0 h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-110"
-        />
+        <picture>
+          {item.imageSrcSet && (
+            <source
+              type="image/webp"
+              srcSet={item.imageSrcSet}
+              sizes="(min-width: 1280px) 25vw, (min-width: 768px) 50vw, 100vw"
+            />
+          )}
+          <img
+            src={image}
+            alt={isVideo ? "" : item.title}
+            width={item.imageWidth}
+            height={item.imageHeight}
+            loading="lazy"
+            decoding="async"
+            className="inset-0 h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-110"
+          />
+        </picture>
         {isVideo && (
           <div className="pointer-events-none absolute inset-0 flex items-center justify-center" aria-hidden="true">
             <div className="flex h-14 w-14 items-center justify-center rounded-full bg-black/50">
@@ -149,9 +178,27 @@ const videoUrl = (filename: string) =>
 const posterUrl = (filename: string) =>
   `${import.meta.env.BASE_URL}videos/posters/${encodeURIComponent(filename)}`;
 
+const toiletDayImage = (filename: string, width: number, height: number) => {
+  const widths = [...new Set([480, 960, 1280, width].filter((size) => size <= width))].sort((a, b) => a - b);
+  return {
+    imageSrcSet: widths
+      .map((size) => {
+        const suffix = size === width ? "" : `-${size}`;
+        return `${import.meta.env.BASE_URL}images/world-toilet-day/${filename}${suffix}.webp ${size}w`;
+      })
+      .join(", "),
+    imageWidth: width,
+    imageHeight: height,
+  };
+};
+
 // ── Gallery items data (each tagged with a category) ─────────────────────────
 const galleryItems: GalleryItem[] = [
-        {
+  { type: "single", image: toilet5, ...toiletDayImage("toilet5", 1920, 1080), title: "World Toilet Day", category: "World Toilet Day" },
+  { type: "single", image: toilet6, ...toiletDayImage("toilet6", 607, 1080), title: "World Toilet Day", category: "World Toilet Day" },
+  { type: "single", image: toilet7, ...toiletDayImage("toilet7", 1080, 607), title: "World Toilet Day", category: "World Toilet Day" },
+
+  {
   type: "single",
   mediaType: "video",
   video: videoUrl("IMG_1469.mp4"),
@@ -167,6 +214,7 @@ const galleryItems: GalleryItem[] = [
   title: "Prime Environment Cleaners Network Association (PECNA) Award Night",
   category: "Prime Environment Cleaners Network Association (PECNA) Award Night",
   }, 
+  { type: "single", image: toilet1, ...toiletDayImage("toilet1", 1920, 1080), title: "World Toilet Day", category: "World Toilet Day" },
   {
   type: "single",
   mediaType: "video",
@@ -184,7 +232,10 @@ const galleryItems: GalleryItem[] = [
   title: "Upholstery",
   category: "Upholstery Cleaning",
   },
+  { type: "single", image: toilet2, ...toiletDayImage("toilet2", 1920, 1080), title: "World Toilet Day", category: "World Toilet Day" },
   { type: "single", image: after, title: "Office Cleaning", category: "Space Care" },
+  { type: "single", image: toilet3, ...toiletDayImage("toilet3", 1920, 1080), title: "World Toilet Day", category: "World Toilet Day" },
+  { type: "single", image: toilet4, ...toiletDayImage("toilet4", 1920, 1080), title: "World Toilet Day", category: "World Toilet Day" },
   { type: "single", image: after2, title: "Residential Cleaning", category: "Space Care" },
   //  { type: "single", image: yaz10, title: "(EHCON) The Environmental Health Council of Nigeria", category: "(EHCON) The Environmental Health Council of Nigeria" },
   { type: "single", image: after1, title: "Compound Maintenance", category: "Church Cleaning Charity Project" },
@@ -199,7 +250,10 @@ const galleryItems: GalleryItem[] = [
    { type: "single", image: yaz6, title: "(EHCON) The Environmental Health Council of Nigeria", category: "(EHCON) The Environmental Health Council of Nigeria" },
   { type: "single", image: postConstruction2, title: "Post Construction Cleaning", category: "Post Construction" },
   { type: "single", image: teamAtwork2, title: "Space Care", category: "Space Care" },
-
+  { type: "single", image: toilet8, ...toiletDayImage("toilet8", 1080, 607), title: "World Toilet Day", category: "World Toilet Day" },
+  { type: "single", image: toilet9, ...toiletDayImage("toilet9", 607, 1080), title: "World Toilet Day", category: "World Toilet Day" },
+  { type: "single", image: toilet10, ...toiletDayImage("toilet10", 1080, 607), title: "World Toilet Day", category: "World Toilet Day" },
+  { type: "single", image: toilet11, ...toiletDayImage("toilet11", 1280, 720), title: "World Toilet Day", category: "World Toilet Day" },
   { type: "single", image: yaz5, title: "(EHCON) The Environmental Health Council of Nigeria", category: "(EHCON) The Environmental Health Council of Nigeria" },
   { type: "single", image: postConstruction1, title: "Post Construction Cleaning", category: "Post Construction" },
   { type: "single", image: fumigation3, title: "Fumigation", category: "Fumigation" },
@@ -271,7 +325,7 @@ const galleryItems: GalleryItem[] = [
 // ── Component ────────────────────────────────────────────────────────────────
 const Gallery = () => {
   const [expandedGalleryItem, setExpandedGalleryItem] = useState<GalleryItem | null>(null);
-  const [activeCategory, setActiveCategory] = useState<Category>("All");
+  const [activeCategory, setActiveCategory] = useState<CategoryFilter>("All Categories");
   const galleryGridRef = useRef<HTMLDivElement>(null);
   const modalVideoRef = useRef<HTMLVideoElement>(null);
 
@@ -281,7 +335,7 @@ const Gallery = () => {
   );
 
   const filteredItems =
-    activeCategory === "All"
+    activeCategory === "All" || activeCategory === "All Categories"
       ? galleryItems
       : galleryItems.filter((item) => item.category === activeCategory);
 
@@ -351,26 +405,40 @@ const Gallery = () => {
         </h3>
       </section>
 
-      <section className="bg-white p-4 sm:p-6 md:p-8 lg:p-10">
-        {/* Category filter pills */}
-        <div className="mb-6 flex flex-wrap justify-center gap-2 sm:mb-8 sm:gap-3 md:gap-4">
-          {availableCategories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setActiveCategory(cat)}
-              className={`px-5 sm:px-6 py-2.5  text-[13px] sm:text-sm font-semibold tracking-wide uppercase transition-all duration-300 border-2 ${
-                activeCategory === cat
-                  ? "bg-[var(--primary)] text-white border-[var(--primary)]"
-                  : "bg-white text-[var(--text)] border-[var(--border)] hover:border-[var(--primary)] hover:text-[var(--primary)]"
-              }`}
-            >
-              {cat}
-            </button>
-          ))}
-        </div>
+      <section className="bg-white px-4 pb-8 pt-3 sm:px-6 sm:pb-10 sm:pt-4 lg:px-8">
+        {/* <div className="mb-4 flex flex-col gap-1.5 sm:mb-5 sm:flex-row sm:items-center sm:gap-3">
+          <label htmlFor="gallery-category-filter" className="text-sm font-medium text-[#700072]">
+            Filter by Category
+          </label>
+          <select
+            id="gallery-category-filter"
+            value={activeCategory}
+            onChange={(event) => {
+              const value = event.currentTarget.value;
+              const category =
+                value === "All Categories" ? value : CATEGORIES.find((candidate) => candidate === value);
+              if (category) setActiveCategory(category);
+            }}
+            className="w-full rounded-md border border-gray-300 bg-white px-3 py-2.5 text-sm text-gray-800 shadow-sm transition-colors focus:border-[#700072] focus:outline-none focus:ring-2 focus:ring-[#700072]/20 sm:w-80"
+          >
+            <option value="All Categories">All Categories</option>
+            {availableCategories
+              .map((category) => (
+                <option key={category} value={category}>
+                  {category}
+                </option>
+              ))}
+          </select>
+        </div> */}
 
-        <div className="overflow-x-auto pt-2 scrollbar-hide">
-          <div ref={galleryGridRef} className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:gap-8 xl:grid-cols-4">
+        <CategoryFilter
+          categories={availableCategories}
+          active={activeCategory}
+          onChange={setActiveCategory}
+        />
+
+        <div className="overflow-x-auto scrollbar-hide">
+          <div ref={galleryGridRef} className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:gap-6 xl:grid-cols-4">
             {filteredItems.map((item, index) => (
               <GalleryCard
                 key={`${activeCategory}-${index}`}
@@ -425,11 +493,22 @@ const Gallery = () => {
                     className="w-full max-h-[75vh] object-contain"
                   />
                 ) : (
-                  <img
-                    src={expandedGalleryItem.image}
-                    alt={expandedGalleryItem.title}
-                    className="w-full max-h-[75vh] object-contain"
-                  />
+                  <picture>
+                    {expandedGalleryItem.imageSrcSet && (
+                      <source
+                        type="image/webp"
+                        srcSet={expandedGalleryItem.imageSrcSet}
+                        sizes="(max-width: 1152px) 100vw, 1152px"
+                      />
+                    )}
+                    <img
+                      src={expandedGalleryItem.image}
+                      alt={expandedGalleryItem.title}
+                      width={expandedGalleryItem.imageWidth}
+                      height={expandedGalleryItem.imageHeight}
+                      className="w-full max-h-[75vh] object-contain"
+                    />
+                  </picture>
                 )}
               </div>
             </div>
