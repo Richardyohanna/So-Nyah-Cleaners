@@ -117,7 +117,7 @@ const App = () => {
       )}
 
       <Header />
-      <main className="overflow-x-hidden">
+      <main className="overflow-x-clip">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/services" element={<Service />} />

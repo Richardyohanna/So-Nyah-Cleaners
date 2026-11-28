@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useId, useRef, useState } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { motion, useDragControls, useReducedMotion } from "framer-motion";
 import { Check, ChevronDown, SlidersHorizontal, X } from "lucide-react";
 
 const ALL = "All Categories";
@@ -121,6 +121,7 @@ function MobileSheetFilter<T extends string>({
   const reduceMotion = useReducedMotion();
   const triggerRef = useRef<HTMLButtonElement>(null);
   const sheetRef = useRef<HTMLDivElement>(null);
+  const dragControls = useDragControls();
   const titleId = useId();
 
   // Lock page scroll, close on Escape, move focus into the sheet, restore it on close
@@ -192,98 +193,100 @@ function MobileSheetFilter<T extends string>({
         <ChevronDown className="h-4 w-4 shrink-0 text-gray-400" aria-hidden />
       </button>
 
-      <AnimatePresence>
-        {open && (
-          <div className="fixed inset-0 z-[100] flex items-end">
-            {/* Backdrop */}
-            <motion.div
-              className="absolute inset-0 bg-gray-900/50 backdrop-blur-sm"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: reduceMotion ? 0 : 0.2 }}
-              onClick={() => setOpen(false)}
+      {open && (
+        <div className="fixed inset-0 z-[100] flex items-end">
+          {/* Backdrop */}
+          <motion.div
+            className="absolute inset-0 bg-gray-900/50 backdrop-blur-sm"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: reduceMotion ? 0 : 0.2 }}
+            onClick={() => setOpen(false)}
+            aria-hidden
+          />
+
+          {/* Sheet */}
+          <motion.div
+            ref={sheetRef}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby={titleId}
+            className="relative flex max-h-[80dvh] w-full flex-col rounded-t-3xl bg-white shadow-2xl"
+            initial={reduceMotion ? { opacity: 0 } : { y: "100%" }}
+            animate={reduceMotion ? { opacity: 1 } : { y: 0 }}
+            transition={{ type: "tween", duration: reduceMotion ? 0 : 0.2, ease: "easeInOut" }}
+            drag={reduceMotion ? false : "y"}
+            dragControls={dragControls}
+            dragListener={false}
+            dragConstraints={{ top: 0, bottom: 0 }}
+            dragElastic={{ top: 0, bottom: 0.6 }}
+            onDragEnd={(_, info) => {
+              if (info.offset.y > 120 || info.velocity.y > 600) setOpen(false);
+            }}
+          >
+            {/* Grab handle */}
+            <div
+              className="flex justify-center pt-3 touch-none"
+              onPointerDown={(event) => dragControls.start(event)}
               aria-hidden
-            />
-
-            {/* Sheet */}
-            <motion.div
-              ref={sheetRef}
-              role="dialog"
-              aria-modal="true"
-              aria-labelledby={titleId}
-              className="relative flex max-h-[80dvh] w-full flex-col rounded-t-3xl bg-white shadow-2xl"
-              initial={reduceMotion ? { opacity: 0 } : { y: "100%" }}
-              animate={reduceMotion ? { opacity: 1 } : { y: 0 }}
-              exit={reduceMotion ? { opacity: 0 } : { y: "100%" }}
-              transition={{ type: "spring", stiffness: 380, damping: 38 }}
-              drag={reduceMotion ? false : "y"}
-              dragConstraints={{ top: 0, bottom: 0 }}
-              dragElastic={{ top: 0, bottom: 0.6 }}
-              onDragEnd={(_, info) => {
-                if (info.offset.y > 120 || info.velocity.y > 600) setOpen(false);
-              }}
             >
-              {/* Grab handle */}
-              <div className="flex justify-center pt-3" aria-hidden>
-                <span className="h-1.5 w-10 rounded-full bg-gray-300" />
-              </div>
+              <span className="h-1.5 w-10 rounded-full bg-gray-300" />
+            </div>
 
-              <div className="flex items-center justify-between px-5 pb-2 pt-3">
-                <h2 id={titleId} className="text-base font-semibold text-gray-900">
-                  Filter by category
-                </h2>
-                <button
-                  type="button"
-                  onClick={() => setOpen(false)}
-                  aria-label="Close filter"
-                  className="flex h-9 w-9 items-center justify-center rounded-full text-gray-500 outline-none transition hover:bg-gray-100 focus-visible:ring-2 focus-visible:ring-[#700072]"
-                >
-                  <X className="h-5 w-5" aria-hidden />
-                </button>
-              </div>
-
-              <div
-                role="radiogroup"
-                aria-labelledby={titleId}
-                className="overflow-y-auto overscroll-contain px-3 pb-[max(1.5rem,env(safe-area-inset-bottom))] pt-1"
+            <div className="flex items-center justify-between px-5 pb-2 pt-3">
+              <h2 id={titleId} className="text-base font-semibold text-gray-900">
+                Filter by category
+              </h2>
+              <button
+                type="button"
+                onClick={() => setOpen(false)}
+                aria-label="Close filter"
+                className="flex h-9 w-9 items-center justify-center rounded-full text-gray-500 outline-none transition hover:bg-gray-100 focus-visible:ring-2 focus-visible:ring-[#700072]"
               >
-                {options.map((option) => {
-                  const selected = option === active;
-                  const count = counts?.[option];
-                  return (
-                    <button
-                      key={option}
-                      type="button"
-                      role="radio"
-                      aria-checked={selected}
-                      onClick={() => select(option)}
-                      className={`flex w-full items-center gap-3 rounded-2xl px-3 py-3.5 text-left text-[15px] outline-none transition-colors focus-visible:ring-2 focus-visible:ring-[#700072] ${
-                        selected
-                          ? "bg-[#700072]/10 font-semibold text-[#700072]"
-                          : "text-gray-800 hover:bg-gray-50 active:bg-gray-100"
+                <X className="h-5 w-5" aria-hidden />
+              </button>
+            </div>
+
+            <div
+              role="radiogroup"
+              aria-labelledby={titleId}
+              className="overflow-y-auto overscroll-contain px-3 pb-[max(1.5rem,env(safe-area-inset-bottom))] pt-1"
+            >
+              {options.map((option) => {
+                const selected = option === active;
+                const count = counts?.[option];
+                return (
+                  <button
+                    key={option}
+                    type="button"
+                    role="radio"
+                    aria-checked={selected}
+                    onClick={() => select(option)}
+                    className={`flex w-full items-center gap-3 rounded-2xl px-3 py-3.5 text-left text-[15px] outline-none transition-colors focus-visible:ring-2 focus-visible:ring-[#700072] ${
+                      selected
+                        ? "bg-[#700072]/10 font-semibold text-[#700072]"
+                        : "text-gray-800 hover:bg-gray-50 active:bg-gray-100"
+                    }`}
+                  >
+                    <span className="flex-1">{option}</span>
+                    {typeof count === "number" && (
+                      <span className="text-sm tabular-nums text-gray-400">{count}</span>
+                    )}
+                    <span
+                      className={`flex h-5 w-5 items-center justify-center rounded-full ${
+                        selected ? "bg-[#700072] text-white" : "ring-1 ring-inset ring-gray-300"
                       }`}
+                      aria-hidden
                     >
-                      <span className="flex-1">{option}</span>
-                      {typeof count === "number" && (
-                        <span className="text-sm tabular-nums text-gray-400">{count}</span>
-                      )}
-                      <span
-                        className={`flex h-5 w-5 items-center justify-center rounded-full ${
-                          selected ? "bg-[#700072] text-white" : "ring-1 ring-inset ring-gray-300"
-                        }`}
-                        aria-hidden
-                      >
-                        {selected && <Check className="h-3.5 w-3.5" strokeWidth={3} />}
-                      </span>
-                    </button>
-                  );
-                })}
-              </div>
-            </motion.div>
-          </div>
-        )}
-      </AnimatePresence>
+                      {selected && <Check className="h-3.5 w-3.5" strokeWidth={3} />}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+          </motion.div>
+        </div>
+      )}
     </>
   );
 }

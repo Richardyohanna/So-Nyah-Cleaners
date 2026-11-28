@@ -437,7 +437,7 @@ const Gallery = () => {
           onChange={setActiveCategory}
         />
 
-        <div className="overflow-x-auto scrollbar-hide">
+        <div>
           <div ref={galleryGridRef} className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:gap-6 xl:grid-cols-4">
             {filteredItems.map((item, index) => (
               <GalleryCard
